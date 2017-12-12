@@ -88,9 +88,10 @@ from utilities.file_io import file_io_operations
 	Module with methods that incrementally test scripts that
 		perform data analytics operations with my BibTeX database.
 	It tests the following:
+	+ Sort a set of (key,mode) pairs. 
 	+ Check if a given BibTeX key is valid.
 	+ The class "entry" that represents a given BibTeX entry.
-	+ The 
+	+ The Python-based database of BibTeX entries.
 """
 class Incremental_Test_Automation:
 	# List of BibTeX keys
