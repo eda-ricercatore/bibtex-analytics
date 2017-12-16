@@ -31,9 +31,47 @@ __date__ = 'December 15, 2017'
 
 #	Email address: echo "cukj -wb- 23wU4X5M589 TROJANS cqkH wiuz2y 0f Mw Stanford" | awk '{ sub("23wU4X5M589","F.d_c_b. ") sub("Stanford","d0mA1n"); print $5, $2, $8; for (i=1; i<=1; i++) print "6\b"; print $9, $7, $6 }' | sed y/kqcbuHwM62z/gnotrzadqmC/ | tr 'q' ' ' | tr -d [:cntrl:] | tr -d 'ir' | tr y "\n"	Che cosa significa?
 
+###############################################################
+"""
+	Import modules from The Python Standard Library.
+	sys			Get access to any command-line arguments.
+	os			Use any operating system dependent functionality.
+	os.path		For pathname manipulations.
+	
+	subprocess -> call
+				To make system calls.
+
+	time		To measure elapsed time.
+	warnings	Raise warnings.
+	re			Use regular expressions.
+"""
+
+#import sys
+#import os
+#import os.path
+#from subprocess import call
+#import time
+import warnings
+#import re
+
+###############################################################
+#	Import Custom Python Modules
 
 
-
+###############################################################
+"""
+	Module with method that creates a set of (key,frequency)
+		pairs, and sorts these pairs using their keys.
+"""
+class queue_ip_args:
+	# =========================================================
+	#	Method to create a set of (key,frequency) pairs,
+	#		and sort these pairs using their keys.
+	#	@return - Nothing.
+	#	O(n) method, where n is the size of the set.
+	@staticmethod
+	def sort_pairs():
+		set_of_pairs = []
 
 
 
