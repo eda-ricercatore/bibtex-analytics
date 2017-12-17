@@ -47,6 +47,9 @@ __date__ = 'December 15, 2017'
 
 	collections -> namedtuple
 				To use named tuples.
+	operator -> attrgetter
+				To manipulate attributes of a named tuple as callable
+					objects.
 """
 
 #import sys
@@ -57,6 +60,7 @@ __date__ = 'December 15, 2017'
 import warnings
 #import re
 from collections import namedtuple
+from operator import attrgetter
 
 ###############################################################
 #	Import Custom Python Modules
@@ -104,9 +108,18 @@ class process_key_freq_pairs:
 		# Enumerate each named tuple, and print its field.
 		for p in set_of_pairs:
 			print "Key="+p.key+".	Frequency="+str(p.freq)+"." 
-		
-
-
+		# Sort the set by key/name.
+		key_sort = sorted(set_of_pairs, key=attrgetter("key"))
+		print "*	*	*	*	*	*	*	*	*	*	*	*	*"
+		# Enumerate and print each element in key-sorted set.
+		for p in key_sort:
+			print "Key="+p.key+".	Frequency="+str(p.freq)+"." 
+		print "*	*	*	*	*	*	*	*	*	*	*	*	*"
+		# Sort the set by key/name.
+		key_sort = sorted(set_of_pairs, key=attrgetter("freq"))
+		# Enumerate and print each element in frequency-sorted set.
+		for p in key_sort:
+			print "Key="+p.key+".	Frequency="+str(p.freq)+"."
 
 
 
