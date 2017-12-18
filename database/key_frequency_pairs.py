@@ -116,11 +116,21 @@ class process_key_freq_pairs:
 			print "Key="+p.key+".	Frequency="+str(p.freq)+"." 
 		print "*	*	*	*	*	*	*	*	*	*	*	*	*"
 		# Sort the set by key/name.
-		key_sort = sorted(set_of_pairs, key=attrgetter("freq"))
+		freq_sort = sorted(set_of_pairs, key=attrgetter("freq"))
 		# Enumerate and print each element in frequency-sorted set.
-		for p in key_sort:
+		for p in freq_sort:
 			print "Key="+p.key+".	Frequency="+str(p.freq)+"."
-
+		print "*	*	*	*	*	*	*	*	*	*	*	*	*"
+		rev_list = reversed(freq_sort)
+		# Enumerate and print each element in frequency-sorted set.
+		for p in rev_list:
+			print "Key="+p.key+".	Frequency="+str(p.freq)+"."
+		print "*	*	*	*	*	*	*	*	*	*	*	*	*"
+		# Sort the set by key/name.
+		rev_key_sort = sorted(set_of_pairs, key=attrgetter("freq"), reverse = True)
+		# Enumerate and print each element in frequency-sorted set.
+		for p in rev_key_sort:
+			print "Key="+p.key+".	Frequency="+str(p.freq)+"."
 
 
 
