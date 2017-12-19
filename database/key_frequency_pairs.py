@@ -131,6 +131,7 @@ class process_key_freq_pairs:
 		# Enumerate and print each element in frequency-sorted set.
 		for p in rev_key_sort:
 			print "Key="+p.key+".	Frequency="+str(p.freq)+"."
+		print "*	*	*	*	*	*	*	*	*	*	*	*	*"
 
 
 
