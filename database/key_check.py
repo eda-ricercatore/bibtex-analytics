@@ -12,12 +12,12 @@
 
 
 	Revision History:
-	December 15, 2017			Version 0.1, initial build.
+	December 19, 2017			Version 0.1, initial build.
 """
 
 __author__ = 'Zhiyang Ong'
 __version__ = '1.0'
-__date__ = 'December 15, 2017'
+__date__ = 'December 19, 2017'
 
 #	The MIT License (MIT)
 
@@ -66,8 +66,58 @@ from operator import attrgetter
 #	Import Custom Python Modules
 
 
+###############################################################
+"""
+	Module with methods that check the validity of a BibTeX key.
 
+	Support for class instantiation is not provided, to avoid
+		acquiring a collection of useless "check_bibtex_key"
+		objects.
 
+	Check if all methods return a boolean TRUE to indicate that
+		all the conditions required for a valid BibTeX key are
+		TRUE, or indicate the condition(s) that cause the BibTeX
+		key to be invalid.
+
+	Check if none of the characters in the string are whitespace
+		characters; that is, the string has no white space.
+
+	Check if all the characters in the string are alphanumeric
+		characters; there are no special characters in the string.
+"""  
+class check_bibtex_key:
+	# =========================================================
+	#	Method to check the validity of a BibTeX key.
+	#	@param str - A string containing the BibTeX key.
+	#	@return a boolean TRUE if the BibTeX key is valid.
+	#		Else, return FALSE.
+	#	O(n) method, where n is the number of characters of the key.
+	@staticmethod
+	def is_bibtex_key_valid(str):
+		if has_no_whitespace(str) and has_only_alphanumeric_characters(str):
+			return True
+		else:
+			return False
+	# =========================================================
+	#	Method to check if the BibTeX key has white space.
+	#	@return - Nothing.
+	#	@return a boolean TRUE if the BibTeX key has no white space.
+	#		Else, return FALSE.
+	#	O(n) method, where n is the number of characters of the key.
+	@staticmethod
+	def has_no_whitespace(str):
+		if :
+			return True
+		else:
+			return False
+	# =========================================================
+	#	Method to check if the BibTeX key has only alphanumeric
+	#		characters.
+	#	@return - Nothing.
+	#	O(n) method, where n is the number of characters of the key.
+	@staticmethod
+	def has_only_alphanumeric_characters(str):
+		return str.isalnum()
 
 
 
