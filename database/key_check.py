@@ -59,8 +59,8 @@ __date__ = 'December 19, 2017'
 #import time
 import warnings
 #import re
-from collections import namedtuple
-from operator import attrgetter
+#from collections import namedtuple
+#from operator import attrgetter
 
 ###############################################################
 #	Import Custom Python Modules
@@ -106,7 +106,7 @@ class check_bibtex_key:
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
 	def has_no_whitespace(str):
-		if :
+		if False:
 			return True
 		else:
 			return False
@@ -118,6 +118,16 @@ class check_bibtex_key:
 	@staticmethod
 	def has_only_alphanumeric_characters(str):
 		return str.isalnum()
+	# =========================================================
+	#	Method to tokenize the first line of each BibTeX entry, 
+	#		which contains a unique BibTeX key.
+	#	@return a tokenized string representing the BibTeX key.
+	#	O(n) method, where n is the character length of the string.
+	@staticmethod
+	def tokenization_entry_key(str):
+		tokenized_BibTeX_entry = re.split('@|{|,',line)
+		return "Hello World!"
+
 
 
 

@@ -4,14 +4,15 @@
 
 """
 	This Python script is written by Zhiyang Ong to read my BibTeX
-		database and construct a container of "entry" objects, each
-		of which represents a BibTeX entry.
+		database and construct a container of "bibtex_entry" objects,
+		each of which represents a BibTeX entry.
 	That is, map each entry in my BibTeX database to an instance of
-		the "entry" class, and add these instances to my/the
-		collection of "entry" objects.
+		the "bibtex_entry" class, and add these instances to my/the
+		collection of "bibtex_entry" objects.
 	
 	Synopsis:
-	Build a collection of "entry" objects, using my BibTeX database.
+	Build a collection of "bibtex_entry" objects, using my BibTeX
+		database.
 
 	This script can be executed as follows:
 	./bibtex_database.py [input BibTeX file]
