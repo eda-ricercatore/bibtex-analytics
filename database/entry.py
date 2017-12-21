@@ -20,6 +20,13 @@
 	Notes/Assumptions:
 	Each field of a BibTeX entry is usually contained in a line, and
 		it represents a property of the "bibtex_entry" class.
+	
+	The only BibTeX fields that stores information in multiple lines
+		are:
+		* Annote
+		* Note???
+		* Abstract
+		
 
 	A field in a BibTeX entry is either listed or not mentioned.
 		That is, duplicates of any given field should not exist in a
