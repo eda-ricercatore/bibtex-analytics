@@ -80,7 +80,8 @@ import warnings
 		key to be invalid.
 
 	Check if none of the characters in the string are whitespace
-		characters; that is, the string has no white space.
+		characters; that is, check that the string has no white
+		space.
 
 	Check if all the characters in the string are alphanumeric
 		characters; there are no special characters in the string.
@@ -130,8 +131,16 @@ class check_bibtex_key:
 
 
 
-
-
+"""
+	Do I provide a function to tokenize each line the same way?
+	I have tokenized the following BibTeX fields differently.
+	*	BibTeX key
+	*	Keywords
+	*	Publisher
+	*	Series
+	
+	Yes.
+"""
 
 
 

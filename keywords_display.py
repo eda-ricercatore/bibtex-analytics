@@ -28,6 +28,7 @@
 	Notes/Assumptions:
 	Assume that the 'Keywords' standard BibTeX field is a single line
 		field.
+	Assume that each pair of keywords, or keyphrases, is separated 
 
 
 	Revision History:

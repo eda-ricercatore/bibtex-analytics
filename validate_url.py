@@ -299,7 +299,7 @@ class validate_url_field:
 			# Delete the initial substring "Bdsk-Url-1".
 			return_str = return_str.replace(validate_url_field.bdsk_url_1,'')
 #			print "	>>	return_str:::"+return_str 
-		# Else if the string starts with "Bdsk-Url-1",
+		# Else if the string starts with "Bdsk-Url-2",
 		elif(return_str.startswith(validate_url_field.bdsk_url_2)):
 			# Delete the initial substring "Bdsk-Url-2".
 			return_str = return_str.replace(validate_url_field.bdsk_url_2,'')

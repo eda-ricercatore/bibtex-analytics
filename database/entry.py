@@ -98,16 +98,14 @@ import warnings
 		into an instance of the "bibtex_entry" class.
 	with methods that check the validity of a BibTeX key.
 
-	As each line in a BibTeX entry is parsed, check if it complies
-		with the standard BibTeX syntax.
+	As each line in a BibTeX entry is parsed, check if it
+		complies with the standard BibTeX syntax.
 
-	Map each field, usually contained in a line, of a BibTeX entry
-		into a property of the "bibtex_entry" class.
+	Map each field, usually contained in a line, of a BibTeX
+		entry into a property of the "bibtex_entry" class.
 
-	Check if none of the characters in the string are whitespace
-		characters; that is, the string has no white space.
-
-	Check if all the characters in the string are alphanumeric
-		characters; there are no special characters in the string.
+	Each field in a BibTeX entry shall be unique;
+		that is, no duplicates for a given BibTeX field shall
+			exist.
 """  
 class bibtex_entry:
