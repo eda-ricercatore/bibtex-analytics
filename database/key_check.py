@@ -132,14 +132,19 @@ class check_bibtex_key:
 
 
 """
-	Do I provide a function to tokenize each line the same way?
-	I have tokenized the following BibTeX fields differently.
+	Do I provide a function to parse each line the same way?
+	I have parsed the following BibTeX fields differently.
 	*	BibTeX key
 	*	Keywords
 	*	Publisher
 	*	Series
 	
 	Yes.
+	
+	That said, only the following have to be tokenized.
+	*	Author: Names of co-authors are separated by " and ".
+		The 
+	*	
 """
 
 
