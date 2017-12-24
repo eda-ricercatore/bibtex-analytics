@@ -3,13 +3,28 @@
 
 
 """
-	This Python script is written by Zhiyang Ong to determine if a
-		BibTeX key is valid.
+	This Python script is written by Zhiyang Ong to determine if
+		a BibTeX key is valid.
 	
 	
 	Synopsis:
 	Check the validity of a BibTeX key.
 
+
+
+	Notes/Assumptions:
+	Assume that a BibTeX key has no white space, and is a
+		contiguous sequence of alphanumeric characters.
+	If a BibTeX key contains characters that are not alphanumeric,
+		it is invalid.
+	If a BibTeX key contains white space, it is invalid. 
+
+	The first line of the BibTeX entry shall
+	While the BibTeX key can contain different symbols, apart
+		from commas
+	Tokenize the string such that it would contain exactly
+	#		two tokens, the BibTeX entry type (without the "@"
+	#		prefix) and the BibTeX key.
 
 	Revision History:
 	December 19, 2017			Version 0.1, initial build.
@@ -122,6 +137,11 @@ class check_bibtex_key:
 	# =========================================================
 	#	Method to tokenize the first line of each BibTeX entry, 
 	#		which contains a unique BibTeX key.
+	#
+	#	Tokenize the string such that it would contain exactly
+	#		two tokens, the BibTeX entry type (without the "@"
+	#		prefix) and the BibTeX key.
+	#
 	#	@return a tokenized string representing the BibTeX key.
 	#	O(n) method, where n is the character length of the string.
 	@staticmethod
@@ -143,8 +163,19 @@ class check_bibtex_key:
 	
 	That said, only the following have to be tokenized.
 	*	Author: Names of co-authors are separated by " and ".
-		The 
 	*	
+	
+	The address and publisher fields are separated by " and ".
+		However, " and " is a subset of the name for some
+			publishers.
+		Hence, I would not bother to process the publisher
+			BibTeX field for joint publishers.
+		Springer is the only publisher that has many variations
+			of its name.
+		To the best of my knowledge, apart from some universities
+			with associated publishers (or university presses),
+			ACM and IEEE are the only publishers with associated
+			publishers (ACM Press and IEEE Press). 
 """
 
 
