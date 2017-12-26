@@ -19,12 +19,19 @@
 		it is invalid.
 	If a BibTeX key contains white space, it is invalid. 
 
-	The first line of the BibTeX entry shall
 	While the BibTeX key can contain different symbols, apart
-		from commas
-	Tokenize the string such that it would contain exactly
-	#		two tokens, the BibTeX entry type (without the "@"
-	#		prefix) and the BibTeX key.
+		from commas, only alphanumeric characters shall be used
+		\cite{Ong2017}.
+	Tokenize the first line of each BibTeX entry such that it 
+		would contain exactly two tokens: the BibTeX entry type
+		(without the "@" prefix) and the BibTeX key.
+	When the first line of a BibTeX entry is tokenized, its
+		first token shall match a standard BibTeX entry type,
+		and its second token shall be its BibTeX key.
+	If the first token does not match a standard BibTeX entry type,
+		raise an exception
+
+
 
 	Revision History:
 	December 19, 2017			Version 0.1, initial build.

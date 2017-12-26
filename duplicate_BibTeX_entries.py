@@ -21,6 +21,14 @@
 
 
 
+	Notes/Assumptions:
+	Raise an exception concerning the existence of the duplicates,
+		when duplicates of a BibTeX key are found.
+	Raise an exception when a tokenized BibTeX entry is not a
+		standard entry type.
+	Raise an exception when a mismatch occurs in determining the
+		number of BibTeX entries processed.
+
 
 	Revision History:
 	??????, 2014		Version 0.1
