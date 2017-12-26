@@ -20,6 +20,11 @@
 		line will end with '}}' and that 'Annote' is the last field
 		of the BibTeX entry.
 
+	Raise an exception when the user manual cannot be accessed
+		due to errors, or when errors occur in an input argument.
+	Raise an exception to notify user when they are trying to
+		overwrite a file.
+
 	Revision History:
 	April 14, 2017			Version 0.2, initial build.
 """
