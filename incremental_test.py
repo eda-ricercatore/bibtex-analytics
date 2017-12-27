@@ -189,6 +189,8 @@ if __name__ == "__main__":
 	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
 	process_key_freq_pairs.sort_pairs()
 	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
+	
+	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
 	Incremental_Test_Automation.read_input_BibTeX_file(ip_file_obj,ip_filename)
 	# Close the file object for reading.
 	print "=	Close the file object for reading."

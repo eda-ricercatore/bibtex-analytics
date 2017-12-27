@@ -29,8 +29,13 @@
 		first token shall match a standard BibTeX entry type,
 		and its second token shall be its BibTeX key.
 	If the first token does not match a standard BibTeX entry type,
-		raise an exception
-
+		raise an exception to inform the users of this error.
+	If the second token is an empty string or missing, raise
+		an exception to inform the users that the BibTeX key
+		is missing.
+	If more than two tokens (i.e., three or more) exist, raise
+		an exception to inform the users about the non-compliance
+		to guidelines \cite{Ong2017} for managing the database.
 
 
 	Revision History:
@@ -149,41 +154,51 @@ class check_bibtex_key:
 	#		two tokens, the BibTeX entry type (without the "@"
 	#		prefix) and the BibTeX key.
 	#
+	#	When the first line of a BibTeX entry is tokenized, its
+	#		first token shall match a standard BibTeX entry type,
+	#		and its second token shall be its BibTeX key.
+	#	If the first token does not match a standard BibTeX
+	#		entry type, raise an exception to inform the users
+	#		of this error.
+	#	If the second token is an empty string or missing, raise
+	#		an exception to inform the users that the BibTeX key
+	#		is missing.
+	#	If more than two tokens (i.e., three or more) exist, raise
+	#		an exception to inform the users about the
+	#		non-compliance to guidelines \cite{Ong2017} for
+	#		managing the database.
+	#
+	#
 	#	@return a tokenized string representing the BibTeX key.
 	#	O(n) method, where n is the character length of the string.
 	@staticmethod
 	def tokenization_entry_key(str):
 		tokenized_BibTeX_entry = re.split('@|{|,',line)
-		return "Hello World!"
+		if len(tokenized_BibTeX_entry) > 2:
+			raise Exception("	Non-compliance to BibTeX guidelines!!!")
+		elif len(tokenized_BibTeX_entry) == 2:
+			# Is the type of the BibTeX entry valid?
+			if (tokenized_BibTeX_entry[1] in queue_ip_args.BibTeX_entry_types):
+				# Yes. Try adding the BibTeX entry to "set_of_BibTeX_keys".
+				return tokenized_BibTeX_entry[2]
+			else:
+				# No. Warn user that the type of BibTeX entry is invalid!
+				temp_str = "Invalid type of BibTeX entry:"+tokenized_BibTeX_entry[1]
+				print temp_str
+				#warnings.warn("Invalid type of BibTeX entry")
+				raise Exception("BibTeX entry has an invalid type!")
+		elif len(tokenized_BibTeX_entry) == 1:
+			raise Exception("	BibTeX key is missing!!!")
+		else:
+			raise Exception("	String tokenization error!!!")
 
 
 
-"""
-	Do I provide a function to parse each line the same way?
-	I have parsed the following BibTeX fields differently.
-	*	BibTeX key
-	*	Keywords
-	*	Publisher
-	*	Series
-	
-	Yes.
-	
-	That said, only the following have to be tokenized.
-	*	Author: Names of co-authors are separated by " and ".
-	*	
-	
-	The address and publisher fields are separated by " and ".
-		However, " and " is a subset of the name for some
-			publishers.
-		Hence, I would not bother to process the publisher
-			BibTeX field for joint publishers.
-		Springer is the only publisher that has many variations
-			of its name.
-		To the best of my knowledge, apart from some universities
-			with associated publishers (or university presses),
-			ACM and IEEE are the only publishers with associated
-			publishers (ACM Press and IEEE Press). 
-"""
+
+
+
+
+
 
 
 

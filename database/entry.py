@@ -41,6 +41,9 @@
 	December 19, 2017			Version 0.1, initial build.
 """
 
+
+
+
 __author__ = 'Zhiyang Ong'
 __version__ = '1.0'
 __date__ = 'December 19, 2017'
@@ -109,3 +112,49 @@ import warnings
 			exist.
 """  
 class bibtex_entry:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+	Do I provide a function to parse each line the same way?
+	I have parsed the following BibTeX fields differently.
+	*	BibTeX key
+	*	Keywords
+	*	Publisher
+	*	Series
+	
+	Yes.
+	
+	That said, only the following have to be tokenized.
+	*	Author: Names of co-authors are separated by " and ".
+	*	
+	
+	The address and publisher fields are separated by " and ".
+		However, " and " is a subset of the name for some
+			publishers.
+		Hence, I would not bother to process the publisher
+			BibTeX field for joint publishers.
+		Springer is the only publisher that has many variations
+			of its name.
+		To the best of my knowledge, apart from some universities
+			with associated publishers (or university presses),
+			ACM and IEEE are the only publishers with associated
+			publishers (ACM Press and IEEE Press). 
+"""
