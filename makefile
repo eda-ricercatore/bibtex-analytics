@@ -32,3 +32,16 @@ all:
 
 
 
+
+
+
+
+clean:
+	rm -rf *.pyc
+	rm -rf database/*.pyc
+	rm -rf database/*.pyc
+
+
+
+
+

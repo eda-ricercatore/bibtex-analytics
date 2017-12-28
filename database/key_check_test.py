@@ -96,25 +96,38 @@ import warnings
 
 ###############################################################
 """
-	Module with methods that check the validity of a BibTeX key.
+	Module that determines if the methods for checking the
+		validity of a BibTeX key are functionally correct.
 
 	Support for class instantiation is not provided, to avoid
 		acquiring a collection of useless "check_bibtex_key"
 		objects.
 
-	Check if all methods return a boolean TRUE to indicate that
-		all the conditions required for a valid BibTeX key are
-		TRUE, or indicate the condition(s) that cause the BibTeX
-		key to be invalid.
-
-	Check if none of the characters in the string are whitespace
-		characters; that is, check that the string has no white
-		space.
-
-	Check if all the characters in the string are alphanumeric
-		characters; there are no special characters in the string.
+	Test each static method of the "check_bibtex_key" class.
 """  
-class check_bibtex_key:
+class check_bibtex_key_tester:
+	# =========================================================
+	#	Method to check if the BibTeX key has only alphanumeric
+	#		characters.
+	#	@return - Nothing.
+	#	O(n) method, where n is the number of characters of the key.
+	@staticmethod
+	def test_check_bibtex_key():
+		print "	Hello World!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
