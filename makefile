@@ -43,5 +43,7 @@ clean:
 
 
 
+incre:
+	./incremental_test.py input/one_bibtex_entry.bib
 
 

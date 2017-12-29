@@ -81,6 +81,8 @@ from utilities.queue_ip_arguments import queue_ip_args
 from utilities.file_io import file_io_operations
 # Package and module to process (key,frequency) pairs.
 from database.key_frequency_pairs import process_key_freq_pairs
+# Package and module to validate the checking of BibTeX keys.
+from database.key_check_test import check_bibtex_key_tester
 
 
 

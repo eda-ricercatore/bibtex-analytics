@@ -93,6 +93,8 @@ import warnings
 ###############################################################
 #	Import Custom Python Modules
 
+# Package and module to validate the checking of BibTeX keys.
+from database.key_check import check_bibtex_key
 
 ###############################################################
 """
@@ -113,6 +115,9 @@ class check_bibtex_key_tester:
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
 	def test_check_bibtex_key():
+		print "	Tokensize a long word/term:",
+		check_bibtex_key.tokenization_entry_key("ThisIsASuperLongWord.")
+		print "Yes."
 		print "	Hello World!"
 
 

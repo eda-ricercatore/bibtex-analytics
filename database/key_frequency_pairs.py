@@ -79,6 +79,7 @@ class process_key_freq_pairs:
 	#	O(n) method, where n is the size of the set.
 	@staticmethod
 	def sort_pairs():
+		print "	Create and manipulate set of (key,frequency) pairs."
 		# Empty set of (key,frequency) pairs, using named tuples.
 		set_of_pairs = []
 		# Define a (key,frequency) pair, using a named tuple.
@@ -131,7 +132,7 @@ class process_key_freq_pairs:
 		# Enumerate and print each element in frequency-sorted set.
 		for p in rev_key_sort:
 			print "Key="+p.key+".	Frequency="+str(p.freq)+"."
-		print "*	*	*	*	*	*	*	*	*	*	*	*	*"
+		#print "*	*	*	*	*	*	*	*	*	*	*	*	*"
 
 
 
