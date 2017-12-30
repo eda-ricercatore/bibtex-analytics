@@ -85,7 +85,7 @@ __date__ = 'December 19, 2017'
 #from subprocess import call
 #import time
 import warnings
-#import re
+import re
 #from collections import namedtuple
 #from operator import attrgetter
 
@@ -173,7 +173,7 @@ class check_bibtex_key:
 	#	O(n) method, where n is the character length of the string.
 	@staticmethod
 	def tokenization_entry_key(str):
-		tokenized_BibTeX_entry = re.split('@|{|,',line)
+		tokenized_BibTeX_entry = re.split('@|{|,',str)
 		if len(tokenized_BibTeX_entry) > 2:
 			raise Exception("	Non-compliance to BibTeX guidelines!!!")
 		elif len(tokenized_BibTeX_entry) == 2:
