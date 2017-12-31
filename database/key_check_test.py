@@ -119,8 +119,19 @@ class check_bibtex_key_tester:
 			print "	Cannot tokensize a long word/term:",
 			check_bibtex_key.tokenization_entry_key("ThisIsASuperLongWord.")
 		except Exception:
+			print "		Yes."
+		try:
+			print "	Three or more tokens can't be processed:",
+			check_bibtex_key.tokenization_entry_key("Three Tokens Exist")
+		except Exception:
+			print "	Yes."
+		try:
+			print "	Invalid BibTeX entry types can't be processed:"
+			check_bibtex_key.tokenization_entry_key("Invalid keys.")
+		except Exception:
 			print "	Yes."
 		print "	Hello World!"
+		
 
 
 
