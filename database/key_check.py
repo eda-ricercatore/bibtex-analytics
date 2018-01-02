@@ -92,6 +92,8 @@ import re
 ###############################################################
 #	Import Custom Python Modules
 
+# Module to process input arguments to the script/program.
+from utilities.queue_ip_arguments import queue_ip_args
 
 ###############################################################
 """
@@ -174,9 +176,10 @@ class check_bibtex_key:
 	@staticmethod
 	def tokenization_entry_key(str):
 		tokenized_BibTeX_entry = re.split('@|{|,',str)
-		if len(tokenized_BibTeX_entry) > 2:
+		print "=	length of tokenized_BibTeX_entry:"+len(tokenized_BibTeX_entry) 
+		if len(tokenized_BibTeX_entry) > 3:
 			raise Exception("	Non-compliance to BibTeX guidelines!!!")
-		elif len(tokenized_BibTeX_entry) == 2:
+		elif len(tokenized_BibTeX_entry) == 3:
 			# Is the type of the BibTeX entry valid?
 			if (tokenized_BibTeX_entry[1] in queue_ip_args.BibTeX_entry_types):
 				# Yes. Try adding the BibTeX entry to "set_of_BibTeX_keys".

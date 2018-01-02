@@ -121,15 +121,24 @@ class check_bibtex_key_tester:
 		except Exception:
 			print "		Yes."
 		try:
-			print "	Three or more tokens can't be processed:",
-			check_bibtex_key.tokenization_entry_key("Three Tokens Exist")
+			print "	Catch a string tokenization error:",
+			check_bibtex_key.tokenization_entry_key("@booklet")
+		except Exception:
+			print "		Yes."
+		try:
+			print "	Four or more tokens can't be processed:",
+			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,@booklet{Smith2018a,")
 		except Exception:
 			print "	Yes."
 		try:
-			print "	Invalid BibTeX entry types can't be processed:"
-			check_bibtex_key.tokenization_entry_key("Invalid keys.")
+			print "	Invalid BibTeX entry types can't be processed:",
+			check_bibtex_key.tokenization_entry_key("@presentation{Smith2018a,")
 		except Exception:
 			print "	Yes."
+		#check_bibtex_key.tokenization_entry_key("@booklet{")
+		check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
+		check_bibtex_key.tokenization_entry_key("@booklet")
+		check_bibtex_key.tokenization_entry_key("Invalid keys.")
 		print "	Hello World!"
 		
 
