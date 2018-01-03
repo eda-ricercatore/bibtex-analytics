@@ -74,9 +74,12 @@ __date__ = 'December 19, 2017'
 
 	collections -> namedtuple
 				To use named tuples.
+
 	operator -> attrgetter
 				To manipulate attributes of a named tuple as callable
 					objects.
+
+	string		Get access to string-specific methods.
 """
 
 #import sys
@@ -88,6 +91,7 @@ import warnings
 import re
 #from collections import namedtuple
 #from operator import attrgetter
+import string
 
 ###############################################################
 #	Import Custom Python Modules
@@ -176,7 +180,7 @@ class check_bibtex_key:
 	@staticmethod
 	def tokenization_entry_key(str):
 		tokenized_BibTeX_entry = re.split('@|{|,',str)
-		print "=	length of tokenized_BibTeX_entry:"+len(tokenized_BibTeX_entry) 
+		print "=	length of tokenized_BibTeX_entry:"+str(len(tokenized_BibTeX_entry)) 
 		if len(tokenized_BibTeX_entry) > 3:
 			raise Exception("	Non-compliance to BibTeX guidelines!!!")
 		elif len(tokenized_BibTeX_entry) == 3:
