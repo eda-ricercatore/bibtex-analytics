@@ -180,6 +180,7 @@ class check_bibtex_key:
 	@staticmethod
 	def tokenization_entry_key(str):
 		tokenized_BibTeX_entry = re.split('@|{|,',str)
+		a = str(len(tokenized_BibTeX_entry))
 		print "=	length of tokenized_BibTeX_entry:"+str(len(tokenized_BibTeX_entry)) 
 		if len(tokenized_BibTeX_entry) > 3:
 			raise Exception("	Non-compliance to BibTeX guidelines!!!")
