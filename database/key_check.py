@@ -182,17 +182,17 @@ class check_bibtex_key:
 		tokenized_BibTeX_entry = re.split('@|{|,',str)
 		#a = str(len(tokenized_BibTeX_entry))
 		#print "=	length of tokenized_BibTeX_entry:"+str(len(tokenized_BibTeX_entry))
-		print "=	length of tokenized_BibTeX_entry:%d\n",len(tokenized_BibTeX_entry) 
-		if len(tokenized_BibTeX_entry) > 3:
+		print "=	length of tokenized_BibTeX_entry:",len(tokenized_BibTeX_entry) 
+		if len(tokenized_BibTeX_entry) > 4:
 			raise Exception("	Non-compliance to BibTeX guidelines!!!")
-		elif len(tokenized_BibTeX_entry) == 3:
+		elif len(tokenized_BibTeX_entry) == 4:
 			# Is the type of the BibTeX entry valid?
 			if (tokenized_BibTeX_entry[1] in queue_ip_args.BibTeX_entry_types):
 				# Yes. Try adding the BibTeX entry to "set_of_BibTeX_keys".
 				return tokenized_BibTeX_entry[2]
 			else:
 				# No. Warn user that the type of BibTeX entry is invalid!
-				temp_str = "Invalid type of BibTeX entry:"+tokenized_BibTeX_entry[1]
+				temp_str = "==>	Invalid type of BibTeX entry:"+tokenized_BibTeX_entry[1]
 				print temp_str
 				#warnings.warn("Invalid type of BibTeX entry")
 				raise Exception("BibTeX entry has an invalid type!")

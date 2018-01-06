@@ -131,14 +131,18 @@ class check_bibtex_key_tester:
 		except Exception:
 			print "	Yes."
 		try:
-			print "	Invalid BibTeX entry types can't be processed:",
 			check_bibtex_key.tokenization_entry_key("@presentation{Smith2018a,")
 		except Exception:
+			print "	Invalid BibTeX entry types can't be processed:",
 			print "	Yes."
 		#check_bibtex_key.tokenization_entry_key("@booklet{")
-		check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
-		check_bibtex_key.tokenization_entry_key("@booklet")
-		check_bibtex_key.tokenization_entry_key("Invalid keys.")
+		#	Exception caused by this error can be caught.
+		#check_bibtex_key.tokenization_entry_key("@booklet")
+		#	Exception caused by this error can be caught.
+		#check_bibtex_key.tokenization_entry_key("Invalid keys.")
+		#	Exception caused by this error can be caught.
+		#check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
+		#	Above example works.
 		print "	Hello World!"
 		
 
