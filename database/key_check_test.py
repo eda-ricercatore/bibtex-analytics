@@ -114,12 +114,12 @@ class check_bibtex_key_tester:
 	#	@return - Nothing.
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
-	def test_check_bibtex_key():
+	def test_tokenization_entry_key():
 		try:
-			print "	Cannot tokensize a long word/term:",
+			print "	Tokenizing a word/term produces an exception:",
 			check_bibtex_key.tokenization_entry_key("ThisIsASuperLongWord.")
 		except Exception:
-			print "		Yes."
+			print "	Yes."
 		try:
 			print "	Catch a string tokenization error:",
 			check_bibtex_key.tokenization_entry_key("@booklet")
@@ -135,16 +135,24 @@ class check_bibtex_key_tester:
 		except Exception:
 			print "	Invalid BibTeX entry types can't be processed:",
 			print "	Yes."
-		#check_bibtex_key.tokenization_entry_key("@booklet{")
-		#	Exception caused by this error can be caught.
-		#check_bibtex_key.tokenization_entry_key("@booklet")
-		#	Exception caused by this error can be caught.
+		try:
+			print "	Catch missing BibTeX key:",
+			check_bibtex_key.tokenization_entry_key("@booklet{")
+		except Exception:
+			print "			Yes."
 		#check_bibtex_key.tokenization_entry_key("Invalid keys.")
 		#	Exception caused by this error can be caught.
 		#check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
 		#	Above example works.
 		print "	Hello World!"
-		
+	# =========================================================
+	#	Method to check if the BibTeX key has only alphanumeric
+	#		characters.
+	#	@return - Nothing.
+	#	O(n) method, where n is the number of characters of the key.
+	@staticmethod
+	def test_check_bibtex_key():
+		check_bibtex_key_tester.test_tokenization_entry_key()
 
 
 
