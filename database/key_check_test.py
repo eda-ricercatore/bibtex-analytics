@@ -140,7 +140,11 @@ class check_bibtex_key_tester:
 			check_bibtex_key.tokenization_entry_key("@booklet{")
 		except Exception:
 			print "			Yes."
-		#check_bibtex_key.tokenization_entry_key("Invalid keys.")
+		try:
+			print "	Don't use white space as a delimiter:",
+			check_bibtex_key.tokenization_entry_key("Invalid keys.")
+		except Exception:
+			print "		Yes."
 		#	Exception caused by this error can be caught.
 		#check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
 		#	Above example works.
