@@ -141,11 +141,16 @@ class check_bibtex_key_tester:
 		except Exception:
 			print "			Yes."
 		try:
-			print "	Don't use white space as a delimiter:",
+			print "	Don't use white space as a delimiter (1):",
 			check_bibtex_key.tokenization_entry_key("Invalid keys.")
 		except Exception:
-			print "		Yes."
-		#	Exception caused by this error can be caught.
+			print "	Yes."
+		try:
+			print "	Don't use white space as a delimiter (2):",
+			check_bibtex_key.tokenization_entry_key("This phrase four words")
+		except Exception:
+			print "	Yes."
+		check_bibtex_key.tokenization_entry_key("This phrase four words")
 		#check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
 		#	Above example works.
 		print "	Hello World!"
