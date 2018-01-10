@@ -118,39 +118,57 @@ class check_bibtex_key_tester:
 		try:
 			print "	Tokenizing a word/term produces an exception:",
 			check_bibtex_key.tokenization_entry_key("ThisIsASuperLongWord.")
+			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "	Yes."
 		try:
 			print "	Catch a string tokenization error:",
 			check_bibtex_key.tokenization_entry_key("@booklet")
+			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "		Yes."
 		try:
-			print "	Four or more tokens can't be processed:",
+			print "	Four or more tokens can't be processed (1):",
 			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,@booklet{Smith2018a,")
+			print "	NO!!!!!!!!!!!."
+		except Exception:
+			print "	Yes."
+		try:
+			print "	Four or more tokens can't be processed (2):",
+			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,@")
+			print "	NO!!!!!!!!!!!."
+		except Exception:
+			print "	Yes."
+		try:
+			print "	Four or more tokens can't be processed (3):",
+			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,rtyui")
+			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "	Yes."
 		try:
 			check_bibtex_key.tokenization_entry_key("@presentation{Smith2018a,")
+			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "	Invalid BibTeX entry types can't be processed:",
 			print "	Yes."
 		try:
 			print "	Catch missing BibTeX key:",
 			check_bibtex_key.tokenization_entry_key("@booklet{")
+			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "			Yes."
 		try:
 			print "	Don't use white space as a delimiter (1):",
 			check_bibtex_key.tokenization_entry_key("Invalid keys.")
+			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "	Yes."
 		try:
 			print "	Don't use white space as a delimiter (2):",
 			check_bibtex_key.tokenization_entry_key("This phrase four words")
+			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "	Yes."
-		check_bibtex_key.tokenization_entry_key("This phrase four words")
 		#check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
 		#	Above example works.
 		print "	Hello World!"
