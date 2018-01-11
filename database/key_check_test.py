@@ -169,7 +169,10 @@ class check_bibtex_key_tester:
 			print "	NO!!!!!!!!!!!."
 		except Exception:
 			print "	Yes."
-		#check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
+		key = check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
+		if "Smith2018a" == key:
+			print "	Successful extraction of BibTeX key:",
+			print "		Yes."
 		#	Above example works.
 		print "	Hello World!"
 	# =========================================================
