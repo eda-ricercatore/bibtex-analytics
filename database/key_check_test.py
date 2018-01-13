@@ -170,10 +170,12 @@ class check_bibtex_key_tester:
 		except Exception:
 			print "	Yes."
 		key = check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
+		### Test case may need to be changed/updated.
 		if "Smith2018a" == key:
 			print "	Successful extraction of BibTeX key:",
 			print "		Yes."
-		#	Above example works.
+		else:
+			print "	NO!!!!!!!!!!!."
 		print "	Hello World!"
 	# =========================================================
 	#	Method to check if the BibTeX key has only alphanumeric
