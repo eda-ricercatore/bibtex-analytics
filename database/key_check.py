@@ -188,11 +188,12 @@ class check_bibtex_key:
 		elif len(tokenized_BibTeX_entry) == 4:
 			# Is the type of the BibTeX entry valid?
 			if (tokenized_BibTeX_entry[1] in queue_ip_args.BibTeX_entry_types):
-				# Yes.
+				# Yes. Is the 4th token a non-empty string?
 				if tokenized_BibTeX_entry[3]:
+					# Yes. Report non-compliance to BibTeX guidelines.
 					#print "	Extra token found in 1st line of BibTeX entry."
 					raise Exception("	Non-compliance to BibTeX guidelines! Extra token found in 1st line of BibTeX entry.")
-				# Try adding the BibTeX entry to "set_of_BibTeX_keys".
+				# No. Try adding the BibTeX entry to "set_of_BibTeX_keys".
 				return tokenized_BibTeX_entry[2]
 			else:
 				# No. Warn user that the type of BibTeX entry is invalid!
