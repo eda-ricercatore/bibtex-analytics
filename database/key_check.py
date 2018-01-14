@@ -163,15 +163,15 @@ class check_bibtex_key:
 	#	When the first line of a BibTeX entry is tokenized, its
 	#		first token shall match a standard BibTeX entry type,
 	#		and its second token shall be its BibTeX key.
-	#	If the first token does not match a standard BibTeX
-	#		entry type, raise an exception to inform the users
-	#		of this error.
-	#	If the second token is an empty string or missing, raise
-	#		an exception to inform the users that the BibTeX key
-	#		is missing.
-	#	If more than two tokens (i.e., three or more) exist, raise
-	#		an exception to inform the users about the
-	#		non-compliance to guidelines \cite{Ong2017} for
+	#	If the first non-empty token does not match a standard
+	#		BibTeX entry type, raise an exception to inform the
+	#		users of this error.
+	#	If the second non-empty token is an empty string or
+	#		missing, raise an exception to inform the users
+	#		that the BibTeX key is missing.
+	#	If more than two non-empty tokens (i.e., three or more)
+	#		exist, raise an exception to inform the users about
+	#		the non-compliance to guidelines \cite{Ong2017} for
 	#		managing the database.
 	#
 	#
