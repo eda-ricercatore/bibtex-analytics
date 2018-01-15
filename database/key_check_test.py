@@ -109,8 +109,7 @@ from database.key_check import check_bibtex_key
 """  
 class check_bibtex_key_tester:
 	# =========================================================
-	#	Method to check if the BibTeX key has only alphanumeric
-	#		characters.
+	#	Method to test the BibTeX key extraction method.
 	#	@return - Nothing.
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
