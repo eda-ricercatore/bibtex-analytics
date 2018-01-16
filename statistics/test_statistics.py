@@ -87,6 +87,24 @@ class statistical_analysis:
 	# =========================================================
 	#	Accessor methods.
 	# =========================================================
+	#	Method to access the number of test cases used.
+	#	@return - Nothing.
+	#	@postcondition - number_test_cases_used < number_test_cases_passed.
+	#	O(1) method.
+	@staticmethod
+	def get_number_test_cases_used():
+		return number_test_cases_used
+	# =========================================================
+	#	Method to access the number of test cases passed.
+	#	@return - Nothing.
+	#	@postcondition - number_test_cases_used < number_test_cases_passed.
+	#	O(1) method.
+	@staticmethod
+	def get_number_test_cases_passed():
+		return number_test_cases_passed
+	# =========================================================
+	#	Mutator methods.
+	# =========================================================
 	#	Method to increment the number of test cases used.
 	#	@return - Nothing.
 	#	@postcondition - number_test_cases_used < number_test_cases_passed.
@@ -105,8 +123,21 @@ class statistical_analysis:
 	@staticmethod
 	def increment_number_test_cases_passed():
 		number_test_cases_passed = number_test_cases_passed + 1
-
-
+		if (number_test_cases_used > number_test_cases_passed):
+			print "	Problem: number_test_cases_used > number_test_cases_passed"
+			raise Exception("	Error with number_test_cases_used.")
+	# =========================================================
+	#	Other methods.
+	# =========================================================
+	#	Method to determine percentage of test cases passed.
+	#	@return - percentage of test cases passed.
+	#	@precondition - number_test_cases_used < number_test_cases_passed.
+	#	O(1) method.
+	@staticmethod
+	def get_test_cases_passed_average():
+		if (number_test_cases_used > number_test_cases_passed):
+			print "	Problem: number_test_cases_used > number_test_cases_passed"
+			raise Exception("	Error with number_test_cases_used.")
 
 
 
