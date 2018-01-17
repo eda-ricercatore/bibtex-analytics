@@ -137,9 +137,15 @@ class statistical_analysis:
 	def get_test_cases_passed_average():
 		if (number_test_cases_used > number_test_cases_passed):
 			print "	Problem: number_test_cases_used > number_test_cases_passed"
-			raise Exception("	Error with number_test_cases_used.")
-
-
+			raise Exception("	Precondition failed: see number_test_cases_used or number_test_cases_passed.")
+		return (number_test_cases_passed / number_test_cases_used) 
+	# =========================================================
+	#	Method to determine percentage of test cases passed.
+	#	@return - percentage of test cases passed.
+	#	@precondition - number_test_cases_used < number_test_cases_passed.
+	#	O(1) method.
+	@staticmethod
+	def get_test_cases_passed_average():
 
 
 
