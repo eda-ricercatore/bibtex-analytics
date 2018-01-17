@@ -94,7 +94,12 @@ import warnings
 #	Import Custom Python Modules
 
 # Package and module to validate the checking of BibTeX keys.
-from database.key_check import check_bibtex_key
+from database.test_statistics import statistical_analysis
+"""
+	Package and module to print statistics of software testing
+		results.
+"""
+from statistics.key_check import check_bibtex_key
 
 ###############################################################
 """
