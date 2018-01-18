@@ -1,6 +1,7 @@
 #	General Information
 
-This set of scripts is to clean up my *BibTeX* database.
+This set of scripts is to carry out data analytics, or specifically
+	BibTeX analytics, on my *BibTeX* database.
 
 My *BibTeX* database is a large set of *BibTeX* entries.
 	Each *BibTeX* entry references a (research) publication.
