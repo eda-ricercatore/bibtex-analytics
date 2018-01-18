@@ -1,6 +1,7 @@
 #	General Information
 
-This set of scripts is to clean up my *BibTeX* database.
+This set of scripts is to perform data analytics operations and to clean up my
+	*BibTeX* database.
 
 My *BibTeX* database is a large set of *BibTeX* entries.
 	Each *BibTeX* entry references a (research) publication.
@@ -37,6 +38,10 @@ It contains the following scripts:
 + rm_bibtex_metadata.py
 	- ./rm_bibtex_metadata.py [input BibTeX file] [output BibTeX file]
 	- Remove metadata from each BibTeX entry.
++ incremental_test.py
+	- ./incremental_test.py [input BibTeX file]
+	- Perform incremental software testing automatically for my script(s) that
+		perform data analytics operations with my BibTeX database.
 + z-altri-BibTeX-operazioni.py
 	- Perform miscellaneous tasks to clean up the BibTeX file.
 	- Check if the ampersand is surrounded by curly braces and set
@@ -107,8 +112,10 @@ This is the same set of *BibTeX* benchmarks that I have used to test
 	*duplicate_BibTeX_entries.py*.
 
 
+##	*BibTeX* Benchmarks for incremental_test.py
 
-
+The set of *BibTeX* benchmarks that I have used to test
+	*incremental_test.py* are:
 
 
 
@@ -117,7 +124,7 @@ This is the same set of *BibTeX* benchmarks that I have used to test
 
 #	Future Work
 
-I can develop *Scala* scripts to do the following:
+I can develop *Python* scripts to do the following:
 + extract_citations.py
 	- ./extract_citations.py [LaTeX sources] [BibTeX output]
 	- Produces an intermediate output, which is a set of BibTeX keys
