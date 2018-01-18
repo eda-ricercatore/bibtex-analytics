@@ -79,9 +79,9 @@ import re
 #	Import Custom Python Modules
 
 # Module to process input arguments to the script/program.
-from queue_ip_arguments import queue_ip_args
+from utilities.queue_ip_arguments import queue_ip_args
 # Module to perform file I/O (input/output) operations.
-from file_io import file_io_operations
+from utilities.file_io import file_io_operations
 
 
 

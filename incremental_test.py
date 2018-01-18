@@ -4,8 +4,8 @@
 
 """
 	This Python script is written by Zhiyang Ong to incrementally
-		test features for performing data analytics options with my
-		BibTeX database.
+		test features for performing data analytics operations with
+		my BibTeX database.
 	
 
 	Synopsis:
@@ -75,17 +75,20 @@ import re
 ###############################################################
 #	Import Custom Python Packages and Modules
 
-# Module to process input arguments to the script/program.
+# Package and module to process input arguments to the script/program.
 from utilities.queue_ip_arguments import queue_ip_args
-# Module to perform file I/O (input/output) operations.
+# Package and module to perform file I/O (input/output) operations.
 from utilities.file_io import file_io_operations
 
 
 
 
 ###############################################################
-#	Module with methods that clean BibTeX files.
-class Duplicate_BibTeX_entries_finder:
+"""
+	Module with methods that incrementally test scripts that
+		perform data analytics operations with my BibTeX database.
+"""
+class Incremental_Test_Automation:
 	# List of BibTeX keys
 	set_of_BibTeX_keys = []
 	num_of_bibtex_entries = 0
@@ -96,17 +99,17 @@ class Duplicate_BibTeX_entries_finder:
 	#	O(n) method, where n is the number of BibTeX keys.
 	@staticmethod
 	def add_BibTeX_key(found_BibTeX_key):
-		if (found_BibTeX_key in Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys):
+		if (found_BibTeX_key in Incremental_Test_Automation.set_of_BibTeX_keys):
 			temp_str = "Duplicate BibTeX key:"+found_BibTeX_key
 			warnings.warn(temp_str)
 			raise Exception("Multiple instances of a BibTeX key")
-		Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys.append(found_BibTeX_key)
+		Incremental_Test_Automation.set_of_BibTeX_keys.append(found_BibTeX_key)
 	# ============================================================
 	#	Method to sort BibTeX keys into a list, "set_of_BibTeX_keys".
 	#	O(n*log(n)) method, where n is the number of BibTeX keys.
 	@staticmethod
 	def sort_BibTeX_keys():
-		Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys = sorted(Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys)
+		Incremental_Test_Automation.set_of_BibTeX_keys = sorted(Incremental_Test_Automation.set_of_BibTeX_keys)
 	# ============================================================
 	#	Method to read each line of the input BibTeX file.
 	#	O(n) method, where n is the number of lines of the BibTeX file.
@@ -121,24 +124,24 @@ class Duplicate_BibTeX_entries_finder:
 				# Yes.
 #				print "...	First line of a BibTeX entry."
 				# Increment number of BibTeX entries.
-				Duplicate_BibTeX_entries_finder.num_of_bibtex_entries = Duplicate_BibTeX_entries_finder.num_of_bibtex_entries + 1
+				Incremental_Test_Automation.num_of_bibtex_entries = Incremental_Test_Automation.num_of_bibtex_entries + 1
 				tokenized_BibTeX_entry = re.split('@|{|,',line)
 #				for i in tokenized_BibTeX_entry:
 #					print i
 				# Is the type of the BibTeX entry valid?
 				if (tokenized_BibTeX_entry[1] in queue_ip_args.BibTeX_entry_types):
 					# Yes. Try adding the BibTeX entry to "set_of_BibTeX_keys".
-					Duplicate_BibTeX_entries_finder.add_BibTeX_key(tokenized_BibTeX_entry[2].lower())
+					Incremental_Test_Automation.add_BibTeX_key(tokenized_BibTeX_entry[2].lower())
 				else:
 					# No. Warn user that the type of BibTeX entry is invalid!
 					temp_str = "Invalid type of BibTeX entry:"+tokenized_BibTeX_entry[1]
 					print temp_str
 					#warnings.warn("Invalid type of BibTeX entry")
 					raise Exception("BibTeX entry has an invalid type!")
-		if (Duplicate_BibTeX_entries_finder.num_of_bibtex_entries != len(Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys)):
+		if (Incremental_Test_Automation.num_of_bibtex_entries != len(Incremental_Test_Automation.set_of_BibTeX_keys)):
 			raise Exception("Mismatch in number of BibTeX entries processed.")
 		else:
-			print "=	Number of BibTeX entries processed:"+str(Duplicate_BibTeX_entries_finder.num_of_bibtex_entries)
+			print "=	Number of BibTeX entries processed:"+str(Incremental_Test_Automation.num_of_bibtex_entries)
 
 
 
@@ -160,9 +163,10 @@ if __name__ == "__main__":
 	queue_ip_args.preprocessing()
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
-	print "==================================================="
-	print "Finding duplicate BibTeX entries in my BibTeX database."
-	print "	And, if they exist, warn the user about them."
+	print "=================================================="
+	print "Automating incremental software test automation of"
+	print "	script(s) for performing data analytics"
+	print "	operations on my BibTeX database."
 	print ""
 	# Assign input arguments to "queue_ip_args" for processing. 
 	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.DUPLICATE_ENTRIES)
@@ -175,7 +179,8 @@ if __name__ == "__main__":
 	print "=	Create a file object for reading."
 	# Create a file object for input BibTeX file, in reading mode.
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
-	Duplicate_BibTeX_entries_finder.read_input_BibTeX_file(ip_file_obj,ip_filename)
+	# The real stuff begins here...
+	Incremental_Test_Automation.read_input_BibTeX_file(ip_file_obj,ip_filename)
 	# Close the file object for reading.
 	print "=	Close the file object for reading."
 	file_io_operations.close_file_object(ip_file_obj)
