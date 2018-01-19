@@ -44,6 +44,9 @@ __date__ = 'December 15, 2017'
 	time		To measure elapsed time.
 	warnings	Raise warnings.
 	re			Use regular expressions.
+
+	collections -> namedtuple
+				To use named tuples.
 """
 
 #import sys
@@ -53,6 +56,7 @@ __date__ = 'December 15, 2017'
 #import time
 import warnings
 #import re
+from collections import namedtuple
 
 ###############################################################
 #	Import Custom Python Modules
@@ -63,7 +67,7 @@ import warnings
 	Module with method that creates a set of (key,frequency)
 		pairs, and sorts these pairs using their keys.
 """
-class queue_ip_args:
+class process_key_freq_pairs:
 	# =========================================================
 	#	Method to create a set of (key,frequency) pairs,
 	#		and sort these pairs using their keys.
@@ -71,11 +75,36 @@ class queue_ip_args:
 	#	O(n) method, where n is the size of the set.
 	@staticmethod
 	def sort_pairs():
+		# Empty set of (key,frequency) pairs, using named tuples.
 		set_of_pairs = []
-
-
-
-
+		# Define a (key,frequency) pair, using a named tuple.
+		key_freq_pair = namedtuple("key_freq_pair", "key freq")
+		# Create (key,frequency) pairs, using named tuples.
+		kfp = key_freq_pair(key="Paolo", freq=23)
+		# And add named tuples to the set of (key,frequency) pairs.
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Fosca", freq=8)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Daniela", freq=39)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Pippo", freq=2)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Angelo", freq=51)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Paola", freq=8)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Caro", freq=8)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Selina", freq=14)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Karina", freq=71)
+		set_of_pairs.append(kfp)
+		kfp = key_freq_pair(key="Karyna", freq=61)
+		set_of_pairs.append(kfp)
+		# Enumerate each named tuple, and print its field.
+		for p in set_of_pairs:
+			print "Key="+p.key+".	Frequency="+str(p.freq)+"." 
+		
 
 
 

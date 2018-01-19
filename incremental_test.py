@@ -58,7 +58,7 @@ __date__ = 'January 18, 2018'
 	re			Use regular expressions.
 
 	pathlib->Path
-				For mapping a string to a path. 
+				For mapping a string to a path.
 """
 
 import sys
@@ -79,7 +79,8 @@ import re
 from utilities.queue_ip_arguments import queue_ip_args
 # Package and module to perform file I/O (input/output) operations.
 from utilities.file_io import file_io_operations
-
+# Package and module to process (key,frequency) pairs.
+from database.key_frequency_pairs import process_key_freq_pairs
 
 
 
@@ -185,6 +186,9 @@ if __name__ == "__main__":
 	# Create a file object for input BibTeX file, in reading mode.
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	# The real stuff begins here...
+	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
+	process_key_freq_pairs.sort_pairs()
+	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
 	Incremental_Test_Automation.read_input_BibTeX_file(ip_file_obj,ip_filename)
 	# Close the file object for reading.
 	print "=	Close the file object for reading."
