@@ -94,12 +94,12 @@ import warnings
 #	Import Custom Python Modules
 
 # Package and module to validate the checking of BibTeX keys.
-from database.test_statistics import statistical_analysis
+from database.key_check import check_bibtex_key
 """
 	Package and module to print statistics of software testing
 		results.
 """
-from statistics.key_check import check_bibtex_key
+from statistics.test_statistics import statistical_analysis
 
 ###############################################################
 """
@@ -122,8 +122,10 @@ class check_bibtex_key_tester:
 		try:
 			print "	Tokenizing a word/term produces an exception:",
 			check_bibtex_key.tokenization_entry_key("ThisIsASuperLongWord.")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Yes."
 		try:
 			print "	Catch a string tokenization error:",
@@ -189,7 +191,7 @@ class check_bibtex_key_tester:
 	@staticmethod
 	def test_check_bibtex_key():
 		check_bibtex_key_tester.test_tokenization_entry_key()
-
+		statistical_analysis.print_statistics_of_software_testing()
 
 
 
