@@ -122,7 +122,10 @@ class statistical_analysis:
 	#	O(1) method.
 	@staticmethod
 	def increment_number_test_cases_passed():
-		number_test_cases_passed = number_test_cases_passed + 1
+		if 0 == number_test_cases_passed:
+			number_test_cases_passed = 0
+		else:
+			number_test_cases_passed = number_test_cases_passed + 1
 		if (number_test_cases_used > number_test_cases_passed):
 			print "	Problem: number_test_cases_used > number_test_cases_passed"
 			raise Exception("	Error with number_test_cases_used.")
