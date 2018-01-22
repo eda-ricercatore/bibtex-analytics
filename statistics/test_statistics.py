@@ -111,8 +111,8 @@ class statistical_analysis:
 	#	O(1) method.
 	@staticmethod
 	def increment_number_test_cases_used():
-		number_test_cases_used = number_test_cases_used + 1
-		if (number_test_cases_used > number_test_cases_passed):
+		statistical_analysis.number_test_cases_used = statistical_analysis.number_test_cases_used + 1
+		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
 			print "	Problem: number_test_cases_used > number_test_cases_passed"
 			raise Exception("	Error in incrementing number_test_cases_used")
 	# =========================================================
@@ -138,10 +138,10 @@ class statistical_analysis:
 	#	O(1) method.
 	@staticmethod
 	def get_test_cases_passed_average():
-		if (number_test_cases_used > number_test_cases_passed):
+		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
 			print "	Problem: number_test_cases_used > number_test_cases_passed"
 			raise Exception("	Precondition failed (1): see number_test_cases_used or number_test_cases_passed.")
-		return (number_test_cases_passed / number_test_cases_used) 
+		return (statistical_analysis.number_test_cases_passed / statistical_analysis.number_test_cases_used) 
 	# =========================================================
 	#	Method to print statistics of software testing results.
 	#	@return - Nothing
@@ -149,12 +149,12 @@ class statistical_analysis:
 	#	O(1) method.
 	@staticmethod
 	def print_statistics_of_software_testing():
-		if (number_test_cases_used > number_test_cases_passed):
+		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
 			print "	Problem: number_test_cases_used > number_test_cases_passed"
 			raise Exception("	Precondition failed (2): see number_test_cases_used or number_test_cases_passed.")
-		print "*	Number of test cases passed:	",number_test_cases_passed
-		print "*	Number of test cases used:		",number_test_cases_used
-		print "*	Percentage of test cases passed:	",number_test_cases_used
+		print "*	Number of test cases passed:	",statistical_analysis.number_test_cases_passed
+		print "*	Number of test cases used:		",statistical_analysis.number_test_cases_used
+		print "*	Percentage of test cases passed:	",statistical_analysis.number_test_cases_used
 
 
 
