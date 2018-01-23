@@ -123,7 +123,7 @@ class statistical_analysis:
 	@staticmethod
 	def increment_number_test_cases_passed():
 		if 0 == statistical_analysis.number_test_cases_passed:
-			statistical_analysis.number_test_cases_passed = 0
+			statistical_analysis.number_test_cases_passed = 1
 		else:
 			statistical_analysis.number_test_cases_passed = statistical_analysis.number_test_cases_passed + 1
 		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
