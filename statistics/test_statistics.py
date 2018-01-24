@@ -115,8 +115,8 @@ class statistical_analysis:
 			statistical_analysis.number_test_cases_used = 1
 		else:
 			statistical_analysis.number_test_cases_used = statistical_analysis.number_test_cases_used + 1
-		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
-			print "	Problem: number_test_cases_used > number_test_cases_passed"
+		if (statistical_analysis.number_test_cases_used < statistical_analysis.number_test_cases_passed):
+			print "	Problem: number_test_cases_used < number_test_cases_passed"
 			raise Exception("	Error in incrementing number_test_cases_used")
 	# =========================================================
 	#	Method to increment the number of test cases passed.
@@ -129,8 +129,8 @@ class statistical_analysis:
 			statistical_analysis.number_test_cases_passed = 1
 		else:
 			statistical_analysis.number_test_cases_passed = statistical_analysis.number_test_cases_passed + 1
-		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
-			print "	Problem: number_test_cases_used > number_test_cases_passed"
+		if (statistical_analysis.number_test_cases_used < statistical_analysis.number_test_cases_passed):
+			print "	Problem: number_test_cases_used < number_test_cases_passed"
 			raise Exception("	Error with number_test_cases_used.")
 	# =========================================================
 	#	Other methods.
