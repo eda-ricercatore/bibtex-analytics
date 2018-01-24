@@ -130,54 +130,72 @@ class check_bibtex_key_tester:
 		try:
 			print "	Catch a string tokenization error:",
 			check_bibtex_key.tokenization_entry_key("@booklet")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "		Yes."
 		try:
 			print "	Four or more tokens can't be processed (1):",
 			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,@booklet{Smith2018a,")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Yes."
 		try:
 			print "	Four or more tokens can't be processed (2):",
 			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,@")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Yes."
 		try:
 			print "	Four or more tokens can't be processed (3):",
 			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,rtyui")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Yes."
 		try:
 			check_bibtex_key.tokenization_entry_key("@presentation{Smith2018a,")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Invalid BibTeX entry types can't be processed:",
 			print "	Yes."
 		try:
 			print "	Catch missing BibTeX key:",
 			check_bibtex_key.tokenization_entry_key("@booklet{")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "			Yes."
 		try:
 			print "	Don't use white space as a delimiter (1):",
 			check_bibtex_key.tokenization_entry_key("Invalid keys.")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Yes."
 		try:
 			print "	Don't use white space as a delimiter (2):",
 			check_bibtex_key.tokenization_entry_key("This phrase four words")
+			statistical_analysis.increment_number_test_cases_used()
 			print "	NO!!!!!!!!!!!."
 		except Exception:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Yes."
 		key = check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
 		### Test case may need to be changed/updated.
+		statistical_analysis.increment_number_test_cases_used()
 		if "Smith2018a" == key:
+			statistical_analysis.increment_number_test_cases_passed()
 			print "	Successful extraction of BibTeX key:",
 			print "		Yes."
 		else:

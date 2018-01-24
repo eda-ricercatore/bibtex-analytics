@@ -155,7 +155,7 @@ class statistical_analysis:
 		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
 			print "	Problem: number_test_cases_used > number_test_cases_passed"
 			raise Exception("	Precondition failed (2): see number_test_cases_used or number_test_cases_passed.")
-		print "*	Number of test cases passed:	",statistical_analysis.number_test_cases_passed
+		print "*	Number of test cases passed:		",statistical_analysis.number_test_cases_passed
 		print "*	Number of test cases used:		",statistical_analysis.number_test_cases_used
 		print "*	Percentage of test cases passed:	",statistical_analysis.number_test_cases_used
 
