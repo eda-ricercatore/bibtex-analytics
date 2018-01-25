@@ -200,15 +200,64 @@ class check_bibtex_key_tester:
 			print "		Yes."
 		else:
 			print "	NO!!!!!!!!!!!."
-		print "	Hello World!"
+		#print "	Hello World!"
 	# =========================================================
-	#	Method to check if the BibTeX key has only alphanumeric
-	#		characters.
+	#	Method to test the BibTeX key has only alphanumeric
+	#		characters method.
+	#	@return - Nothing.
+	#	O(n) method, where n is the number of characters of the key.
+	@staticmethod
+	def test_has_only_alphanumeric_characters():
+		test_string = "ygagUIH132sdfWHS17389"
+		print "	Test pure alphanumeric characters:",
+		statistical_analysis.increment_number_test_cases_used()
+		if check_bibtex_key.has_only_alphanumeric_characters(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "		Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+		test_string = "#$%^&*ygagUIH132sdfWHS17389"
+		print "	Test non-alphanumeric characters in front:",
+		statistical_analysis.increment_number_test_cases_used()
+		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "	Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+		test_string = "ygagUIH132sdfWHS17389#$%^&*"
+		print "	Test non-alphanumeric characters at the back:",
+		statistical_analysis.increment_number_test_cases_used()
+		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "	Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+		test_string = "ygagUIH132sd#$%^&*fWHS17389"
+		print "	Test non-alphanumeric characters in the middle:",
+		statistical_analysis.increment_number_test_cases_used()
+		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+		test_string = "~!|ygagUIH132sd#$%^&*fWHS17389:>?"
+		print "	Test scattered non-alphanumeric characters:",
+		statistical_analysis.increment_number_test_cases_used()
+		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "	Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+	# =========================================================
+	#	Method to test the methods that check the BibTeX key.
 	#	@return - Nothing.
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
 	def test_check_bibtex_key():
+		print ">	Testing method: test_tokenization_entry_key ..."
 		check_bibtex_key_tester.test_tokenization_entry_key()
+		print "\n>	Testing method: test_has_only_alphanumeric_characters ..."
+		check_bibtex_key_tester.test_has_only_alphanumeric_characters()
 		
 
 
