@@ -83,7 +83,8 @@ from utilities.file_io import file_io_operations
 from database.key_frequency_pairs import process_key_freq_pairs
 # Package and module to validate the checking of BibTeX keys.
 from database.key_check_test import check_bibtex_key_tester
-
+# Package and module to check the validation of statistical analysis.
+from statistics.test_statistics_tester import statistical_analysis_tester
 
 
 ###############################################################
@@ -188,6 +189,7 @@ if __name__ == "__main__":
 	# Create a file object for input BibTeX file, in reading mode.
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	# The real stuff begins here...
+	statistical_analysis_tester.test_statistical_analysis()
 	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
 	process_key_freq_pairs.sort_pairs()
 	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
@@ -197,4 +199,5 @@ if __name__ == "__main__":
 	# Close the file object for reading.
 	print "=	Close the file object for reading."
 	file_io_operations.close_file_object(ip_file_obj)
+
 

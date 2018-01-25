@@ -130,6 +130,8 @@ class statistical_analysis:
 		else:
 			statistical_analysis.number_test_cases_passed = statistical_analysis.number_test_cases_passed + 1
 		if (statistical_analysis.number_test_cases_used < statistical_analysis.number_test_cases_passed):
+			print "Number of test cases passed:	",statistical_analysis.number_test_cases_passed
+			print "Number of test cases used:	",statistical_analysis.number_test_cases_used
 			print "	Problem: number_test_cases_used < number_test_cases_passed"
 			raise Exception("	Error with number_test_cases_used.")
 	# =========================================================
@@ -157,7 +159,14 @@ class statistical_analysis:
 			raise Exception("	Precondition failed (2): see number_test_cases_used or number_test_cases_passed.")
 		print "*	Number of test cases passed:		",statistical_analysis.number_test_cases_passed
 		print "*	Number of test cases used:		",statistical_analysis.number_test_cases_used
-		print "*	Percentage of test cases passed:	",statistical_analysis.number_test_cases_used
+		print "*	Percentage of test cases passed:	",(statistical_analysis.number_test_cases_passed*100/statistical_analysis.number_test_cases_used),"%."
+		#	Format printing of the statistics as follows.
+		#print "*	Percentage of test cases passed:	",(13*100/19),"%."
+		#	Most of the following cannot calculate the percentage properly.
+		#print "*	Percentage of test cases passed:	",(13/19)*100,"%."
+		#print "*	Percentage of test cases passed:	",(13/19)*(10000/100),"%."
+		#print "*	Percentage of test cases passed:	",(10000/100)*(13/19),"%."
+		#print "*	Percentage of test cases passed:	",(13*10000)/(19*100),"%."
 
 
 

@@ -198,8 +198,8 @@ class check_bibtex_key:
 			else:
 				# No. Warn user that the type of BibTeX entry is invalid!
 				temp_str = "==>	Invalid type of BibTeX entry:"+tokenized_BibTeX_entry[1]
-				print temp_str
-				#warnings.warn("Invalid type of BibTeX entry")
+				#print temp_str
+				warnings.warn(temp_str)
 				raise Exception("BibTeX entry has an invalid type!")
 		elif len(tokenized_BibTeX_entry) == 1:
 			raise Exception("	BibTeX key is missing!!!")
