@@ -85,7 +85,11 @@ from database.key_frequency_pairs import process_key_freq_pairs
 from database.key_check_test import check_bibtex_key_tester
 # Package and module to check the validation of statistical analysis.
 from statistics.test_statistics_tester import statistical_analysis_tester
-
+"""
+	Package and module to print statistics of software testing
+		results.
+"""
+from statistics.test_statistics import statistical_analysis
 
 ###############################################################
 """
@@ -196,6 +200,9 @@ if __name__ == "__main__":
 	check_bibtex_key_tester.test_check_bibtex_key()
 	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
 	Incremental_Test_Automation.read_input_BibTeX_file(ip_file_obj,ip_filename)
+	print "!	!	!	!	!	!	!	!	!	!	!"
+	print ">>	Get statistics of the software testing process."
+	statistical_analysis.print_statistics_of_software_testing()
 	# Close the file object for reading.
 	print "=	Close the file object for reading."
 	file_io_operations.close_file_object(ip_file_obj)

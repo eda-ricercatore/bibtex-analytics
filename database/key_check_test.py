@@ -209,9 +209,7 @@ class check_bibtex_key_tester:
 	@staticmethod
 	def test_check_bibtex_key():
 		check_bibtex_key_tester.test_tokenization_entry_key()
-		print ">>	Get statistics of the software testing process."
-		print "!	!	!	!	!	!	!	!	!	!	!"
-		statistical_analysis.print_statistics_of_software_testing()
+		
 
 
 

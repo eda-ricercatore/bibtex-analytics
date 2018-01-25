@@ -146,7 +146,7 @@ class statistical_analysis:
 		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
 			print "	Problem: number_test_cases_used > number_test_cases_passed"
 			raise Exception("	Precondition failed (1): see number_test_cases_used or number_test_cases_passed.")
-		return (statistical_analysis.number_test_cases_passed / statistical_analysis.number_test_cases_used) 
+		return (statistical_analysis.number_test_cases_passed*100 / statistical_analysis.number_test_cases_used) 
 	# =========================================================
 	#	Method to print statistics of software testing results.
 	#	@return - Nothing
@@ -160,6 +160,7 @@ class statistical_analysis:
 		print "*	Number of test cases passed:		",statistical_analysis.number_test_cases_passed
 		print "*	Number of test cases used:		",statistical_analysis.number_test_cases_used
 		print "*	Percentage of test cases passed:	",(statistical_analysis.number_test_cases_passed*100/statistical_analysis.number_test_cases_used),"%."
+		#print "*	Percentage of test cases passed:	",statistical_analysis.get_test_cases_passed_average(),"%."
 		#	Format printing of the statistics as follows.
 		#print "*	Percentage of test cases passed:	",(13*100/19),"%."
 		#	Most of the following cannot calculate the percentage properly.
