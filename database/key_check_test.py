@@ -249,6 +249,36 @@ class check_bibtex_key_tester:
 		else:
 			print "	NO!!!!!!!!!!!."
 	# =========================================================
+	#	Method to test the BibTeX key has no white space method.
+	#	@return - Nothing.
+	#	O(n) method, where n is the number of characters of the key.
+	@staticmethod
+	def test_has_no_whitespace():
+		test_string = "ygagUIH132sdfWHS17389"
+		print "	Test string without white space:",
+		statistical_analysis.increment_number_test_cases_used()
+		if check_bibtex_key.has_no_whitespace(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "		Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+		test_string = "	ygagUIH132sdfWHS17389"
+		print "	Test string with leading white space:",
+		statistical_analysis.increment_number_test_cases_used()
+		if not check_bibtex_key.has_no_whitespace(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "		Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+		test_string = "ygagUIH132sdfWHS17389 "
+		print "	Test string with trailing white space:",
+		statistical_analysis.increment_number_test_cases_used()
+		if not check_bibtex_key.has_no_whitespace(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "		Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
+	# =========================================================
 	#	Method to test the methods that check the BibTeX key.
 	#	@return - Nothing.
 	#	O(n) method, where n is the number of characters of the key.
@@ -258,7 +288,8 @@ class check_bibtex_key_tester:
 		check_bibtex_key_tester.test_tokenization_entry_key()
 		print "\n>	Testing method: test_has_only_alphanumeric_characters ..."
 		check_bibtex_key_tester.test_has_only_alphanumeric_characters()
-		
+		print "\n>	Testing method: test_has_no_whitespace ..."
+		check_bibtex_key_tester.test_has_no_whitespace()
 
 
 

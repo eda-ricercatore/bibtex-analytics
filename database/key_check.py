@@ -134,16 +134,33 @@ class check_bibtex_key:
 			return False
 	# =========================================================
 	#	Method to check if the BibTeX key has white space.
-	#	@return - Nothing.
+	#
+	#	Implementation (1):
+	#		Tokenize the BibTeX key using white space as
+	#			delimiters.
+	#		if 1 < (number of tokens)
+	#			return false;
+	#		else
+	#			return true; 
+	#
+	#	Implementation (2):
+	#		Enumerate each character of the BibTeX key.
+	#			if current character is a white space character
+	#				return false
+	#		return true
+	#
+	#	Choose implementation (1).
+	#
 	#	@return a boolean TRUE if the BibTeX key has no white space.
 	#		Else, return FALSE.
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
 	def has_no_whitespace(str):
-		if False:
-			return True
-		else:
+		tokens = string.split(str)
+		if 1 < len(tokens):
 			return False
+		else:
+			return True
 	# =========================================================
 	#	Method to check if the BibTeX key has only alphanumeric
 	#		characters.
