@@ -278,6 +278,14 @@ class check_bibtex_key_tester:
 			print "		Yes."
 		else:
 			print "	NO!!!!!!!!!!!."
+		test_string = "	ygagUI	H132s   dfWHS17389 "
+		print "	Test string with scattered white space:",
+		statistical_analysis.increment_number_test_cases_used()
+		if not check_bibtex_key.has_no_whitespace(test_string):
+			statistical_analysis.increment_number_test_cases_passed()
+			print "	Yes."
+		else:
+			print "	NO!!!!!!!!!!!."
 	# =========================================================
 	#	Method to test the methods that check the BibTeX key.
 	#	@return - Nothing.

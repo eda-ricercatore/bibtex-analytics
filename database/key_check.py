@@ -156,7 +156,11 @@ class check_bibtex_key:
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
 	def has_no_whitespace(str):
-		tokens = string.split(str)
+		# The method below does not work with leading and
+		#	trailing white space.
+		#tokens = string.split(str)
+		tokens = re.split('\t| |\n',str)
+		#print "	number of tokens:",len(tokens),"."
 		if 1 < len(tokens):
 			return False
 		else:
