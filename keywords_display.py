@@ -12,7 +12,7 @@
 	Parameters:
 	[input BibTeX file]:	A BibTeX database.
 
-	[-h]				:	If an optional "-h" flag is used as an
+	[-h]:					If an optional "-h" flag is used as an
 							input argument, show the brief user manual
 							and exit (terminate the program).
 

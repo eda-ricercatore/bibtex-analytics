@@ -31,7 +31,9 @@ all:
 
 
 
-
+docs:
+	pydoc -w keywords_display
+	pydoc -w keywords_display
 
 
 
