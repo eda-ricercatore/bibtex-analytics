@@ -1,0 +1,235 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module validate_url</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>validate_url</strong></big></big> (version 1.0, Apr 14, 2017)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Applications/apps/comune/scripts/bibtex-analytics/validate_url.py">/Applications/apps/comune/scripts/bibtex-analytics/validate_url.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;Python&nbsp;script&nbsp;is&nbsp;written&nbsp;by&nbsp;Zhiyang&nbsp;Ong&nbsp;to&nbsp;determine&nbsp;if&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;non-standard&nbsp;BibTeX&nbsp;field&nbsp;("Bdsk-Url-1"&nbsp;or&nbsp;"Bdsk-Url-2")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exist,&nbsp;when&nbsp;"Doi"&nbsp;nor&nbsp;"Url"&nbsp;BibTeX&nbsp;field&nbsp;exist.<br>
+When&nbsp;"Bdsk-Url-1"&nbsp;or&nbsp;"Bdsk-Url-2"&nbsp;exists,&nbsp;copy&nbsp;their&nbsp;values&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;"Url"&nbsp;BibTeX&nbsp;field&nbsp;(and&nbsp;"Doi"&nbsp;field,&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;DOI).<br>
+&nbsp;<br>
+Synopsis:<br>
+For&nbsp;each&nbsp;BibTeX&nbsp;entry&nbsp;in&nbsp;the&nbsp;BibTeX&nbsp;database,&nbsp;check&nbsp;if&nbsp;it&nbsp;has&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Bdsk-Url-1"&nbsp;(and&nbsp;"Bdsk-Url-2")&nbsp;field(s),&nbsp;and&nbsp;if&nbsp;the&nbsp;"Url"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(and&nbsp;Doi)&nbsp;field(s)&nbsp;is(/are)&nbsp;missing.<br>
+&nbsp;<br>
+This&nbsp;script&nbsp;can&nbsp;be&nbsp;executed&nbsp;as&nbsp;follows:<br>
+./validate_url.py&nbsp;[input&nbsp;BibTeX&nbsp;file]&nbsp;[output&nbsp;BibTeX&nbsp;file]&nbsp;[-h]<br>
+&nbsp;<br>
+Parameters:<br>
+[input&nbsp;BibTeX&nbsp;file]:&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;BibTeX&nbsp;file&nbsp;that&nbsp;may&nbsp;have&nbsp;duplicate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entries,&nbsp;metadata,&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;non-standard&nbsp;BibTeX&nbsp;fields.<br>
+[output&nbsp;BibTeX&nbsp;file]:&nbsp;&nbsp;&nbsp;A&nbsp;clean&nbsp;BibTeX&nbsp;file&nbsp;without&nbsp;duplicate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entries,&nbsp;metadata,&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;non-standard&nbsp;BibTeX&nbsp;fields.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Optional&nbsp;parameter]<br>
+&nbsp;<br>
+The&nbsp;2nd&nbsp;(and&nbsp;subsequent)&nbsp;input&nbsp;argument(s)&nbsp;is(/are)&nbsp;optional.<br>
+&nbsp;<br>
+The&nbsp;2nd&nbsp;input&nbsp;argument&nbsp;mustn't&nbsp;be&nbsp;a&nbsp;valid&nbsp;path&nbsp;to&nbsp;an&nbsp;existing&nbsp;file.<br>
+If&nbsp;it&nbsp;is,&nbsp;warn&nbsp;the&nbsp;user&nbsp;about&nbsp;overwritting&nbsp;the&nbsp;file&nbsp;&amp;&nbsp;exit.<br>
+&nbsp;<br>
+If&nbsp;2nd&nbsp;input&nbsp;argument&nbsp;has&nbsp;no&nbsp;file&nbsp;extension,&nbsp;add&nbsp;the&nbsp;BibTeX&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extension&nbsp;to&nbsp;it.<br>
+&nbsp;<br>
+[-h]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;an&nbsp;optional&nbsp;"-h"&nbsp;flag&nbsp;is&nbsp;used&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input&nbsp;argument,&nbsp;show&nbsp;the&nbsp;brief&nbsp;user&nbsp;manual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;exit&nbsp;(terminate&nbsp;the&nbsp;program).<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Assumptions:<br>
+Assume&nbsp;that&nbsp;a&nbsp;DOI&nbsp;field&nbsp;should&nbsp;not&nbsp;be&nbsp;the&nbsp;last&nbsp;line&nbsp;in&nbsp;a&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry.<br>
+If&nbsp;a&nbsp;DOI&nbsp;field&nbsp;is&nbsp;the&nbsp;last&nbsp;line&nbsp;in&nbsp;a&nbsp;BibTeX&nbsp;entry,&nbsp;throw&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exception.<br>
+Assume&nbsp;that&nbsp;an&nbsp;URL&nbsp;field&nbsp;should&nbsp;not&nbsp;be&nbsp;the&nbsp;last&nbsp;line&nbsp;in&nbsp;a&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entry.<br>
+If&nbsp;an&nbsp;URL&nbsp;field&nbsp;is&nbsp;the&nbsp;last&nbsp;line&nbsp;in&nbsp;a&nbsp;BibTeX&nbsp;entry,&nbsp;throw&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exception.<br>
+Assume&nbsp;that&nbsp;the&nbsp;backup&nbsp;URL&nbsp;field&nbsp;"Bdsk-Url-2"&nbsp;should&nbsp;end&nbsp;with&nbsp;"}}".<br>
+Assume&nbsp;that&nbsp;all&nbsp;URL&nbsp;fields&nbsp;are&nbsp;valid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;because&nbsp;a&nbsp;server&nbsp;hosting&nbsp;a&nbsp;URL&nbsp;web&nbsp;page&nbsp;can&nbsp;be&nbsp;down,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;script&nbsp;could&nbsp;report&nbsp;errors&nbsp;that&nbsp;would&nbsp;otherwise<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;be&nbsp;found&nbsp;(when&nbsp;the&nbsp;server&nbsp;is&nbsp;up&nbsp;and&nbsp;running&nbsp;again).<br>
+&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;History:<br>
+April&nbsp;8,&nbsp;2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;0.1,&nbsp;initial&nbsp;build.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="filecmp.html">filecmp</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="validate_url.html#validate_url_field">validate_url_field</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="validate_url_field">class <strong>validate_url_field</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>List&nbsp;of&nbsp;strings&nbsp;representing&nbsp;common&nbsp;lines&nbsp;in&nbsp;my&nbsp;BibTeX&nbsp;database<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;I&nbsp;have&nbsp;to&nbsp;process.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="validate_url_field-is_bdsk_url"><strong>is_bdsk_url</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;line&nbsp;in&nbsp;the&nbsp;BibTeX&nbsp;database&nbsp;is&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backup&nbsp;URL&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;A&nbsp;string&nbsp;containing/representing&nbsp;a&nbsp;line&nbsp;in&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;boolean&nbsp;TRUE,&nbsp;if&nbsp;the&nbsp;line&nbsp;contains&nbsp;a&nbsp;backup&nbsp;URL&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;FALSE.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="validate_url_field-data_copying_n_insertion"><strong>data_copying_n_insertion</strong></a>(ip_f_obj, op_f_obj, ip_file)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;copy&nbsp;data&nbsp;from&nbsp;the&nbsp;input&nbsp;BibTeX&nbsp;file&nbsp;to&nbsp;the&nbsp;output<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;the&nbsp;process,&nbsp;any&nbsp;existence&nbsp;of&nbsp;a&nbsp;backup&nbsp;URL&nbsp;field&nbsp;in&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entry,&nbsp;which&nbsp;has&nbsp;no&nbsp;URL&nbsp;(and&nbsp;DOI)&nbsp;field(s),<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implies&nbsp;that&nbsp;a&nbsp;URL&nbsp;field&nbsp;(and&nbsp;a&nbsp;DOI&nbsp;field,&nbsp;if&nbsp;appropriate),<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;that&nbsp;BibTeX&nbsp;entry&nbsp;in&nbsp;the&nbsp;output&nbsp;BibTeX<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;ip_f_obj&nbsp;-&nbsp;The&nbsp;file&nbsp;object&nbsp;for&nbsp;the&nbsp;input&nbsp;stream,&nbsp;which<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reads&nbsp;in&nbsp;a&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;op_f_obj&nbsp;-&nbsp;The&nbsp;file&nbsp;object&nbsp;for&nbsp;the&nbsp;output&nbsp;stream,<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;writes&nbsp;the&nbsp;output&nbsp;to&nbsp;a&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;ip_file&nbsp;-&nbsp;The&nbsp;filename&nbsp;of&nbsp;the&nbsp;input&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;nothing.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;in&nbsp;the&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="validate_url_field-ends_with_comma"><strong>ends_with_comma</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;line&nbsp;in&nbsp;the&nbsp;BibTeX&nbsp;database&nbsp;ends<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;"},",&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;the&nbsp;last&nbsp;line&nbsp;of&nbsp;a&nbsp;BibTeX&nbsp;entry.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;A&nbsp;string&nbsp;containing/representing&nbsp;a&nbsp;line&nbsp;in&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;boolean&nbsp;TRUE,&nbsp;if&nbsp;the&nbsp;line&nbsp;is&nbsp;not&nbsp;the&nbsp;last&nbsp;line&nbsp;of&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entry,&nbsp;and&nbsp;ends&nbsp;with&nbsp;"},".<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;FALSE.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="validate_url_field-ensure_doi_url"><strong>ensure_doi_url</strong></a>(ip_f_obj, ip_file)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;ensure&nbsp;that&nbsp;URL&nbsp;and&nbsp;DOI&nbsp;fields&nbsp;exist&nbsp;for&nbsp;each<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entry,&nbsp;if&nbsp;the&nbsp;BibTeX&nbsp;entry&nbsp;has&nbsp;one/two&nbsp;backup<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL&nbsp;fields.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;ip_f_obj&nbsp;-&nbsp;The&nbsp;file&nbsp;object&nbsp;for&nbsp;the&nbsp;input&nbsp;stream,&nbsp;which<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reads&nbsp;in&nbsp;a&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;ip_file&nbsp;-&nbsp;The&nbsp;filename&nbsp;of&nbsp;the&nbsp;output&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;nothing.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;in&nbsp;the&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="validate_url_field-get_url"><strong>get_url</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;extract&nbsp;the&nbsp;URL&nbsp;from&nbsp;a&nbsp;backup&nbsp;URL&nbsp;field&nbsp;in&nbsp;the<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;A&nbsp;string&nbsp;containing/representing&nbsp;a&nbsp;line&nbsp;in<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;string&nbsp;representing&nbsp;the&nbsp;URL&nbsp;in&nbsp;the&nbsp;backup&nbsp;URL<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field.&nbsp;Else,&nbsp;return&nbsp;None.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="validate_url_field-has_doi_value"><strong>has_doi_value</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;URL&nbsp;contains&nbsp;a&nbsp;DOI&nbsp;value.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;An&nbsp;URL&nbsp;to&nbsp;be&nbsp;validated.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;boolean&nbsp;TRUE,&nbsp;if&nbsp;the&nbsp;URL&nbsp;contains&nbsp;a&nbsp;DOI&nbsp;value.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;FALSE.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="validate_url_field-is_doi"><strong>is_doi</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;line&nbsp;in&nbsp;the&nbsp;BibTeX&nbsp;database&nbsp;contains<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;DOI&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;A&nbsp;string&nbsp;containing/representing&nbsp;a&nbsp;line&nbsp;in&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;boolean&nbsp;TRUE,&nbsp;if&nbsp;the&nbsp;line&nbsp;contains&nbsp;the&nbsp;the&nbsp;DOI&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;FALSE.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="validate_url_field-is_last_line"><strong>is_last_line</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;line&nbsp;in&nbsp;the&nbsp;BibTeX&nbsp;database&nbsp;is&nbsp;the<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;line&nbsp;of&nbsp;a&nbsp;BibTeX&nbsp;entry.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;A&nbsp;string&nbsp;containing/representing&nbsp;a&nbsp;line&nbsp;in&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;boolean&nbsp;TRUE,&nbsp;if&nbsp;the&nbsp;line&nbsp;is&nbsp;the&nbsp;last&nbsp;line&nbsp;of&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entry.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;FALSE.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="validate_url_field-is_url"><strong>is_url</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;line&nbsp;in&nbsp;the&nbsp;BibTeX&nbsp;database&nbsp;contains<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;URL&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;A&nbsp;string&nbsp;containing/representing&nbsp;a&nbsp;line&nbsp;in&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;boolean&nbsp;TRUE,&nbsp;if&nbsp;the&nbsp;line&nbsp;contains&nbsp;the&nbsp;the&nbsp;URL&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;FALSE.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>bdsk_url_1</strong> = '<font color="#c040c0">\t</font>Bdsk-Url-1 = {'</dl>
+
+<dl><dt><strong>bdsk_url_2</strong> = '<font color="#c040c0">\t</font>Bdsk-Url-2 = {'</dl>
+
+<dl><dt><strong>doi_field</strong> = '<font color="#c040c0">\t</font>Doi = {'</dl>
+
+<dl><dt><strong>doi_is_missing</strong> = False</dl>
+
+<dl><dt><strong>doi_value</strong> = 'http://dx.doi.org/'</dl>
+
+<dl><dt><strong>end_of_entry</strong> = '}}<font color="#c040c0">\n</font>'</dl>
+
+<dl><dt><strong>end_of_line</strong> = '},<font color="#c040c0">\n</font>'</dl>
+
+<dl><dt><strong>has_bdsk_url_1</strong> = True</dl>
+
+<dl><dt><strong>has_bdsk_url_2</strong> = True</dl>
+
+<dl><dt><strong>url_field</strong> = '<font color="#c040c0">\t</font>Url = {'</dl>
+
+<dl><dt><strong>url_is_missing</strong> = False</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Zhiyang Ong'<br>
+<strong>__date__</strong> = 'Apr 14, 2017'<br>
+<strong>__version__</strong> = '1.0'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Zhiyang&nbsp;Ong</td></tr></table>
+</body></html>

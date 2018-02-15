@@ -1,0 +1,102 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module incremental_test</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>incremental_test</strong></big></big> (version 1.0, January 18, 2018)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Applications/apps/comune/scripts/bibtex-analytics/incremental_test.py">/Applications/apps/comune/scripts/bibtex-analytics/incremental_test.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;Python&nbsp;script&nbsp;is&nbsp;written&nbsp;by&nbsp;Zhiyang&nbsp;Ong&nbsp;to&nbsp;incrementally<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test&nbsp;features&nbsp;for&nbsp;performing&nbsp;data&nbsp;analytics&nbsp;operations&nbsp;with<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my&nbsp;BibTeX&nbsp;database.<br>
+&nbsp;<br>
+&nbsp;<br>
+Synopsis:<br>
+Perform&nbsp;incremental&nbsp;software&nbsp;testing&nbsp;automatically&nbsp;for&nbsp;my<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;script(s)&nbsp;that&nbsp;perform&nbsp;data&nbsp;analytics&nbsp;operations&nbsp;with&nbsp;my<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+&nbsp;<br>
+This&nbsp;script&nbsp;can&nbsp;be&nbsp;executed&nbsp;as&nbsp;follows:<br>
+./incremental_test.py&nbsp;[input&nbsp;BibTeX&nbsp;file]<br>
+&nbsp;<br>
+Parameters:<br>
+[input&nbsp;BibTeX&nbsp;file]:&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;BibTeX&nbsp;file&nbsp;that&nbsp;may&nbsp;have&nbsp;duplicate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entries.<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;History:<br>
+January&nbsp;18,&nbsp;2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Script.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="incremental_test.html#Incremental_Test_Automation">Incremental_Test_Automation</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Incremental_Test_Automation">class <strong>Incremental_Test_Automation</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Static methods defined here:<br>
+<dl><dt><a name="Incremental_Test_Automation-add_BibTeX_key"><strong>add_BibTeX_key</strong></a>(found_BibTeX_key)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other&nbsp;methods.<br>
+#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;add&nbsp;BibTeX&nbsp;keys&nbsp;into&nbsp;a&nbsp;list,&nbsp;"set_of_BibTeX_keys".<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;BibTeX&nbsp;keys.</tt></dd></dl>
+
+<dl><dt><a name="Incremental_Test_Automation-read_input_BibTeX_file"><strong>read_input_BibTeX_file</strong></a>(ip_file_object, input_BibTeX_file)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;read&nbsp;each&nbsp;line&nbsp;of&nbsp;the&nbsp;input&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;of&nbsp;the&nbsp;BibTeX&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="Incremental_Test_Automation-sort_BibTeX_keys"><strong>sort_BibTeX_keys</strong></a>()</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;sort&nbsp;BibTeX&nbsp;keys&nbsp;into&nbsp;a&nbsp;list,&nbsp;"set_of_BibTeX_keys".<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n*log(n))&nbsp;method,&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;BibTeX&nbsp;keys.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>num_of_bibtex_entries</strong> = 0</dl>
+
+<dl><dt><strong>set_of_BibTeX_keys</strong> = []</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Zhiyang Ong'<br>
+<strong>__date__</strong> = 'January 18, 2018'<br>
+<strong>__version__</strong> = '1.0'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Zhiyang&nbsp;Ong</td></tr></table>
+</body></html>

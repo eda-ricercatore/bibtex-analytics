@@ -1,0 +1,116 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module duplicate_BibTeX_entries</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>duplicate_BibTeX_entries</strong></big></big> (version 1.0, Apr 14, 2017)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Applications/apps/comune/scripts/bibtex-analytics/duplicate_BibTeX_entries.py">/Applications/apps/comune/scripts/bibtex-analytics/duplicate_BibTeX_entries.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;Python&nbsp;script&nbsp;is&nbsp;written&nbsp;by&nbsp;Zhiyang&nbsp;Ong&nbsp;to&nbsp;determine&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duplicate&nbsp;BibTeX&nbsp;entries&nbsp;exist&nbsp;in&nbsp;my&nbsp;BibTeX&nbsp;database.<br>
+If&nbsp;such&nbsp;entries&nbsp;exist,&nbsp;warn&nbsp;the&nbsp;user&nbsp;that&nbsp;duplicate&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entries&nbsp;exist.&nbsp;<br>
+&nbsp;<br>
+Synopsis:<br>
+Find&nbsp;duplicate&nbsp;BibTeX&nbsp;entries&nbsp;in&nbsp;my&nbsp;BibTeX&nbsp;database,&nbsp;and&nbsp;indicate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;location&nbsp;of&nbsp;their&nbsp;existence&nbsp;(if&nbsp;they&nbsp;exist).<br>
+&nbsp;<br>
+This&nbsp;script&nbsp;can&nbsp;be&nbsp;executed&nbsp;as&nbsp;follows:<br>
+./duplicate-BibTeX-entries.py&nbsp;[input&nbsp;BibTeX&nbsp;file]<br>
+&nbsp;<br>
+Parameters:<br>
+[input&nbsp;BibTeX&nbsp;file]:&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;BibTeX&nbsp;file&nbsp;that&nbsp;may&nbsp;have&nbsp;duplicate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entries.<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Notes/Assumptions:<br>
+Raise&nbsp;an&nbsp;exception&nbsp;concerning&nbsp;the&nbsp;existence&nbsp;of&nbsp;the&nbsp;duplicates,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when&nbsp;duplicates&nbsp;of&nbsp;a&nbsp;BibTeX&nbsp;key&nbsp;are&nbsp;found.<br>
+Raise&nbsp;an&nbsp;exception&nbsp;when&nbsp;a&nbsp;tokenized&nbsp;BibTeX&nbsp;entry&nbsp;is&nbsp;not&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standard&nbsp;entry&nbsp;type.<br>
+Raise&nbsp;an&nbsp;exception&nbsp;when&nbsp;a&nbsp;mismatch&nbsp;occurs&nbsp;in&nbsp;determining&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;BibTeX&nbsp;entries&nbsp;processed.<br>
+&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;History:<br>
+??????,&nbsp;2014&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;0.1<br>
+March&nbsp;14,&nbsp;2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;0.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Testing&nbsp;the&nbsp;first&nbsp;argument.<br>
+March&nbsp;22,&nbsp;2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Working&nbsp;on&nbsp;second&nbsp;argument.<br>
+April&nbsp;7,&nbsp;2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;0.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Refactored&nbsp;script.<br>
+April&nbsp;14,&nbsp;2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;1.0&nbsp;Working&nbsp;script&nbsp;release.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="duplicate_BibTeX_entries.html#Duplicate_BibTeX_entries_finder">Duplicate_BibTeX_entries_finder</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Duplicate_BibTeX_entries_finder">class <strong>Duplicate_BibTeX_entries_finder</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>###############################################################<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Module&nbsp;with&nbsp;methods&nbsp;that&nbsp;clean&nbsp;BibTeX&nbsp;files.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Static methods defined here:<br>
+<dl><dt><a name="Duplicate_BibTeX_entries_finder-add_BibTeX_key"><strong>add_BibTeX_key</strong></a>(found_BibTeX_key)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other&nbsp;methods.<br>
+#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;add&nbsp;BibTeX&nbsp;keys&nbsp;into&nbsp;a&nbsp;list,&nbsp;"set_of_BibTeX_keys".<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;BibTeX&nbsp;keys.</tt></dd></dl>
+
+<dl><dt><a name="Duplicate_BibTeX_entries_finder-read_input_BibTeX_file"><strong>read_input_BibTeX_file</strong></a>(ip_file_object, input_BibTeX_file)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;read&nbsp;each&nbsp;line&nbsp;of&nbsp;the&nbsp;input&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;of&nbsp;the&nbsp;BibTeX&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="Duplicate_BibTeX_entries_finder-sort_BibTeX_keys"><strong>sort_BibTeX_keys</strong></a>()</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;sort&nbsp;BibTeX&nbsp;keys&nbsp;into&nbsp;a&nbsp;list,&nbsp;"set_of_BibTeX_keys".<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n*log(n))&nbsp;method,&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;BibTeX&nbsp;keys.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>num_of_bibtex_entries</strong> = 0</dl>
+
+<dl><dt><strong>set_of_BibTeX_keys</strong> = []</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Zhiyang Ong'<br>
+<strong>__date__</strong> = 'Apr 14, 2017'<br>
+<strong>__version__</strong> = '1.0'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Zhiyang&nbsp;Ong</td></tr></table>
+</body></html>

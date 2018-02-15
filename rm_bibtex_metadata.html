@@ -1,0 +1,174 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module rm_bibtex_metadata</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>rm_bibtex_metadata</strong></big></big> (version 0.2, Apr 13, 2017)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Applications/apps/comune/scripts/bibtex-analytics/rm_bibtex_metadata.py">/Applications/apps/comune/scripts/bibtex-analytics/rm_bibtex_metadata.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;is&nbsp;written&nbsp;by&nbsp;Zhiyang&nbsp;Ong&nbsp;to&nbsp;delint/remove&nbsp;BibTeX&nbsp;metadata<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;my&nbsp;BibTeX&nbsp;database.<br>
+&nbsp;<br>
+That&nbsp;is,&nbsp;it&nbsp;will&nbsp;create&nbsp;a&nbsp;clean&nbsp;BibTeX&nbsp;database&nbsp;from&nbsp;my&nbsp;"dirty"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Synopsis:&nbsp;command&nbsp;name&nbsp;and&nbsp;[argument(s)]<br>
+./rm_bibtex_metadata.py&nbsp;[input&nbsp;BibTeX&nbsp;file]&nbsp;[output&nbsp;BibTeX&nbsp;file]&nbsp;[-h]<br>
+&nbsp;<br>
+Parameters:<br>
+[input&nbsp;BibTeX&nbsp;file]:&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;BibTeX&nbsp;file&nbsp;that&nbsp;may&nbsp;have&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metadata&nbsp;and&nbsp;non-standard&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fields.<br>
+[output&nbsp;BibTeX&nbsp;file]:&nbsp;&nbsp;&nbsp;A&nbsp;clean&nbsp;BibTeX&nbsp;file&nbsp;without&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metadata&nbsp;and&nbsp;non-standard&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fields.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Optional&nbsp;parameter]<br>
+&nbsp;<br>
+The&nbsp;2nd&nbsp;(and&nbsp;subsequent)&nbsp;input&nbsp;argument(s)&nbsp;is(/are)&nbsp;optional.<br>
+&nbsp;<br>
+The&nbsp;2nd&nbsp;input&nbsp;argument&nbsp;mustn't&nbsp;be&nbsp;a&nbsp;valid&nbsp;path&nbsp;to&nbsp;an&nbsp;existing&nbsp;file.<br>
+If&nbsp;it&nbsp;is,&nbsp;warn&nbsp;the&nbsp;user&nbsp;about&nbsp;overwritting&nbsp;the&nbsp;file&nbsp;&amp;&nbsp;exit.<br>
+&nbsp;<br>
+If&nbsp;2nd&nbsp;input&nbsp;argument&nbsp;has&nbsp;no&nbsp;file&nbsp;extension,&nbsp;add&nbsp;the&nbsp;BibTeX&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extension&nbsp;to&nbsp;it.<br>
+&nbsp;<br>
+[-h]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;an&nbsp;optional&nbsp;"-h"&nbsp;flag&nbsp;is&nbsp;used&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input&nbsp;argument,&nbsp;show&nbsp;the&nbsp;brief&nbsp;user&nbsp;manual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;exit&nbsp;(terminate&nbsp;the&nbsp;program).<br>
+&nbsp;<br>
+&nbsp;<br>
+Its&nbsp;procedure&nbsp;is&nbsp;given&nbsp;as&nbsp;follows:<br>
+Enumerate&nbsp;each&nbsp;line&nbsp;in&nbsp;the&nbsp;input&nbsp;BibTeX&nbsp;database.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;the&nbsp;currently&nbsp;enumerated&nbsp;line&nbsp;contains&nbsp;a&nbsp;standard&nbsp;BibTeX<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy&nbsp;the&nbsp;line&nbsp;to&nbsp;the&nbsp;output&nbsp;BibTeX&nbsp;file.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Notes/Assumptions:<br>
+Do&nbsp;not&nbsp;consider&nbsp;the&nbsp;'Annote'&nbsp;field&nbsp;as&nbsp;a&nbsp;'standard'&nbsp;BibTeX&nbsp;field.<br>
+&nbsp;<br>
+Assume&nbsp;that&nbsp;each&nbsp;'standard'&nbsp;BibTeX&nbsp;field&nbsp;is&nbsp;a&nbsp;single&nbsp;line&nbsp;field.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;BibTeX&nbsp;field&nbsp;'Annote'&nbsp;has&nbsp;multiple&nbsp;lines,&nbsp;only&nbsp;its&nbsp;last<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;will&nbsp;end&nbsp;with&nbsp;'}}'&nbsp;and&nbsp;that&nbsp;'Annote'&nbsp;is&nbsp;the&nbsp;last&nbsp;field<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;BibTeX&nbsp;entry.<br>
+&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;History:<br>
+April&nbsp;8,&nbsp;2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;0.1,&nbsp;initial&nbsp;build.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="filecmp.html">filecmp</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="rm_bibtex_metadata.html#rm_metadata">rm_metadata</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="rm_metadata">class <strong>rm_metadata</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>###############################################################<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Module&nbsp;with&nbsp;methods&nbsp;that&nbsp;delint/remove&nbsp;metadata&nbsp;in&nbsp;a&nbsp;copy<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;an&nbsp;input&nbsp;BibTeX&nbsp;database.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Static methods defined here:<br>
+<dl><dt><a name="rm_metadata-ensure_no_metedata"><strong>ensure_no_metedata</strong></a>(ip_f_obj, op_file)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;ensure&nbsp;that&nbsp;the&nbsp;output&nbsp;BibTeX&nbsp;file&nbsp;has&nbsp;no&nbsp;BibTeX<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metadata.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;That&nbsp;is,&nbsp;BibTeX&nbsp;metadata&nbsp;isn't&nbsp;copied&nbsp;to&nbsp;the&nbsp;output&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;ip_f_obj&nbsp;-&nbsp;The&nbsp;file&nbsp;object&nbsp;for&nbsp;the&nbsp;input&nbsp;stream,&nbsp;which<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reads&nbsp;in&nbsp;a&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;op_file&nbsp;-&nbsp;The&nbsp;filename&nbsp;of&nbsp;the&nbsp;output&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;nothing.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;in&nbsp;the&nbsp;file.</tt></dd></dl>
+
+<dl><dt><a name="rm_metadata-is_last_line"><strong>is_last_line</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;line&nbsp;in&nbsp;the&nbsp;BibTeX&nbsp;database&nbsp;is&nbsp;the<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;line&nbsp;of&nbsp;a&nbsp;BibTeX&nbsp;entry.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;A&nbsp;string&nbsp;containing/representing&nbsp;a&nbsp;line&nbsp;in&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;database.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;a&nbsp;boolean&nbsp;TRUE,&nbsp;if&nbsp;the&nbsp;line&nbsp;is&nbsp;the&nbsp;last&nbsp;line&nbsp;of&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;entry.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;FALSE.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="rm_metadata-is_not_std_BibTeX_field"><strong>is_not_std_BibTeX_field</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;string&nbsp;'a_str'&nbsp;does&nbsp;not&nbsp;start<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;a&nbsp;standard&nbsp;BibTeX&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;a&nbsp;string&nbsp;to&nbsp;be&nbsp;processed.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;True,&nbsp;if&nbsp;'a_str'&nbsp;doesn't&nbsp;start&nbsp;with&nbsp;a&nbsp;standard<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;False.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;BibTeX&nbsp;fields.</tt></dd></dl>
+
+<dl><dt><a name="rm_metadata-is_std_BibTeX_field"><strong>is_std_BibTeX_field</strong></a>(a_str)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;determine&nbsp;if&nbsp;a&nbsp;string&nbsp;'a_str'&nbsp;starts&nbsp;with&nbsp;a<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standard&nbsp;BibTeX&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;a_str&nbsp;-&nbsp;a&nbsp;string&nbsp;to&nbsp;be&nbsp;processed.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;True,&nbsp;if&nbsp;'a_str'&nbsp;starts&nbsp;with&nbsp;a&nbsp;standard&nbsp;BibTeX&nbsp;field.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else,&nbsp;return&nbsp;False.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;BibTeX&nbsp;fields.</tt></dd></dl>
+
+<dl><dt><a name="rm_metadata-lint"><strong>lint</strong></a>(ip_f_obj, op_f_obj, ip_file)</dt><dd><tt>#&nbsp;============================================================<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;to&nbsp;copy&nbsp;data&nbsp;from&nbsp;the&nbsp;input&nbsp;BibTeX&nbsp;file&nbsp;to&nbsp;the&nbsp;output<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BibTeX&nbsp;file,&nbsp;except&nbsp;for&nbsp;BibTeX&nbsp;metadata.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;That&nbsp;is,&nbsp;BibTeX&nbsp;metadata&nbsp;will&nbsp;not&nbsp;be&nbsp;copied&nbsp;to&nbsp;the&nbsp;output&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;ip_f_obj&nbsp;-&nbsp;The&nbsp;file&nbsp;object&nbsp;for&nbsp;the&nbsp;input&nbsp;stream,&nbsp;which<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reads&nbsp;in&nbsp;a&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;op_f_obj&nbsp;-&nbsp;The&nbsp;file&nbsp;object&nbsp;for&nbsp;the&nbsp;output&nbsp;stream,<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;writes&nbsp;the&nbsp;output&nbsp;to&nbsp;a&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;ip_file&nbsp;-&nbsp;The&nbsp;filename&nbsp;of&nbsp;the&nbsp;input&nbsp;BibTeX&nbsp;file.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return&nbsp;nothing.<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;method,&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;in&nbsp;the&nbsp;file.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>BibTeX_field_annote</strong> = '<font color="#c040c0">\t</font>Annote = {'</dl>
+
+<dl><dt><strong>end_of_entry</strong> = '}}<font color="#c040c0">\n</font>'</dl>
+
+<dl><dt><strong>print_final_close_curly_brace</strong> = True</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Zhiyang Ong'<br>
+<strong>__date__</strong> = 'Apr 13, 2017'<br>
+<strong>__version__</strong> = '0.2'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Zhiyang&nbsp;Ong</td></tr></table>
+</body></html>
