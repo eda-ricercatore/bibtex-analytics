@@ -33,8 +33,13 @@ all:
 
 docs:
 	pydoc -w keywords_display
-	pydoc -w keywords_display
-
+	pydoc -w duplicate_BibTeX_entries
+	pydoc -w incremental_test
+	pydoc -w publishers
+	pydoc -w rm_bibtex_metadata
+	pydoc -w tutti_series
+	pydoc -w validate_url
+	pydoc -w automated_regression_testing
 
 
 
@@ -42,6 +47,7 @@ clean:
 	rm -rf *.pyc
 	rm -rf database/*.pyc
 	rm -rf database/*.pyc
+	rm -rf *.html
 
 
 
