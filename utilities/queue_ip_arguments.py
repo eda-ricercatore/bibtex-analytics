@@ -105,6 +105,7 @@ class queue_ip_args:
 	PUBLISHERS_DISPLAY = "publishers.py"
 	REMOVE_METADATA = "rm_bibtex_metadata.py"
 	GET_SERIES = "tutti_series.py"
+	GET_JOURNAL = "journal_titles.py"
 	STANDARDIZE_BIBTEX = "standardize_bibtex_entries.py"
 	UNCOMMENT_LATEX = "uncomment_latex_src_files.py"
 	UNDEFINED_REFERENCES = "not_defined_references.py"
@@ -244,6 +245,13 @@ class queue_ip_args:
 			print("")
 			print("This script can be executed as follows:")
 			print("./tutti_series.py [input BibTeX file] [-h]")
+			print("")
+		elif(queue_ip_args.GET_JOURNAL == queue_ip_args.CURRENT_SCRIPT):
+			print("==>	Display the sorted list of journal titles in the")
+			print("	input BibTeX database.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./journal_titles.py [input BibTeX file] [-h]")
 			print("")
 		elif(queue_ip_args.STANDARDIZE_BIBTEX == queue_ip_args.CURRENT_SCRIPT):
 			print("=	Get user manual of:"+queue_ip_args.STANDARDIZE_BIBTEX)
