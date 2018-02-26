@@ -4,13 +4,13 @@
 ###	#!/usr/bin/python -mtimeit
 
 """
-	This is written by Zhiyang Ong to display organizations from my
+	This is written by Zhiyang Ong to display institutions from my
 		BibTeX entries, in my BibTeX database.
 
 
 
 	Synopsis: command name and [argument(s)]
-	./organizations.py [input BibTeX file] [-h]
+	./institutions.py [input BibTeX file] [-h]
 
 	Parameters:
 	[input BibTeX file]:	A BibTeX database.
@@ -21,15 +21,15 @@
 
 
 	Its procedure is described as follows:
-	Initialize an empty list of organizations.
+	Initialize an empty list of institutions.
 	Enumerate each line in the input BibTeX database.
-		If the currently enumerated line contains the 'Organization'
+		If the currently enumerated line contains the 'Institution'
 			BibTeX field,
-			Add its contents to set of organizations. 
-	Sort the set of organizations.
+			Add its contents to set of institutions. 
+	Sort the set of institutions.
 
 	Notes/Assumptions:
-	Assume that the 'Organization' standard BibTeX field is a single line
+	Assume that the 'Institution' standard BibTeX field is a single line
 		field.
 
 
@@ -91,12 +91,12 @@ from utilities.file_io import file_io_operations
 
 
 ###############################################################
-#	Module with methods that collects the set of organizations
-#		found in all the 'Organization' fields in this BibTeX database.
-class organizations_show:
+#	Module with methods that collects the set of institutions
+#		found in all the 'Institution' fields in this BibTeX database.
+class institutions_show:
 	# ============================================================
-	#	Method to collect organizations from each BibTeX entry's
-	#		'Organization' field, sort them, and display them in
+	#	Method to collect institutions from each BibTeX entry's
+	#		'Institution' field, sort them, and display them in
 	#		standard output.
 	#	@param ip_f_obj - The file object for the input stream, which
 	#						reads in a BibTeX file.
@@ -104,36 +104,36 @@ class organizations_show:
 	#	@return nothing.
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
-	def collect_and_list_organizations(ip_f_obj,ip_file):
+	def collect_and_list_institutions(ip_f_obj,ip_file):
 		println = "=	Reading input BibTeX file:"
 		println += ip_file
 		print(println)
-		# List/set of organizations found in the BibTeX database
-		set_of_organizations = []
+		# List/set of institutions found in the BibTeX database
+		set_of_institutions = []
 		# Read each available line in the input BibTeX file.
 		for line in ip_f_obj:
-			if(organizations_show.is_organization_BibTeX_field(line)):
-				organization_line = line.replace("	Organization = {","")
-				organization_line = organization_line.replace("},\n","")
-				#organization_line = organization_line.split(", ")
-				organization_line = organization_line.split("~")
-				set_of_organizations = list(set(set_of_organizations+organization_line))
-				set_of_organizations = sorted(set_of_organizations)
-		for kwd in set_of_organizations:
+			if(institutions_show.is_institution_BibTeX_field(line)):
+				institution_line = line.replace("	Institution = {","")
+				institution_line = institution_line.replace("},\n","")
+				#institution_line = institution_line.split(", ")
+				institution_line = institution_line.split("~")
+				set_of_institutions = list(set(set_of_institutions+institution_line))
+				set_of_institutions = sorted(set_of_institutions)
+		for kwd in set_of_institutions:
 			print(kwd)
-		print("===	Number of organizations: {}" .format(len(set_of_organizations)))
+		print("===	Number of institutions: {}" .format(len(set_of_institutions)))
 
 	# ============================================================
 	#	Method to determine if a string 'a_str' starts with the
-	#		'Organization' standard BibTeX field.
+	#		'Institution' standard BibTeX field.
 	#	@param a_str - a string to be processed.
-	#	@return True, if 'a_str' starts with the 'Organization'
+	#	@return True, if 'a_str' starts with the 'Institution'
 	#		standard BibTeX field.
 	#		Else, return False.
 	#	O(1) method.
 	@staticmethod
-	def is_organization_BibTeX_field(a_str):
-		if(a_str.startswith("	Organization = {")):
+	def is_institution_BibTeX_field(a_str):
+		if(a_str.startswith("	Institution = {")):
 			return True
 		else:
 			return False
@@ -167,10 +167,10 @@ if __name__ == "__main__":
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
 	print("===================================================")
-	print("Displaying Sorted List of Organizations from a BibTeX Database.")
+	print("Displaying Sorted List of Institutions from a BibTeX Database.")
 	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
-	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.GET_ORGANIZATION)
+	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.GET_INSTITUTION)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
@@ -180,12 +180,12 @@ if __name__ == "__main__":
 	print("=	Create a file object for reading.")
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	"""
-		Collect the set of all organizations found in the BibTeX
+		Collect the set of all institutions found in the BibTeX
 			database.
 		Sort the set/list.
 		Display the set.
 	"""
-	organizations_show.collect_and_list_organizations(ip_file_obj, ip_filename)
+	institutions_show.collect_and_list_institutions(ip_file_obj, ip_filename)
 	# Close the file object for reading.
 	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)

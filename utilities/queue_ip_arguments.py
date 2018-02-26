@@ -107,6 +107,7 @@ class queue_ip_args:
 	GET_SERIES = "tutti_series.py"
 	GET_JOURNAL = "journal_titles.py"
 	GET_ORGANIZATION = "organizations.py"
+	GET_INSTITUTION = "institutions.py"
 	STANDARDIZE_BIBTEX = "standardize_bibtex_entries.py"
 	UNCOMMENT_LATEX = "uncomment_latex_src_files.py"
 	UNDEFINED_REFERENCES = "not_defined_references.py"
@@ -260,6 +261,13 @@ class queue_ip_args:
 			print("")
 			print("This script can be executed as follows:")
 			print("./organizations.py [input BibTeX file] [-h]")
+			print("")
+		elif(queue_ip_args.GET_INSTITUTION == queue_ip_args.CURRENT_SCRIPT):
+			print("==>	Display the sorted list of institutions in the")
+			print("	input BibTeX database.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./institutions.py [input BibTeX file] [-h]")
 			print("")
 		elif(queue_ip_args.STANDARDIZE_BIBTEX == queue_ip_args.CURRENT_SCRIPT):
 			print("=	Get user manual of:"+queue_ip_args.STANDARDIZE_BIBTEX)
