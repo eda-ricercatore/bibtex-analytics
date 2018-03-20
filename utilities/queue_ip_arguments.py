@@ -302,19 +302,19 @@ class queue_ip_args:
 			warnings.warn("	There are no input arguments!!!")
 			queue_ip_args.input_arguments_error()
 		queue_ip_args.first_input_argument = queue_ip_args.get_1st_input_argument()
-		print "==	Is the 1st input argument a valid path to a file?"
+		println "==	Is the 1st input argument a valid path to a file?"
 		if (os.path.exists(queue_ip_args.first_input_argument) and os.path.isfile(queue_ip_args.first_input_argument)):
-			print "	Yes."
+			print(println.format("	Yes."))
 		else:
 			raise Exception("1st input argument isn't a valid path to a file!")
 		#	Does 1st input argument have a BibTeX file extension?
-		print "==	Does 1st input argument have a BibTeX file extension?"
+		println "==	Does 1st input argument have a BibTeX file extension?"
 		#	Get the filename and file extension of the 1st input argument.
 		ip_fname1, ip_f_ext1 = os.path.splitext(queue_ip_args.first_input_argument)
 #	print "==	File name of 1st input argument:"+ip_fname
 #	print "==	File extension of 1st input argument:"+ip_f_ext
 		if(ip_f_ext1 == queue_ip_args.bibtex_f_ext):
-			print "	Yes."
+			print(println.format("	Yes."))
 		else:
 			raise Exception("1st input argument isn't a valid BibTeX file!")
 		return queue_ip_args.first_input_argument
