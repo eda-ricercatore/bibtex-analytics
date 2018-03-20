@@ -302,13 +302,13 @@ class queue_ip_args:
 			warnings.warn("	There are no input arguments!!!")
 			queue_ip_args.input_arguments_error()
 		queue_ip_args.first_input_argument = queue_ip_args.get_1st_input_argument()
-		println "==	Is the 1st input argument a valid path to a file?"
+		println = "==	Is the 1st input argument a valid path to a file?"
 		if (os.path.exists(queue_ip_args.first_input_argument) and os.path.isfile(queue_ip_args.first_input_argument)):
 			print(println.format("	Yes."))
 		else:
 			raise Exception("1st input argument isn't a valid path to a file!")
 		#	Does 1st input argument have a BibTeX file extension?
-		println "==	Does 1st input argument have a BibTeX file extension?"
+		println = "==	Does 1st input argument have a BibTeX file extension?"
 		#	Get the filename and file extension of the 1st input argument.
 		ip_fname1, ip_f_ext1 = os.path.splitext(queue_ip_args.first_input_argument)
 #	print "==	File name of 1st input argument:"+ip_fname
@@ -333,22 +333,23 @@ class queue_ip_args:
 		The 2nd input argument shouldn't be a valid path to an existing file.
 		If it is, warn the user about overwritting the file & exit.
 		"""
-		print "==	Is the 2nd input argument a valid path to a file?"
+		println = "==	Is the 2nd input argument a valid path to a file?"
 		if (os.path.exists(queue_ip_args.second_input_argument) and os.path.isfile(queue_ip_args.second_input_argument)):
-			print "	2nd input argument is a valid path to a file!"
-			print "	File would be overwritten:"+queue_ip_args.second_input_argument
+			print("	2nd input argument is a valid path to a file!")
+			println = "	File would be overwritten:"
+			println += queue_ip_args.second_input_argument
 			raise Exception("End program to avoid overwritting file.")
 		else:
-			print "	Yes."
+			print(println.format("	Yes."))
 		#	Get the filename and file extension of the 2nd input argument.
 		ip_fname2, ip_f_ext2 = os.path.splitext(queue_ip_args.second_input_argument)
 		#	Does 2nd input argument have a BibTeX file extension?
-		print "==	Does 2nd input argument have a BibTeX file extension?"
+		println = "==	Does 2nd input argument have a BibTeX file extension?"
 		if(ip_f_ext2 == queue_ip_args.bibtex_f_ext):
-			print "	Yes."
+			print(println.format("	Yes."))
 			ip_fname2 = queue_ip_args.second_input_argument
 		else:
-			print "	No."
+			print(println.format("	No.")
 			#	Add BibTeX file extension to output filename.
 			ip_fname2 = queue_ip_args.second_input_argument + queue_ip_args.bibtex_f_ext
 			print "	New output filename is:"+ip_fname2
