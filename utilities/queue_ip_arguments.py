@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
+###	/usr/bin/python
 ###	/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 
 
@@ -127,9 +128,9 @@ class queue_ip_args:
 	#	O(n) method, with respect to the number of input arguments.
 	@staticmethod
 	def print_all_input_arguments():
-		print "=	Set_of_input_arguments:"
-		for cur_ip_arg in queue_ip_args.set_of_input_arguments:
-			print "	"+cur_ip_arg
+		println = "=	Set_of_input_arguments:"
+		println += "=".join(str(x) for x in queue_ip_args.set_of_input_arguments)
+		print(println)
 	# ============================================================
 	#	Method to get the first input argument.
 	#	@return - First input argument for the program.
@@ -188,63 +189,75 @@ class queue_ip_args:
 	def how_to_use_script():
 		print "-------------------------------------------------"
 		if(queue_ip_args.DUPLICATE_ENTRIES == queue_ip_args.CURRENT_SCRIPT):
-			print "==>	This script determines if duplicate BibTeX entries"
-			print "	exist in my BibTeX database."
-			print "	If they do, let the user know about them."
-			print ""
-			print "This script can be executed as follows:"
-			print "./duplicate_BibTeX_entries.py [input BibTeX file] [-h]"
-			print ""
+			print("==>	This script determines if duplicate BibTeX entries")
+			print("	exist in my BibTeX database.")
+			print("	If they do, let the user know about them.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./duplicate_BibTeX_entries.py [input BibTeX file] [-h]")
+			print("")
 		elif(queue_ip_args.EXTRACT_BIBTEX_KEYS == queue_ip_args.CURRENT_SCRIPT):
-			print "=	Get user manual of:"+queue_ip_args.EXTRACT_BIBTEX_KEYS
+			println = "=	Get user manual of:"
+			println += queue_ip_args.EXTRACT_BIBTEX_KEYS
+			print(println)
 		elif(queue_ip_args.UNDEFINED_REFERENCES == queue_ip_args.CURRENT_SCRIPT):
-			print "=	Get user manual of:"+queue_ip_args.UNDEFINED_REFERENCES
+			println = "=	Get user manual of:"
+			println += queue_ip_args.UNDEFINED_REFERENCES
+			print(println)
 		elif(queue_ip_args.REMOVE_METADATA == queue_ip_args.CURRENT_SCRIPT):
-#			print "=	Get user manual of:"+queue_ip_args.REMOVE_METADATA
-			print "==>	'Remove' BibTeX metadata from the input BibTeX database,"
-			print "	by copying data from the input BibTeX database to"
-			print "	the output BibTeX database without copying the"
-			print "	metedata."
-			print ""
-			print "This script can be executed as follows:"
-			print "./rm_bibtex_metadata.py [input BibTeX file] [output BibTeX file] [-h]"
-			print ""
+			"""
+			println = "=	Get user manual of:"
+			println += queue_ip_args.REMOVE_METADATA
+			print(println)
+			"""
+			print("==>	'Remove' BibTeX metadata from the input BibTeX database,")
+			print("	by copying data from the input BibTeX database to")
+			print("	the output BibTeX database without copying the")
+			print("	metedata.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./rm_bibtex_metadata.py [input BibTeX file] [output BibTeX file] [-h]")
+			print("")
 			queue_ip_args.print_2nd_argument()
 		elif(queue_ip_args.KEYWORDS_DISPLAY == queue_ip_args.CURRENT_SCRIPT):
-			#print "=	Get user manual of:"+queue_ip_args.KEYWORDS_DISPLAY
-			print "==>	Display the sorted list of keywords in the"
-			print "	input BibTeX database."
-			print ""
-			print "This script can be executed as follows:"
-			print "./keywords_display.py [input BibTeX file] [-h]"
-			print ""
+			"""
+			println = "=	Get user manual of:"
+			println += queue_ip_args.KEYWORDS_DISPLAY
+			print(println)
+			"""
+			print("==>	Display the sorted list of keywords in the")
+			print("	input BibTeX database.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./keywords_display.py [input BibTeX file] [-h]")
+			print("")
 		elif(queue_ip_args.PUBLISHERS_DISPLAY == queue_ip_args.CURRENT_SCRIPT):
-			print "==>	Display the sorted list of publishers in the"
-			print "	input BibTeX database."
-			print ""
-			print "This script can be executed as follows:"
-			print "./publishers.py [input BibTeX file] [-h]"
-			print ""
+			print("==>	Display the sorted list of publishers in the")
+			print("	input BibTeX database.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./publishers.py [input BibTeX file] [-h]")
+			print("")
 		elif(queue_ip_args.GET_SERIES == queue_ip_args.CURRENT_SCRIPT):
-			print "==>	Display the sorted list of series in the"
-			print "	input BibTeX database."
-			print ""
-			print "This script can be executed as follows:"
-			print "./tutti_series.py [input BibTeX file] [-h]"
-			print ""
+			print("==>	Display the sorted list of series in the")
+			print("	input BibTeX database.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./tutti_series.py [input BibTeX file] [-h]")
+			print("")
 		elif(queue_ip_args.STANDARDIZE_BIBTEX == queue_ip_args.CURRENT_SCRIPT):
-			print "=	Get user manual of:"+queue_ip_args.STANDARDIZE_BIBTEX
+			print("=	Get user manual of:"+queue_ip_args.STANDARDIZE_BIBTEX)
 		elif(queue_ip_args.UNCOMMENT_LATEX == queue_ip_args.CURRENT_SCRIPT):
-			print "=	Get user manual of:"+queue_ip_args.UNCOMMENT_LATEX
+			print("=	Get user manual of:"+queue_ip_args.UNCOMMENT_LATEX)
 		elif(queue_ip_args.VALIDATE_URL_DOI == queue_ip_args.CURRENT_SCRIPT):
-			print "==>	Determine if URL (and DOI) field(s) is(/are)"
-			print "	missing from the BibTeX database."
-			print "	If they are missing, copy their values from the"
-			print "	backup URL field."
-			print ""
-			print "This script can be executed as follows:"
-			print "./validate_url.py [input BibTeX file] [output BibTeX file] [-h]"
-			print ""
+			print("==>	Determine if URL (and DOI) field(s) is(/are)")
+			print("	missing from the BibTeX database.")
+			print("	If they are missing, copy their values from the")
+			print("	backup URL field.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./validate_url.py [input BibTeX file] [output BibTeX file] [-h]")
+			print("")
 			queue_ip_args.print_2nd_argument()
 		else:
 			raise Exception("Error in accessing user manual.")
@@ -255,22 +268,22 @@ class queue_ip_args:
 	#	O(1) method.
 	@staticmethod
 	def print_2nd_argument():
-		print "The 2nd (and subsequent) input argument(s) is(/are) optional."
-		print ""
-		print "The 2nd input argument mustn't be a valid path to an existing file."
-		print "If it is, warn the user about overwritting the file & exit."
-		print ""
-		print "If 2nd input argument has no file extension, add the"
-		print "BibTeX file extension to it."
-		print ""
+		print("The 2nd (and subsequent) input argument(s) is(/are) optional.")
+		print("")
+		print("The 2nd input argument mustn't be a valid path to an existing file.")
+		print("If it is, warn the user about overwritting the file & exit.")
+		print("")
+		print("If 2nd input argument has no file extension, add the")
+		print("BibTeX file extension to it.")
+		print("")
 	# ============================================================
 	#	Method to print the help option to access the user manual.
 	#	O(1) method.
 	@staticmethod
 	def print_help_option():
-		print "An optional '-h' flag can be used as any input argument"
-		print "	to show the brief user manual and exit."
-		print ""
+		print("An optional '-h' flag can be used as any input argument")
+		print("	to show the brief user manual and exit.")
+		print("")
 	# ============================================================
 	#	Method to indicate error wth input arguments.
 	#	O(1) method.

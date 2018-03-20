@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
+###	/usr/bin/python
 ###	/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 
 
@@ -120,86 +121,86 @@ class check_bibtex_key_tester:
 	@staticmethod
 	def test_tokenization_entry_key():
 		try:
-			print "	Tokenizing a word/term produces an exception:",
+			println = "	Tokenizing a word/term produces an exception:{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("ThisIsASuperLongWord.")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!"))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		try:
-			print "	Catch a string tokenization error:",
+			println = "	Catch a string tokenization error:{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@booklet")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "		Yes."
+			print(println.format("	Yes."))
 		try:
-			print "	Four or more tokens can't be processed (1):",
+			println = "	Four or more tokens can't be processed (1):{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,@booklet{Smith2018a,")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		try:
-			print "	Four or more tokens can't be processed (2):",
+			println = "	Four or more tokens can't be processed (2):{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,@")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		try:
-			print "	Four or more tokens can't be processed (3):",
+			println = "	Four or more tokens can't be processed (3):{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,rtyui")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		try:
-			print "	Invalid BibTeX entry types can't be processed:",
+			println = "	Invalid BibTeX entry types can't be processed:{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@presentation{Smith2018a,")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		try:
-			print "	Catch missing BibTeX key:",
+			println = "	Catch missing BibTeX key:{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@booklet{")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "			Yes."
+			print(println.format("	Catch missing BibTeX key:	Yes."))
 		try:
-			print "	Don't use white space as a delimiter (1):",
+			println = "	Don't use white space as a delimiter (1):{}",
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("Invalid keys.")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		try:
-			print "	Don't use white space as a delimiter (2):",
+			println = "	Don't use white space as a delimiter (2):{}",
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("This phrase four words")
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		key = check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
 		### Test case may need to be changed/updated.
 		statistical_analysis.increment_number_test_cases_used()
 		if "Smith2018a" == key:
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Successful extraction of BibTeX key:",
-			print "		Yes."
+			println = "	Successful extraction of BibTeX key:"
+			print(println.format("		Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		#print "	Hello World!"
 	# =========================================================
 	#	Method to test the BibTeX key has only alphanumeric
@@ -209,45 +210,45 @@ class check_bibtex_key_tester:
 	@staticmethod
 	def test_has_only_alphanumeric_characters():
 		test_string = "ygagUIH132sdfWHS17389"
-		print "	Test pure alphanumeric characters:",
+		println = "	Test pure alphanumeric characters:{}"
 		statistical_analysis.increment_number_test_cases_used()
 		if check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "		Yes."
+			print(println.format("		Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "#$%^&*ygagUIH132sdfWHS17389"
-		print "	Test non-alphanumeric characters in front:",
+		println = "	Test non-alphanumeric characters in front:"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "ygagUIH132sdfWHS17389#$%^&*"
-		print "	Test non-alphanumeric characters at the back:",
+		println = "	Test non-alphanumeric characters at the back:"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "ygagUIH132sd#$%^&*fWHS17389"
-		print "	Test non-alphanumeric characters in the middle:",
+		println = "	Test non-alphanumeric characters in the middle:"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "Yes."
+			print(println.format("	Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "~!|ygagUIH132sd#$%^&*fWHS17389:>?"
-		print "	Test scattered non-alphanumeric characters:",
+		println = "	Test scattered non-alphanumeric characters:"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 	# =========================================================
 	#	Method to test the BibTeX key has no white space method.
 	#	@return - Nothing.
@@ -255,48 +256,48 @@ class check_bibtex_key_tester:
 	@staticmethod
 	def test_has_no_whitespace():
 		test_string = "ygagUIH132sdfWHS17389"
-		print "	Test string without white space:",
+		println = "	Test string without white space:"
 		statistical_analysis.increment_number_test_cases_used()
 		if check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "		Yes."
+			print(println.format("		Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "	ygagUIH132sdfWHS17389"
-		print "	Test string with leading white space:",
+		println = "	Test string with leading white space:"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "		Yes."
+			print(println.format("	Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "ygagUIH132sdfWHS17389 "
-		print "	Test string with trailing white space:",
+		println = "	Test string with trailing white space:"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "		Yes."
+			print(println.format("		Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "	ygagUI	H132s   dfWHS17389 "
-		print "	Test string with scattered white space:",
+		println = "	Test string with scattered white space:"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print "	Yes."
+			print(println.format("	Yes."))
 		else:
-			print "	NO!!!!!!!!!!!."
+			print(println.format("	NO!!!!!!!!!!!."))
 	# =========================================================
 	#	Method to test the methods that check the BibTeX key.
 	#	@return - Nothing.
 	#	O(n) method, where n is the number of characters of the key.
 	@staticmethod
 	def test_check_bibtex_key():
-		print ">	Testing method: test_tokenization_entry_key ..."
+		print(">	Testing method: test_tokenization_entry_key ...")
 		check_bibtex_key_tester.test_tokenization_entry_key()
-		print "\n>	Testing method: test_has_only_alphanumeric_characters ..."
+		print("\n>	Testing method: test_has_only_alphanumeric_characters ...")
 		check_bibtex_key_tester.test_has_only_alphanumeric_characters()
-		print "\n>	Testing method: test_has_no_whitespace ..."
+		print("\n>	Testing method: test_has_no_whitespace ...")
 		check_bibtex_key_tester.test_has_no_whitespace()
 
 
