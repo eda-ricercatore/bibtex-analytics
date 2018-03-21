@@ -48,6 +48,7 @@ clean:
 	rm -rf database/*.pyc
 	rm -rf database/*.pyc
 	rm -rf *.html
+	rm input/*_op.bib
 
 
 
@@ -101,8 +102,11 @@ series:
 	./tutti_series.py input/one_bibtex_entry.bib
 	./tutti_series.py input/one_bibtex_entry_clean.bib
 
-
-
+vald:
+	./validate_url.py input/simple.bib
+	./validate_url.py input/simple_clean.bib
+	./validate_url.py input/one_bibtex_entry.bib
+	./validate_url.py input/one_bibtex_entry_clean.bib
 
 
 
