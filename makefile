@@ -69,7 +69,10 @@ duplicate:
 
 incre:
 	./incremental_test.py input/simple.bib
-
+	./incremental_test.py input/simple_clean.bib
+	./incremental_test.py input/one_bibtex_entry.bib
+	./incremental_test.py input/one_bibtex_entry_clean.bib
+	
 
 
 
