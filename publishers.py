@@ -188,5 +188,5 @@ if __name__ == "__main__":
 	"""
 	publishers_show.collect_and_list_publishers(ip_file_obj, ip_filename)
 	# Close the file object for reading.
-	print("=	Close the file object for reading."
+	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)
