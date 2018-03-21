@@ -87,11 +87,19 @@ pub:
 	./publishers.py input/one_bibtex_entry_clean.bib
 
 
+meta:
+	./rm_bibtex_metadata.py input/simple.bib
+	./rm_bibtex_metadata.py input/simple_clean.bib
+	./rm_bibtex_metadata.py input/one_bibtex_entry.bib
+	./rm_bibtex_metadata.py input/one_bibtex_entry_clean.bib
 
 
 
-
-
+series:
+	./tutti_series.py input/simple.bib
+	./tutti_series.py input/simple_clean.bib
+	./tutti_series.py input/one_bibtex_entry.bib
+	./tutti_series.py input/one_bibtex_entry_clean.bib
 
 
 

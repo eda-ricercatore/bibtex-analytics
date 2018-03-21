@@ -200,7 +200,7 @@ class rm_metadata:
 					# Write last line of previous entry to output file.
 					op_f_obj.write(a_str)
 		else:
-			# Empty the FIF queue of its contents.
+			# Empty the FIFO queue of its contents.
 			while(0 < len(fifo_queue)):
 				# Write each line to the output file.
 #				print "	length of FIFO queue:"+str(len(fifo_queue))
