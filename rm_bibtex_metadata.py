@@ -133,7 +133,9 @@ class rm_metadata:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def lint(ip_f_obj,op_f_obj,ip_file):
-		print "=	Reading input BibTeX file:"+ip_file
+		println = "=	Reading input BibTeX file:"
+		println += ip_file
+		print(println)
 		# FIFO queue to store fields of a BibTeX entry.
 		fifo_queue = []
 		# Read each available line in the input BibTeX file.
@@ -256,7 +258,9 @@ class rm_metadata:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def ensure_no_metedata(ip_f_obj,op_file):
-		print "=	Reading output BibTeX file:"+op_file
+		println = "=	Reading output BibTeX file:"
+		println += op_file
+		print(println)
 		# Read each available line in the input BibTeX file.
 		for line in ip_f_obj:
 			# Is this line the 1st line of a BibTeX entry?
@@ -277,26 +281,26 @@ if __name__ == "__main__":
 	queue_ip_args.preprocessing()
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
-	print "==================================================="
-	print "Removing metadata from a BibTeX database."
-	print ""
+	print("===================================================")
+	print("Removing metadata from a BibTeX database.")
+	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
 	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.REMOVE_METADATA)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
-	print "=	Process the first input argument." 
+	print("=	Process the first input argument.") 
 	ip_filename = queue_ip_args.process_1st_ip_arg()
 	# Check if 2nd input argument is missing/available.
 	queue_ip_args.missing_2nd_ip_arg()
 	# Process the second input argument.
-	print "=	Process the second input argument." 
+	print("=	Process the second input argument.") 
 	op_filename = queue_ip_args.process_2nd_ip_arg()
 	# Create a file object for reading.
-	print "=	Create a file object for reading."
+	print("=	Create a file object for reading.")
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	# Create a file object for writing.
-	print "=	Create a file object for writing."
+	print("=	Create a file object for writing.")
 	op_file_obj = file_io_operations.open_file_object_write(op_filename)
 	"""
 		Copy data from input BibTeX file to output BibTeX file,
@@ -304,20 +308,20 @@ if __name__ == "__main__":
 	"""
 	rm_metadata.lint(ip_file_obj, op_file_obj,ip_filename)
 	# Close the file object for reading.
-	print "=	Close the file object for reading."
+	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)
 	# Close the file object for writing.
-	print "=	Close the file object for writing."
+	print("=	Close the file object for writing.")
 	file_io_operations.close_file_object(op_file_obj)
 	# Compare the input and output BibTeX files.
 	if (file_io_operations.file_comparison(ip_filename,op_filename)):
-		print "=	The input and output BibTeX files are EQUIVALENT!!!"
+		print("=	The input and output BibTeX files are EQUIVALENT!!!")
 	else:
-		print "=	The input and output BibTeX files are different."
+		print("=	The input and output BibTeX files are different.")
 	# Ensure that no BibTeX metadata exists in the output BibTeX file.
 	ip_file_obj = file_io_operations.open_file_object_read(op_filename)
 	rm_metadata.ensure_no_metedata(ip_file_obj,op_filename)
 	file_io_operations.close_file_object(ip_file_obj)
-	print "=	Output BibTeX file has no BibTeX metadata."
+	print("=	Output BibTeX file has no BibTeX metadata.")
 	# Delete the output BibTeX file.
 #	os.remove(op_filename)

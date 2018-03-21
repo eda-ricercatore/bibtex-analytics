@@ -106,7 +106,9 @@ class publishers_show:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def collect_and_list_publishers(ip_f_obj,ip_file):
-		print "=	Reading input BibTeX file:"+ip_file
+		println = "=	Reading input BibTeX file:"
+		println += ip_file
+		print(println)
 		# List/set of publishers found in the BibTeX database
 		set_of_publishers = []
 		# Read each available line in the input BibTeX file.
@@ -120,8 +122,8 @@ class publishers_show:
 				set_of_publishers = list(set(set_of_publishers+publishers_line))
 				set_of_publishers = sorted(set_of_publishers)
 		for kwd in set_of_publishers:
-			print kwd
-		print "===	Number of publishers:",len(set_of_publishers)
+			print(kwd)
+		print("===	Number of publishers: {}" .format(len(set_of_publishers)))
 
 	# ============================================================
 	#	Method to determine if a string 'a_str' starts with the

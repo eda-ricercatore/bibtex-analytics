@@ -107,7 +107,9 @@ class keywords_show:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def collect_and_list_keywords(ip_f_obj,ip_file):
-		print "=	Reading input BibTeX file:"+ip_file
+		println = "=	Reading input BibTeX file:"
+		println += ip_file
+		print(println)
 		# List/set of keywords found in the BibTeX database
 		set_of_keywords = []
 		# Read each available line in the input BibTeX file.
@@ -120,7 +122,7 @@ class keywords_show:
 				set_of_keywords = sorted(set_of_keywords)
 		for kwd in set_of_keywords:
 			print kwd
-		print "===	Number of keyphrases:",len(set_of_keywords)
+		print("===	Number of keyphrases: {}" .format(len(set_of_keywords)))
 
 	# ============================================================
 	#	Method to determine if a string 'a_str' starts with the
@@ -165,18 +167,18 @@ if __name__ == "__main__":
 	queue_ip_args.preprocessing()
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
-	print "==================================================="
-	print "Displaying Sorted List of Keywords from a BibTeX Database."
-	print ""
+	print("===================================================")
+	print("Displaying Sorted List of Keywords from a BibTeX Database.")
+	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
 	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.KEYWORDS_DISPLAY)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
-	print "=	Process the first input argument." 
+	print("=	Process the first input argument.")
 	ip_filename = queue_ip_args.process_1st_ip_arg()
 	# Create a file object for reading.
-	print "=	Create a file object for reading."
+	print("=	Create a file object for reading.")
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	"""
 		Collect the set of all keywords found in the BibTeX database.
@@ -185,5 +187,5 @@ if __name__ == "__main__":
 	"""
 	keywords_show.collect_and_list_keywords(ip_file_obj, ip_filename)
 	# Close the file object for reading.
-	print "=	Close the file object for reading."
+	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)

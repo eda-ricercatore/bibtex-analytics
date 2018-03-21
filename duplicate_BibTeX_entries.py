@@ -126,7 +126,9 @@ class Duplicate_BibTeX_entries_finder:
 	@staticmethod
 	def read_input_BibTeX_file(ip_file_object,input_BibTeX_file):
 		#print "--------------------------------------------------------"
-		print "=	Reading input BibTeX file:"+input_BibTeX_file
+		println = "=	Reading input BibTeX file:"
+		println += input_BibTeX_file
+		print(println)
 		# Read each available line in the input BibTeX file.
 		for line in ip_file_object:
 			# Is this line the 1st line of a BibTeX entry?
@@ -144,14 +146,15 @@ class Duplicate_BibTeX_entries_finder:
 					Duplicate_BibTeX_entries_finder.add_BibTeX_key(tokenized_BibTeX_entry[2].lower())
 				else:
 					# No. Warn user that the type of BibTeX entry is invalid!
-					temp_str = "Invalid type of BibTeX entry:"+tokenized_BibTeX_entry[1]
-					print temp_str
+					temp_str = "Invalid type of BibTeX entry:"
+					temp_str += tokenized_BibTeX_entry[1]
+					print(temp_str)
 					#warnings.warn("Invalid type of BibTeX entry")
 					raise Exception("BibTeX entry has an invalid type!")
 		if (Duplicate_BibTeX_entries_finder.num_of_bibtex_entries != len(Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys)):
 			raise Exception("Mismatch in number of BibTeX entries processed.")
 		else:
-			print "=	Number of BibTeX entries processed:"+str(Duplicate_BibTeX_entries_finder.num_of_bibtex_entries)
+			print("=	Number of BibTeX entries processed: {}" .format(str(Duplicate_BibTeX_entries_finder.num_of_bibtex_entries)))
 
 
 
@@ -173,22 +176,22 @@ if __name__ == "__main__":
 	queue_ip_args.preprocessing()
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
-	print "==================================================="
-	print "Finding duplicate BibTeX entries in my BibTeX database."
-	print "	And, if they exist, warn the user about them."
-	print ""
+	print("===================================================")
+	print("Finding duplicate BibTeX entries in my BibTeX database.")
+	print("	And, if they exist, warn the user about them.")
+	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
 	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.DUPLICATE_ENTRIES)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
-	print "=	Process the first input argument." 
+	print("=	Process the first input argument.") 
 	ip_filename = queue_ip_args.process_1st_ip_arg()
 	# Create a file object for reading.
-	print "=	Create a file object for reading."
+	print("=	Create a file object for reading.")
 	# Create a file object for input BibTeX file, in reading mode.
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	Duplicate_BibTeX_entries_finder.read_input_BibTeX_file(ip_file_obj,ip_filename)
 	# Close the file object for reading.
-	print "=	Close the file object for reading."
+	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)

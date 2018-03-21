@@ -152,7 +152,9 @@ class validate_url_field:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def data_copying_n_insertion(ip_f_obj,op_f_obj,ip_file):
-		print "=	Reading input BibTeX file:"+ip_file
+		println = "=	Reading input BibTeX file:"
+		println += ip_file
+		print(println)
 		# Read each available line in the input BibTeX file.
 		for line in ip_f_obj:
 			# Is this line the 1st line of a BibTeX entry?
@@ -359,7 +361,8 @@ class validate_url_field:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def ensure_doi_url(ip_f_obj,ip_file):
-		print "=	Reading output BibTeX file:"+ip_file
+		println = "=	Reading output BibTeX file:"
+		println += ip_file
 		# Read each available line in the input BibTeX file.
 		for line in ip_f_obj:
 			# Is this line the 1st line of a BibTeX entry?
@@ -422,44 +425,44 @@ if __name__ == "__main__":
 	queue_ip_args.preprocessing()
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
-	print "==================================================="
-	print "Validating the URLs/DOIs of BibTeX entries."
-	print ""
+	print("===================================================")
+	print("Validating the URLs/DOIs of BibTeX entries.")
+	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
 	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.VALIDATE_URL_DOI)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
-	print "=	Process the first input argument." 
+	print("=	Process the first input argument.")
 	ip_filename = queue_ip_args.process_1st_ip_arg()
 	# Check if 2nd input argument is missing/available.
 	queue_ip_args.missing_2nd_ip_arg()
 	# Process the second input argument.
-	print "=	Process the second input argument." 
+	print("=	Process the second input argument.") 
 	op_filename = queue_ip_args.process_2nd_ip_arg()
 	# Create a file object for reading.
-	print "=	Create a file object for reading."
+	print("=	Create a file object for reading.")
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	# Create a file object for writing.
-	print "=	Create a file object for writing."
+	print("=	Create a file object for writing.")
 	op_file_obj = file_io_operations.open_file_object_write(op_filename)
 	# Copy data from input BibTeX file to output BibTeX file.
 	validate_url_field.data_copying_n_insertion(ip_file_obj,op_file_obj,ip_filename)
 	# Close the file object for reading.
-	print "=	Close the file object for reading."
+	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)
 	# Close the file object for writing.
-	print "=	Close the file object for writing."
+	print("=	Close the file object for writing.")
 	file_io_operations.close_file_object(op_file_obj)
 	# Compare the input and output BibTeX files.
 	if (file_io_operations.file_comparison(ip_filename,op_filename)):
-		print "=	The input and output BibTeX files are EQUIVALENT!!!"
+		print("=	The input and output BibTeX files are EQUIVALENT!!!")
 	else:
-		print "=	The input and output BibTeX files are different."
+		print("=	The input and output BibTeX files are different.")
 	# Ensure that the DOI and URL fields exists, if appropriate.
 	ip_file_obj = file_io_operations.open_file_object_read(op_filename)
 	validate_url_field.ensure_doi_url(ip_file_obj,op_filename)
 	file_io_operations.close_file_object(ip_file_obj)
-	print "=	DOI and URL fields exist in appropriate places."
+	print("=	DOI and URL fields exist in appropriate places.")
 	# Delete the output BibTeX file.
 #	os.remove(op_filename)

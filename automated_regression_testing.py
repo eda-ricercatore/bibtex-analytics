@@ -66,25 +66,25 @@ import os
 ###############################################################
 #	Test the script for input errors
 
-print "##################################################"
-print "==>>	Begin automated regression testing."
+print("##################################################")
+print("==>>	Begin automated regression testing.")
 
-print "##################################################"
-print "=	Testing: duplicate_BibTeX_entries.py"
-print "-	-	-	-	-	-	-	-"
-print "	=>	With no input arguments."
+print("##################################################")
+print("=	Testing: duplicate_BibTeX_entries.py")
+print("-	-	-	-	-	-	-	-")
+print("	=>	With no input arguments.")
 call("./duplicate_BibTeX_entries.py")
-print "-	-	-	-	-	-	-	-"
-print "	=>	With one input argument. Invalid path"
+print("-	-	-	-	-	-	-	-")
+print("	=>	With one input argument. Invalid path")
 call(["./duplicate_BibTeX_entries.py","qwerty"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	With one input argument: Valid path."
+print("-	-	-	-	-	-	-	-")
+print("	=>	With one input argument: Valid path.")
 call(["./duplicate_BibTeX_entries.py","input/extra.bib"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: Invalid BibTeX entry types."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: Invalid BibTeX entry types.")
 call(["./duplicate_BibTeX_entries.py","input/incorrect_bibtex_type.bib"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: Duplicate BibTeX entries exist."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: Duplicate BibTeX entries exist.")
 call(["./duplicate_BibTeX_entries.py","input/duplicates_bibtex_keys.bib"])
 """
 	print "-	-	-	-	-	-	-	-"
@@ -101,143 +101,143 @@ call(["./duplicate_BibTeX_entries.py","input/duplicates_bibtex_keys.bib"])
 	call(["./duplicate_BibTeX_entries.py","input/one_bibtex_entry.bib","qwerty.bib"])
 	#os.remove("qwerty.bib")
 """
-print "-	-	-	-	-	-	-	-"
-print "	=>	Input BibTeX File: 4/6 incorrect BibTeX entry types; 100010"
+print("-	-	-	-	-	-	-	-")
+print("	=>	Input BibTeX File: 4/6 incorrect BibTeX entry types; 100010")
 call(["./duplicate_BibTeX_entries.py","input/incorrect_bibtex_type.bib","y-1.bib"])
 #os.remove("y-1.bib")
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: One BibTeX entry."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: One BibTeX entry.")
 call(["./duplicate_BibTeX_entries.py","input/one_bibtex_entry.bib"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	With >2 arguments: Valid path + Invalid path + ... (One BibTeX entry.)"
+print("-	-	-	-	-	-	-	-")
+print("	=>	With >2 arguments: Valid path + Invalid path + ... (One BibTeX entry.)")
 call(["./duplicate_BibTeX_entries.py","input/one_bibtex_entry.bib","asdfgh","3rdarg","4tharg","5tharg","6tharg","7tharg"])
 #os.remove("asdfgh.bib")
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: No duplicates. Simple."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: No duplicates. Simple.")
 call(["./duplicate_BibTeX_entries.py","input/simple.bib","y-1.bib"])
 #os.remove("y-1.bib")
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: No duplicates. Extensive."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: No duplicates. Extensive.")
 call(["./duplicate_BibTeX_entries.py","input/no_duplicate_bibtex_keys.bib"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: Get Help (1)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: Get Help (1).")
 call(["./duplicate_BibTeX_entries.py","input/no_duplicate_bibtex_keys.bib","-h"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: Get Help (2)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: Get Help (2).")
 call(["./duplicate_BibTeX_entries.py","-h","input/simple.bib","y-1.bib"])
 #os.remove("y-1.bib")
-print "-	-	-	-	-	-	-	-"
-print "	=>	Detect duplicate BibTeX keys: Get Help (3)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Detect duplicate BibTeX keys: Get Help (3).")
 call(["./duplicate_BibTeX_entries.py","-h"])
 
-print "##################################################"
-print "=	Testing: validate_url.py"
-print "-	-	-	-	-	-	-	-"
-print "	=>	With no input arguments."
+print("##################################################")
+print("=	Testing: validate_url.py")
+print("-	-	-	-	-	-	-	-")
+print("	=>	With no input arguments.")
 call("./validate_url.py")
-print "-	-	-	-	-	-	-	-"
-print "	=>	With one INVALID input argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	With one INVALID input argument.")
 call(["./validate_url.py","qwerty"])
-print "-	-	-	-	-	-	-	-"
+print("-	-	-	-	-	-	-	-")
 fname = "input/one_bibtex_entry_op.bib"
-print "	=>	With one valid input argument."
+print("	=>	With one valid input argument.")
 call(["./validate_url.py","input/one_bibtex_entry.bib"])
 os.remove(fname)
-print "-	-	-	-	-	-	-	-"
-print "	=>	With 1 valid input argument, and 1 valid output argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	With 1 valid input argument, and 1 valid output argument.")
 dummy = "input/extra.bib"
 call(["./validate_url.py","input/one_bibtex_entry.bib",dummy])
-print "-	-	-	-	-	-	-	-"
-print "	=>	With 1 valid input argument, and 1 invalid output argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	With 1 valid input argument, and 1 invalid output argument.")
 dummy = "input/y-dummy.bib"
 call(["./validate_url.py","input/one_bibtex_entry.bib",dummy])
 #os.remove(dummy)
-print "-	-	-	-	-	-	-	-"
-print "	=>	Has Bdsk-Url-2, but not Bdsk-Url-1."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Has Bdsk-Url-2, but not Bdsk-Url-1.")
 dummy = "input/x-dummy.bib"
 call(["./validate_url.py","input/has_backup2_no_backup1.bib",dummy])
 os.remove(dummy)
 
-print "-	-	-	-	-	-	-	-"
-print "	=>	Has missing DOIs and/or URLs."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Has missing DOIs and/or URLs.")
 call(["./validate_url.py","input/missing_doi_url.bib"])
 
-print "-	-	-	-	-	-	-	-"
-print "	=>	Extensive testing."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Extensive testing.")
 call(["./validate_url.py","input/no_duplicate_bibtex_keys.bib"])
 
 #	rm input/missing_doi_url_op.bib input/no_duplicate_bibtex_keys_op.bib input/y-dummy.bib 
 
-print "##################################################"
-print "=	Testing: rm_bibtex_metadata.py"
-print "-	-	-	-	-	-	-	-"
-print "	=>	With no input arguments."
+print("##################################################")
+print("=	Testing: rm_bibtex_metadata.py")
+print("-	-	-	-	-	-	-	-")
+print("	=>	With no input arguments.")
 call("./rm_bibtex_metadata.py")
-print "-	-	-	-	-	-	-	-"
-print "	=>	With one INVALID input argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	With one INVALID input argument.")
 call(["./rm_bibtex_metadata.py","qwerty"])
-print "-	-	-	-	-	-	-	-"
+print("-	-	-	-	-	-	-	-")
 fname = "input/one_bibtex_entry_op.bib"
-print "	=>	With one valid input argument."
+print("	=>	With one valid input argument.")
 call(["./rm_bibtex_metadata.py","input/one_bibtex_entry.bib"])
 os.remove(fname)
-print "-	-	-	-	-	-	-	-"
-print "	=>	With 1 valid input argument, and 1 valid output argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	With 1 valid input argument, and 1 valid output argument.")
 dummy = "input/extra.bib"
 call(["./rm_bibtex_metadata.py","input/one_bibtex_entry.bib",dummy])
-print "-	-	-	-	-	-	-	-"
-print "	=>	With 1 valid input argument, and 1 invalid output argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	With 1 valid input argument, and 1 invalid output argument.")
 dummy = "input/w-dummy.bib"
 call(["./rm_bibtex_metadata.py","input/one_bibtex_entry.bib",dummy])
 os.remove(dummy)
-print "-	-	-	-	-	-	-	-"
-print "	=>	Remove BibTeX metadata: Get Help (1)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Remove BibTeX metadata: Get Help (1).")
 call(["./rm_bibtex_metadata.py","input/no_duplicate_bibtex_keys.bib","-h"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Remove BibTeX metadata: Get Help (2)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Remove BibTeX metadata: Get Help (2).")
 call(["./rm_bibtex_metadata.py","-h","input/simple.bib","y-1.bib"])
 #os.remove("y-1.bib")
-print "-	-	-	-	-	-	-	-"
-print "	=>	Remove BibTeX metadata: Get Help (3)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Remove BibTeX metadata: Get Help (3).")
 call(["./rm_bibtex_metadata.py","-h"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Remove BibTeX metadata: One BibTeX entry."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Remove BibTeX metadata: One BibTeX entry.")
 call(["./rm_bibtex_metadata.py","input/one_bibtex_entry.bib","input/one_bibtex_entry_clean.bib"])
 
-print "-	-	-	-	-	-	-	-"
-print "	=>	Remove BibTeX metadata: No duplicates. Simple."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Remove BibTeX metadata: No duplicates. Simple.")
 call(["./rm_bibtex_metadata.py","input/simple.bib","input/simple_clean.bib"])
 #os.remove("y-1.bib")
 
-print "-	-	-	-	-	-	-	-"
-print "	=>	Remove BibTeX metadata: No duplicates. Extensive."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Remove BibTeX metadata: No duplicates. Extensive.")
 call(["./rm_bibtex_metadata.py","input/no_duplicate_bibtex_keys.bib","input/no_duplicate_bibtex_keys_clean.bib"])
 
 
 
 
-print "##################################################"
-print "=	Testing: rm_bibtex_metadata.py"
-print "-	-	-	-	-	-	-	-"
-print "	=>	Get keywords: With no input arguments."
+print("##################################################")
+print("=	Testing: rm_bibtex_metadata.py")
+print("-	-	-	-	-	-	-	-")
+print("	=>	Get keywords: With no input arguments.")
 call("./keywords_display.py")
-print "-	-	-	-	-	-	-	-"
-print "	=>	Get keywords: Get help (1)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Get keywords: Get help (1).")
 call(["./keywords_display.py", "-h"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Get keywords: Get help (2)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Get keywords: Get help (2).")
 call(["./keywords_display.py", "-h dwef"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Get keywords: Get help (3)."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Get keywords: Get help (3).")
 call(["./keywords_display.py", "input/simple.bib", "-h"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Get keywords: With one INVALID input argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Get keywords: With one INVALID input argument.")
 call(["./keywords_display.py", "bibewwwq"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Get keywords: With 1 valid input argument."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Get keywords: With 1 valid input argument.")
 call(["./keywords_display.py", "input/one_bibtex_entry.bib"])
-print "-	-	-	-	-	-	-	-"
-print "	=>	Get keywords: With multiple input arguments."
+print("-	-	-	-	-	-	-	-")
+print("	=>	Get keywords: With multiple input arguments.")
 call(["./keywords_display.py", "input/simple.bib", "dwefw", "wefewf"])
 
 
@@ -246,41 +246,45 @@ call(["./keywords_display.py", "input/simple.bib", "dwefw", "wefewf"])
 
 
 
-print "##################################################"
-print "==>>	End automated regression testing."
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
-print ""
+print("##################################################")
+print("==>>	End automated regression testing.")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")

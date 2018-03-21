@@ -106,7 +106,9 @@ class series_show:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def collect_and_list_series(ip_f_obj,ip_file):
-		print "=	Reading input BibTeX file:"+ip_file
+		println = "=	Reading input BibTeX file:"
+		println += ip_file
+		print(println)
 		# List/set of series found in the BibTeX database
 		set_of_series = []
 		# Read each available line in the input BibTeX file.
@@ -119,8 +121,8 @@ class series_show:
 				set_of_series = list(set(set_of_series+series_line))
 				set_of_series = sorted(set_of_series)
 		for kwd in set_of_series:
-			print kwd
-		print "===	Number of series:",len(set_of_series)
+			print(kwd)
+		print("===	Number of series: {}" .format(len(set_of_series)))
 
 	# ============================================================
 	#	Method to determine if a string 'a_str' starts with the
@@ -165,18 +167,18 @@ if __name__ == "__main__":
 	queue_ip_args.preprocessing()
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
-	print "==================================================="
-	print "Displaying Sorted List of Series from a BibTeX Database."
-	print ""
+	print("===================================================")
+	print("Displaying Sorted List of Series from a BibTeX Database.")
+	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
 	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.GET_SERIES)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
-	print "=	Process the first input argument." 
+	print("=	Process the first input argument.") 
 	ip_filename = queue_ip_args.process_1st_ip_arg()
 	# Create a file object for reading.
-	print "=	Create a file object for reading."
+	print("=	Create a file object for reading.")
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	"""
 		Collect the set of all series found in the BibTeX database.
@@ -185,5 +187,5 @@ if __name__ == "__main__":
 	"""
 	series_show.collect_and_list_series(ip_file_obj, ip_filename)
 	# Close the file object for reading.
-	print "=	Close the file object for reading."
+	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)

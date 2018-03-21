@@ -131,7 +131,9 @@ class Incremental_Test_Automation:
 	@staticmethod
 	def read_input_BibTeX_file(ip_file_object,input_BibTeX_file):
 		#print "--------------------------------------------------------"
-		print "=	Reading input BibTeX file:"+input_BibTeX_file
+		println = "=	Reading input BibTeX file: {}"
+		println += input_BibTeX_file
+		print(println)
 		# Read each available line in the input BibTeX file.
 		for line in ip_file_object:
 			# Is this line the 1st line of a BibTeX entry?
@@ -149,14 +151,15 @@ class Incremental_Test_Automation:
 					Incremental_Test_Automation.add_BibTeX_key(tokenized_BibTeX_entry[2].lower())
 				else:
 					# No. Warn user that the type of BibTeX entry is invalid!
-					temp_str = "Invalid type of BibTeX entry:"+tokenized_BibTeX_entry[1]
-					print temp_str
+					temp_str = "Invalid type of BibTeX entry:"
+					temp_str += tokenized_BibTeX_entry[1]
+					print(temp_str)
 					#warnings.warn("Invalid type of BibTeX entry")
 					raise Exception("BibTeX entry has an invalid type!")
 		if (Incremental_Test_Automation.num_of_bibtex_entries != len(Incremental_Test_Automation.set_of_BibTeX_keys)):
 			raise Exception("Mismatch in number of BibTeX entries processed.")
 		else:
-			print "=	Number of BibTeX entries processed:"+str(Incremental_Test_Automation.num_of_bibtex_entries)
+			print("=	Number of BibTeX entries processed: {}" .format(str(Incremental_Test_Automation.num_of_bibtex_entries)))
 
 
 
@@ -178,35 +181,35 @@ if __name__ == "__main__":
 	queue_ip_args.preprocessing()
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
-	print "=================================================="
-	print "Automating incremental software test automation of"
-	print "	script(s) for performing data analytics"
-	print "	operations on my BibTeX database."
-	print ""
+	print("==================================================")
+	print("Automating incremental software test automation of")
+	print("	script(s) for performing data analytics")
+	print("	operations on my BibTeX database.")
+	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
 	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.DUPLICATE_ENTRIES)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
-	print "=	Process the first input argument." 
+	print("=	Process the first input argument.")
 	ip_filename = queue_ip_args.process_1st_ip_arg()
 	# Create a file object for reading.
-	print "=	Create a file object for reading."
+	print("=	Create a file object for reading.")
 	# Create a file object for input BibTeX file, in reading mode.
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	# The real stuff begins here...
 	statistical_analysis_tester.test_statistical_analysis()
-	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
+	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
 	process_key_freq_pairs.sort_pairs()
-	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
+	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
 	check_bibtex_key_tester.test_check_bibtex_key()
-	print "-	-	-	-	-	-	-	-	-	-	-	-	-"
+	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
 	Incremental_Test_Automation.read_input_BibTeX_file(ip_file_obj,ip_filename)
-	print "!	!	!	!	!	!	!	!	!	!	!"
-	print ">>	Get statistics of the software testing process."
+	print("!	!	!	!	!	!	!	!	!	!	!")
+	print(">>	Get statistics of the software testing process.")
 	statistical_analysis.print_statistics_of_software_testing()
 	# Close the file object for reading.
-	print "=	Close the file object for reading."
+	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)
 
 
