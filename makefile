@@ -51,8 +51,6 @@ clean:
 
 
 
-incre:
-	./incremental_test.py input/one_bibtex_entry.bib
 
 
 
@@ -74,7 +72,11 @@ incre:
 	./incremental_test.py input/one_bibtex_entry_clean.bib
 	
 
-
+keywd:
+	./keywords_display.py input/simple.bib
+	./keywords_display.py input/simple_clean.bib
+	./keywords_display.py input/one_bibtex_entry.bib
+	./keywords_display.py input/one_bibtex_entry_clean.bib
 
 
 

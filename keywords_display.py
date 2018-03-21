@@ -121,7 +121,7 @@ class keywords_show:
 				set_of_keywords = list(set(set_of_keywords+keywds_line))
 				set_of_keywords = sorted(set_of_keywords)
 		for kwd in set_of_keywords:
-			print kwd
+			print(kwd)
 		print("===	Number of keyphrases: {}" .format(len(set_of_keywords)))
 
 	# ============================================================
