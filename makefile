@@ -80,4 +80,27 @@ keywd:
 
 
 
+pub:
+	./publishers.py input/simple.bib
+	./publishers.py input/simple_clean.bib
+	./publishers.py input/one_bibtex_entry.bib
+	./publishers.py input/one_bibtex_entry_clean.bib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
