@@ -131,7 +131,7 @@ class Incremental_Test_Automation:
 	@staticmethod
 	def read_input_BibTeX_file(ip_file_object,input_BibTeX_file):
 		#print "--------------------------------------------------------"
-		println = "=	Reading input BibTeX file: {}"
+		println = "=	Reading input BibTeX file: "
 		println += input_BibTeX_file
 		print(println)
 		# Read each available line in the input BibTeX file.

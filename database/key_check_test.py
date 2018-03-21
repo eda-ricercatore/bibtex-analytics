@@ -177,7 +177,7 @@ class check_bibtex_key_tester:
 			statistical_analysis.increment_number_test_cases_passed()
 			print(println.format("			Yes."))
 		try:
-			println = "	Don't use white space as a delimiter (1):{}",
+			println = "	Don't use white space as a delimiter (1):{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("Invalid keys.")
 			print(println.format("	NO!!!!!!!!!!!."))
@@ -185,7 +185,7 @@ class check_bibtex_key_tester:
 			statistical_analysis.increment_number_test_cases_passed()
 			print(println.format("	Yes."))
 		try:
-			println = "	Don't use white space as a delimiter (2):",
+			println = "	Don't use white space as a delimiter (2):"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("This phrase four words")
 			println += "	NO!!!!!!!!!!!."
@@ -199,10 +199,10 @@ class check_bibtex_key_tester:
 		statistical_analysis.increment_number_test_cases_used()
 		if "Smith2018a" == key:
 			statistical_analysis.increment_number_test_cases_passed()
-			println = "	Successful extraction of BibTeX key:"
+			println = "	Successful extraction of BibTeX key: {}"
 			print(println.format("		Yes."))
 		else:
-			print(println.format("	NO!!!!!!!!!!!."))
+			print(println.format("		NO!!!!!!!!!!!."))
 		#print "	Hello World!"
 	# =========================================================
 	#	Method to test the BibTeX key has only alphanumeric
@@ -220,7 +220,7 @@ class check_bibtex_key_tester:
 		else:
 			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "#$%^&*ygagUIH132sdfWHS17389"
-		println = "	Test non-alphanumeric characters in front:"
+		println = "	Test non-alphanumeric characters in front: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
@@ -228,7 +228,7 @@ class check_bibtex_key_tester:
 		else:
 			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "ygagUIH132sdfWHS17389#$%^&*"
-		println = "	Test non-alphanumeric characters at the back:"
+		println = "	Test non-alphanumeric characters at the back: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
@@ -236,15 +236,15 @@ class check_bibtex_key_tester:
 		else:
 			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "ygagUIH132sd#$%^&*fWHS17389"
-		println = "	Test non-alphanumeric characters in the middle:"
+		println = "	Test non-alphanumeric characters in the middle: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print(println.format("	Yes."))
+			print(println.format("Yes."))
 		else:
-			print(println.format("	NO!!!!!!!!!!!."))
+			print(println.format("NO!!!!!!!!!!!."))
 		test_string = "~!|ygagUIH132sd#$%^&*fWHS17389:>?"
-		println = "	Test scattered non-alphanumeric characters:"
+		println = "	Test scattered non-alphanumeric characters: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_only_alphanumeric_characters(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
@@ -258,7 +258,7 @@ class check_bibtex_key_tester:
 	@staticmethod
 	def test_has_no_whitespace():
 		test_string = "ygagUIH132sdfWHS17389"
-		println = "	Test string without white space:"
+		println = "	Test string without white space: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
@@ -266,15 +266,15 @@ class check_bibtex_key_tester:
 		else:
 			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "	ygagUIH132sdfWHS17389"
-		println = "	Test string with leading white space:"
+		println = "	Test string with leading white space: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
-			print(println.format("	Yes."))
+			print(println.format("		Yes."))
 		else:
-			print(println.format("	NO!!!!!!!!!!!."))
+			print(println.format("		NO!!!!!!!!!!!."))
 		test_string = "ygagUIH132sdfWHS17389 "
-		println = "	Test string with trailing white space:"
+		println = "	Test string with trailing white space: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
@@ -282,7 +282,7 @@ class check_bibtex_key_tester:
 		else:
 			print(println.format("	NO!!!!!!!!!!!."))
 		test_string = "	ygagUI	H132s   dfWHS17389 "
-		println = "	Test string with scattered white space:"
+		println = "	Test string with scattered white space: {}"
 		statistical_analysis.increment_number_test_cases_used()
 		if not check_bibtex_key.has_no_whitespace(test_string):
 			statistical_analysis.increment_number_test_cases_passed()
