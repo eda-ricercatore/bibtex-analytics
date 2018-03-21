@@ -132,10 +132,10 @@ class check_bibtex_key_tester:
 			println = "	Catch a string tokenization error:{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@booklet")
-			print(println.format("	NO!!!!!!!!!!!."))
+			print(println.format("		NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print(println.format("	Yes."))
+			print(println.format("		Yes."))
 		try:
 			println = "	Four or more tokens can't be processed (1):{}"
 			statistical_analysis.increment_number_test_cases_used()
@@ -172,10 +172,10 @@ class check_bibtex_key_tester:
 			println = "	Catch missing BibTeX key:{}"
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("@booklet{")
-			print(println.format("	NO!!!!!!!!!!!."))
+			print(println.format("			NO!!!!!!!!!!!."))
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print(println.format("	Catch missing BibTeX key:	Yes."))
+			print(println.format("			Yes."))
 		try:
 			println = "	Don't use white space as a delimiter (1):{}",
 			statistical_analysis.increment_number_test_cases_used()
@@ -185,13 +185,15 @@ class check_bibtex_key_tester:
 			statistical_analysis.increment_number_test_cases_passed()
 			print(println.format("	Yes."))
 		try:
-			println = "	Don't use white space as a delimiter (2):{}",
+			println = "	Don't use white space as a delimiter (2):",
 			statistical_analysis.increment_number_test_cases_used()
 			check_bibtex_key.tokenization_entry_key("This phrase four words")
-			print(println.format("	NO!!!!!!!!!!!."))
+			println += "	NO!!!!!!!!!!!."
+			print(println)
 		except Exception:
 			statistical_analysis.increment_number_test_cases_passed()
-			print(println.format("	Yes."))
+			println += "	Yes."
+			print(println)
 		key = check_bibtex_key.tokenization_entry_key("@booklet{Smith2018a,")
 		### Test case may need to be changed/updated.
 		statistical_analysis.increment_number_test_cases_used()

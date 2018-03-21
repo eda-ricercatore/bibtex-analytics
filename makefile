@@ -55,3 +55,24 @@ incre:
 	./incremental_test.py input/one_bibtex_entry.bib
 
 
+
+
+#	================================================================
+#	Port scripts from Python 2.y to Python 3.x. 
+
+duplicate:
+	./duplicate_BibTeX_entries.py input/simple.bib
+	./duplicate_BibTeX_entries.py input/simple_clean.bib
+	./duplicate_BibTeX_entries.py input/one_bibtex_entry.bib
+	./duplicate_BibTeX_entries.py input/one_bibtex_entry_clean.bib
+	./duplicate_BibTeX_entries.py input/duplicates_bibtex_keys.bib
+
+incre:
+	./incremental_test.py input/simple.bib
+
+
+
+
+
+
+

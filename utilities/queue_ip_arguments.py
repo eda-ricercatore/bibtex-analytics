@@ -187,7 +187,7 @@ class queue_ip_args:
 	#	O(1) method.
 	@staticmethod
 	def how_to_use_script():
-		print "-------------------------------------------------"
+		print("-------------------------------------------------")
 		if(queue_ip_args.DUPLICATE_ENTRIES == queue_ip_args.CURRENT_SCRIPT):
 			print("==>	This script determines if duplicate BibTeX entries")
 			print("	exist in my BibTeX database.")
@@ -262,7 +262,7 @@ class queue_ip_args:
 		else:
 			raise Exception("Error in accessing user manual.")
 		queue_ip_args.print_help_option()
-		print "-------------------------------------------------"
+		print("-------------------------------------------------")
 	# ============================================================
 	#	Method to provide information on the second input argument.
 	#	O(1) method.
@@ -349,10 +349,11 @@ class queue_ip_args:
 			print(println.format("	Yes."))
 			ip_fname2 = queue_ip_args.second_input_argument
 		else:
-			print(println.format("	No.")
+			print(println.format("	No."))
 			#	Add BibTeX file extension to output filename.
-			ip_fname2 = queue_ip_args.second_input_argument + queue_ip_args.bibtex_f_ext
-			print "	New output filename is:"+ip_fname2
+			ip_fname2 = queue_ip_args.second_input_argument
+			ip_fname2 += queue_ip_args.bibtex_f_ext
+			print("	New output filename is: {}" .format(ip_fname2))
 		return ip_fname2
 	# ============================================================
 	#	Method to handle missing second input argument.
