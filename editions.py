@@ -4,13 +4,13 @@
 ###	#!/usr/bin/python -mtimeit
 
 """
-	This is written by Zhiyang Ong to display institutions from my
+	This is written by Zhiyang Ong to display editions from my
 		BibTeX entries, in my BibTeX database.
 
 
 
 	Synopsis: command name and [argument(s)]
-	./institutions.py [input BibTeX file] [-h]
+	./editions.py [input BibTeX file] [-h]
 
 	Parameters:
 	[input BibTeX file]:	A BibTeX database.
@@ -21,15 +21,15 @@
 
 
 	Its procedure is described as follows:
-	Initialize an empty list of institutions.
+	Initialize an empty list of editions.
 	Enumerate each line in the input BibTeX database.
-		If the currently enumerated line contains the 'Institution'
+		If the currently enumerated line contains the 'Edition'
 			BibTeX field,
-			Add its contents to set of institutions. 
-	Sort the set of institutions.
+			Add its contents to set of editions. 
+	Sort the set of editions.
 
 	Notes/Assumptions:
-	Assume that the 'Institution' standard BibTeX field is a single line
+	Assume that the 'Edition' standard BibTeX field is a single line
 		field.
 
 
@@ -91,12 +91,12 @@ from utilities.file_io import file_io_operations
 
 
 ###############################################################
-#	Module with methods that collects the set of institutions
-#		found in all the 'Institution' fields in this BibTeX database.
-class institutions_show:
+#	Module with methods that collects the set of editions
+#		found in all the 'Edition' fields in this BibTeX database.
+class editions_show:
 	# ============================================================
-	#	Method to collect institutions from each BibTeX entry's
-	#		'Institution' field, sort them, and display them in
+	#	Method to collect editions from each BibTeX entry's
+	#		'Edition' field, sort them, and display them in
 	#		standard output.
 	#	@param ip_f_obj - The file object for the input stream, which
 	#						reads in a BibTeX file.
@@ -104,36 +104,36 @@ class institutions_show:
 	#	@return nothing.
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
-	def collect_and_list_institutions(ip_f_obj,ip_file):
+	def collect_and_list_editions(ip_f_obj,ip_file):
 		println = "=	Reading input BibTeX file:"
 		println += ip_file
 		print(println)
-		# List/set of institutions found in the BibTeX database
-		set_of_institutions = []
+		# List/set of editions found in the BibTeX database
+		set_of_editions = []
 		# Read each available line in the input BibTeX file.
 		for line in ip_f_obj:
-			if(institutions_show.is_institution_BibTeX_field(line)):
-				institution_line = line.replace("	Institution = {","")
-				institution_line = institution_line.replace("},\n","")
-				#institution_line = institution_line.split(", ")
-				institution_line = institution_line.split("~")
-				set_of_institutions = list(set(set_of_institutions+institution_line))
-				set_of_institutions = sorted(set_of_institutions)
-		for kwd in set_of_institutions:
+			if(editions_show.is_edition_BibTeX_field(line)):
+				edition_line = line.replace("	Edition = {","")
+				edition_line = edition_line.replace("},\n","")
+				#edition_line = edition_line.split(", ")
+				edition_line = edition_line.split("~")
+				set_of_editions = list(set(set_of_editions+edition_line))
+				set_of_editions = sorted(set_of_editions)
+		for kwd in set_of_editions:
 			print(kwd)
-		print("===	Number of institutions: {}" .format(len(set_of_institutions)))
+		print("===	Number of editions: {}" .format(len(set_of_editions)))
 
 	# ============================================================
 	#	Method to determine if a string 'a_str' starts with the
-	#		'Institution' standard BibTeX field.
+	#		'Edition' standard BibTeX field.
 	#	@param a_str - a string to be processed.
-	#	@return True, if 'a_str' starts with the 'Institution'
+	#	@return True, if 'a_str' starts with the 'Edition'
 	#		standard BibTeX field.
 	#		Else, return False.
 	#	O(1) method.
 	@staticmethod
-	def is_institution_BibTeX_field(a_str):
-		if(a_str.startswith("	Institution = {")):
+	def is_edition_BibTeX_field(a_str):
+		if(a_str.startswith("	Edition = {")):
 			return True
 		else:
 			return False
@@ -167,10 +167,10 @@ if __name__ == "__main__":
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
 	print("===================================================")
-	print("Displaying Sorted List of Institutions from a BibTeX Database.")
+	print("Displaying Sorted List of Editions from a BibTeX Database.")
 	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
-	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.GET_INSTITUTION)
+	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.GET_EDITION)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
@@ -180,12 +180,12 @@ if __name__ == "__main__":
 	print("=	Create a file object for reading.")
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	"""
-		Collect the set of all institutions found in the BibTeX
+		Collect the set of all editions found in the BibTeX
 			database.
 		Sort the set/list.
 		Display the set.
 	"""
-	institutions_show.collect_and_list_institutions(ip_file_obj, ip_filename)
+	editions_show.collect_and_list_editions(ip_file_obj, ip_filename)
 	# Close the file object for reading.
 	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)

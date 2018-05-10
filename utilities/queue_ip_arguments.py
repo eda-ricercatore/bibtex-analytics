@@ -109,6 +109,7 @@ class queue_ip_args:
 	GET_ORGANIZATION = "organizations.py"
 	GET_INSTITUTION = "institutions.py"
 	GET_BOOKTITLES = "z_booktitles.py"
+	GET_EDITION = "editions.py"
 	STANDARDIZE_BIBTEX = "standardize_bibtex_entries.py"
 	UNCOMMENT_LATEX = "uncomment_latex_src_files.py"
 	UNDEFINED_REFERENCES = "not_defined_references.py"
@@ -276,6 +277,13 @@ class queue_ip_args:
 			print("")
 			print("This script can be executed as follows:")
 			print("./z_booktitles.py [input BibTeX file] [-h]")
+			print("")
+		elif(queue_ip_args.GET_EDITION == queue_ip_args.CURRENT_SCRIPT):
+			print("==>	Display the sorted list of editions in the")
+			print("	input BibTeX database.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./editions.py [input BibTeX file] [-h]")
 			print("")
 		elif(queue_ip_args.STANDARDIZE_BIBTEX == queue_ip_args.CURRENT_SCRIPT):
 			print("=	Get user manual of:"+queue_ip_args.STANDARDIZE_BIBTEX)
