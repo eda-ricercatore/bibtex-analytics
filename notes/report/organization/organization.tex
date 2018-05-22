@@ -17,105 +17,71 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Text}
-\label{chp:Text}
-
-There are a significant amount of references for helping people to learn \LaTeX \cite{Voss2011,vanDongen2012,Syropoulos2003,Raymond2004,Mittelbach2004,Lamport1994,Krishnan2003,Krantz2001,Kottwitz2011,Koranne2011,Kopka2004,Knuth1999,Hoenig1998,Higham1998,Haralambous2007,Griffiths1997,Gratzer2007,Goossens2007,Goossens1999,Goossens1997,Diller1999,Bindner2011,Berry2009,UITCambridge2011,Scharrer2011,Pakin2008,Cormen2010,Syropoulos2004,Hamalainen2006} and related information/technologies. \\
+\chapter{Organization of the {\sc Bib}\TeX\ Analytics Repository}
+\label{chp:OrganizationOfTheBibTeXAnalyticsRepository}
 
 
-In this chapter, I will provide some templates for referencing, templates for {\sc Bib}\TeX\ entries, indicate some common \LaTeX\ symbols, usage of colors in \LaTeX, and miscellaneous details. \\
+The main deliverables of the {\sc Bib}\TeX\ {\it Analytics} project are a {\it Python}-based software to perform reference management, and data analytics on {\sc Bib}\TeX\ entries to recognize emerging research trends. \\
 
 
-Random macros from my \LaTeX-specific IDE (or text editor): \vspace{-0.3cm}
+The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described as follows: \vspace{-0.3cm}
 \begin{enumerate} \itemsep -4pt
-\item $\backslash\backslash\ \backslash$rule\{6in\}\{.1pt\}			%	\\ \rule{6in}{.1pt}
-\item \href{mailto:emailid@domain.com}{emailid@domain.com}		%	\href{mailto:emailid@domain.com}{emailid@domain.com}
-\item Begin-end constructs (i.e., $\backslash$begin and $\backslash$end) for: \vspace{-0.3cm}
+\item {\tt automated\_regression\_testing.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item quotation
-	\item quote
-	\item verbatim
-	\item verse
+	\item {\it Python} script to automate regression testing.
 	\end{enumerate}
-\item Types of headings: \vspace{-0.3cm}
+\item big\_input: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item $\backslash$chapter\{\}
-	\item $\backslash$paragraph\{\}
-	\item $\backslash$subparagraph\{\}
-	\item $\backslash$section\{\}
-	\item $\backslash$subsection\{\}
-	\item $\backslash$subsubsection\{\}
+	\item Data set for stress testing the software deliverable of the {\sc Bib}\TeX\ {\it Analytics} project.
 	\end{enumerate}
-\item To add an entry into the ``Table of Contents'' without it being numbered, try the following: \vspace{-0.3cm}
+\item database \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item $\backslash$addcontentsline\{toc\}\{section\}\{BLAH\}
-	\item $\backslash$section$^{\ast}$\{BLAH\}
-	\end{enumerate}
-\item Insert/import content from another file: $\backslash$input\{RELATIVE PATHNAME\}
-\item Import \LaTeX\ packages: $\backslash$usepackage\{\}
-\item $\backslash$footnote\{\}
-\item $\backslash$marginpar\{\}
-\item $\mathcal{C}$
-\item $\mathit{C}$: Caligraphy style font.
-\item \underline{This is good.}: Underline text.
-\item \texttt{This is a statement.} TypeWriter.
-\item \textsf{This is a statement.} Sans Serif font.
-\item \textsl{This is a statement.} Slanted font.
-\item \emph{This is a statement.}
-\item Types of labels: \vspace{-0.3cm}
-	\begin{enumerate} \itemsep -2pt
-	\item ``chp:'' for chapter
-	\item ``sec:'' for section
-	\item ``ssec:'' for subsection
-	\item ``sssec:'' for subsubsection
-	\item ``fig:'' for figure
-	\item ``tab:'' for table
-	\item ``eqn:'' for equation
-	\item ``lst:'' for code listing
-	\item ``defn:'' for definition
-	\item ``thrm:'' for theorem
-	\item ``lem:'' for lemma
-	\item ``crly:'' for corollary
-	\item ``prop:'' for proposition
-	\item ``prf:'' for proof
-	\item ``eg:'' for example
-	\item ``rem:'' for remark
-	\end{enumerate}
-\end{enumerate}
-
-
-An enumeration of items: \vspace{-0.3cm}
-\begin{enumerate} \itemsep -4pt
-\item Quite sparse enumeration: \vspace{-0.3cm}
-	\begin{enumerate} \itemsep -2pt
-	\item Sparse enumeration: \vspace{-0.2cm}
-		\begin{enumerate} \itemsep -2pt
-		\item Very sparse enumeration: \vspace{-0.1cm}
-			\begin{enumerate} \itemsep -1pt
-			\item Very, very sparse list: \vspace{-0.1cm}
-				\begin{itemize} \itemsep -1pt
-				\item Blah
-				\end{itemize}
-			\end{enumerate}
-		\end{enumerate}
+	\item {\it bibtex\_database} ({\tt bibtex\_database.py}) class to represent a {\sc Bib}\TeX\ database of {\sc Bib}\TeX\ entries.
+	\item {\tt bibtex\_database\_test.py} is a {\it Python} script to test the functionality of the {\it bibtex\_database} class.
+	\item {\it entry} ({\tt entry.py}) class to represent each (instance of a) {\sc Bib}\TeX\ entry.
+	\item {\tt entry\_test.py} is a {\it Python} script to test the functionality of the {\it entry} class.
+	\item {\tt key\_check.py} is a {\it Python} script to check if each {\sc Bib}\TeX\ entry is valid.
+	\item {\tt key\_check\_test.py} is a {\it Python} script to test the functionality of the {\it Python} script {\tt key\_check.py}.
+	\item {\tt key\_frequency\_pairs.py} is a {\it Python} script to demonstrate how to sort a set of 2-tuples based on its first/former field and its second/last/latter field.
 	\end{enumerate}
 \item 
 \item 
-\item Inserting a horizontal line beneath this item in the list.
-\\ \rule{6in}{.1pt}
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
 \item 
 \item 
 \end{enumerate}
 
-List of items: \vspace{-0.3cm}
-\begin{itemize} \itemsep -4pt
-\item Blah
-\end{itemize}
 
-Description of items: \vspace{-0.3cm}
-\begin{description} \itemsep -4pt
-\item[Key] Sparse description: \vspace{-0.3cm}
-	\begin{description} \itemsep -2pt
-	\item[key] Another entry
-	\end{description}
-\end{description}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

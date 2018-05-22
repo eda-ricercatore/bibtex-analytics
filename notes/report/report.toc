@@ -1,4 +1,5 @@
 \contentsline {chapter}{Revision History}{i}{chapter*.1}
-\contentsline {chapter}{\numberline {1}Text}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Text}{3}{chapter.2}
-\contentsline {chapter}{Bibliography}{7}{appendix*.3}
+\contentsline {chapter}{\numberline {1}Organization of the {\sc Bib}T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m {}\ Analytics Repository}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Software Architecture of the {\sc Bib}T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m {}\ Analytics Project}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Future Work}{4}{chapter.3}
+\contentsline {chapter}{Bibliography}{5}{appendix*.3}
