@@ -5,7 +5,7 @@
 
 """
 	This is written by Zhiyang Ong to delint/remove BibTeX metadata
-		from my BibTeX database.
+		from a BibTeX database/file.
 
 	That is, it will create a clean BibTeX database from my "dirty"
 		BibTeX database.

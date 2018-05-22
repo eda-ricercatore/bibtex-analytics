@@ -4,8 +4,8 @@
 ###	#!/usr/bin/python -mtimeit
 
 """
-	This is written by Zhiyang Ong to display organizations from my
-		BibTeX entries, in my BibTeX database.
+	This is written by Zhiyang Ong to display a set of organizations
+		from BibTeX entries in a BibTeX database.
 
 
 

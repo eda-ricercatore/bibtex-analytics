@@ -4,8 +4,8 @@
 ###	#!/usr/bin/python -mtimeit
 
 """
-	This is written by Zhiyang Ong to display journal titles from
-		each BibTeX entry in a BibTeX database.
+	This is written by Zhiyang Ong to display a set of journal titles
+		from BibTeX entries in a BibTeX database.
 
 
 

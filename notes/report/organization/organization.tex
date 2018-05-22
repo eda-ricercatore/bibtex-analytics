@@ -36,9 +36,9 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item database \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item {\it bibtex\_database} ({\tt bibtex\_database.py}) class to represent a {\sc Bib}\TeX\ database of {\sc Bib}\TeX\ entries.
+	\item {\it bibtex\_database} ({\tt bibtex\_database.py}) class represents (each instance of) a {\sc Bib}\TeX\ database of {\sc Bib}\TeX\ entries.
 	\item {\tt bibtex\_database\_test.py} is a {\it Python} script to test the functionality of the {\it bibtex\_database} class.
-	\item {\it entry} ({\tt entry.py}) class to represent each (instance of a) {\sc Bib}\TeX\ entry.
+	\item {\it entry} ({\tt entry.py}) class represents each (instance of a) {\sc Bib}\TeX\ entry.
 	\item {\tt entry\_test.py} is a {\it Python} script to test the functionality of the {\it entry} class.
 	\item {\tt key\_check.py} is a {\it Python} script to check if each {\sc Bib}\TeX\ entry is valid.
 	\item {\tt key\_check\_test.py} is a {\it Python} script to test the functionality of the {\it Python} script {\tt key\_check.py}.
@@ -54,7 +54,7 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt incremental\_test.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item A {\it Python} script to incrementally test features for performing data analytics operations with {\sc Bib}\TeX\ files/databases.
+	\item A {\it Python} script to incrementally test features for performing reference management and data analytics operations with {\sc Bib}\TeX\ files/databases.
 	\end{enumerate}
 \item input: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
@@ -62,15 +62,15 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt institutions.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item A {\it Python} script to display institutions from each {\sc Bib}\TeX\ entry in a {\sc Bib}\TeX\ file/database.
+	\item A {\it Python} script to display a set of institutions from {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ file/database.
 	\end{enumerate}
 \item {\tt journal\_titles.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item A {\it Python} script to display journal titles from each {\sc Bib}\TeX\ entry in a {\sc Bib}\TeX\ database.
+	\item A {\it Python} script to display a set of journal titles from {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ database.
 	\end{enumerate}
 \item {\tt keywords\_display.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item A {\it Python} script to display keywords from each {\sc Bib}\TeX\ entry in a {\sc Bib}\TeX\ database.
+	\item A {\it Python} script to display a set of keywords from {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ database.
 	\end{enumerate}
 \item makefile: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
@@ -90,11 +90,11 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt organizations.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item 
+	\item A {\it Python} script to display a set of organizations from {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ database.
 	\end{enumerate}
 \item {\tt publishers.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item 
+	\item A {\it Python} script to display a set of publishers from {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ database.
 	\end{enumerate}
 \item {\tt readme.md}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
@@ -102,19 +102,19 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt rm\_bibtex\_metadata.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item 
+	\item A {\it Python} script to delint/remove {\sc Bib}\TeX\ metadata from a {\sc Bib}\TeX\ database/file.
 	\end{enumerate}
 \item sandbox: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item 
+	\item A set of {\it Python} scripts to test different concepts in {\it Python}.
 	\end{enumerate}
 \item statistics: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item 
+	\item {\tt test\_statistics\_tester.py} is a {\it Python} script to test the functionality of the {\it test\_statistics} class.	\item {\it test\_statistics} ({\tt test\_statistics.py}) class to perform statistical analysis on results of automated testing of a {\it Python} script.
 	\end{enumerate}
 \item {\tt tutti\_series.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item 
+	\item A {\it Python} script to display series from {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ database.
 	\end{enumerate}
 \item utilities: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
@@ -122,7 +122,7 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt validate\_url.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item 
+	\item {\tt file_io.py} is a {\it Python} script to perform input/output (I/O) operations on files, such as {\sc Bib}\TeX\ databases/files and \LaTeX documents.	\item {\tt queue_ip_arguments.py} is a {\it Python} script to process input arguments for a script to clean {\sc Bib}\TeX\ databases/files.
 	\end{enumerate}
 \item {\tt z\_booktitles.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
