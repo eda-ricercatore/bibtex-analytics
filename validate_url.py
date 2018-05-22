@@ -13,7 +13,7 @@
 	Synopsis:
 	For each BibTeX entry in the BibTeX database, check if it has the
 		"Bdsk-Url-1" (and "Bdsk-Url-2") field(s), and if the "Url"
-		(and Doi) field(s) is(/are) missing.
+		(and "Doi") field(s) is(/are) missing.
 
 	This script can be executed as follows:
 	./validate_url.py [input BibTeX file] [output BibTeX file] [-h]
