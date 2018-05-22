@@ -12,6 +12,13 @@ My *BibTeX* database is a large set of *BibTeX* entries.
 
 [A report describing the organization of this repository and the software
 	architecture of the *Python*-based software for *BibTeX Analytics*.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/report/report.pdf)
++ It provides reference management of large *BibTeX* databases, including those
+	that are greater than 20 MB or have more than 15 thousand *BibTeX* entries.
++ It performs data analytics on *BibTeX* entries in a given *BibTeX* database to
+	detect emerging research trends and megatrends.
+
+
+
 
 [A set of guidelines for potential and current collaborators.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/guidelines/guidelines.pdf)
 
