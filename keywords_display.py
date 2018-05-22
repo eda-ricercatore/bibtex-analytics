@@ -4,8 +4,8 @@
 ###	#!/usr/bin/python -mtimeit
 
 """
-	This is written by Zhiyang Ong to display keywords from my BibTeX
-		entries, in my BibTeX database.
+	This is written by Zhiyang Ong to display keywords from each
+		BibTeX entry in a BibTeX database.
 
 
 
