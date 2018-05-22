@@ -3,8 +3,24 @@
 This set of scripts is to perform data analytics operations on my *BibTeX*
 	database, and to clean it up.
 
+
+
 My *BibTeX* database is a large set of *BibTeX* entries.
 	Each *BibTeX* entry references a (research) publication.
+
+
+
+[A report describing the organization of this repository and the software
+	architecture of the *Python*-based software for *BibTeX Analytics*.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/report/report.pdf)
+
+[A set of guidelines for potential and current collaborators.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/guidelines/guidelines.pdf)
+
+
+
+---
+
+Old notes about the organization of this repository.
+
 
 It contains the following scripts:
 + queue_ip_arguments.py
@@ -138,7 +154,7 @@ I can develop *Python* scripts to do the following:
 	- ./uncomment_latex_src_files.py [dirty LaTeX source files] [clean LaTeX source files]
 	- Remove comments from LaTeX source files. Non importante.
 
-
+[See the report for an updated description of future work for the *BibTeX Analytics* project.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/report/report.pdf)
 
 
 
