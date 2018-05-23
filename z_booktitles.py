@@ -4,8 +4,8 @@
 ###	#!/usr/bin/python -mtimeit
 
 """
-	This is written by Zhiyang Ong to display booktitles from my
-		BibTeX entries, in my BibTeX database.
+	This is written by Zhiyang Ong to display booktitles from all
+		BibTeX entries in a BibTeX database.
 
 
 
