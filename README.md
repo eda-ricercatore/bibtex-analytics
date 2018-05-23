@@ -35,7 +35,7 @@ It contains the following scripts:
 	- No input nor output required.
 	- A *Python* script to perform automated regression testing of the *Python* scripts for validating
 		and cleaning *BibTeX* files, and *BibTeX* analytics.
-	- **Deprecated.**
+	- **Sort of deprecated.** Still works though.
 + duplicate_BibTeX_entries.py
 	- Run as: **./duplicate_BibTeX_entries.py [-h] [BibTeX file]**
 	- A *Python* script to determine if duplicate BibTeX entries exist in my BibTeX
