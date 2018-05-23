@@ -30,12 +30,11 @@ Old notes about the organization of this repository.
 
 
 It contains the following scripts:
-+ queue_ip_arguments.py
-	- Not executed as a script. Part of my custom *Python* Library.
-	- *Python* script to process input arguments for *Python* scripts.
-+ file_io.py
-	- Not executed as a script. Part of my custom *Python* Library.
-	- *Python* script to perform input/output (I/O) operations on files. 
++ automated_regression_testing.py
+	- ./automated_regression_testing.py
+	- No input nor output required.
+	- Perform regression testing on the Python scripts for validating
+		and cleaning BibTeX files.
 + duplicate_BibTeX_entries.py
 	- ./duplicate_BibTeX_entries.py [BibTeX file] [-h]
 	- Determine if duplicate BibTeX entries exist in my BibTeX
@@ -44,6 +43,10 @@ It contains the following scripts:
 		that is found.
 	- No output required.
 	- IMPORTANT
++ incremental_test.py
+	- ./incremental_test.py [input BibTeX file]
+	- Perform incremental software testing automatically for my script(s) that
+		perform data analytics operations with my BibTeX database.
 + validate_url.py
 	- ./validate_url.py [input BibTeX file] [output BibTeX file] [-h]
 	- Validate the URL field of BibTeX entries in my BibTeX database.
@@ -52,46 +55,15 @@ It contains the following scripts:
 		entry, add URL/DOI entry.
 	- No output required.
 	- IMPORTANT
-+ clean_bibtex.py
-	- ./clean_bibtex.py [input BibTeX file] [output BibTeX file] [-h]
-	- Remove metadata from each BibTeX entry.
-	- Transform non-standard BibTeX entry types to standard BibTeX
-		entry types.
-	- Remove comments from LaTeX source files.
 + rm_bibtex_metadata.py
 	- ./rm_bibtex_metadata.py [input BibTeX file] [output BibTeX file]
 	- Remove metadata from each BibTeX entry.
-+ incremental_test.py
-	- ./incremental_test.py [input BibTeX file]
-	- Perform incremental software testing automatically for my script(s) that
-		perform data analytics operations with my BibTeX database.
-+ z-altri-BibTeX-operazioni.py
-	- Perform miscellaneous tasks to clean up the BibTeX file.
-	- Check if the ampersand is surrounded by curly braces and set
-		to the normal (non-Italics) font.
-	- For each conference, check if its abbreviation is placed within
-		round brackets after the title of the conference proceedings.
-	  Check if there is no comma between the title and the
-		abbreviation.
-	- Write a script to extract the keywords from the BibTeX
-		repository, arrange them in alphabetical order, and pipe them
-		to an output file.
-	- Check if the addresses of the publications have the U.S. states
-		in capital letters.
-		If I use abbreviations for states and territories in Australia
-		and Canada, do likewise.
-		For publications outside the U.S., (and Australia and Canada),
-		ignore this.
-	- Check if DOIs and/or URL fields are missing, if the following
-		fields (metadata for BibDesk) exists:
-		- "Bdsk-Url-1". 
-+ automated_regression_testing.py
-	- ./automated_regression_testing.py
-	- No input nor output required.
-	- Perform regression testing on the Python scripts for validating
-		and cleaning BibTeX files.
-+ Additional filenames that I can use:
-	- purify_bibtex.py
+
+
+
+
+
+
 
 
 
@@ -147,6 +119,30 @@ The set of *BibTeX* benchmarks that I have used to test
 
 #	Future Work
 
+
++ Perform miscellaneous tasks to clean up the BibTeX file.
++ Check if the ampersand is surrounded by curly braces and set to the normal
+	(non-Italics) font.
++ For each conference, check if its abbreviation is placed within
+		round brackets after the title of the conference proceedings.
+	  Check if there is no comma between the title and the
+		abbreviation.
++ Write a script to extract the keywords from the BibTeX
+		repository, arrange them in alphabetical order, and pipe them
+		to an output file.
++ Check if the addresses of the publications have the U.S. states in capital letters.
+	- If I use abbreviations for states and territories in Australia and Canada, do
+		likewise.
+	- For publications outside the U.S., (and Australia and Canada), ignore this.
++ Check if DOIs and/or URL fields are missing, if the following fields (metadata
+	for BibDesk) exists:
+	- "Bdsk-Url-1". 
+
+
+
+
+
+
 I can develop *Python* scripts to do the following:
 + extract_citations.py
 	- ./extract_citations.py [LaTeX sources] [BibTeX output]
@@ -160,6 +156,9 @@ I can develop *Python* scripts to do the following:
 + uncomment_latex_src_files.py
 	- ./uncomment_latex_src_files.py [dirty LaTeX source files] [clean LaTeX source files]
 	- Remove comments from LaTeX source files. Non importante.
+
+
+
 
 [See the report for an updated description of future work for the *BibTeX Analytics* project.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/report/report.pdf)
 

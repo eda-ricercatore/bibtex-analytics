@@ -58,7 +58,7 @@ REMOVE=			rm -rf
 
 # =============================================================
 #	Compile.
-all:
+asy:
 	asy -f pdf sw-arch.asy
 	open *.pdf
 
@@ -73,23 +73,29 @@ try:
 # =============================================================
 #	Remove temporary files.
 clean:
-
+	$(REMOVE)	$(EPSFILES)
 
 
 
 #	java -jar plantuml.1.2018.6.jar -tpdf sw-arch.uml
 #	java -jar plantuml.jar -tpdf sw-arch.uml
+#	ln -s /Applications/apps/graphics/metapost-1.102/build/texk/web2c/mpdir/mpost mpost
+#	alias plantuml='java -jar /Applications/apps/graphics/plantuml/plantuml.1.2018.6.jar -tpdf'
 # =============================================================
 #	Generate the PDF image of the software architecture.
-arch:
-	$(JAVA)	$(JAR)	$(PLANTUML)	$(SOURCE)	$(EPS)
+eps:
+	$(JAVA)	$(JAR)	$(PLANTUML)	$(EPS)	$(SOURCE)
 	$(EPS2PDF)	$(EPSFILES)
 	$(OPEN)	$(PDFFILES)
 	$(REMOVE)	$(EPSFILES)
 
 
 
-
+# =============================================================
+#	Generate the PDF image of the software architecture.
+arch:
+	$(JAVA)	$(JAR)	$(PLANTUML)	$(PDF)	$(SOURCE)
+	$(OPEN)	$(PDFFILES)
 
 
 

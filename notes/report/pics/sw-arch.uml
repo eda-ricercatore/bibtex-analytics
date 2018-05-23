@@ -18,10 +18,11 @@
  ' Initial class diagram
  '/
 @startuml
-class Car
+class bibtex_database
 
-Driver - Car : drives >
-Car *- Wheel : have 4 >
+front_end - bibtex_entry : instantiates >
+front_end - bibtex_database : transfers ownership of bibtex_entry instances >
+bibtex_database *- Wheel : have 4 >
 Car -- Person : < owns
 
 @enduml
