@@ -111,6 +111,8 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt rm\_bibtex\_metadata.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
+	\item 
+	\item {\it [output BibTeX file]} is an optional parameter.
 	\item A {\it Python} script to delint/remove {\sc Bib}\TeX\ metadata from a {\sc Bib}\TeX\ database/file.
 	\end{enumerate}
 \item sandbox: \vspace{-0.3cm}
@@ -124,7 +126,7 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt tutti\_series.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item Run as: {\it ./tutti_series.py [input BibTeX file] [-h]}
+	\item Run as: {\it ./tutti\_series.py [input BibTeX file] [-h]}
 	\item A {\it Python} script to display series from {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ database.
 	\end{enumerate}
 \item utilities: \vspace{-0.3cm}
@@ -134,11 +136,13 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\end{enumerate}
 \item {\tt validate\_url.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
+	\item Run as: {\bf ./validate\_url.py [input BibTeX file] [output BibTeX file] [-h]}
+	\item {\it [output BibTeX file]} is an optional parameter.
 	\item A {\it Python} script to check each BibTeX entry in a BibTeX database if it has the non-standard {\sc Bib}\TeX\ field(s) ``Bdsk-Url-1'' (and ``Bdsk-Url-2''), and if the ``Url'' (and ``Doi'') field(s) is(/are) missing; if these conditions are true, copy their values to the ``Url'' BibTeX field (and ``Doi'' field, if it is a DOI).
 	\end{enumerate}
 \item {\tt z\_booktitles.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
-	\item Run as: {\bf ./z_booktitles.py [input BibTeX file] [-h]}
+	\item Run as: {\bf ./z\_booktitles.py [input BibTeX file] [-h]}
 	\item A {\it Python} script to display booktitles from all {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ database.
 	\end{enumerate}
 \end{enumerate}
