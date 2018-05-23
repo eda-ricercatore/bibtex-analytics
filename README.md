@@ -56,18 +56,36 @@ It contains the following scripts:
 + institutions.py
 	- Run as: **./institutions.py [input BibTeX file] [-h]**
 	- A *Python* script to display a set of institutions from *BibTeX* entries in a *BibTeX* file/database.
++ journal_titles.py
+	- Run as: **./journal_titles.py [input BibTeX file] [-h]**
+	- A *Python* script to display a set of journal titles from *BibTeX* entries in a *BibTeX* database.
++ keywords_display.py
+	- Run as: **./keywords_display.py [input BibTeX file] [-h]**
+	- A *Python* script to display a set of keywords/keyphrases from *BibTeX* entries in a BibTeX* database.
++ organizations.py
+	- Run as: **./organizations.py [input BibTeX file] [-h]**
+	- A *Python* script to display a set of organizations from *BibTeX* entries in a *BibTeX* database.
++ publishers.py
+	- Run as: **./publishers.py [input BibTeX file] [-h]**
+	- A *Python* script to display a set of publishers from *BibTeX* entries in a *BibTeX* database.
++ rm_bibtex_metadata.py
+	- Run as: **./rm_bibtex_metadata.py [input BibTeX file] [output BibTeX file] [-h]**
+	- *[output BibTeX file]* is an optional parameter.
+	- A *Python* script to delint/remove *BibTeX* metadata from a *BibTeX* database/file.
++ tutti_series.py
+	- Run as: **./tutti_series.py [input BibTeX file] [-h]**
+	- A *Python* script to display series from *BibTeX* entries in a *BibTeX* database.
 + validate_url.py
-	- ./validate_url.py [input BibTeX file] [output BibTeX file] [-h]
+	- Run as: **./validate_url.py [input BibTeX file] [output BibTeX file] [-h]**
 	- Validate the URL field of BibTeX entries in my BibTeX database.
 	- Validate the DOI field of BibTeX entries in my BibTeX database.
 	- If there exists backup URL and there does not exist any URL/DOI
 		entry, add URL/DOI entry.
 	- No output required.
 	- IMPORTANT
-+ rm_bibtex_metadata.py
-	- ./rm_bibtex_metadata.py [input BibTeX file] [output BibTeX file]
-	- Remove metadata from each BibTeX entry.
-
++ z_booktitles.py
+	- Run as: **./z_booktitles.py [input BibTeX file] [-h]**
+	- A *Python* script to display booktitles from all *BibTeX* entries in a *BibTeX* database.
 
 
 
