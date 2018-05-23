@@ -53,6 +53,9 @@ It contains the following scripts:
 	- Perform incremental software testing automatically for my script(s) that
 		perform data analytics operations with my BibTeX database.
 	- **Debug how it handles zero input options/arguments.**
++ institutions.py
+	- Run as: **./institutions.py [input BibTeX file] [-h]**
+	- A *Python* script to display a set of institutions from *BibTeX* entries in a *BibTeX* file/database.
 + validate_url.py
 	- ./validate_url.py [input BibTeX file] [output BibTeX file] [-h]
 	- Validate the URL field of BibTeX entries in my BibTeX database.
