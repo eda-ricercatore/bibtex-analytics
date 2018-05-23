@@ -24,14 +24,17 @@
 		+ duplicated BibTeX entries.
 		+ metadata in any BibTeX entry in the file.
 		+ BibTeX entries that are not cited in the (working) document.
+		+ Optional
 	[clean-BibTeX-file]
 		A BibTeX file that should not have the following:
 		+ duplicated BibTeX entries.
 		+ metadata in any BibTeX entry in the file.
 		+ BibTeX entries that are not cited in the (working) document.
+		+ Optional
 	[directory of LaTeX source files]
 		A directory where the LaTeX source files of a (working)
 			document are located.
+		+ Optional
 """
 
 #	The MIT License (MIT)

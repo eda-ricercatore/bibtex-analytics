@@ -31,22 +31,28 @@ Old notes about the organization of this repository.
 
 It contains the following scripts:
 + automated_regression_testing.py
-	- ./automated_regression_testing.py
+	- Run as: **./automated_regression_testing.py**
 	- No input nor output required.
-	- Perform regression testing on the Python scripts for validating
-		and cleaning BibTeX files.
+	- A *Python* script to perform automated regression testing of the *Python* scripts for validating
+		and cleaning *BibTeX* files, and *BibTeX* analytics.
+	- **Deprecated.**
 + duplicate_BibTeX_entries.py
-	- ./duplicate_BibTeX_entries.py [BibTeX file] [-h]
-	- Determine if duplicate BibTeX entries exist in my BibTeX
+	- Run as: **./duplicate_BibTeX_entries.py [-h] [BibTeX file]**
+	- A *Python* script to determine if duplicate BibTeX entries exist in my BibTeX
 		database.
-	- Reports the existence of any non-standard BibTeX entry type
+	- The script reports the existence of any non-standard BibTeX entry type
 		that is found.
 	- No output required.
 	- IMPORTANT
++ editions.py
+	- Run as: **./editions.py [input BibTeX file] [-h]**
+	- A *Python* script to display a set of editions from *BibTeX* entries in a
+		*BibTeX* database.
 + incremental_test.py
-	- ./incremental_test.py [input BibTeX file]
+	- Run as: **./incremental_test.py [input BibTeX file]**
 	- Perform incremental software testing automatically for my script(s) that
 		perform data analytics operations with my BibTeX database.
+	- **Debug how it handles zero input options/arguments.**
 + validate_url.py
 	- ./validate_url.py [input BibTeX file] [output BibTeX file] [-h]
 	- Validate the URL field of BibTeX entries in my BibTeX database.

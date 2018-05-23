@@ -15,7 +15,7 @@
 		the location of their existence (if they exist).
 
 	This script can be executed as follows:
-	./duplicate-BibTeX-entries.py [input BibTeX file]
+	./duplicate_BibTeX_entries.py [-h] [BibTeX file]
 
 	Parameters:
 	[input BibTeX file]:	A BibTeX file that may have duplicate
