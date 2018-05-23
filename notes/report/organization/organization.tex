@@ -26,6 +26,19 @@ The main deliverables of the {\sc Bib}\TeX\ {\it Analytics} project are a {\it P
 
 The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described as follows: \vspace{-0.3cm}
 \begin{enumerate} \itemsep -4pt
+\item analysis: \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item Scripts to analyze {\sc Bib}\TeX\ databases: \vspace{-0.2cm}
+		\begin{enumerate} \itemsep -2pt
+		\item To remove metadata from them.
+		\item To determine the set of keywords/keyphrases from their {\sc Bib}\TeX\ entries.
+		\item To determine the set of publishers from their {\sc Bib}\TeX\ entries.
+		\item To determine the set of series from their {\sc Bib}\TeX\ entries.
+		\item To determine the set of journals from their {\sc Bib}\TeX\ entries.
+		\item To determine the set of authors from their {\sc Bib}\TeX\ entries.
+		\item To determine the set of year from their {\sc Bib}\TeX\ entries.
+		\end{enumerate}
+	\end{enumerate}
 \item {\tt automated\_regression\_testing.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
 	\item Run as: {\bf ./automated\_regression\_testing.py}
@@ -56,6 +69,10 @@ The organization of the {\sc Bib}\TeX\ {\it Analytics} repository is described a
 	\begin{enumerate} \itemsep -2pt
 	\item Run as: {\bf ./editions.py [input BibTeX file] [-h]}
 	\item A {\it Python} script to display a set of editions from all the {\sc Bib}\TeX\ entries in a {\sc Bib}\TeX\ file/database.
+	\end{enumerate}
+\item front\_end: \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item Parse input {\sc Bib}\TeX\ files, create {\sc Bib}\TeX\ entries (i.e., instances of {\it entry}), and insert them into the {\sc Bib}\TeX\ database, an instance of {\it bibtex\_database.py}.
 	\end{enumerate}
 \item {\tt incremental\_test.py}: \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
