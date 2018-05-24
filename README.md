@@ -146,6 +146,8 @@ The set of *BibTeX* benchmarks that I have used to test
 
 #	Future Work
 
+Complete the work on data analytics, including predictive analytics.
+
 
 + Perform miscellaneous tasks to clean up the BibTeX file.
 + Check if the ampersand is surrounded by curly braces and set to the normal

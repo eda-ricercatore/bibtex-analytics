@@ -34,16 +34,69 @@ Future work of the {\sc Bib}\TeX\ {\it Analytics} project is described as follow
 	\item Alternate solution: \vspace{-0.2cm}
 		\begin{enumerate} \itemsep -2pt
 		\item Build a set of {\it (keyphrase, [list of years])} lists.
-		\item {\it [list of years]} is a list of years of publications; or it is a set of years for publications that include the keyphrase {\it keyphrase}.
+		\item {\it [list of years]} is a list of years of publications; or it is a set of years for publications that include the keyphrase {\it keyphrase} in its set of keyphrases.
 		\item Sort the set based on length of the list of years, {\it [list of years]}.
 		\end{enumerate}
+	\item If possible, visualize the data for this.
+	\item Alternate solution: \vspace{-0.2cm}
+		\begin{enumerate} \itemsep -2pt
+		\item For each {\sc Bib}\TeX\ entry, there exists a set/cluster of keyphrases.
+		\item Find overlaps/intersections between these sets.
+		\item E.g., for each set of keyphrases (associated with a publication) with at least three (i.e., more than two) terms, build a list of non-empty overlaps.
+		\item Find the largest intersecting subset among the non-disjoint sets. Or, find the top 5-10 most common overlaps.
+		\item Refer to books on data visualization for information on visualizing this.
+		\item Also, refer to this technical report from Stanford, ``Union-member algorithms for non-disjoint sets.'' See \url{https://dl.acm.org/citation.cfm?id=892212}.
+		\end{enumerate}
+	\item Compare problem with common subexpression elimination in compiler design, and maximum clique covering problem,
+	\item The more common/frequent the subsets are, the hotter the subsets are.
+	\item Therefore, find the most frequent intersection. And/or, the greatest intersection.
+	\item Problem restated: For each keyphrase, find the largest intersection it has with all the other sets containing the keyword.
+	\item That is, capture the largest intersection(s) and map it(/them). This is because multiple sets of the same size could exists. Note that the $2^{\rm nd}/3^{\rm rd}$ largest intersections includes the largest intersection(s) minus 1 (or 2) term(s).
+	\item Find overlaps/intersections between these overlaps/intersections.
 	\end{enumerate}
-\item 
-\item 
-\item 
-\item 
-\item 
-\item 
+\item Classification: \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item Classify each keyphrase/topic into hot or not.
+	\item Classify each author into hot or not.
+	\item Note that since the size of my {\sc Bib}\TeX\ database is small, but significant, compared to reality, put these results of classification into proper perspective.
+	\end{enumerate}
+\item Predictive analytics: \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item Recognize trends, predict trends.
+	\item For the last 5 (or 8) years, find the (emerging) trends of hot topics.
+	\end{enumerate}
+\item Perform miscellaneous tasks to clean up the {\sc Bib}\TeX\ file.
+\item Check if the ampersand is surrounded by curly braces and set to the normal (non-Italics) font.
+\item For each conference proceedings, check if its abbreviation is placed within round brackets after the title of the conference proceedings. Also, Check if there is no comma between the title and the abbreviation.
+\item Write a script to extract the keywords from the {\sc Bib}\TeX\ repository, arrange them in alphabetical order, and pipe them to an output file.
+\item Check if the addresses of the publications have the U.S. states in capital letters.: \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item If I use abbreviations for states and territories in Australia and Canada, do likewise.
+	\item For publications outside the U.S., (and Australia and Canada), ignore this.
+	\end{enumerate}
+\item Check if DOIs and/or URL fields are missing, if the following fields (metadata for {\it BibDesk}) exists: \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item Bdsk-Url-1
+	\end{enumerate}
+\item Additional tasks: \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item {\tt extract\_citations.py}: \vspace{-0.2cm}
+		\begin{enumerate} \itemsep -2pt
+		\item Run as: {\it ./extract\_citations.py [LaTeX sources] [BibTeX output]}
+		\item Produces an intermediate output, which is a set of {\sc Bib}\TeX\ keys that uniquely identifies a matching {\sc Bib}\TeX\ entry in my {\sc Bib}\TeX\ database.
+		\end{enumerate}
+	\item {\tt not\_defined\_references.py}: \vspace{-0.2cm}
+		\begin{enumerate} \itemsep -2pt
+		\item Run as: {\bf ./not\_defined\_references.py  [LaTeX sources] [BibTeX input]}
+		\item Check if this citation uses a undefined reference
+		\item No output required.
+		\end{enumerate}
+	\item {\tt uncomment\_latex\_src\_files.py}: \vspace{-0.2cm}
+		\begin{enumerate} \itemsep -2pt
+		\item Run as: {\bf ./uncomment\_latex\_src\_files.py [dirty LaTeX source files] [clean LaTeX source files]}
+		\item Remove comments from \LaTeX\ source files. Non importante.
+		\end{enumerate}
+	\end{enumerate}
 \item Find emerging research trends to consider pivoting towards, or to get involved in side projects \vspace{-0.3cm}
 	\begin{enumerate} \itemsep -2pt
 	\item E.g., benchmark adiabatic quantum computers with topological computers and universal quantum computers \cite{Tandon2017}.
