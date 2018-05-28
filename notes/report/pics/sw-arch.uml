@@ -20,9 +20,16 @@
 @startuml
 class bibtex_database
 
-front_end - bibtex_entry : instantiates >
-front_end - bibtex_database : transfers ownership of bibtex_entry instances >
-bibtex_database *- Wheel : have 4 >
-Car -- Person : < owns
+package front_end {
+	parser - bibtex_entry : instantiates > 
+	parser - bibtex_database : transfers ownership of bibtex_entry instances >
+}
+
+package database {
+	bibtex_database *- Wheel : have 4 >
+Car -- Person : < owns	
+}
+
+
 
 @enduml

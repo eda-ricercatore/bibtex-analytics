@@ -149,14 +149,16 @@ The set of *BibTeX* benchmarks that I have used to test
 Complete the work on data analytics, including predictive analytics.
 
 
-+ Perform miscellaneous tasks to clean up the BibTeX file.
++ For a given keyphrase, provide a list of *BibTeX* entries that contain that
+	keyphrase in their keyword *BibTeX* field.
++ Perform miscellaneous tasks to clean up the *BibTeX* file.
 + Check if the ampersand is surrounded by curly braces and set to the normal
 	(non-Italics) font.
 + For each conference, check if its abbreviation is placed within
 		round brackets after the title of the conference proceedings.
 	  Check if there is no comma between the title and the
 		abbreviation.
-+ Write a script to extract the keywords from the BibTeX
++ Write a script to extract the keywords from the *BibTeX*
 		repository, arrange them in alphabetical order, and pipe them
 		to an output file.
 + Check if the addresses of the publications have the U.S. states in capital letters.
@@ -164,7 +166,7 @@ Complete the work on data analytics, including predictive analytics.
 		likewise.
 	- For publications outside the U.S., (and Australia and Canada), ignore this.
 + Check if DOIs and/or URL fields are missing, if the following fields (metadata
-	for BibDesk) exists:
+	for *BibDesk*) exists:
 	- "Bdsk-Url-1". 
 
 
@@ -176,7 +178,7 @@ I can develop *Python* scripts to do the following:
 + extract_citations.py
 	- ./extract_citations.py [LaTeX sources] [BibTeX output]
 	- Produces an intermediate output, which is a set of BibTeX keys
-		that uniquely identifies a matching BibTeX entry in my BibTeX
+		that uniquely identifies a matching *BibTeX* entry in my *BibTeX*
 		database.
 + not_defined_references.py
 	- ./not_defined_references.py  [LaTeX sources] [BibTeX input]
@@ -184,7 +186,7 @@ I can develop *Python* scripts to do the following:
 	- No output required.
 + uncomment_latex_src_files.py
 	- ./uncomment_latex_src_files.py [dirty LaTeX source files] [clean LaTeX source files]
-	- Remove comments from LaTeX source files. Non importante.
+	- Remove comments from *LaTeX* source files. Non importante.
 
 
 
