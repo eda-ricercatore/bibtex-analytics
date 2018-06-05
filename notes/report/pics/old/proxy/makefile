@@ -19,8 +19,8 @@
 # Definition of macro flags...
 
 #	Location of the program "PlantUML."
-#PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.1.2018.6.jar
-PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.jar
+PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.1.2018.6.jar
+#PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.jar
 #	PlantUML options.
 PDF=			-tpdf
 EPS=			-teps
@@ -111,9 +111,6 @@ eps:
 
 # =============================================================
 #	Generate the PDF image of script to check the PlantUML version.
-#	The alternate script using the proxy command runs something in
-#		the Java Virtual Machine & hangs.
-#	DO NOT USE THAT SCRIPT: check-version-proxy.uml.
 version:
 	$(JAVA)	$(JAR)	$(PLANTUML)	$(EPS)	check-version.uml
 	$(EPS2PDF)	check-version.eps

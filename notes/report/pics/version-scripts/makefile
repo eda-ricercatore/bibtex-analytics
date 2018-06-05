@@ -19,8 +19,8 @@
 # Definition of macro flags...
 
 #	Location of the program "PlantUML."
-#PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.1.2018.6.jar
-PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.jar
+PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.1.2018.6.jar
+#PLANTUML=		/Applications/apps/graphics/plantuml/plantuml.jar
 #	PlantUML options.
 PDF=			-tpdf
 EPS=			-teps
@@ -119,22 +119,6 @@ version:
 	$(EPS2PDF)	check-version.eps
 	$(OPEN)	$(PDFFILES)
 	$(REMOVE)	$(EPSFILES)
-
-
-
-# =============================================================
-#	Generate the PDF image of the software architecture.
-arch:
-	$(JAVA)	$(JAR)	$(PLANTUML)	$(PDF)	$(SOURCE)
-	$(OPEN)	$(PDFFILES)
-
-
-
-# =============================================================
-#	Generate the PDF image of the software architecture.
-patch:
-	$(JAVA)	$(PATCH)	$(JAR)	$(PLANTUML)	$(PDF)	$(SOURCE)
-	$(OPEN)	$(PDFFILES)
 
 
 

@@ -1,4 +1,4 @@
-'	This PlantUML script is written by Zhiyang Ong for declaratively specifying the class diagram for the BibTeX reference manager; this class diagram shall be included in his project report.
+'	This PlantUML script is written by Zhiyang Ong for checking the version of PlantUML, via a proxy.
 
 '	The MIT License (MIT)
 
@@ -15,51 +15,8 @@
 
 
 /'
- ' Initial class diagram
+ ' Checking the version of PlantUML, via a proxy.
  '/
 @startuml
-
-package front_end {
-	class preprocessor
-	class parser
-}
-
-package database {
-	class bibtex_database
-	class bibtex_entry
-}
-
-
-package analysis {
-	class bibtex_analysis
-}
-
-package data_analytics {
-	class analytics_engine
-	class clustering
-	class classification
-	class prediction
-}
-
-package backend {
-	class output_manager
-}
-
-parser <.. preprocessor
-bibtex_entry "0..*" --* "1" bibtex_database : owned by
-parser --> bibtex_database : transfers ownership of bibtex_entry instances >
-parser --> bibtex_entry : instantiates >
-preprocessor --> bibtex_analysis
-preprocessor --> analytics_engine
-bibtex_analysis --> output_manager
-analytics_engine --> clustering
-analytics_engine --> classification
-analytics_engine --> prediction
-clustering --> output_manager
-classification --> output_manager
-prediction --> output_manager
-clustering --> bibtex_database
-classification --> bibtex_database
-prediction --> bibtex_database
-
+checkversion(proxy=myproxy.com,port=8080)
 @enduml

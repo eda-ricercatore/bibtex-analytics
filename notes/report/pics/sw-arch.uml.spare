@@ -17,6 +17,55 @@
 /'
  ' Initial class diagram
  '/
+
+
+/'
+@startuml
+
+package front_end {
+	parser <.. preprocessor
+}
+
+package database {
+	bibtex_entry --* bibtex_database : have >= 0
+	parser --> bibtex_database : instantiates >
+	parser --> bibtex_entry : transfers ownership of bibtex_entry instances >
+}
+
+
+package analysis {
+	preprocessor --> bibtex_analysis
+}
+
+package data_analytics {
+	preprocessor --> analytics_engine
+}
+
+package backend {
+	bibtex_analysis --> output_manager : have 4 >
+}
+
+
+
+
+@enduml
+'/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @startuml
 
 package front_end {
