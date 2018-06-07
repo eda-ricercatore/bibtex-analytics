@@ -21,15 +21,41 @@
 \label{chp:SoftwareArchitectureOfTheBibTeXAnalyticsProject}
 
 
+Figure \ref{fig:SoftwareArchitecture} shows the software architecture of the {\sc Bib}\TeX\ {\it Analytics} project. It shows the different packages of the {\sc Bib}\TeX\ {\it Analytics} project, as well as the classes in each package. \\
+
+\begin{figure}[h]
+\centering 
+\includegraphics[height=4in]{pics/sw-arch/sw-arch}
+\caption{Software architecture of the {\sc Bib}\TeX\ {\it Analytics} project.}
+\label{fig:SoftwareArchitecture}
+\end{figure}
+
+The {\tt front\_end} package performs the following operations: interacts with the {\tt utilities} package to process command-line input arguments from the user and parse a {\sc Bib}\TeX\ file, instantiates a {\tt bibtex\_database} object to contain instances of {\tt bibtex\_entry} objects, instantiates a {\tt bibtex\_entry} object for each {\sc Bib}\TeX\ entry in the {\sc Bib}\TeX\ file, and passes {\tt bibtex\_entry} objects to the {\tt bibtex\_database} object for storage. Hence, this package also interacts with the {\tt database} package. Using input from the command-line input arguments, it either calls static methods of classes in the {\tt data\_analytics} package or the {\tt analysis} package. \\
+
+When objects in the {\tt data\_analytics} package or the {\tt analysis} package performs operations specified by the command-line input arguments, it interacts with the {\tt bibtex\_database} object in the {\tt database} package to access required information to perform the aforementioned operations. When these operations are completed, objects from either of these packages, {\tt data\_analytics} or {\tt analysis}, pass the computation results to the {\tt output\_manager} in the {\tt backend} package. The {\tt output\_manager} either prints the computation results to a text file in the current working directory or to standard output for display on the {\it Terminal} application. \\
+
+In the {\tt utilities} package, the {\tt queue\_ip\_argument} class has static methods to process command-line input arguments from the user. Likewise, the {\tt file\_io} class has static methods to process an input {\sc Bib}\TeX\ file, which is specified by the user in the command line. \\
+
+Regarding the {\tt data\_analytics}
+
+Figure \ref{fig:SoftwareArchitectureWithHigherCoupling} with highly coupled {\tt test\_statistics} class.
 
 
-Software Architecture of the {\sc Bib}\TeX\ {\it Analytics} Project
 
 
 
 
 
 
+
+
+
+\begin{figure}[h]
+\centering 
+\includegraphics[height=3.5in]{pics/sw-arch-higher-coupling/sw-arch}
+\caption{Software architecture of the {\sc Bib}\TeX\ {\it Analytics} project, with highly coupled {\it test\_statistics} class.}
+\label{fig:SoftwareArchitectureWithHigherCoupling}
+\end{figure}
 
 
 

@@ -41,9 +41,23 @@ package data_analytics {
 	class prediction
 }
 
+
+package utilities {
+	class file_io
+	class queue_ip_arguments
+}
+
+package statistics {
+	class test_statistics
+}
+
+
+
+
 package backend {
 	class output_manager
 }
+
 
 parser <.. preprocessor
 bibtex_entry "0..*" --* "1" bibtex_database : owned by
@@ -61,5 +75,19 @@ prediction --> output_manager
 clustering --> bibtex_database
 classification --> bibtex_database
 prediction --> bibtex_database
+file_io ..> preprocessor
+queue_ip_arguments ..> preprocessor
+
+test_statistics <-- preprocessor
+test_statistics <-- parser
+test_statistics <-- bibtex_entry
+test_statistics <-- bibtex_database
+test_statistics <-- bibtex_analysis
+test_statistics <-- analytics_engine
+test_statistics <-- clustering
+test_statistics <-- classification
+test_statistics <-- prediction
+test_statistics <-- output_manager
+
 
 @enduml
