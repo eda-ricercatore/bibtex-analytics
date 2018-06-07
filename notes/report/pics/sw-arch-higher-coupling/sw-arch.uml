@@ -19,6 +19,7 @@
  '/
 @startuml
 
+'	Specify packages and its classes of the software.
 package front_end {
 	class preprocessor
 	class parser
@@ -58,7 +59,7 @@ package backend {
 	class output_manager
 }
 
-
+'	Specify instance-level relationships between classes.
 parser <.. preprocessor
 bibtex_entry "0..*" --* "1" bibtex_database : owned by
 parser --> bibtex_database : transfers ownership of bibtex_entry instances >
@@ -78,6 +79,10 @@ prediction --> bibtex_database
 file_io ..> preprocessor
 queue_ip_arguments ..> preprocessor
 
+/'
+	Highly coupled module "test_statistics" to other classes in the
+		software.
+ '/
 test_statistics <-- preprocessor
 test_statistics <-- parser
 test_statistics <-- bibtex_entry
