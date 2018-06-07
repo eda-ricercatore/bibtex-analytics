@@ -76,7 +76,7 @@ prediction --> output_manager
 clustering --> bibtex_database
 classification --> bibtex_database
 prediction --> bibtex_database
-file_io ..> preprocessor
+file_io -- parser
 queue_ip_arguments ..> preprocessor
 
 /'
