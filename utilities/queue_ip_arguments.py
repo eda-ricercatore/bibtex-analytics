@@ -99,6 +99,7 @@ class queue_ip_args:
 	# Index for the script that is currently executed.
 	CURRENT_SCRIPT = "No script is currently being executed." 
 	# "Constant"s for navigating types of help in the "user manual".
+	INCREMENTAL_TEST = "incremental_test.py"
 	DUPLICATE_ENTRIES = "duplicate_BibTeX_entries.py"
 	EXTRACT_BIBTEX_KEYS = "extract_citations.py"
 	KEYWORDS_DISPLAY = "keywords_display.py"
