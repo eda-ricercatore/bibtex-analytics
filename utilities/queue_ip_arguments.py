@@ -202,6 +202,13 @@ class queue_ip_args:
 			print("This script can be executed as follows:")
 			print("./duplicate_BibTeX_entries.py [input BibTeX file] [-h]")
 			print("")
+		elif(queue_ip_args.INCREMENTAL_TEST == queue_ip_args.CURRENT_SCRIPT):
+			print("==>	This script performs incremental software testing")
+			print("	automatically for my BibTeX analytics software.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./incremental_test.py [input BibTeX file] [-h]")
+			print("")
 		elif(queue_ip_args.EXTRACT_BIBTEX_KEYS == queue_ip_args.CURRENT_SCRIPT):
 			println = "=	Get user manual of:"
 			println += queue_ip_args.EXTRACT_BIBTEX_KEYS
