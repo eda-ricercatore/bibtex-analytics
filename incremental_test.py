@@ -200,6 +200,7 @@ if __name__ == "__main__":
 	# The real stuff begins here...
 	statistical_analysis_tester.test_statistical_analysis()
 	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
+	#	Calling this function does not test anything. 
 	process_key_freq_pairs.sort_pairs()
 	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
 	check_bibtex_key_tester.test_check_bibtex_key()
