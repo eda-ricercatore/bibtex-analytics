@@ -203,7 +203,6 @@ if __name__ == "__main__":
 	### IMPORTANT NOTE: Calling this function does not test anything! 
 	process_key_freq_pairs.sort_pairs()
 	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
-	#	Actually start testing stuff here!!!
 	check_bibtex_key_tester.test_check_bibtex_key()
 	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
 	Incremental_Test_Automation.read_input_BibTeX_file(ip_file_obj,ip_filename)
