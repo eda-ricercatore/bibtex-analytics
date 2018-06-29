@@ -81,7 +81,14 @@ import re
 from utilities.queue_ip_arguments import queue_ip_args
 # Package and module to perform file I/O (input/output) operations.
 from utilities.file_io import file_io_operations
-# Package and module to process (key,frequency) pairs.
+"""
+	Package and module to process (key,frequency) pairs.
+
+	A function of this Python module is called as part of automated
+		regression testing to make sure that previously working
+		functions still work, even if they are not a part of the
+		current software build for BibTeX Analytics.
+"""
 from database.key_frequency_pairs import process_key_freq_pairs
 # Package and module to validate the checking of BibTeX keys.
 from database.key_check_test import check_bibtex_key_tester
@@ -200,7 +207,15 @@ if __name__ == "__main__":
 	# The real stuff begins here...
 	statistical_analysis_tester.test_statistical_analysis()
 	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
-	### IMPORTANT NOTE: Calling this function does not test anything! 
+	"""
+		### IMPORTANT NOTE: Calling this function does not test
+				anything!
+
+		This function is called as part of automated regression
+			testing to make sure that previously working functions
+			still work, even if they are not a part of the current
+			software build for BibTeX Analytics.
+	"""
 	process_key_freq_pairs.sort_pairs()
 	print("-	-	-	-	-	-	-	-	-	-	-	-	-")
 	check_bibtex_key_tester.test_check_bibtex_key()
