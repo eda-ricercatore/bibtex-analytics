@@ -23,6 +23,9 @@ My *BibTeX* database is a large set of *BibTeX* entries.
 [A set of guidelines for potential and current collaborators.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/guidelines/guidelines.pdf)
 
 
+**Note that a test suite for incremental software testing [Insert references]** 
+	
+
 
 ---
 
