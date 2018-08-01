@@ -155,8 +155,8 @@ class statistical_analysis:
 	#	O(1) method.
 	@staticmethod
 	def print_statistics_of_software_testing():
-		if (statistical_analysis.number_test_cases_used > statistical_analysis.number_test_cases_passed):
-			print("	Problem: number_test_cases_used > number_test_cases_passed")
+		if (statistical_analysis.number_test_cases_used < statistical_analysis.number_test_cases_passed):
+			print("	Problem: number_test_cases_used < number_test_cases_passed")
 			raise Exception("	Precondition failed (2): see number_test_cases_used or number_test_cases_passed.")
 		print("*	Number of test cases passed:		{}" .format(statistical_analysis.number_test_cases_passed))
 		print("*	Number of test cases used:		{}" .format(statistical_analysis.number_test_cases_used))
