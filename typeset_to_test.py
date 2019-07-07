@@ -1,4 +1,5 @@
-#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
+#!/Users/zhiyang/anaconda3/bin/python3
+###!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 ###	/usr/bin/python
 ###	/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 ###	#!/usr/bin/python -mtimeit
@@ -121,12 +122,7 @@ class Duplicate_BibTeX_entries_finder:
 	def sort_BibTeX_keys():
 		Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys = sorted(Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys)
 	# ============================================================
-	#	Method to read each line of the input BibTeX file/database.
-	#		Parse each BibTeX entry in the BibTeX database.
-	#		Add each unique BibTeX key to a set of BibTeX keys.
-	#		For duplicate BibTeX keys that are found, report them
-	#			as an error so that the duplicate BibTeX keys can
-	#			be removed.
+	#	Method to read each line of the input BibTeX file.
 	#	O(n) method, where n is the number of lines of the BibTeX file.
 	@staticmethod
 	def read_input_BibTeX_file(ip_file_object,input_BibTeX_file):
@@ -156,36 +152,12 @@ class Duplicate_BibTeX_entries_finder:
 					print(temp_str)
 					#warnings.warn("Invalid type of BibTeX entry")
 					raise Exception("BibTeX entry has an invalid type!")
-		"""
-			Postcondition: Check if the number of BibTeX entries
-				in the BibTeX database match with the cardinality
-				of the set of BibTeX entries.
-		"""
 		if (Duplicate_BibTeX_entries_finder.num_of_bibtex_entries != len(Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys)):
 			raise Exception("Mismatch in number of BibTeX entries processed.")
 		else:
 			print("=	Number of BibTeX entries processed: {}" .format(str(Duplicate_BibTeX_entries_finder.num_of_bibtex_entries)))
-	# ============================================================
-	#	Method to print set of BibTeX keys to standard output.
-	#	O(n) method, where n is the number of BibTeX keys to print.
-	@staticmethod
-	def print_BibTeX_keys():
-		# Sort the BibTeX keys in lexicographical order.
-		Duplicate_BibTeX_entries_finder.sort_BibTeX_keys()
-		# Print the BibTeX keys in lexicographical order.
-		print(Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys)
-	# ============================================================
-	#	Method to print set of BibTeX keys to a LaTeX (insert) file.
-	#	O(n) method, where n is the number of BibTeX keys to print.
-	@staticmethod
-	def print_BibTeX_keys_to_LaTeX():
-		# Sort the BibTeX keys in lexicographical order.
-		Duplicate_BibTeX_entries_finder.sort_BibTeX_keys()
-		# Concatenate BibTeX keys into a string.
-		comma_separator = ","
-		concatenated_BibTeX_keys = comma_separator.join(Duplicate_BibTeX_entries_finder.set_of_BibTeX_keys)
-		# Print the BibTeX keys in lexicographical order.
-		print(concatenated_BibTeX_keys)
+
+
 
 
 
@@ -221,10 +193,6 @@ if __name__ == "__main__":
 	# Create a file object for input BibTeX file, in reading mode.
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	Duplicate_BibTeX_entries_finder.read_input_BibTeX_file(ip_file_obj,ip_filename)
-	# Print the BibTeX keys in lexicographical order to standard output.
-	#Duplicate_BibTeX_entries_finder.print_BibTeX_keys()
-	# Print the BibTeX keys in lexicographical order to LaTeX.
-	#Duplicate_BibTeX_entries_finder.print_BibTeX_keys_to_LaTeX()
 	# Close the file object for reading.
 	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)
