@@ -129,7 +129,7 @@ class Duplicate_BibTeX_entries_finder:
 	#			be removed.
 	#	O(n) method, where n is the number of lines of the BibTeX file.
 	@staticmethod
-	def read_input_BibTeX_file(ip_file_object,input_BibTeX_file):
+	def process_input_BibTeX_file(ip_file_object,input_BibTeX_file):
 		#print "--------------------------------------------------------"
 		println = "=	Reading input BibTeX file:"
 		println += input_BibTeX_file
@@ -220,7 +220,7 @@ if __name__ == "__main__":
 	print("=	Create a file object for reading.")
 	# Create a file object for input BibTeX file, in reading mode.
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
-	Duplicate_BibTeX_entries_finder.read_input_BibTeX_file(ip_file_obj,ip_filename)
+	Duplicate_BibTeX_entries_finder.process_input_BibTeX_file(ip_file_obj,ip_filename)
 	# Print the BibTeX keys in lexicographical order to standard output.
 	#Duplicate_BibTeX_entries_finder.print_BibTeX_keys()
 	# Print the BibTeX keys in lexicographical order to LaTeX.
