@@ -176,7 +176,8 @@ class Typeset_to_LaTeX:
 	@staticmethod
 	def print_BibTeX_keys_to_LaTeX():
 		# Relative path to output file.
-		output_file_relative_path = "/Applications/apps/comune/scripts/bibtex-analytics/test-with-typesetting/all-bibtex-keys.tex"
+		#output_file_relative_path = "/Applications/apps/comune/scripts/bibtex-analytics/test-with-typesetting/all-bibtex-keys.tex"
+		output_file_relative_path = "/Applications/apps/comune/scripts/bibtex-analytics/test-with-typesetting/all_bibtex_keys.tex"
 		# Create file object for output file.
 		op_file_obj = file_io_operations.open_file_object_write(output_file_relative_path)
 		# Sort the BibTeX keys in lexicographical order.
@@ -190,11 +191,21 @@ class Typeset_to_LaTeX:
 		cite_cmd_postfix = "}"
 		final_cite_cmd = cite_cmd_prefix + concatenated_BibTeX_keys + cite_cmd_postfix
 		# Print the BibTeX keys in lexicographical order.
-		print(final_cite_cmd)
-		# Typeset the LaTeX document into a PDF file.
-		subprocess.run(["make", "latex"])
+		op_file_obj.write(final_cite_cmd)
 		# Close file object for output file.
 		file_io_operations.close_file_object(op_file_obj)
+		# Typeset the LaTeX document into a PDF file.
+		#	The following command failed to work.
+		subprocess.run(["make", "latex"])
+		"""
+			Instead of using a Makefile for build automation, use
+				a sequence of LaTeX/BibTeX commands.
+		subprocess.run(["pdflatex", "articolo"])
+		subprocess.run(["bibtex", "articolo"])
+		subprocess.run(["pdflatex", "articolo"])
+		subprocess.run(["bibtex", "articolo"])
+		subprocess.run(["pdflatex", "articolo"])
+		"""
 
 
 

@@ -42,4 +42,4 @@ clean:
 
 
 run:
-	
+	typeset_to_pdf.py references/references.bib
