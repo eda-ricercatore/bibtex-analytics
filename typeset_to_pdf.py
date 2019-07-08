@@ -177,7 +177,7 @@ class Typeset_to_LaTeX:
 	def print_BibTeX_keys_to_LaTeX():
 		# Relative path to output file.
 		#output_file_relative_path = "/Applications/apps/comune/scripts/bibtex-analytics/test-with-typesetting/all-bibtex-keys.tex"
-		output_file_relative_path = "/Applications/apps/comune/scripts/bibtex-analytics/test-with-typesetting/all_bibtex_keys.tex"
+		output_file_relative_path = "/Users/zhiyang/Documents/ricerca/saag-bibtex/test-with-typesetting/all-bibtex-keys.tex"
 		# Create file object for output file.
 		op_file_obj = file_io_operations.open_file_object_write(output_file_relative_path)
 		# Sort the BibTeX keys in lexicographical order.
