@@ -180,15 +180,30 @@ class Typeset_to_LaTeX:
 		output_file_relative_path = "/Users/zhiyang/Documents/ricerca/saag-bibtex/test-with-typesetting/all-bibtex-keys.tex"
 		# Create file object for output file.
 		op_file_obj = file_io_operations.open_file_object_write(output_file_relative_path)
-		# Sort the BibTeX keys in lexicographical order.
-		Typeset_to_LaTeX.sort_BibTeX_keys()
-		# Concatenate BibTeX keys into a string.
-		comma_separator = ","
-		concatenated_BibTeX_keys = comma_separator.join(Typeset_to_LaTeX.set_of_BibTeX_keys)
 		# \cite{} command prefix
 		cite_cmd_prefix = "\cite{"
 		# \cite{} command postfix
 		cite_cmd_postfix = "}"
+		# Sort the BibTeX keys in lexicographical order.
+		Typeset_to_LaTeX.sort_BibTeX_keys()
+		"""
+			Turn this huge list (about, if not more than 16300 references)
+				into a list of 10-element list.
+		"""
+		"""
+			Modulo size of lists; perform modulo operation on this number.
+			list_size (modulo) sub_list_size
+		"""
+		sub_list_size = 10
+		list_of_sublists = [Typeset_to_LaTeX.set_of_BibTeX_keys[i * n:(i + 1) * n] for i in range((len(Typeset_to_LaTeX.set_of_BibTeX_keys) + n - 1) // n )]
+		"""
+			For each sublist of BibTeX entries, concatenate the BibTeX keys
+				into a string.
+		"""
+		comma_separator = ","
+		for i in list_of_sublists
+			temp
+		concatenated_BibTeX_keys = comma_separator.join(Typeset_to_LaTeX.set_of_BibTeX_keys)
 		final_cite_cmd = cite_cmd_prefix + concatenated_BibTeX_keys + cite_cmd_postfix
 		# Print the BibTeX keys in lexicographical order.
 		op_file_obj.write(final_cite_cmd)
