@@ -195,18 +195,23 @@ class Typeset_to_LaTeX:
 			list_size (modulo) sub_list_size
 		"""
 		sub_list_size = 10
-		list_of_sublists = [Typeset_to_LaTeX.set_of_BibTeX_keys[i * n:(i + 1) * n] for i in range((len(Typeset_to_LaTeX.set_of_BibTeX_keys) + n - 1) // n )]
+		list_of_sublists = [Typeset_to_LaTeX.set_of_BibTeX_keys[i * sub_list_size:(i + 1) * sub_list_size] for i in range((len(Typeset_to_LaTeX.set_of_BibTeX_keys) + sub_list_size - 1) // sub_list_size )]
 		"""
 			For each sublist of BibTeX entries, concatenate the BibTeX keys
 				into a string.
 		"""
 		comma_separator = ","
-		for i in list_of_sublists
-			temp
+		for i in list_of_sublists:
+			temp_concatenated_BibTeX_keys = comma_separator.join(i)
+			temp_cite_cmd = cite_cmd_prefix + temp_concatenated_BibTeX_keys + cite_cmd_postfix
+			# Print the BibTeX keys in lexicographical order.
+			op_file_obj.write(temp_cite_cmd)
+		"""
 		concatenated_BibTeX_keys = comma_separator.join(Typeset_to_LaTeX.set_of_BibTeX_keys)
 		final_cite_cmd = cite_cmd_prefix + concatenated_BibTeX_keys + cite_cmd_postfix
+		"""
 		# Print the BibTeX keys in lexicographical order.
-		op_file_obj.write(final_cite_cmd)
+		#op_file_obj.write(final_cite_cmd)
 		# Close file object for output file.
 		file_io_operations.close_file_object(op_file_obj)
 		# Typeset the LaTeX document into a PDF file.
