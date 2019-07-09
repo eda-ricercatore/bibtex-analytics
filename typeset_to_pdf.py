@@ -184,6 +184,7 @@ class Typeset_to_LaTeX:
 		cite_cmd_prefix = "\cite{"
 		# \cite{} command postfix
 		cite_cmd_postfix = "}"
+		comma_separator = ","
 		# Sort the BibTeX keys in lexicographical order.
 		Typeset_to_LaTeX.sort_BibTeX_keys()
 		"""
@@ -200,7 +201,6 @@ class Typeset_to_LaTeX:
 			For each sublist of BibTeX entries, concatenate the BibTeX keys
 				into a string.
 		"""
-		comma_separator = ","
 		for i in list_of_sublists:
 			temp_concatenated_BibTeX_keys = comma_separator.join(i)
 			temp_cite_cmd = cite_cmd_prefix + temp_concatenated_BibTeX_keys + cite_cmd_postfix
@@ -226,6 +226,31 @@ class Typeset_to_LaTeX:
 		subprocess.run(["bibtex", "articolo"])
 		subprocess.run(["pdflatex", "articolo"])
 		"""
+	# ============================================================
+	#	Method to print set of BibTeX keys to a LaTeX (insert) file.
+	#	O(n) method, where n is the number of BibTeX keys to print.
+	@staticmethod
+	def print_BibTeX_keys_to_LaTeX_large_citation():
+		# Relative path to output file.
+		output_file_relative_path = "/Users/zhiyang/Documents/ricerca/saag-bibtex/test-with-typesetting/all-bibtex-keys.tex"
+		# Create file object for output file.
+		op_file_obj = file_io_operations.open_file_object_write(output_file_relative_path)
+		# \cite{} command prefix
+		cite_cmd_prefix = "\cite{"
+		# \cite{} command postfix
+		cite_cmd_postfix = "}"
+		comma_separator = ","
+		# Sort the BibTeX keys in lexicographical order.
+		Typeset_to_LaTeX.sort_BibTeX_keys()
+		concatenated_BibTeX_keys = comma_separator.join(Typeset_to_LaTeX.set_of_BibTeX_keys)
+		final_cite_cmd = cite_cmd_prefix + concatenated_BibTeX_keys + cite_cmd_postfix
+		# Print the BibTeX keys in lexicographical order.
+		op_file_obj.write(final_cite_cmd)
+		# Close file object for output file.
+		file_io_operations.close_file_object(op_file_obj)
+		# Typeset the LaTeX document into a PDF file.
+		#	The following command failed to work.
+		subprocess.run(["make", "latex"])
 
 
 
@@ -264,7 +289,8 @@ if __name__ == "__main__":
 	# Print the BibTeX keys in lexicographical order to standard output.
 	#Typeset_to_LaTeX.print_BibTeX_keys()
 	# Print the BibTeX keys in lexicographical order to LaTeX.
-	Typeset_to_LaTeX.print_BibTeX_keys_to_LaTeX()
+	#Typeset_to_LaTeX.print_BibTeX_keys_to_LaTeX()
+	Typeset_to_LaTeX.print_BibTeX_keys_to_LaTeX_large_citation()
 	# Close the file object for reading.
 	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)
