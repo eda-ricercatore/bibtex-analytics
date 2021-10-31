@@ -32,6 +32,16 @@
 	Assume that each pair of keywords, or keyphrases, is separated 
 
 
+
+
+	####TO BE FIXED
+	+ Add support for the optional "help" "-h" "flag to display
+		a brief user manual.
+
+
+
+
+
 	Revision History:
 	April 17, 2017			Version 0.1, initial build.
 """
