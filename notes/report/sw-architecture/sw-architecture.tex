@@ -63,12 +63,28 @@ Lastly, Figure \ref{fig:SoftwareArchitectureWithHigherCoupling} shows the softwa
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Additional Information About Specific Classes}
+\label{sec:AdditionalInformationAboutSpecificClasses}
+
+Here are some additional information about specific classes.
+
+For the {\tt bibtex\_entry} class: \vspace{-0.3cm}
+\begin{enumerate} \itemsep -4pt
+\item Each {\sc Bib}\TeX\ field that I use is a property/field.
+\item Provide accessor and mutator methods for each property
+\end{enumerate}
 
 
 
-
-
-
+For the {\tt bibtex\_database} class: \vspace{-0.3cm}
+\begin{enumerate} \itemsep -4pt
+\item An object of this class is a set of {\tt bibtex\_entry} objects, which represents the {\sc Bib}\TeX\ database stored in my {\sc Bib}\TeX\ file (typically with the {\tt .bib} file extension).
+\item Enumerate the {\tt bibtex\_database} object to obtain a subset of {\sc Bib}\TeX\ entries that contain certain keyphrases, which the user can specify as a list of keyphrases in a separate file. \vspace{-0.3cm}
+	\begin{enumerate} \itemsep -2pt
+	\item This list of keyphrases is needed to retrieve the subset of keyphrases.
+	\end{enumerate}
+\end{enumerate}
 
 
 

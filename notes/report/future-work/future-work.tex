@@ -45,7 +45,7 @@ Future work of the {\sc Bib}\TeX\ {\it Analytics} project is described as follow
 		\item E.g., for each set of keyphrases (associated with a publication) with at least three (i.e., more than two) terms, build a list of non-empty overlaps.
 		\item Find the largest intersecting subset among the non-disjoint sets. Or, find the top 5-10 most common overlaps.
 		\item Refer to books on data visualization for information on visualizing this.
-		\item Also, refer to this technical report from Stanford, ``Union-member algorithms for non-disjoint sets.'' See \url{https://dl.acm.org/citation.cfm?id=892212}.
+		\item Also, refer to this technical report from Stanford, ``Union-member algorithms for non-disjoint sets.'' See \cite{Shiloach1979}.
 		\end{enumerate}
 	\item Compare problem with common subexpression elimination in compiler design, and maximum clique covering problem,
 	\item The more common/frequent the subsets are, the hotter the subsets are.
@@ -83,18 +83,18 @@ Future work of the {\sc Bib}\TeX\ {\it Analytics} project is described as follow
 	\begin{enumerate} \itemsep -2pt
 	\item {\tt extract\_citations.py}: \vspace{-0.2cm}
 		\begin{enumerate} \itemsep -2pt
-		\item Run as: {\it ./extract\_citations.py [LaTeX sources] [BibTeX output]}
+		\item Run as: {\tt ./extract\_citations.py [BibTeX output] [LaTeX sources]}
 		\item Produces an intermediate output, which is a set of {\sc Bib}\TeX\ keys that uniquely identifies a matching {\sc Bib}\TeX\ entry in my {\sc Bib}\TeX\ database.
 		\end{enumerate}
 	\item {\tt not\_defined\_references.py}: \vspace{-0.2cm}
 		\begin{enumerate} \itemsep -2pt
-		\item Run as: {\bf ./not\_defined\_references.py  [LaTeX sources] [BibTeX input]}
-		\item Check if this citation uses a undefined reference
+		\item Run as: {\tt ./not\_defined\_references.py [BibTeX input] [LaTeX sources]}
+		\item Check if this citation uses an undefined reference. If the reference is undefined, print a statement indicating the undefined error.
 		\item No output required.
 		\end{enumerate}
 	\item {\tt uncomment\_latex\_src\_files.py}: \vspace{-0.2cm}
 		\begin{enumerate} \itemsep -2pt
-		\item Run as: {\bf ./uncomment\_latex\_src\_files.py [dirty LaTeX source files] [clean LaTeX source files]}
+		\item Run as: {\tt ./uncomment\_latex\_src\_files.py [dirty LaTeX source files] [clean LaTeX source files]}
 		\item Remove comments from \LaTeX\ source files. Non importante.
 		\end{enumerate}
 	\end{enumerate}

@@ -114,8 +114,32 @@ class publishers_show:
 		set_of_publishers = []
 		# Read each available line in the input BibTeX file.
 		for line in ip_f_obj:
-			if(publishers_show.is_publishers_BibTeX_field(line)):
+			if(publishers_show.is_publisher_BibTeX_field(line)):
 				publishers_line = line.replace("	Publisher = {","")
+				publishers_line = publishers_line.replace("},\n","")
+				#publishers_ln_to_list = [].insert(publishers_line)
+				publishers_line = publishers_line.split("=")
+				#set_of_publishers = list(set(set_of_publishers+list(publishers_line)))
+				set_of_publishers = list(set(set_of_publishers+publishers_line))
+				set_of_publishers = sorted(set_of_publishers)
+			if(publishers_show.is_school_BibTeX_field(line)):
+				publishers_line = line.replace("	School = {","")
+				publishers_line = publishers_line.replace("},\n","")
+				#publishers_ln_to_list = [].insert(publishers_line)
+				publishers_line = publishers_line.split("=")
+				#set_of_publishers = list(set(set_of_publishers+list(publishers_line)))
+				set_of_publishers = list(set(set_of_publishers+publishers_line))
+				set_of_publishers = sorted(set_of_publishers)
+			if(publishers_show.is_organization_BibTeX_field(line)):
+				publishers_line = line.replace("	Organization = {","")
+				publishers_line = publishers_line.replace("},\n","")
+				#publishers_ln_to_list = [].insert(publishers_line)
+				publishers_line = publishers_line.split("=")
+				#set_of_publishers = list(set(set_of_publishers+list(publishers_line)))
+				set_of_publishers = list(set(set_of_publishers+publishers_line))
+				set_of_publishers = sorted(set_of_publishers)
+			if(publishers_show.is_institution_BibTeX_field(line)):
+				publishers_line = line.replace("	Institution = {","")
 				publishers_line = publishers_line.replace("},\n","")
 				#publishers_ln_to_list = [].insert(publishers_line)
 				publishers_line = publishers_line.split("=")
@@ -135,14 +159,53 @@ class publishers_show:
 	#		Else, return False.
 	#	O(1) method.
 	@staticmethod
-	def is_publishers_BibTeX_field(a_str):
+	def is_publisher_BibTeX_field(a_str):
 		if(a_str.startswith("	Publisher = {")):
 			return True
 		else:
 			return False
-
-
-
+	# ============================================================
+	#	Method to determine if a string 'a_str' starts with the
+	#		'School' standard BibTeX field.
+	#	@param a_str - a string to be processed.
+	#	@return True, if 'a_str' starts with the 'School'
+	#		standard BibTeX field.
+	#		Else, return False.
+	#	O(1) method.
+	@staticmethod
+	def is_school_BibTeX_field(a_str):
+		if(a_str.startswith("	School = {")):
+			return True
+		else:
+			return False
+	# ============================================================
+	#	Method to determine if a string 'a_str' starts with the
+	#		'Organization' standard BibTeX field.
+	#	@param a_str - a string to be processed.
+	#	@return True, if 'a_str' starts with the 'Organization'
+	#		standard BibTeX field.
+	#		Else, return False.
+	#	O(1) method.
+	@staticmethod
+	def is_organization_BibTeX_field(a_str):
+		if(a_str.startswith("	Organization = {")):
+			return True
+		else:
+			return False
+	# ============================================================
+	#	Method to determine if a string 'a_str' starts with the
+	#		'Institution' standard BibTeX field.
+	#	@param a_str - a string to be processed.
+	#	@return True, if 'a_str' starts with the 'Institution'
+	#		standard BibTeX field.
+	#		Else, return False.
+	#	O(1) method.
+	@staticmethod
+	def is_institution_BibTeX_field(a_str):
+		if(a_str.startswith("	Institution = {")):
+			return True
+		else:
+			return False
 
 
 

@@ -205,7 +205,7 @@ class Typeset_to_LaTeX:
 		"""
 		for i in list_of_sublists:
 			temp_concatenated_BibTeX_keys = comma_separator.join(i)
-			temp_cite_cmd = cite_cmd_prefix + temp_concatenated_BibTeX_keys + cite_cmd_postfix
+			temp_cite_cmd = cite_cmd_prefix + temp_concatenated_BibTeX_keys + cite_cmd_postfix + "\n"
 			# Print the BibTeX keys in lexicographical order.
 			op_file_obj.write(temp_cite_cmd)
 		"""
@@ -291,8 +291,8 @@ if __name__ == "__main__":
 	# Print the BibTeX keys in lexicographical order to standard output.
 	#Typeset_to_LaTeX.print_BibTeX_keys()
 	# Print the BibTeX keys in lexicographical order to LaTeX.
-	#Typeset_to_LaTeX.print_BibTeX_keys_to_LaTeX()
-	Typeset_to_LaTeX.print_BibTeX_keys_to_LaTeX_large_citation()
+	Typeset_to_LaTeX.print_BibTeX_keys_to_LaTeX()
+	#Typeset_to_LaTeX.print_BibTeX_keys_to_LaTeX_large_citation()
 	# Close the file object for reading.
 	print("=	Close the file object for reading.")
 	file_io_operations.close_file_object(ip_file_obj)

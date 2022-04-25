@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+
+\bibitem{Kopka2004}
+Helmut Kopka and Patrick~W. Daly.
+\newblock {\em Guide to {\LaTeX}}.
+\newblock Addison-Wesley Series on Tools and Techniques for Computer
+  Typesetting. Addison-Wesley, Boston, {MA}, fourth edition, 2004.
+
+\bibitem{Shiloach1979}
+Yossi Shiioach.
+\newblock Union-member algorithms for non-disjoint sets.
+\newblock Technical Report {STAN-CS-79-728}, Stanford University, Stanford,
+  {CA}, January 1979.
+
+\bibitem{Tandon2017}
+Prateek Tandon, Stanley Lam, Ben Shih, Tanay Mehta, Alex Mitev, and Zhiyang
+  Ong.
+\newblock {\em Quantum Robotics: A Primer on Current Science and Future
+  Perspectives}, volume~10 of {\em Synthesis Lectures on Quantum Computing}.
+\newblock Morgan {\rm \&}\ Claypool Publishers, San Rafael, {CA}, January 2017.
+
+\end{thebibliography}
