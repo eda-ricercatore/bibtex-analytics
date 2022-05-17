@@ -2,13 +2,13 @@
 
 # Commented out IPython magic to ensure Python compatibility.
 """
-	This is written by Zhiyang Ong to display a set of keywords from
-		BibTeX entries in a BibTeX database.
+	This is written by Zhiyang Ong to find BibTeX entries with
+		a multi-line "Keywords" field in a BibTeX database.
 
 
 
 	Synopsis: command name and [argument(s)]
-	./keywords_display.py [input BibTeX file] [-h]
+	./incomplete_entries.py [input BibTeX file] [-h]
 
 	Parameters:
 	[input BibTeX file]:	A BibTeX database.
@@ -86,6 +86,11 @@ import datetime
 #	Import Custom Python Modules
 
 # Module to process input arguments to the script/program.
+from utilities.queue_ip_arguments import queue_ip_args
+# Module to perform file I/O (input/output) operations.
+from utilities.file_io import file_io_operations
+
+# Module to process input arguments to the script/program.
 #from utilities.queue_ip_arguments import queue_ip_args
 # Module to perform file I/O (input/output) operations.
 #from utilities.file_io import file_io_operations
@@ -94,14 +99,16 @@ from timing_measurements.performance_measurement_no_ns import execution_time_mea
 
 
 ###############################################################
-#	Module with methods that collects the set of keywords found
-#		in all the 'Keywords' fields in this BibTeX database.
+#	Module with methods that provides a list of BibTeX entries
+#		that have a multi-line 'Keywords' field in the specified
+#		BibTeX database.
 class incomplete_entries:
-	list_of_keywords = []
+	# List of BibTeX keys of problematic BibTeX entries.
+	problematic_BibTeX_entries = []
 	# ============================================================
-	#	Method to collect keywords from each BibTeX entry's
-	#		'Keywords' field, sort them, and display them in
-	#		standard output.
+	#	Method to find BibTeX entries with a multi-line
+	#		'Keywords' field, display their BibTeX keys in the
+	#		Terminal application.
 	#	param ip_f_obj - The file object for the input stream, which
 	#						reads in a BibTeX file.
 	#	param ip_file - The filename of the input BibTeX file.
@@ -109,64 +116,36 @@ class incomplete_entries:
 	#	O(n) method, with respect to the number of lines in the file.
 	@staticmethod
 	def find_multi_line_keywords_fields(ip_f_obj,ip_file):
+		# Currently enumerated BibTeX key.
+		current_bibtex_key = ""
 		println = "=	Reading input BibTeX file:"
 		println += ip_file
 		print(println)
-		op_file_obj.write(println)
-		op_file_obj.write("\n")
-		# List/set of keywords found in the BibTeX database
-		set_of_keywords = []
 		# Read each available line in the input BibTeX file.
 		for line in ip_f_obj:
-			if(incomplete_entries.is_keywords_BibTeX_field(line)):
-				keywds_line = line.replace("	Keywords = {","")
-				keywds_line = keywds_line.replace("},\n","")
-				keywds_line = keywds_line.split(", ")
-				set_of_keywords = list(set(set_of_keywords+keywds_line))
-		"""
-			By shifting the following statement to sort keyphrases per
-				iteration (in the "if" statement) to outside the
-				"for" loop, I noticed a performance speedup from
-				13:36.270975 (minutes:seconds) to 1:42.645526 (minutes:seconds).
-
-			(13*60+36)/(60+42) = (13*60+36)/102 = 8.
-
-			Hence, it is a 8X (or 8 times) speedup in performance.
-
-			To empirically determine this for multiple run-time conditions,
-				since I use this script when using different combinations
-				of software applications, I would repeat the experiment
-				multiple times (>= 5, such as 10 times), find their
-				arithmetic average/mean, and the relative difference
-				between their arithmetic average/mean.
-
-			If the set of keyphrases is not sorted, the output list of
-				keyphrases would not be sorted and difficult to use
-				effectively.
-				That is, it is hard to use an unsorted list to check
-					if a keyphrase exists in this set and look for
-					similar keyphrases.
-		"""
-		set_of_keywords = sorted(set_of_keywords)
-		for kwd in set_of_keywords:
-			#print(kwd)
-			temp_kwd = kwd+"\n"
-			#op_file_obj.write(temp_kwd)
-			if 60 < len(kwd):
-				# Add beginning and end markers to help distinguish long keyphrases.
-				op_file_obj.write("=start\n")
-				op_file_obj.write(temp_kwd)
-				op_file_obj.write("=end\n")
-			else:
-				op_file_obj.write(temp_kwd)
-		"""
-			Due to the following error, skip printing keywords to
-				the standard output:
-			"Streaming output truncated to the last 5000 lines."
-		"""
-		print("===	Number of keyphrases: {}" .format(len(set_of_keywords)))
-		op_file_obj.write("===	Number of keyphrases: {}\n" .format(len(set_of_keywords)))
-		#op_file_obj.write("\n")
+			#print(line)
+			# Is this line the 1st line of a BibTeX entry?
+			if "@" == line[0]:
+				current_bibtex_key = incomplete_entries.get_BibTeX_entry(line)
+				#print("	Current BibTeX entry:",current_bibtex_key,"=")
+			# Does this line contain the "Keywords" field?
+			elif(incomplete_entries.is_keywords_BibTeX_field(line)):
+				# Yes.
+				#print(line)
+				### Does this line not end with "},"?
+				# Does this line not end with "},"?
+				if not line.endswith("},"):
+				#	a = 0
+				#else:
+					# Yes. Add current BibTeX key to the problematic list.
+					incomplete_entries.problematic_BibTeX_entries.append(current_bibtex_key)
+				current_bibtex_key = ""
+			#else:
+				# Do nothing.
+				#current_bibtex_key = ""
+		# Print the list of BibTeX keys of problematic BibTeX entries.
+		for entry in incomplete_entries.problematic_BibTeX_entries:
+			print("Problematic BibTeX key is:", entry, "=")
 	# ============================================================
 	#	Method to determine if a string 'a_str' starts with the
 	#		'Keywords' standard BibTeX field.
@@ -181,6 +160,32 @@ class incomplete_entries:
 			return True
 		else:
 			return False
+	# ============================================================
+	#	Method to obtain the BibTeX key from a BibTeX entry.
+	#	param a_str - a string to be processed.
+	#	@return BibTeX key, if 'a_str' starts with "@", followed by
+	#		a standard BibTeX entry type.
+	#		Else, raise an exception.
+	#	O(1) method.
+	@staticmethod
+	def get_BibTeX_entry(a_str):
+		# Yes.
+#		print "...	First line of a BibTeX entry."
+		tokenized_BibTeX_entry = re.split('@|{|,',a_str)
+#		for i in tokenized_BibTeX_entry:
+#			print i
+		# Is the type of the BibTeX entry valid?
+		if (tokenized_BibTeX_entry[1] in queue_ip_args.BibTeX_entry_types):
+			# Yes. Return BibTeX key.
+			#return tokenized_BibTeX_entry[2].lower()
+			return tokenized_BibTeX_entry[2]
+		else:
+			# No. Warn user that the type of BibTeX entry is invalid!
+			temp_str = "Invalid type of BibTeX entry:"
+			temp_str += tokenized_BibTeX_entry[1]
+			print(temp_str)
+			#warnings.warn("Invalid type of BibTeX entry")
+			raise Exception("BibTeX entry has an invalid type!")
 
 
 
@@ -218,10 +223,10 @@ if __name__ == "__main__":
 	# --------------------------------------------------------
 	#	= End of Preprocessing.
 	print("===================================================")
-	print("Displaying Sorted List of publishers from a BibTeX Database.")
+	print("Displaying List of BibTeX Entries with Multi-line Keywords Field.")
 	print("")
 	# Assign input arguments to "queue_ip_args" for processing. 
-	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.KEYWORDS_DISPLAY)
+	queue_ip_args.set_input_arguments(sys.argv,queue_ip_args.INCOMPLETE_ENTRIES)
 	# Check if user wants to read the brief user manual.
 	queue_ip_args.check_if_help_wanted()
 	# Process the first input argument.
@@ -232,7 +237,7 @@ if __name__ == "__main__":
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
 	# --------------------------------------------------------
 	#	Default values for input BibTeX database for processing.
-	ip_filename = "/Users/zhiyang/Documents/ricerca/saag-bibtex/references.bib"
+	#ip_filename = "/Users/zhiyang/Documents/ricerca/saag-bibtex/references.bib"
 	#	No output files needed.
 	#op_filename = 'keywords.md'
 	# Create a file object for reading.

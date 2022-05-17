@@ -115,6 +115,7 @@ class queue_ip_args:
 	UNCOMMENT_LATEX = "uncomment_latex_src_files.py"
 	UNDEFINED_REFERENCES = "not_defined_references.py"
 	VALIDATE_URL_DOI = "validate_url.py"
+	INCOMPLETE_ENTRIES = "incomplete_entries.py"
 	# ============================================================
 	#	Accessor methods.
 	# ============================================================
@@ -243,6 +244,18 @@ class queue_ip_args:
 			print("")
 			print("This script can be executed as follows:")
 			print("./keywords_display.py [input BibTeX file] [-h]")
+			print("")
+		elif(queue_ip_args.INCOMPLETE_ENTRIES == queue_ip_args.CURRENT_SCRIPT):
+			"""
+			println = "=	Get user manual of:"
+			println += queue_ip_args.INCOMPLETE_ENTRIES
+			print(println)
+			"""
+			print("==>	Display the list of BibTeX entries in the")
+			print("	input BibTeX database with multi-line `Keywords' field.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./incomplete_entries.py [input BibTeX file] [-h]")
 			print("")
 		elif(queue_ip_args.PUBLISHERS_DISPLAY == queue_ip_args.CURRENT_SCRIPT):
 			print("==>	Display the sorted list of publishers in the")
