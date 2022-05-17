@@ -129,15 +129,31 @@ class incomplete_entries:
 				current_bibtex_key = incomplete_entries.get_BibTeX_entry(line)
 				#print("	Current BibTeX entry:",current_bibtex_key,"=")
 			# Does this line contain the "Keywords" field?
+			#elif(incomplete_entries.is_keywords_BibTeX_field(line)):
+			#elif((incomplete_entries.is_keywords_BibTeX_field(line)) and (line[-2:] is not "},")):
+			#elif((incomplete_entries.is_keywords_BibTeX_field(line)) and (not(line[-2:] is "},"))):
+			#elif((incomplete_entries.is_keywords_BibTeX_field(line)) and (line[-2:] is "},")):
 			elif(incomplete_entries.is_keywords_BibTeX_field(line)):
+			#elif((incomplete_entries.is_keywords_BibTeX_field(line)) and (line.endswith("},"))):
 				# Yes.
 				#print(line)
 				### Does this line not end with "},"?
 				# Does this line not end with "},"?
-				if not line.endswith("},"):
+				#if not line.endswith("},"):
 				#	a = 0
 				#else:
 					# Yes. Add current BibTeX key to the problematic list.
+				"""
+					This pattern of text string[-3:-1] is used to obtain
+						the "last two" characters of the string, since the
+						actual last character of the string is a newline character that causes it to function incorrectly
+						otherwise.
+					Hence, without the newline character, it should end
+						with "},".
+				"""
+				#print("line[-3:-1] is:::",line[-3:-1],"=")
+				#if not (line[-3:-1] is "},"):
+				if (line[-3:-1] != "},"):
 					incomplete_entries.problematic_BibTeX_entries.append(current_bibtex_key)
 				current_bibtex_key = ""
 			#else:
