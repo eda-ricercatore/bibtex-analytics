@@ -116,6 +116,8 @@ class queue_ip_args:
 	UNDEFINED_REFERENCES = "not_defined_references.py"
 	VALIDATE_URL_DOI = "validate_url.py"
 	INCOMPLETE_ENTRIES = "incomplete_entries.py"
+	KEYS_2_EXTRACTED_ENTRIES = "keys2extracted_entries.py"
+	KEYPHRASES_2_EXTRACTED_ENTRIES = "keyphrases2extracted_entries.py"
 	# ============================================================
 	#	Accessor methods.
 	# ============================================================
@@ -256,6 +258,30 @@ class queue_ip_args:
 			print("")
 			print("This script can be executed as follows:")
 			print("./incomplete_entries.py [input BibTeX file] [-h]")
+			print("")
+		elif(queue_ip_args.KEYS_2_EXTRACTED_ENTRIES == queue_ip_args.CURRENT_SCRIPT):
+			"""
+			println = "=	Get user manual of:"
+			println += queue_ip_args.KEYS_2_EXTRACTED_ENTRIES
+			print(println)
+			"""
+			print("==>	Display the list of BibTeX entries in the")
+			print("	input BibTeX database for the specified BibTeX keys.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./keys2extracted_entries.py [input BibTeX file] [file containing list of BibTeX keys] [-h]")
+			print("")
+		elif(queue_ip_args.KEYPHRASES_2_EXTRACTED_ENTRIES == queue_ip_args.CURRENT_SCRIPT):
+			"""
+			println = "=	Get user manual of:"
+			println += queue_ip_args.KEYPHRASES_2_EXTRACTED_ENTRIES
+			print(println)
+			"""
+			print("==>	Display the list of BibTeX entries in the")
+			print("	input BibTeX database containing the specified keyphrases.")
+			print("")
+			print("This script can be executed as follows:")
+			print("./keyphrases2extracted_entries.py [input BibTeX file] [file containing keyphrases] [-h]")
 			print("")
 		elif(queue_ip_args.PUBLISHERS_DISPLAY == queue_ip_args.CURRENT_SCRIPT):
 			print("==>	Display the sorted list of publishers in the")
