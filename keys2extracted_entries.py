@@ -3,15 +3,19 @@
 # Commented out IPython magic to ensure Python compatibility.
 """
 	This is written by Zhiyang Ong to find BibTeX entries with
-		a multi-line "Keywords" field in a BibTeX database.
+		BibTeX keys that are found in an input text file containing
+		these BibTeX keys.
 
 
 
 	Synopsis: command name and [argument(s)]
-	./incomplete_entries.py [input BibTeX file] [-h]
+	./keys2extracted_entries.py [input BibTeX file] [input file containing list of BibTeX keys] [-h]
 
 	Parameters:
 	[input BibTeX file]:	A BibTeX database.
+
+	[input file containing list of BibTeX keys]
+
 
 	[-h]:					If an optional "-h" flag is used as an
 							input argument, show the brief user manual
@@ -19,7 +23,7 @@
 
 
 	Its procedure is described as follows:
-	Initialize an empty list of keywords.
+	Parse the list of BibTeX keys.
 	Enumerate each line in the input BibTeX database.
 		If the currently enumerated line contains the 'Keywords'
 			BibTeX field,
@@ -27,9 +31,7 @@
 	Sort the set of keywords.
 
 	Notes/Assumptions:
-	Assume that the 'Keywords' standard BibTeX field is a single line
-		field.
-	Assume that each pair of keywords, or keyphrases, is separated 
+	...
 
 
 	Revision History:
@@ -248,6 +250,12 @@ if __name__ == "__main__":
 	# Process the first input argument.
 	print("=	Process the first input argument.")
 	ip_filename = queue_ip_args.process_1st_ip_arg()
+	# Create a file object for reading.
+	print("=	Create a file object for reading.")
+	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
+	# Process the second input argument.
+	print("=	Process the first input argument.")
+	ip_filename = queue_ip_args.process_2nd_ip_arg()
 	# Create a file object for reading.
 	print("=	Create a file object for reading.")
 	ip_file_obj = file_io_operations.open_file_object_read(ip_filename)
