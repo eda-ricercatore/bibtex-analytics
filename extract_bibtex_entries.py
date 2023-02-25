@@ -165,6 +165,15 @@
 		that uses commas (or ",") to separate/delimit values.
 
 
+
+
+	References:
+	+ [Boulogne2022]
+		- Francois Boulogne, Michael Weiss, and sciunto, "bibtexparser 1.4.0," Python Software Foundation, Beaverton, OR, September 23, 2022. Available online from *PyPI -- The Python Package Index: pew 1.4.0* at: https://pypi.org/project/bibtexparser/; February 25, 2023 was the last accessed date.
+	
+
+
+
 	Revision History:
 	February 25, 2023			Version 0.1, initial build.
 """
