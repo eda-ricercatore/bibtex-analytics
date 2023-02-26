@@ -12,11 +12,19 @@
 
 
 	Synopsis: command name and [argument(s)]
-	./extract_bibtex_entries.py [-h] [input BibTeX file] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [input BibTeX file] [-k] [set of BibTeX keys stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [input BibTeX file] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [input BibTeX file] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file]
+	./extract_bibtex_entries.py [-h] [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] [-h]
+	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-h] [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-k] [-m] [set of keyphrases stored as a CSV file] [-k] [set of BibTeX keys stored as a CSV file]
 	./extract_bibtex_entries.py [-h]
+	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file]
+	./extract_bibtex_entries.py [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-m] [set of keyphrases stored as a CSV file] [-k] [set of BibTeX keys stored as a CSV file]
+	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] [-a] [names of authors as a string] [-z] [names of authors as a string] [-b] [booktitle as a string] [-j] [journal title as a string] [-s] [book series as a string] [-u] [name of university as a string]
 
 
 	Parameters:
@@ -199,6 +207,11 @@
 	+ ./extract_bibtex_entries.py [option flag] [string] [-h] [option flag] [filename]
 	+ ./extract_bibtex_entries.py 
 
+	Assume that manual input is error prone, set the name/path of the
+		output file in the introductory section (or preamble) that can
+		be modified by others.
+		This avoids having users specify the name/path of the output
+			file as an input argument.
 
 
 
