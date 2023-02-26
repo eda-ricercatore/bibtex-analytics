@@ -59,7 +59,7 @@
 									(or surname).
 
 
-	[-b]:					If an optional "-y" flag is used as an
+	[-b]:					If an optional "-b" flag is used as an
 							input argument, accept the following string
 								as the booktitle to search for in the
 								BibTeX database.
@@ -115,7 +115,7 @@
 				find the subset of these records that have keyphrases
 				found in the set of keyphrases, and print out information about these records into an output file.
 			Similarly, if multiple options are selected, process them here.
-		If the [-k] input argument/option is selected,
+		If the [-m] input argument/option is selected,
 			find the set of records (of BibTeX entries) that
 			have keyphrases found in the set of keyphrases,
 			and print out information about these records into
