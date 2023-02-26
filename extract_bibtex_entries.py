@@ -15,7 +15,8 @@
 	./extract_bibtex_entries.py [-h] [input BibTeX file] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
 	./extract_bibtex_entries.py [-h] [input BibTeX file] [-k] [set of BibTeX keys stored as a CSV file]
 	./extract_bibtex_entries.py [-h] [input BibTeX file] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [input BibTeX file] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] 
+	./extract_bibtex_entries.py [-h] [input BibTeX file] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./extract_bibtex_entries.py [-h]
 
 
 	Parameters:
@@ -98,10 +99,12 @@
 	If the [-h] input argument/option is selected,
 		print the help text with the synopsis of the command name
 		and argument(s).
-	Open an input file stream for the BibTeX database.
-	Parse the BibTeX database, via a BibTeX parser and the file stream.
-	Open an input file stream for the CSV input file(s).
-	Parse the CSV file, via CSV import, pandas, and the file stream.
+		This input argument does not have to end/stop the program
+			immediately.
+	Open an input file object for the BibTeX database.
+	Parse the BibTeX database, via a BibTeX parser and the file object.
+	Open an input file object for the CSV input file(s).
+	Parse the CSV file, via CSV import, pandas, and the file object.
 	Enumerate each BibTeX entry in the input BibTeX database.
 		If the [-k] input argument/option is selected,
 			find the set of records (of BibTeX entries) that
@@ -152,6 +155,7 @@
 			have include the following substring in the 'School' field,
 			and print out information about these records into
 			an output file.
+		If no input argument/option is selected, print the help manual.
 
 		
 
@@ -170,8 +174,30 @@
 		"Conda" environment, and my Python environment is dependent on the
 		"Conda" package and environment management system, I have to use
 		the Python interpreter from Conda to use the PyPI package installations.
-	Else, I can use other Python interpreters, one of which is commnted out
+	Else, I can use other Python interpreters, one of which is commented out
 		to enable the usage of the Python interpreter from Conda.
+	If the -h option is used, print the "help" information that includes
+		a synopsis of the command name (name of this Python script) and
+		list of optional input arguments.
+	For other options, they must come in pairs, and cannot be separated
+		by other options. 
+		They have either of the following formats:
+	+ ./extract_bibtex_entries.py [-h]
+	+ ./extract_bibtex_entries.py [option flag] [filename]
+	+ ./extract_bibtex_entries.py [-h] [option flag] [filename]
+	+ ./extract_bibtex_entries.py [option flag] [filename] [-h]
+	+ ./extract_bibtex_entries.py [-h] [option flag] [string]
+	+ ./extract_bibtex_entries.py [option flag] [string]
+	+ ./extract_bibtex_entries.py [option flag] [string] [-h]
+	+ ./extract_bibtex_entries.py [option flag] [filename] [option flag] [string]
+	+ ./extract_bibtex_entries.py [-h] [option flag] [filename] [option flag] [string]
+	+ ./extract_bibtex_entries.py [option flag] [filename] [option flag] [string] [-h]
+	+ ./extract_bibtex_entries.py [option flag] [filename] [-h] [option flag] [string]
+	+ ./extract_bibtex_entries.py [option flag] [string] [option flag] [filename]
+	+ ./extract_bibtex_entries.py [-h] [option flag] [string] [option flag] [filename]
+	+ ./extract_bibtex_entries.py [option flag] [string] [option flag] [filename] [-h]
+	+ ./extract_bibtex_entries.py [option flag] [string] [-h] [option flag] [filename]
+	+ ./extract_bibtex_entries.py 
 
 
 
@@ -182,6 +208,10 @@
 		- Francois Boulogne, Michael Weiss, and sciunto, "bibtexparser 1.4.0," Python Software Foundation, Beaverton, OR, September 23, 2022. Available online from *PyPI -- The Python Package Index: pew 1.4.0* at: https://pypi.org/project/bibtexparser/; February 25, 2023 was the last accessed date.
 	+ [Boulogne2023a]
 		- Fran{\c{c}}ois Boulogne, Olivier Mangin, Lucas Verney, and other contributors, "Tutorial," Read the Docs, Inc., Portland, OR, January 3, 2023. Available online from *Read the Docs: Welcome to BibtexParser's documentation!: Tutorial* as Version 1.4.0 at: https://bibtexparser.readthedocs.io/en/master/tutorial.html; February 25, 2023 was the last accessed date.
+	+ [DrakeJr2023a]
+		- Fred L. Drake, Jr., David Goodger, and Fredrik Lundh, "The Python Standard Library," Python Software Foundation, Beaverton, OR, February 26, 2023. Available online from *Welcome to Python.org: Docs: Python 3.11.2 documentation: Library Reference* at: https://docs.python.org/3/library/; February 26, 2023 was the last accessed date.
+
+
 
 	
 
@@ -248,22 +278,6 @@ import datetime
 import bibtexparser
 
 
-"""
-	Load the BibTeX database as an input file object/stream for the
-		parser [Boulogne2023a].
-"""
-with open('references.bib') as bibtex_file:
-	# Load the BibTeX database to the parser.
-    bib_database = bibtexparser.load(bibtex_file)
-"""
-	Print the BibTeX entries of the BibTeX database as a list of
-		dictionaries [Boulogne2023a].
-"""
-#print(bib_database.entries)
-# 
-print(bib_database.comments)
-print(bib_database.preambles)
-print(bib_database.strings)
 
 
 ###############################################################
@@ -276,8 +290,66 @@ print(bib_database.strings)
 #from utilities.file_io import file_io_operations
 
 
+# Module for timing measurements.
+from timing_measurements.performance_measurement_no_ns import execution_time_measurement_no_ns
+
 ###############################################################
 
 
 
+#	= Set up loading of BibTeX database
+# Type of current time measurement.
+mode_current_time_measurement = "perf_counter"
+# Set the initial timestamp.
+execution_time_measurement_no_ns.set_initial_timestamp()
 
+# --------------------------------------------------------
+
+"""
+	Process the input arguments [DrakeJr2023a, from Python Runtime Services: sys — System-specific parameters and functions: sys.argv].
+
+	https://docs.python.org/3/library/sys.html
+"""
+
+
+
+
+
+
+
+# --------------------------------------------------------
+
+
+
+"""
+	Load the BibTeX database as an input file object for the
+		parser [Boulogne2023a].
+"""
+with open('references.bib') as bibtex_file:
+	# Load the BibTeX database to the parser.
+    bib_database = bibtexparser.load(bibtex_file)
+"""
+	Print the BibTeX entries of the BibTeX database as a list of
+		dictionaries [Boulogne2023a].
+
+	The list of BibTeX entries is stored in: bib_database.entries.
+"""
+print(bib_database.entries)
+
+
+#for bib_entry in bib_database.entries:
+
+
+# --------------------------------------------------------
+# Print comments in the BibTeX database as a list of strings.
+#print(bib_database.comments)
+# Print preamble of BibTeX database, which does nothing.
+#print(bib_database.preambles)
+# Print ordered dictionary representing months and their abbreviation.
+#print(bib_database.strings)
+
+# --------------------------------------------------------
+# Get the elapsed time.
+elapsed_time = execution_time_measurement_no_ns.get_elapsed_time(mode_current_time_measurement)
+#temp_text = "Elapsed time:::"+str(datetime.timedelta(seconds=elapsed_time))+"=\n"
+print("Elapsed time:::",datetime.timedelta(seconds=elapsed_time),"=")
