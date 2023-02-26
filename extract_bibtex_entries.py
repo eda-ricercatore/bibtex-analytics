@@ -1,4 +1,6 @@
-#!/usr/local/bin/python3
+#!/Users/zhiyang/anaconda3/bin/python
+
+#	#!/usr/local/bin/python3
 
 
 """
@@ -164,12 +166,23 @@
 	CSV refers to comma-separated values, and is a delimited text file
 		that uses commas (or ",") to separate/delimit values.
 
+	Since the installation of packages via PyPI are placed in the Anaconda
+		"Conda" environment, and my Python environment is dependent on the
+		"Conda" package and environment management system, I have to use
+		the Python interpreter from Conda to use the PyPI package installations.
+	Else, I can use other Python interpreters, one of which is commnted out
+		to enable the usage of the Python interpreter from Conda.
+
+
 
 
 
 	References:
 	+ [Boulogne2022]
 		- Francois Boulogne, Michael Weiss, and sciunto, "bibtexparser 1.4.0," Python Software Foundation, Beaverton, OR, September 23, 2022. Available online from *PyPI -- The Python Package Index: pew 1.4.0* at: https://pypi.org/project/bibtexparser/; February 25, 2023 was the last accessed date.
+	+ [Boulogne2023a]
+		- Fran{\c{c}}ois Boulogne, Olivier Mangin, Lucas Verney, and other contributors, "Tutorial," Read the Docs, Inc., Portland, OR, January 3, 2023. Available online from *Read the Docs: Welcome to BibtexParser's documentation!: Tutorial* as Version 1.4.0 at: https://bibtexparser.readthedocs.io/en/master/tutorial.html; February 25, 2023 was the last accessed date.
+
 	
 
 
@@ -229,8 +242,24 @@ import datetime
 #	Import Python Modules from installed Python packages, via PyPI
 
 
+# Requires the following installation.
+#pip install bibtexparser
+# Import [Boulogne2022] [Boulogne2023a]
+import bibtexparser
 
 
+"""
+	Load the BibTeX database as an input file object/stream for the
+		parser [Boulogne2023a].
+"""
+with open('references.bib') as bibtex_file:
+	# Load the BibTeX database to the parser.
+    bib_database = bibtexparser.load(bibtex_file)
+"""
+	Print the BibTeX entries of the BibTeX database as a list of
+		dictionaries [Boulogne2023a].
+"""
+print(bib_database.entries)
 
 
 ###############################################################
