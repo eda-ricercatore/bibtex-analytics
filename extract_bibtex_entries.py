@@ -259,7 +259,11 @@ with open('references.bib') as bibtex_file:
 	Print the BibTeX entries of the BibTeX database as a list of
 		dictionaries [Boulogne2023a].
 """
-print(bib_database.entries)
+#print(bib_database.entries)
+# 
+print(bib_database.comments)
+print(bib_database.preambles)
+print(bib_database.strings)
 
 
 ###############################################################
