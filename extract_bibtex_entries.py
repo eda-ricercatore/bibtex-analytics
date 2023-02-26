@@ -97,7 +97,7 @@
 	
 	Process input arguments.
 	If the [-h] input argument/option is selected,
-		print the help text with the synopsis of the command name
+		print the help manual with the synopsis of the command name
 		and argument(s).
 		This input argument does not have to end/stop the program
 			immediately.
@@ -111,7 +111,7 @@
 			have BibTeX keys found in the set of BibTeX keys,
 			and print out information about these records into
 			an output file.
-			If the [-k] input argument/option is also selected,
+			If the [-m] input argument/option is also selected,
 				find the subset of these records that have keyphrases
 				found in the set of keyphrases, and print out information about these records into an output file.
 			Similarly, if multiple options are selected, process them here.
