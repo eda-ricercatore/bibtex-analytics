@@ -219,6 +219,15 @@
 
 
 
+	Requirements:
+	+ Installation of bibtexparser [Boulogne2022].
+
+
+
+
+
+
+
 	References:
 	+ [Boulogne2022]
 		- Francois Boulogne, Michael Weiss, and sciunto, "bibtexparser 1.4.0," Python Software Foundation, Beaverton, OR, September 23, 2022. Available online from *PyPI -- The Python Package Index: pew 1.4.0* at: https://pypi.org/project/bibtexparser/; February 25, 2023 was the last accessed date.
@@ -313,66 +322,52 @@ from timing_measurements.performance_measurement_no_ns import execution_time_mea
 
 
 
-#	= Set up loading of BibTeX database
-# Type of current time measurement.
-mode_current_time_measurement = "perf_counter"
-# Set the initial timestamp.
-execution_time_measurement_no_ns.set_initial_timestamp()
 
+###############################################################
+# Main method for the program.
 
-"""
-	Filename/path of the output file that contains the extracted BibTeX entries.
-"""
-output_filename = "./output-files/extracted_bibtext_entries.bib"
+#	If this is executed as a Python script,
+if __name__ == "__main__":
+	#	= Set up loading of BibTeX database
+	# Type of current time measurement.
+	mode_current_time_measurement = "perf_counter"
+	# Set the initial timestamp.
+	execution_time_measurement_no_ns.set_initial_timestamp()
+	"""
+		Filename/path of the output file that contains the extracted BibTeX entries.
+	"""
+	output_filename = "./output-files/extracted_bibtext_entries.bib"
+	# --------------------------------------------------------
+	"""
+		Process the input arguments [DrakeJr2023a, from Python Runtime Services: sys — System-specific parameters and functions: sys.argv].
 
+		https://docs.python.org/3/library/sys.html
+	"""
+	# --------------------------------------------------------
+	"""
+		Load the BibTeX database as an input file object for the
+			parser [Boulogne2023a].
+	"""
+	with open('references.bib') as bibtex_file:
+		# Load the BibTeX database to the parser.
+	    bib_database = bibtexparser.load(bibtex_file)
+	"""
+		Print the BibTeX entries of the BibTeX database as a list of
+			dictionaries [Boulogne2023a].
 
-# --------------------------------------------------------
-
-"""
-	Process the input arguments [DrakeJr2023a, from Python Runtime Services: sys — System-specific parameters and functions: sys.argv].
-
-	https://docs.python.org/3/library/sys.html
-"""
-
-
-
-
-
-
-
-# --------------------------------------------------------
-
-
-
-"""
-	Load the BibTeX database as an input file object for the
-		parser [Boulogne2023a].
-"""
-with open('references.bib') as bibtex_file:
-	# Load the BibTeX database to the parser.
-    bib_database = bibtexparser.load(bibtex_file)
-"""
-	Print the BibTeX entries of the BibTeX database as a list of
-		dictionaries [Boulogne2023a].
-
-	The list of BibTeX entries is stored in: bib_database.entries.
-"""
-print(bib_database.entries)
-
-
-#for bib_entry in bib_database.entries:
-
-
-# --------------------------------------------------------
-# Print comments in the BibTeX database as a list of strings.
-#print(bib_database.comments)
-# Print preamble of BibTeX database, which does nothing.
-#print(bib_database.preambles)
-# Print ordered dictionary representing months and their abbreviation.
-#print(bib_database.strings)
-
-# --------------------------------------------------------
-# Get the elapsed time.
-elapsed_time = execution_time_measurement_no_ns.get_elapsed_time(mode_current_time_measurement)
-#temp_text = "Elapsed time:::"+str(datetime.timedelta(seconds=elapsed_time))+"=\n"
-print("Elapsed time:::",datetime.timedelta(seconds=elapsed_time),"=")
+		The list of BibTeX entries is stored in: bib_database.entries.
+	"""
+	print(bib_database.entries)
+	#for bib_entry in bib_database.entries:
+	# --------------------------------------------------------
+	# Print comments in the BibTeX database as a list of strings.
+	#print(bib_database.comments)
+	# Print preamble of BibTeX database, which does nothing.
+	#print(bib_database.preambles)
+	# Print ordered dictionary representing months and their abbreviation.
+	#print(bib_database.strings)
+	# --------------------------------------------------------
+	# Get the elapsed time.
+	elapsed_time = execution_time_measurement_no_ns.get_elapsed_time(mode_current_time_measurement)
+	#temp_text = "Elapsed time:::"+str(datetime.timedelta(seconds=elapsed_time))+"=\n"
+	print("Elapsed time:::",datetime.timedelta(seconds=elapsed_time),"=")
