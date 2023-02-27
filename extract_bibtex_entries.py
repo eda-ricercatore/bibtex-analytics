@@ -51,6 +51,8 @@
 								This is used to extract a subset of
 									BibTeX entries that match this name
 									(or these names).
+								For names that have spaces in them, use
+									double quotes to enclose them.
 								The match has to be exact.
 
 	[-z]:					If an optional "-z" flag is used as an
@@ -73,6 +75,8 @@
 								This is used to extract a subset of
 									BibTeX entries that match this
 									booktitle.
+								For booktitles that have spaces in them,
+									use double quotes to enclose them.
 
 	[-j]:					If an optional "-j" flag is used as an
 							input argument, accept the following string
@@ -81,6 +85,8 @@
 								This is used to extract a subset of
 									BibTeX entries that match this
 									journal title.
+								For journal titles that have spaces in them,
+									use double quotes to enclose them.
 
 	[-s]:					If an optional "-s" flag is used as an
 							input argument, accept the following string
@@ -88,6 +94,8 @@
 								in the BibTeX database.
 								This is used to extract a subset of
 									BibTeX entries that match this series.
+								For series titles that have spaces in them,
+									use double quotes to enclose them.
 
 	[-u]:					If an optional "-u" flag is used as an
 							input argument, accept the following string
@@ -96,6 +104,8 @@
 								This is used to extract a subset of
 									BibTeX entries that match this
 									university.
+								For university names that have spaces
+									in them, use double quotes to enclose them.
 
 
 
@@ -386,10 +396,10 @@ if __name__ == "__main__":
 		Load the BibTeX database as an input file object for the
 			parser [Boulogne2023a].
 
-		Run this in the ./outputs/scripts subdirectory of the BibTeX
+		Run this in the ./outputs/ subdirectory of the BibTeX
 			database repository.
 	"""
-#	with open('../../references.bib') as bibtex_file:
+#	with open('../references.bib') as bibtex_file:
 		# Load the BibTeX database to the parser.
 #	    bib_database = bibtexparser.load(bibtex_file)
 	"""
