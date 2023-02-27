@@ -345,6 +345,21 @@ if __name__ == "__main__":
 	"""
 	# --------------------------------------------------------
 	"""
+		Check if the output filename is valid [DrakeJr2023a, from Generic Operating System Services: os — Miscellaneous operating system interfaces: Files and Directories].
+
+		https://docs.python.org/3/library/os.html#os.access
+	"""
+	if not os.access(output_filename, os.W_OK):
+		print(">>>	Filename/Path to target output filename is invalid:",output_filename,"=")
+	else:
+		print("	Filename/Path to target output filename is valid:",output_filename,"=")
+	output_filename = "./non-existent-directory/random_bibtex_database_non_existent.bib"
+	if os.access(output_filename, os.W_OK):
+		print(">>>	Filename/Path to target output filename is invalid:",output_filename,"=")
+	else:
+		print("	Filename/Path to target output filename is valid:",output_filename,"=")
+	# --------------------------------------------------------
+	"""
 		Load the BibTeX database as an input file object for the
 			parser [Boulogne2023a].
 	"""
