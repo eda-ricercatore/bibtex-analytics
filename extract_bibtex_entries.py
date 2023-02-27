@@ -263,6 +263,10 @@
 		- Fran{\c{c}}ois Boulogne, Olivier Mangin, Lucas Verney, and other contributors, "Tutorial," Read the Docs, Inc., Portland, OR, January 3, 2023. Available online from *Read the Docs: Welcome to BibtexParser's documentation!: Tutorial* as Version 1.4.0 at: https://bibtexparser.readthedocs.io/en/master/tutorial.html; February 25, 2023 was the last accessed date.
 	+ [DrakeJr2023a]
 		- Fred L. Drake, Jr., David Goodger, and Fredrik Lundh, "The Python Standard Library," Python Software Foundation, Beaverton, OR, February 26, 2023. Available online from *Welcome to Python.org: Docs: Python 3.11.2 documentation: Library Reference* at: https://docs.python.org/3/library/; February 26, 2023 was the last accessed date.
+	+ [DrakeJr2023b]
+		- Fred L. Drake, Jr., David Goodger, and Fredrik Lundh, "The Python Tutorial," Python Software Foundation, Beaverton, OR, February 26, 2023. Available online from *Welcome to Python.org: Docs: Python 3.11.2 documentation: Tutorial* at: https://docs.python.org/3/tutorial/; February 26, 2023 was the last accessed date.
+	+ [Miles2013]
+		- Alistair Miles, "csvvalidator 1.2," Python Software Foundation, Beaverton, OR, May 16, 2013. Available online from *PyPI -- The Python Package Index: csvvalidator 1.2* as Version 1.2 at: https://pypi.org/project/csvvalidator/; February 25, 2023 was the last accessed date.
 
 
 
@@ -318,6 +322,13 @@ import warnings
 import re
 import filecmp
 import datetime
+"""
+	Import the CSV [Miles2013] [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
+
+	https://docs.python.org/3/library/csv.html
+"""
+import csv
+
 
 
 ###############################################################
@@ -327,8 +338,14 @@ import datetime
 
 # Requires the following installation.
 #pip install bibtexparser
+#pip install csvvalidator
+
 # Import [Boulogne2022] [Boulogne2023a]
 import bibtexparser
+
+# Import [Miles2013]
+#import csvvalidator
+from csvvalidator import *
 
 
 
@@ -429,7 +446,8 @@ paired_input_arguments = {}
 		[-k] [-m] [-a] [-z] [-b] [-j] [-s] [-u]
 """
 incorrect_usage_of_paired_input_arguments = 1
-
+# Input filename is invalid.
+input_filename_is_invalid = 2
 
 
 ###############################################################
@@ -454,6 +472,43 @@ def print_help_manual():
 	print("")
 	print("Acceptable flags for 2-tuples input arguments are: [-k] [-m] [-a] [-z] [-b] [-j] [-s] [-u]")
 	print("")
+
+
+
+
+"""
+	Method to validate a comma-separated values (CSV) file.
+	@param csv_filename - Filename of the CSV file to be validated.
+	@return boolean True, if csv_filename is a valid CSV file;
+		else, return False.
+"""
+def validate_csv_file(csv_filename=None):
+	#print("	csv_filename is:",csv_filename,"=")
+	if None != csv_filename:
+		validator = CSVValidator("Generic CSV file")
+		csv_data = csv.reader(csv_filename)
+		problems_with_csv_file = validator.validate(csv_data)
+		#print("	problems_with_csv_file is:",problems_with_csv_file,"=")
+		if not problems_with_csv_file:
+			#print("	There are no problems with the CSV file.")
+			return True
+		else:
+			#print("	There are problems with the CSV file!!!")
+			#print("	problems_with_csv_file is:",problems_with_csv_file,"=")
+			return False
+	else:
+		#print("	The csv_filename is:",csv_filename,"=")
+		#print("	csv_filename is NOT 'None'.")
+		return False
+
+
+
+
+
+
+
+
+
 
 
 ###############################################################
@@ -829,6 +884,10 @@ if __name__ == "__main__":
 
 		https://docs.python.org/3/library/os.html#os.access
 		https://docs.python.org/3/library/os.html#os.W_OK
+
+
+		Use input_file_object.seek(0) to reset the read position to
+			the start of the input file.
 	"""
 	if os.access(output_filename, os.W_OK):
 		print("	Filename/Path to target output filename is valid:",output_filename,"=")
@@ -889,12 +948,23 @@ if __name__ == "__main__":
 		for paired_ip_arg in paired_input_arguments:
 			# Is a list of BibTeX keys specified?
 			if "bibtex_key_csv_filename" == paired_ip_arg:
-				# Yes, load the input CSV file.
 				"""
-					Use input_file_object.seek(0) to reset the read
-						position to the start of the input file.
+					Yes, load the input CSV file.
+					Check of the input CSV file for BibTeX keys is valid.
 				"""
+				if validate_csv_file(csv_filename=bibtex_key_csv_filename):
+					print("	No problems with the CSV file for keyphrases.")
+					"""
+						Read the CSV file for keyphrases [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
 
+						https://docs.python.org/3/library/csv.html
+					"""
+					#bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',', quotechar='|')
+					bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',')
+				else:
+					print("	There are problems with the CSV file for keyphrases!!!")
+					# End execution of the script to indicate error.
+					sys.exit(input_filename_is_invalid)
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
