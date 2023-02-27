@@ -63,8 +63,7 @@
 								Delimit the 'Author' field with " and "
 									and check if the author or any co-author
 									has this exact name match, for the
-									full name, first/given name, or last name
-									(or surname).
+									last name (or surname).
 
 
 	[-b]:					If an optional "-b" flag is used as an
@@ -141,8 +140,12 @@
 			into an output file.
 			Delimit the 'Author' field by " and ", and check if the name
 				of the author or any co-author matches this string for
-				the full name, first/given name, or last name (or surname).
+				the last name (or surname).
 				Matches have to be exact.
+				Ignore matches for full name or first/given name, since
+					many authors ignore their middle name(s), and may
+					also only indicate their first name initial in certain
+					publications but full name otherwise.
 		If the [-b] input argument/option is selected,
 			find the set of records (of BibTeX entries) that
 			have include the following substring in the 'Booktitle' field,
@@ -315,6 +318,13 @@ from timing_measurements.performance_measurement_no_ns import execution_time_mea
 mode_current_time_measurement = "perf_counter"
 # Set the initial timestamp.
 execution_time_measurement_no_ns.set_initial_timestamp()
+
+
+"""
+	Filename/path of the output file that contains the extracted BibTeX entries.
+"""
+output_filename = "./output-files/extracted_bibtext_entries.bib"
+
 
 # --------------------------------------------------------
 
