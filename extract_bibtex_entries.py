@@ -118,10 +118,6 @@
 			have BibTeX keys found in the set of BibTeX keys,
 			and print out information about these records into
 			an output file.
-			If the [-m] input argument/option is also selected,
-				find the subset of these records that have keyphrases
-				found in the set of keyphrases, and print out information about these records into an output file.
-			Similarly, if multiple options are selected, process them here.
 		If the [-m] input argument/option is selected,
 			find the set of records (of BibTeX entries) that
 			have keyphrases found in the set of keyphrases,
@@ -348,31 +344,61 @@ if __name__ == "__main__":
 		Check if the output filename is valid [DrakeJr2023a, from Generic Operating System Services: os — Miscellaneous operating system interfaces: Files and Directories].
 
 		https://docs.python.org/3/library/os.html#os.access
+		https://docs.python.org/3/library/os.html#os.W_OK
 	"""
-	if not os.access(output_filename, os.W_OK):
-		print(">>>	Filename/Path to target output filename is invalid:",output_filename,"=")
-	else:
-		print("	Filename/Path to target output filename is valid:",output_filename,"=")
-	output_filename = "./non-existent-directory/random_bibtex_database_non_existent.bib"
 	if os.access(output_filename, os.W_OK):
-		print(">>>	Filename/Path to target output filename is invalid:",output_filename,"=")
-	else:
 		print("	Filename/Path to target output filename is valid:",output_filename,"=")
+	else:
+		print(">	Filename/Path to target output filename is invalid:",output_filename,"=")
+		"""
+			Get the absolute path containing the target output file.
+
+			https://docs.python.org/3/library/os.path.html#os.path.abspath
+		"""
+		absolute_path_of_target_output_file = os.path.abspath(output_filename)
+		print("	Path of target output:",absolute_path_of_target_output_file,"=")
+		"""
+			This approach only grabs the filename.
+		path_of_directory_for_target_output_file = os.path.basename(output_filename)
+		print("	Path of the directory for target output:",path_of_directory_for_target_output_file,"=")
+		"""
+		"""
+			Get the path of the directory that would contain the target output file.
+
+			https://docs.python.org/3/library/os.path.html#os.path.dirname
+		"""
+		path_of_directory_for_target_output_file = os.path.dirname(absolute_path_of_target_output_file)
+		print("	Path of the directory for target output:",path_of_directory_for_target_output_file,"=")
+		"""
+			Is directory that would contain output file a valid directory?
+
+			https://docs.python.org/3/library/os.path.html#os.path.isdir
+		"""
+		if os.path.isdir(path_of_directory_for_target_output_file):
+			print("	Path of the directory for target output is valid.")
+			print("	Target output file can be created.")
+		else:
+			print("	Path of the directory for target output is INVALID!!!")
+			print("	Target output file cannot be created!!!")
+			print("	Please kindly select path for output file in an existing directory!!!")
 	# --------------------------------------------------------
 	"""
 		Load the BibTeX database as an input file object for the
 			parser [Boulogne2023a].
+
+		Run this in the ./outputs/scripts subdirectory of the BibTeX
+			database repository.
 	"""
-	with open('references.bib') as bibtex_file:
+#	with open('../../references.bib') as bibtex_file:
 		# Load the BibTeX database to the parser.
-	    bib_database = bibtexparser.load(bibtex_file)
+#	    bib_database = bibtexparser.load(bibtex_file)
 	"""
 		Print the BibTeX entries of the BibTeX database as a list of
 			dictionaries [Boulogne2023a].
 
 		The list of BibTeX entries is stored in: bib_database.entries.
 	"""
-	print(bib_database.entries)
+#	print(bib_database.entries)
 	#for bib_entry in bib_database.entries:
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
