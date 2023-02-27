@@ -323,6 +323,12 @@ import re
 import filecmp
 import datetime
 """
+	Workaround to address the following (run-time) error/bug.
+
+	AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+"""
+from datetime import timedelta
+"""
 	Import the CSV [Miles2013] [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
 
 	https://docs.python.org/3/library/csv.html
@@ -880,6 +886,26 @@ if __name__ == "__main__":
 		sys.exit(0)
 	# --------------------------------------------------------
 	"""
+		Determine if the [-k] option has been selected.
+		Yes, load the input CSV file.
+		Check of the input CSV file for BibTeX keys is valid.
+	"""
+	if validate_csv_file(csv_filename=bibtex_key_csv_filename):
+		print("	No problems with the CSV file for keyphrases.")
+		"""
+			Read the CSV file for keyphrases [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
+
+			https://docs.python.org/3/library/csv.html
+		"""
+		#bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',', quotechar='|')
+		bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',')
+		print(bibtex_keys_selected)
+	else:
+		print("	There are problems with the CSV file for keyphrases!!!")
+		# End execution of the script to indicate error.
+		sys.exit(input_filename_is_invalid)
+	# --------------------------------------------------------
+	"""
 		Check if the output filename is valid [DrakeJr2023a, from Generic Operating System Services: os — Miscellaneous operating system interfaces: Files and Directories].
 
 		https://docs.python.org/3/library/os.html#os.access
@@ -948,23 +974,7 @@ if __name__ == "__main__":
 		for paired_ip_arg in paired_input_arguments:
 			# Is a list of BibTeX keys specified?
 			if "bibtex_key_csv_filename" == paired_ip_arg:
-				"""
-					Yes, load the input CSV file.
-					Check of the input CSV file for BibTeX keys is valid.
-				"""
-				if validate_csv_file(csv_filename=bibtex_key_csv_filename):
-					print("	No problems with the CSV file for keyphrases.")
-					"""
-						Read the CSV file for keyphrases [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
-
-						https://docs.python.org/3/library/csv.html
-					"""
-					#bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',', quotechar='|')
-					bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',')
-				else:
-					print("	There are problems with the CSV file for keyphrases!!!")
-					# End execution of the script to indicate error.
-					sys.exit(input_filename_is_invalid)
+				print("")
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
@@ -976,6 +986,12 @@ if __name__ == "__main__":
 	# Get the elapsed time.
 	elapsed_time = execution_time_measurement_no_ns.get_elapsed_time(mode_current_time_measurement)
 	#temp_text = "Elapsed time:::"+str(datetime.timedelta(seconds=elapsed_time))+"=\n"
-	print("Elapsed time:::",datetime.timedelta(seconds=elapsed_time),"=")
+	"""
+		Workaround to address the following (run-time) error/bug.
+
+		AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+	"""
+	#print("Elapsed time:::",datetime.timedelta(seconds=elapsed_time),"=")
+	print("Elapsed time:::",timedelta(seconds=elapsed_time),"=")
 	print("")
 	print("")
