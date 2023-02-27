@@ -222,6 +222,9 @@
 		This avoids having users specify the name/path of the output
 			file as an input argument.
 
+	If options are used multiple times, only the last instance
+		associated with that option is used.
+
 
 
 
