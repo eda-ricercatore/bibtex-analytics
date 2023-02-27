@@ -225,6 +225,25 @@
 	If options are used multiple times, only the last instance
 		associated with that option is used.
 
+	
+	The following variables are associated with paired/2-tuples input
+		arguments:
+	+ bibtex_key_csv_filename
+	+ keyphrases_csv_filename
+	+ names_of_all_authors
+	+ last_name_of_an_author
+	+ booktitle_selected
+	+ journal_title
+	+ series_title
+	+ university_name
+	If these variables have the value of "None", this implies that
+		their corresponding paired/2-tuples input arguments are not
+		processed as valid arguments.
+		Hence, such "None"-valued variables would not be processed as
+			their corresponding paired/2-tuples input arguments are
+			not correctly selected/chosen.
+
+
 
 
 
@@ -361,25 +380,47 @@ u_option = "-u"
 
 
 # Filename/path to the input CSV file containing a set of BibTeX keys.
-bibtex_key_csv_filename = ""
+bibtex_key_csv_filename = None
 # Filename/path to the input CSV file containing a set of keyphrases.
-keyphrases_csv_filename = ""
+keyphrases_csv_filename = None
 # Names of all the authors.
-names_of_all_authors = ""
+names_of_all_authors = None
 # Last name of an author.
-last_name_of_an_author = ""
+last_name_of_an_author = None
 """
 	Booktitle, or title of a book for a reference to its chapter,
 		section, subsection, or subsubsection.
 	It can also be the title of a conference proceedings.
 """
-booktitle_selected = ""
+booktitle_selected = None
 # Title of the journal.
-journal_title = ""
+journal_title = None
 # Title of the book series, or conference proceedings.
-series_title = ""
+series_title = None
 # Name of a research university that grants advanced/research degrees.
-university_name = ""
+university_name = None
+
+"""
+	Dictionary of non-None -valued variables corresponding to paired/2-tuples
+		input arguments, and their values.
+
+	bibtex_key_csv_filename, keyphrases_csv_filename, names_of_all_authors, last_name_of_an_author, booktitle_selected, journal_title, series_title, university_name
+
+	Rather than add all these variables to the dictionary, and check
+		if their value is "None", only add variables and their
+		corresponding values if they have been processed as valid
+		input arguments.
+		This avoids having to check if a variable has the value of "None".
+	Do this in the corresponding "if" or "else if" block when processing
+		these paired/2-tuples input arguments.
+	Using a dictionary, or another data structure of (key,value) pairs
+		for these paired/2-tuples input arguments allows us to avoid enumerating
+		the set of all BibTeX entries for each variable.
+		This slightly increases the duration of the iteration/enumeration
+			of the set of all BibTeX entries, but avoids enumerating this set
+			multiple times (eight as of February 27, 2023).
+"""
+paired_input_arguments = {}
 
 
 # Error flags for sys.exit() method calls.
@@ -495,6 +536,12 @@ if __name__ == "__main__":
 						sys.exit(incorrect_usage_of_paired_input_arguments)
 					else:
 						print("	BibTeX keys CSV filename is valid:", bibtex_key_csv_filename,"=")
+						"""
+							Add "bibtex_key_csv_filename" and its value
+								to the dictionary of paired input
+								arguments for subsequent processing.
+						"""
+						paired_input_arguments["bibtex_key_csv_filename"] = bibtex_key_csv_filename
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -536,6 +583,12 @@ if __name__ == "__main__":
 						sys.exit(incorrect_usage_of_paired_input_arguments)
 					else:
 						print("	Keyphrases CSV filename is valid:", keyphrases_csv_filename,"=")
+						"""
+							Add "keyphrases_csv_filename" and its value
+								to the dictionary of paired input
+								arguments for subsequent processing.
+						"""
+						paired_input_arguments["keyphrases_csv_filename"] = keyphrases_csv_filename
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -565,6 +618,12 @@ if __name__ == "__main__":
 					"""
 					names_of_all_authors = next(iterator_for_list_of_input_arguments)[1]
 					print("option is:",names_of_all_authors,"=")
+					"""
+						Add "names_of_all_authors" and its value to
+							the dictionary of paired input arguments
+							for subsequent processing.
+					"""
+					paired_input_arguments["names_of_all_authors"] = names_of_all_authors
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -594,6 +653,12 @@ if __name__ == "__main__":
 					"""
 					last_name_of_an_author = next(iterator_for_list_of_input_arguments)[1]
 					print("option is:",last_name_of_an_author,"=")
+					"""
+						Add "last_name_of_an_author" and its value to
+							the dictionary of paired input arguments
+							for subsequent processing.
+					"""
+					paired_input_arguments["last_name_of_an_author"] = last_name_of_an_author
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -621,8 +686,14 @@ if __name__ == "__main__":
 						Process the next input argument that should contain
 							the booktitle of selected publications.
 					"""
-					last_name_of_an_author = next(iterator_for_list_of_input_arguments)[1]
-					print("option is:",last_name_of_an_author,"=")
+					booktitle_selected = next(iterator_for_list_of_input_arguments)[1]
+					print("option is:",booktitle_selected,"=")
+					"""
+						Add "booktitle_selected" and its value to
+							the dictionary of paired input arguments
+							for subsequent processing.
+					"""
+					paired_input_arguments["booktitle_selected"] = booktitle_selected
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -652,6 +723,12 @@ if __name__ == "__main__":
 					"""
 					journal_title = next(iterator_for_list_of_input_arguments)[1]
 					print("option is:",journal_title,"=")
+					"""
+						Add "journal_title" and its value to
+							the dictionary of paired input arguments
+							for subsequent processing.
+					"""
+					paired_input_arguments["journal_title"] = journal_title
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -681,6 +758,12 @@ if __name__ == "__main__":
 					"""
 					series_title = next(iterator_for_list_of_input_arguments)[1]
 					print("option is:",series_title,"=")
+					"""
+						Add "series_title" and its value to
+							the dictionary of paired input arguments
+							for subsequent processing.
+					"""
+					paired_input_arguments["series_title"] = series_title
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -702,7 +785,7 @@ if __name__ == "__main__":
 				# Is there at least one more input argument to process?
 				if index < number_of_input_arguments:
 					#index = index + 1
-					print("= Series title for the [-u] option.")
+					print("= University name for the [-u] option.")
 					print("index is:",index+1,"=")
 					"""
 						Process the next input argument that should contain
@@ -711,6 +794,12 @@ if __name__ == "__main__":
 					"""
 					university_name = next(iterator_for_list_of_input_arguments)[1]
 					print("option is:",university_name,"=")
+					"""
+						Add "university_name" and its value to
+							the dictionary of paired input arguments
+							for subsequent processing.
+					"""
+					paired_input_arguments["university_name"] = university_name
 				else:
 					"""
 						No, there are no more input arguments to process.
@@ -720,7 +809,7 @@ if __name__ == "__main__":
 						+ university name
 					"""
 					print("	Invalid usage of [-u] option.")
-					print("	No book series title is provided for the [-u] option.")
+					print("	No university name is provided for the [-u] option.")
 					print("")
 					print_help_manual()
 					# End execution of the script to indicate error.
@@ -779,17 +868,33 @@ if __name__ == "__main__":
 		Run this in the ./outputs/ subdirectory of the BibTeX
 			database repository.
 	"""
-#	with open('../references.bib') as bibtex_file:
+	with open('../references.bib') as bibtex_file:
 		# Load the BibTeX database to the parser.
-#	    bib_database = bibtexparser.load(bibtex_file)
+	    bib_database = bibtexparser.load(bibtex_file)
 	"""
 		Print the BibTeX entries of the BibTeX database as a list of
 			dictionaries [Boulogne2023a].
 
 		The list of BibTeX entries is stored in: bib_database.entries.
 	"""
-#	print(bib_database.entries)
-	#for bib_entry in bib_database.entries:
+	print(bib_database.entries)
+	"""
+		Enumerate the list of BibTeX entries, and process them based
+			on the given paired/2-tuples input arguments.
+
+		bibtex_key_csv_filename, keyphrases_csv_filename, names_of_all_authors, last_name_of_an_author, booktitle_selected, journal_title, series_title, university_name
+	"""
+	for bib_entry in bib_database.entries:
+		# Process BibTeX entry using given paired/2-tuples input arguments.
+		for paired_ip_arg in paired_input_arguments:
+			# Is a list of BibTeX keys specified?
+			if "bibtex_key_csv_filename" == paired_ip_arg:
+				# Yes, load the input CSV file.
+				"""
+					Use input_file_object.seek(0) to reset the read
+						position to the start of the input file.
+				"""
+
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
