@@ -1059,10 +1059,11 @@ if __name__ == "__main__":
 					filtered_bibtex_entries.append(bib_entry)
 #					print("	After removal: Size of bib_database.entries:",len(bib_database.entries),"=")
 				else:
-					print("	Unremoved BibTeX key is:",bib_entry["ID"],"=")
+					#print("	Unremoved BibTeX key is:",bib_entry["ID"],"=")
+					pass
 			else:
-				print("	Other input arguments are selected.")
-#				pass
+				#print("	Other input arguments are selected.")
+				pass
 	"""
 		Print the set of remaining BibTeX entries with the selected
 			BibTeX keys.
