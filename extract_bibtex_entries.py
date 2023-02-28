@@ -346,10 +346,23 @@ import csv
 #pip install bibtexparser
 #pip install csvvalidator
 
-# Import [Boulogne2022] [Boulogne2023a]
+# Import [Boulogne2022] [Boulogne2023a].
 import bibtexparser
 
-# Import [Miles2013]
+"""
+	Import [Miles2013].
+	This Python package from PyPI causes problems with finding
+		the method: datetime.timedelta()
+	
+	A workaround is described as follows.
+
+	Import the following in addition to: "import datetime"
+	from datetime import timedelta
+
+	Subsequently, use the following method call instead.
+
+	timedelta()
+"""
 #import csvvalidator
 from csvvalidator import *
 
@@ -1006,22 +1019,45 @@ if __name__ == "__main__":
 
 		The list of BibTeX entries is stored in: bib_database.entries.
 	"""
-	print(bib_database.entries)
+	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["bibtex_key_csv_filename"],"=")
+	print("paired_input_arguments is:",paired_input_arguments,"=")
+#	print(bib_database.entries)
+	print("Pre-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
 	"""
 		Enumerate the list of BibTeX entries, and process them based
 			on the given paired/2-tuples input arguments.
 
 		bibtex_key_csv_filename, keyphrases_csv_filename, names_of_all_authors, last_name_of_an_author, booktitle_selected, journal_title, series_title, university_name
 	"""
-#	for bib_entry in bib_database.entries:
+	for bib_entry in bib_database.entries:
 		# Process BibTeX entry using given paired/2-tuples input arguments.
-#		for paired_ip_arg in paired_input_arguments:
+		for paired_ip_arg in paired_input_arguments:
 			# Is a list of BibTeX keys specified?
-#			if "bibtex_key_csv_filename" == paired_ip_arg:
-				# Get the list of BibTeX keys.
-#				selected_bibtex_keys = paired_input_arguments[paired_ip_arg]
-#				for current_key in selected_bibtex_keys:
-#					if bib_entry[] != current_key:
+			if "bibtex_key_csv_filename" == paired_ip_arg:
+				"""
+					Yes. Determine if the BibTeX key of the current
+						BibTeX entry is in the list of selected BibTeX keys.
+				"""
+				if bib_entry["ID"] not in paired_input_arguments[paired_ip_arg]:
+					"""
+						No, it is not in the list of selected BibTeX keys.
+						Remove it from the copy of the BibTeX database.
+					"""
+					print("	Before removal: Size of bib_database.entries:",len(bib_database.entries),"=")
+					bib_database.entries.remove(bib_entry)
+					print("	After removal: Size of bib_database.entries:",len(bib_database.entries),"=")
+				else:
+					print("	Unremoved BibTeX key is:",bib_entry["ID"],"=")
+			else:
+				print("	Other input arguments are selected.")
+#				pass
+	"""
+		Print the set of remaining BibTeX entries with the selected
+			BibTeX keys.
+	"""
+#	print("Print the set of remaining BibTeX entries with the selected BibTeX keys.")
+#	print(bib_database.entries)
+	print("Post-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
@@ -1029,6 +1065,8 @@ if __name__ == "__main__":
 	#print(bib_database.preambles)
 	# Print ordered dictionary representing months and their abbreviation.
 	#print(bib_database.strings)
+	# --------------------------------------------------------
+
 	# --------------------------------------------------------
 	# Get the elapsed time.
 	elapsed_time = execution_time_measurement_no_ns.get_elapsed_time(mode_current_time_measurement)
