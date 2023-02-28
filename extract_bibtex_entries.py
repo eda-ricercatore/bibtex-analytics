@@ -511,6 +511,47 @@ def validate_csv_file(csv_filename=None):
 
 
 
+"""
+	Method to determine if selected input arguments have been selected.
+	@param dict_key_to_ip_arg - Variable name storing the input argument's
+		value that contains a filename of a CSV file.
+	@param text_about_ip_arg - Stores information/text about the input
+		argument to be processed.
+	@return Nothing.
+"""
+def is_x_input argument_selected_for_csv_file(dict_key_to_ip_arg=None,text_about_ip_arg=None):
+	# Is the [-?] option (indicated by dict_key_to_ip_arg) selected?
+	if None != paired_input_arguments.get(dict_key_to_ip_arg):
+		"""
+			Yes, load the input CSV file.
+			Check of the input CSV file for BibTeX keys is valid.
+		"""
+		dict_val_to_ip_arg = paired_input_arguments.get(dict_key_to_ip_arg)
+		if validate_csv_file(csv_filename=dict_val_to_ip_arg):
+			print("	No problems with the CSV file for BibTeX keys.")
+			"""
+				Read the CSV file for BibTeX keys [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
+
+				https://docs.python.org/3/library/csv.html
+			"""
+			#bibtex_keys_selected = csv.reader(dict_val_to_ip_arg, delimiter=',', quotechar='|')
+			with open(dict_val_to_ip_arg, "r") as csv_ip_file_obj:
+				dict_val_to_ip_arg_csv_obj = csv.reader(csv_ip_file_obj, delimiter=',')
+				print("Value of",dict_key_to_ip_arg,"is:",dict_val_to_ip_arg_csv_obj,"=")
+				for row in dict_val_to_ip_arg_csv_obj:
+					paired_input_arguments[dict_key_to_ip_arg] = row
+					print("	List of", text_about_ip_arg, "are:",paired_input_arguments[dict_key_to_ip_arg],"=")
+		else:
+			print("	There are problems with the CSV file for BibTeX keys!!!")
+			# End execution of the script to indicate error.
+			sys.exit(input_filename_is_invalid)
+	else:
+		# Else, no, proceed/continue/pass.
+		print("This input argument with input file is not used:",dict_key_to_ip_arg,"=")
+	
+
+
+
 
 
 
@@ -885,27 +926,93 @@ if __name__ == "__main__":
 		# End execution of the script without error.
 		sys.exit(0)
 	# --------------------------------------------------------
+	
+	"""
+		Do additional preprocessing of input CSV files, so that the
+			loading and processing of these files only have to be
+			done once, rather than multiple times in a "for" loop
+			that iterates through the set of BibTeX entries.
+		Handle each input argument with if-else statements, rather
+			than if-elif-...-elif-else statements, since the former
+			allows multiple input arguments with input filenames to
+			be used concurrently while the latter can only support
+			one input argument with input filename to be processed
+			per set of if-elif-...-elif-else statements.
+			Hence, the latter would require multiple sets of such
+				statements to enable concurrent input arguments to
+				include input filenames.
+	"""
+
 	# Is the [-k] option selected?
-	if None != paired_input_arguments.get(bibtex_key_csv_filename):
+	if None != paired_input_arguments.get("bibtex_key_csv_filename"):
 		"""
 			Yes, load the input CSV file.
 			Check of the input CSV file for BibTeX keys is valid.
 		"""
 		if validate_csv_file(csv_filename=bibtex_key_csv_filename):
+			print("	No problems with the CSV file for BibTeX keys.")
+			"""
+				Read the CSV file for BibTeX keys [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
+
+				https://docs.python.org/3/library/csv.html
+			"""
+			#bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',', quotechar='|')
+			with open(bibtex_key_csv_filename, "r") as csv_ip_file_obj:
+				bibtex_keys_selected_csv_obj = csv.reader(csv_ip_file_obj, delimiter=',')
+				print("bibtex_keys_selected_csv_obj is:",bibtex_keys_selected_csv_obj,"=")
+				for row in bibtex_keys_selected_csv_obj:
+					bibtex_key_csv_filename = row
+					print("	List of BibTeX keys are:",bibtex_key_csv_filename,"=")
+		else:
+			print("	There are problems with the CSV file for BibTeX keys!!!")
+			# End execution of the script to indicate error.
+			sys.exit(input_filename_is_invalid)
+	else:
+		# Else, no, proceed/continue/pass.
+		print("[-k] input argument with input file is not used.")
+	print("	Check if variable assignments are retained.")
+	print("	List of BibTeX keys are:",bibtex_key_csv_filename,"=")
+	# Update the dictionary of paired/2-tuples input arguments.
+	paired_input_arguments["bibtex_key_csv_filename"] = bibtex_key_csv_filename
+	if bibtex_key_csv_filename == paired_input_arguments["bibtex_key_csv_filename"]:
+		print("paired_input_arguments['bibtex_key_csv_filename'] has been updated:",paired_input_arguments["bibtex_key_csv_filename"],"=")
+	else:
+		print("paired_input_arguments['bibtex_key_csv_filename'] has NOT been updated!!!")
+	# Is the [-m] option selected?
+	if None != paired_input_arguments.get("keyphrases_csv_filename"):
+		"""
+			Yes, load the input CSV file.
+			Check of the input CSV file for keyphrases is valid.
+		"""
+		if validate_csv_file(csv_filename=keyphrases_csv_filename):
 			print("	No problems with the CSV file for keyphrases.")
 			"""
 				Read the CSV file for keyphrases [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
 
 				https://docs.python.org/3/library/csv.html
 			"""
-			#bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',', quotechar='|')
-			bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',')
-			print(bibtex_keys_selected)
+			#keyphrases_selected = csv.reader(keyphrases_csv_filename, delimiter=',', quotechar='|')
+			with open(keyphrases_csv_filename, "r") as csv_ip_file_obj:
+				keyphrases_selected_csv_obj = csv.reader(csv_ip_file_obj, delimiter=',')
+				print("keyphrases_selected_csv_obj is:",keyphrases_selected_csv_obj,"=")
+				for row in keyphrases_selected_csv_obj:
+					keyphrases_csv_filename = row
+					print("	List of keyphrases are:",keyphrases_csv_filename,"=")
 		else:
 			print("	There are problems with the CSV file for keyphrases!!!")
 			# End execution of the script to indicate error.
 			sys.exit(input_filename_is_invalid)
-	# Else, no, proceed/continue/pass.
+	else:
+		# Else, no, proceed/continue/pass.
+		print("[-m] input argument with input file is not used.")
+	print("	Check if variable assignments are retained.")
+	print("	List of keyphrases are:",keyphrases_csv_filename,"=")
+	# Update the dictionary of paired/2-tuples input arguments.
+	paired_input_arguments["keyphrases_csv_filename"] = keyphrases_csv_filename
+	if keyphrases_csv_filename == paired_input_arguments["keyphrases_csv_filename"]:
+		print("paired_input_arguments['keyphrases_csv_filename'] has been updated:",paired_input_arguments["keyphrases_csv_filename"],"=")
+	else:
+		print("paired_input_arguments['keyphrases_csv_filename'] has NOT been updated!!!")
 	# --------------------------------------------------------
 	"""
 		Check if the output filename is valid [DrakeJr2023a, from Generic Operating System Services: os — Miscellaneous operating system interfaces: Files and Directories].
@@ -955,28 +1062,28 @@ if __name__ == "__main__":
 		Run this in the ./outputs/ subdirectory of the BibTeX
 			database repository.
 	"""
-	with open('../references.bib') as bibtex_file:
+#	with open('../references.bib') as bibtex_file:
 		# Load the BibTeX database to the parser.
-	    bib_database = bibtexparser.load(bibtex_file)
+#	    bib_database = bibtexparser.load(bibtex_file)
 	"""
 		Print the BibTeX entries of the BibTeX database as a list of
 			dictionaries [Boulogne2023a].
 
 		The list of BibTeX entries is stored in: bib_database.entries.
 	"""
-	print(bib_database.entries)
+#	print(bib_database.entries)
 	"""
 		Enumerate the list of BibTeX entries, and process them based
 			on the given paired/2-tuples input arguments.
 
 		bibtex_key_csv_filename, keyphrases_csv_filename, names_of_all_authors, last_name_of_an_author, booktitle_selected, journal_title, series_title, university_name
 	"""
-	for bib_entry in bib_database.entries:
+#	for bib_entry in bib_database.entries:
 		# Process BibTeX entry using given paired/2-tuples input arguments.
-		for paired_ip_arg in paired_input_arguments:
+#		for paired_ip_arg in paired_input_arguments:
 			# Is a list of BibTeX keys specified?
-			if "bibtex_key_csv_filename" == paired_ip_arg:
-				print("")
+#			if "bibtex_key_csv_filename" == paired_ip_arg:
+#				print("")
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
