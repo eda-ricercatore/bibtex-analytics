@@ -1043,9 +1043,9 @@ if __name__ == "__main__":
 						No, it is not in the list of selected BibTeX keys.
 						Remove it from the copy of the BibTeX database.
 					"""
-					print("	Before removal: Size of bib_database.entries:",len(bib_database.entries),"=")
+#					print("	Before removal: Size of bib_database.entries:",len(bib_database.entries),"=")
 					bib_database.entries.remove(bib_entry)
-					print("	After removal: Size of bib_database.entries:",len(bib_database.entries),"=")
+#					print("	After removal: Size of bib_database.entries:",len(bib_database.entries),"=")
 				else:
 					print("	Unremoved BibTeX key is:",bib_entry["ID"],"=")
 			else:
