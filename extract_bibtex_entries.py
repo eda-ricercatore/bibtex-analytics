@@ -1048,7 +1048,8 @@ if __name__ == "__main__":
 					Yes. Determine if the BibTeX key of the current
 						BibTeX entry is in the list of selected BibTeX keys.
 				"""
-				if bib_entry["ID"] not in paired_input_arguments[paired_ip_arg]:
+				#if bib_entry["ID"] not in paired_input_arguments[paired_ip_arg]:
+				if bib_entry["ID"] in paired_input_arguments[paired_ip_arg]:
 					"""
 						No, it is not in the list of selected BibTeX keys.
 						Remove it from the copy of the BibTeX database.
@@ -1070,6 +1071,8 @@ if __name__ == "__main__":
 #	print(bib_database.entries)
 	print("Post-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
 	print("Filtered set of BibTeX entries 'filtered_bibtex_entries' is:",filtered_bibtex_entries,"=")
+	print("Size of filtered set of BibTeX entries is:",len(filtered_bibtex_entries),"=")
+	bib_database.entries = filtered_bibtex_entries
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
