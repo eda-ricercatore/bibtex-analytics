@@ -1018,11 +1018,21 @@ if __name__ == "__main__":
 			dictionaries [Boulogne2023a].
 
 		The list of BibTeX entries is stored in: bib_database.entries.
+
+
+		Note: Current solution fails to enumerate the BibTeX database
+			and remove BibTeX entries that are not selected by input
+			arguments.
+		E.g., only 10382 out of 20764 BibTeX entries are removed.
+		A workaround is to assign matching BibTeX entries to a new
+			list, and assign that list to bib_database.entries by
+			replacing/overwriting the original set of BibTeX entries.
 	"""
 	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["bibtex_key_csv_filename"],"=")
 	print("paired_input_arguments is:",paired_input_arguments,"=")
 #	print(bib_database.entries)
 	print("Pre-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
+	filtered_bibtex_entries = []
 	"""
 		Enumerate the list of BibTeX entries, and process them based
 			on the given paired/2-tuples input arguments.
@@ -1044,7 +1054,8 @@ if __name__ == "__main__":
 						Remove it from the copy of the BibTeX database.
 					"""
 #					print("	Before removal: Size of bib_database.entries:",len(bib_database.entries),"=")
-					bib_database.entries.remove(bib_entry)
+					#bib_database.entries.remove(bib_entry)
+					filtered_bibtex_entries.append(bib_entry)
 #					print("	After removal: Size of bib_database.entries:",len(bib_database.entries),"=")
 				else:
 					print("	Unremoved BibTeX key is:",bib_entry["ID"],"=")
@@ -1058,6 +1069,7 @@ if __name__ == "__main__":
 #	print("Print the set of remaining BibTeX entries with the selected BibTeX keys.")
 #	print(bib_database.entries)
 	print("Post-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
+	print("Filtered set of BibTeX entries 'filtered_bibtex_entries' is:",filtered_bibtex_entries,"=")
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
