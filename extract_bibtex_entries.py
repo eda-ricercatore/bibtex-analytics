@@ -248,7 +248,7 @@
 
 
 	Requirements:
-	+ Installation of bibtexparser [Boulogne2022].
+	+ Installation of bibtexparser [Boulogne2022, from Step 3: Export: Call the writer].
 
 
 
@@ -350,6 +350,7 @@ import csv
 import bibtexparser
 # Import [Boulogne2023a].
 from bibtexparser.bwriter import BibTexWriter
+from bibtexparser.bibdatabase import BibDatabase
 
 """
 	Import [Miles2013].
@@ -1091,7 +1092,7 @@ if __name__ == "__main__":
 		Print the set of filtered BibTeX entries to the designated
 			BibTeX output file [Boulogne2023a].
 	"""
-	btx_writer = BibTeXWriter()
+	btx_writer = BibTexWriter()
 	# Create an output file object for the BibTeX output file.
 	with open(output_filename, "w") as bibtex_file_obj:
 		# Print the filtered set of BibTeX entries to output file.
