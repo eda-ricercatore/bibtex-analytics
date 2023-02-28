@@ -1013,12 +1013,15 @@ if __name__ == "__main__":
 
 		bibtex_key_csv_filename, keyphrases_csv_filename, names_of_all_authors, last_name_of_an_author, booktitle_selected, journal_title, series_title, university_name
 	"""
-	for bib_entry in bib_database.entries:
+#	for bib_entry in bib_database.entries:
 		# Process BibTeX entry using given paired/2-tuples input arguments.
-		for paired_ip_arg in paired_input_arguments:
+#		for paired_ip_arg in paired_input_arguments:
 			# Is a list of BibTeX keys specified?
-			if "bibtex_key_csv_filename" == paired_ip_arg:
-				print("")
+#			if "bibtex_key_csv_filename" == paired_ip_arg:
+				# Get the list of BibTeX keys.
+#				selected_bibtex_keys = paired_input_arguments[paired_ip_arg]
+#				for current_key in selected_bibtex_keys:
+#					if bib_entry[] != current_key:
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
