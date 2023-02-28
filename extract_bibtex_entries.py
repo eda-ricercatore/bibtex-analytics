@@ -1097,7 +1097,7 @@ if __name__ == "__main__":
 	with open(output_filename, "w") as bibtex_file_obj:
 		# Print the filtered set of BibTeX entries to output file.
 		bibtex_file_obj.write(btx_writer.write(bib_database))
-	print("bibtexparser.bibdatabase.BibDatabase.comments is:",bibtexparser.bibdatabase.BibDatabase.comments,"=")
+	#print("bibtexparser.bibdatabase.BibDatabase.comments is:",bibtexparser.bibdatabase.BibDatabase.comments,"=")
 	# --------------------------------------------------------
 	# Get the elapsed time.
 	elapsed_time = execution_time_measurement_no_ns.get_elapsed_time(mode_current_time_measurement)
