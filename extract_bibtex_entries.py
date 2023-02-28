@@ -885,25 +885,27 @@ if __name__ == "__main__":
 		# End execution of the script without error.
 		sys.exit(0)
 	# --------------------------------------------------------
-	"""
-		Determine if the [-k] option has been selected.
-		Yes, load the input CSV file.
-		Check of the input CSV file for BibTeX keys is valid.
-	"""
-	if validate_csv_file(csv_filename=bibtex_key_csv_filename):
-		print("	No problems with the CSV file for keyphrases.")
+	# Is the [-k] option selected?
+	if None != paired_input_arguments.get(bibtex_key_csv_filename):
 		"""
-			Read the CSV file for keyphrases [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
+			Yes, load the input CSV file.
+			Check of the input CSV file for BibTeX keys is valid.
+		"""
+		if validate_csv_file(csv_filename=bibtex_key_csv_filename):
+			print("	No problems with the CSV file for keyphrases.")
+			"""
+				Read the CSV file for keyphrases [DrakeJr2023a, from File Formats: csv — CSV File Reading and Writing].
 
-			https://docs.python.org/3/library/csv.html
-		"""
-		#bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',', quotechar='|')
-		bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',')
-		print(bibtex_keys_selected)
-	else:
-		print("	There are problems with the CSV file for keyphrases!!!")
-		# End execution of the script to indicate error.
-		sys.exit(input_filename_is_invalid)
+				https://docs.python.org/3/library/csv.html
+			"""
+			#bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',', quotechar='|')
+			bibtex_keys_selected = csv.reader(bibtex_key_csv_filename, delimiter=',')
+			print(bibtex_keys_selected)
+		else:
+			print("	There are problems with the CSV file for keyphrases!!!")
+			# End execution of the script to indicate error.
+			sys.exit(input_filename_is_invalid)
+	# Else, no, proceed/continue/pass.
 	# --------------------------------------------------------
 	"""
 		Check if the output filename is valid [DrakeJr2023a, from Generic Operating System Services: os — Miscellaneous operating system interfaces: Files and Directories].
