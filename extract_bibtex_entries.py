@@ -348,6 +348,8 @@ import csv
 
 # Import [Boulogne2022] [Boulogne2023a].
 import bibtexparser
+# Import [Boulogne2023a].
+from bibtexparser.bwriter import BibTexWriter
 
 """
 	Import [Miles2013].
@@ -468,6 +470,9 @@ incorrect_usage_of_paired_input_arguments = 1
 # Input filename is invalid.
 input_filename_is_invalid = 2
 
+
+# BibTeX database that would be parsed and processed.
+input_bibtex_file = "../references.bib"
 
 ###############################################################
 
@@ -1010,7 +1015,7 @@ if __name__ == "__main__":
 		Run this in the ./outputs/ subdirectory of the BibTeX
 			database repository.
 	"""
-	with open('../references.bib') as bibtex_file:
+	with open(input_bibtex_file) as bibtex_file:
 		# Load the BibTeX database to the parser.
 	    bib_database = bibtexparser.load(bibtex_file)
 	"""
@@ -1031,7 +1036,7 @@ if __name__ == "__main__":
 	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["bibtex_key_csv_filename"],"=")
 	print("paired_input_arguments is:",paired_input_arguments,"=")
 #	print(bib_database.entries)
-	print("Pre-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
+#	print("Pre-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
 	filtered_bibtex_entries = []
 	"""
 		Enumerate the list of BibTeX entries, and process them based
@@ -1068,12 +1073,12 @@ if __name__ == "__main__":
 		Print the set of remaining BibTeX entries with the selected
 			BibTeX keys.
 	"""
-#	print("Print the set of remaining BibTeX entries with the selected BibTeX keys.")
-#	print(bib_database.entries)
-	print("Post-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
-	print("Filtered set of BibTeX entries 'filtered_bibtex_entries' is:",filtered_bibtex_entries,"=")
+#	print("Post-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
+#	print("Filtered set of BibTeX entries 'filtered_bibtex_entries' is:",filtered_bibtex_entries,"=")
 	print("Size of filtered set of BibTeX entries is:",len(filtered_bibtex_entries),"=")
 	bib_database.entries = filtered_bibtex_entries
+	print("Print the set of remaining BibTeX entries with the selected BibTeX keys.")
+	print(bib_database.entries)
 	# --------------------------------------------------------
 	# Print comments in the BibTeX database as a list of strings.
 	#print(bib_database.comments)
@@ -1082,7 +1087,15 @@ if __name__ == "__main__":
 	# Print ordered dictionary representing months and their abbreviation.
 	#print(bib_database.strings)
 	# --------------------------------------------------------
-
+	"""
+		Print the set of filtered BibTeX entries to the designated
+			BibTeX output file [Boulogne2023a].
+	"""
+	btx_writer = BibTeXWriter()
+	# Create an output file object for the BibTeX output file.
+	with open(output_filename, "w") as bibtex_file_obj:
+		# Print the filtered set of BibTeX entries to output file.
+		bibfile.write(btx_writer.write(bib_database))
 	# --------------------------------------------------------
 	# Get the elapsed time.
 	elapsed_time = execution_time_measurement_no_ns.get_elapsed_time(mode_current_time_measurement)
