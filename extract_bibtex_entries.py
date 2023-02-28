@@ -518,6 +518,18 @@ def validate_csv_file(csv_filename=None):
 	@param text_about_ip_arg - Stores information/text about the input
 		argument to be processed.
 	@return Nothing.
+
+
+	Notes:
+	Handle each input argument with if-else statements, rather than
+		if-elif-...-elif-else statements, since the former allows
+		multiple input arguments with input filenames to be used
+		concurrently while the latter can only support one input
+		argument with input filename to be processed per set of
+		if-elif-...-elif-else statements.
+		Hence, the latter would require multiple sets of such statements
+			to enable concurrent input arguments to include input
+			filenames.
 """
 def is_x_input argument_selected_for_csv_file(dict_key_to_ip_arg=None,text_about_ip_arg=None):
 	# Is the [-?] option (indicated by dict_key_to_ip_arg) selected?
