@@ -531,7 +531,7 @@ def validate_csv_file(csv_filename=None):
 			to enable concurrent input arguments to include input
 			filenames.
 """
-def is_x_input argument_selected_for_csv_file(dict_key_to_ip_arg=None,text_about_ip_arg=None):
+def is_x_input_argument_selected_for_csv_file(dict_key_to_ip_arg=None,text_about_ip_arg=None):
 	# Is the [-?] option (indicated by dict_key_to_ip_arg) selected?
 	if None != paired_input_arguments.get(dict_key_to_ip_arg):
 		"""
@@ -944,15 +944,6 @@ if __name__ == "__main__":
 			loading and processing of these files only have to be
 			done once, rather than multiple times in a "for" loop
 			that iterates through the set of BibTeX entries.
-		Handle each input argument with if-else statements, rather
-			than if-elif-...-elif-else statements, since the former
-			allows multiple input arguments with input filenames to
-			be used concurrently while the latter can only support
-			one input argument with input filename to be processed
-			per set of if-elif-...-elif-else statements.
-			Hence, the latter would require multiple sets of such
-				statements to enable concurrent input arguments to
-				include input filenames.
 	"""
 
 	# Is the [-k] option selected?
