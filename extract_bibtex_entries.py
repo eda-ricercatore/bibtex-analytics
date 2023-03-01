@@ -261,6 +261,8 @@
 		- Francois Boulogne, Michael Weiss, and sciunto, "bibtexparser 1.4.0," Python Software Foundation, Beaverton, OR, September 23, 2022. Available online from *PyPI -- The Python Package Index: pew 1.4.0* at: https://pypi.org/project/bibtexparser/; February 25, 2023 was the last accessed date.
 	+ [Boulogne2023a]
 		- Fran{\c{c}}ois Boulogne, Olivier Mangin, Lucas Verney, and other contributors, "Tutorial," Read the Docs, Inc., Portland, OR, January 3, 2023. Available online from *Read the Docs: Welcome to BibtexParser's documentation!: Tutorial* as Version 1.4.0 at: https://bibtexparser.readthedocs.io/en/master/tutorial.html; February 25, 2023 was the last accessed date.
+	+ [Boulogne2023b]
+		- Fran{\c{c}}ois Boulogne, Olivier Mangin, Lucas Verney, and other contributors, "bibtexparser: API," Read the Docs, Inc., Portland, OR, January 3, 2023. Available online from *Read the Docs: Welcome to BibtexParser's documentation!: bibtexparser: API* as Version 1.4.0 at: https://bibtexparser.readthedocs.io/en/master/bibtexparser.html; February 28, 2023 was the last accessed date.
 	+ [DrakeJr2023a]
 		- Fred L. Drake, Jr., David Goodger, and Fredrik Lundh, "The Python Standard Library," Python Software Foundation, Beaverton, OR, February 26, 2023. Available online from *Welcome to Python.org: Docs: Python 3.11.2 documentation: Library Reference* at: https://docs.python.org/3/library/; February 26, 2023 was the last accessed date.
 	+ [DrakeJr2023b]
@@ -1093,6 +1095,11 @@ if __name__ == "__main__":
 			BibTeX output file [Boulogne2023a].
 	"""
 	btx_writer = BibTexWriter()
+	"""
+		From [Boulogne2023b] to remove comments in generated BibTeX
+			output file.
+	"""
+	btx_writer.contents = ["entries"]
 	# Create an output file object for the BibTeX output file.
 	with open(output_filename, "w") as bibtex_file_obj:
 		# Print the filtered set of BibTeX entries to output file.
