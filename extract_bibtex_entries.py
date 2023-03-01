@@ -1046,6 +1046,15 @@ if __name__ == "__main__":
 			on the given paired/2-tuples input arguments.
 
 		bibtex_key_csv_filename, keyphrases_csv_filename, names_of_all_authors, last_name_of_an_author, booktitle_selected, journal_title, series_title, university_name
+
+
+		####TO BE COMPLETED
+
+		Implement the rest of the if-elif-...-elif-else statement for
+			the following input arguments/options.
+		[-a] [-z] [-b] [-j] [-s] [-u]
+
+		These other options are not that urgent and important.
 	"""
 	for bib_entry in bib_database.entries:
 		# Process BibTeX entry using given paired/2-tuples input arguments.
