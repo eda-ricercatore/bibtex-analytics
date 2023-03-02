@@ -628,6 +628,15 @@ if __name__ == "__main__":
 		if h_option in sys.argv:
 			# Yes, print the help manual. Skip subsequent processing of [-h].
 			print_help_manual()
+			"""
+				Is the number of input arguments 1?
+
+				The comparison is made with 2, since sys.argv includes
+					the name of the scripts as an (input) argument.
+			"""
+			if 2 == number_of_input_arguments:
+				# Yes. End execution of the script without error.
+				exit(0)
 		"""
 			Enumerate the options of the program.
 
@@ -1067,6 +1076,26 @@ if __name__ == "__main__":
 				"""
 				#if bib_entry["ID"] not in paired_input_arguments[paired_ip_arg]:
 				if bib_entry["ID"] in paired_input_arguments[paired_ip_arg]:
+					"""
+						No, it is not in the list of selected BibTeX keys.
+						Remove it from the copy of the BibTeX database.
+					"""
+#					print("	Before removal: Size of bib_database.entries:",len(bib_database.entries),"=")
+					#bib_database.entries.remove(bib_entry)
+					filtered_bibtex_entries.append(bib_entry)
+#					print("	After removal: Size of bib_database.entries:",len(bib_database.entries),"=")
+				else:
+					#print("	Unremoved BibTeX key is:",bib_entry["ID"],"=")
+					pass
+			# No. Is the list of keyphrases specified?
+			elif "keyphrases_csv_filename" == paired_ip_arg:
+				"""
+					Yes. Determine if the keyphrases of the current
+						BibTeX entry include keyphrases in the list
+						of selected BibTeX keys.
+				"""
+				#if bib_entry["keywords"] not in paired_input_arguments[paired_ip_arg]:
+				if bib_entry["keywords"] in paired_input_arguments[paired_ip_arg]:
 					"""
 						No, it is not in the list of selected BibTeX keys.
 						Remove it from the copy of the BibTeX database.
