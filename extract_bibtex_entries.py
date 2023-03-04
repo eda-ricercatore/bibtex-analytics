@@ -628,6 +628,12 @@ def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=Non
 		# Yes, return False.
 		return False
 		"""
+			Do not swap files of different sizes, since we want
+				BibTeX entries with all the keyphrases.
+			Else, it will accept BibTeX entries with one keyphrase,
+				whenn all the selected keyphrases are wanted in BibTeX
+				entries.
+
 		# Yes, swap these two lists.
 		temp_list = bigger_list
 		bigger_list = smaller_list
