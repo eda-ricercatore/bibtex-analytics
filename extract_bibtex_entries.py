@@ -596,7 +596,7 @@ def is_x_input_argument_selected_for_csv_file(dict_key_to_ip_arg=None,text_about
 	@return boolean True, if the smaller list is a subset of the bigger
 		list; else, return False.
 """
-def is_list_a_subset_of_another_multiset_method_with_comparisons_(string_representation_of_bigger_list=None, smaller_list=None):
+def is_list_a_subset_of_another_multiset_method_with_comparisons_with_preprocessing(string_representation_of_bigger_list=None, smaller_list=None):
 	bigger_list = string_representation_of_bigger_list.split(", ")
 	return is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list, smaller_list)
 	
@@ -630,12 +630,15 @@ def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=Non
 		return False
 	else:
 		"""
-			Else, is the smaller list a subset of the bigger list, by
-				using the set difference "-" operator to do the comparison?
+			Else, does the value of a key in smaller list greater than
+				the value of the same key in the bigger list, by
+				using the Counter ">" operator to do the comparison?
 		"""
 		bigger_count = Counter(bigger_list)
 		smaller_count = Counter(smaller_list)
 		"""
+			Enumerate each key in the smaller Counter object or multiset.
+
 			Counter no longer has a has_key() method [DrakeJr2023a].
 
 			Use the "in" operator (or contains(seq, obj) function)
@@ -650,73 +653,30 @@ def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=Non
 			https://docs.python.org/3/library/operator.html#mapping-operators-to-functions
 		"""
 		for key in smaller_count:
+			"""
+				For the currently enumerated key (or key-value pair)
+					in the smaller list or Counter object, is it not
+					found in the larger list or Counter object?
+			"""
 			if (key in bigger_count) == False:
+				# It is not found in the larger list or Counter object.
 				return False
+			"""
+				Is item of the smaller list, or key of the smaller
+					Counter, occuring more in the smaller list than
+					in the bigger list?
+
+				For the currently enumerated key (or key-value pair)
+					in the smaller list, is its value greater than
+					that of the larger list?
+			"""
 			if smaller_count[key] > bigger_count[key]:
+				"""
+					Yes, the smaller list has more instances of an
+						item than the bigger list.
+				"""
 				return False
 		return True
-
-
-
-
-
-
-
-
-
-
-
-"""
-	Method to determine if a list is a subset of another, using the Python
-		approach for multisets [Karefylakis2013] and set difference
-		[WikipediaContributors2023] [WikipediaContributors2023a] [WikipediaContributors2023b] [Kenny2017].
-	@param bigger_list - a bigger list of items that we want to determine
-		if it is the superset.
-	@param smaller_list - a smaller list of items that we want to determine
-		if it is the subset.
-	@return boolean True, if the smaller list is a subset of the bigger list;
-		else, return False.
-"""
-def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=None, smaller_list=None):
-	# Is the smaller list actually bigger than the bigger list?
-	if len(smaller_list) > len(bigger_list):
-		# Yes, swap these two lists.
-		temp_list = bigger_list
-		bigger_list = smaller_list
-		smaller_list = temp_list
-	# Is the bigger or smaller list referencing the 'None' object? 
-	if (bigger_list is None) or (smaller_list is None):
-		# Yes, return False.
-		return False
-	else:
-		"""
-			Else, is the smaller list a subset of the bigger list, by
-				using the set difference "-" operator to do the comparison?
-		"""
-		bigger_count = Counter(bigger_list)
-		smaller_count = Counter(smaller_list)
-		"""
-			Counter no longer has a has_key() method [DrakeJr2023a].
-
-			Use the "in" operator (or contains(seq, obj) function)
-				instead [Kenny2017] [Guerrero2022] [Nguyen2019] [Reddy2018].
-
-
-			[DrakeJr2023a, from Functional Programming Modules: operator — Standard operators as functions]
-			https://docs.python.org/3/library/operator.html#operator.contains
-
-
-			[DrakeJr2023a, from Functional Programming Modules: operator — Standard operators as functions: Mapping Operators to Functions]
-			https://docs.python.org/3/library/operator.html#mapping-operators-to-functions
-		"""
-		for key in smaller_count:
-			if (key in bigger_count) == False:
-				return False
-			if smaller_count[key] > bigger_count[key]:
-				return False
-		return True
-
-
 
 
 
@@ -1229,7 +1189,8 @@ if __name__ == "__main__":
 						of selected BibTeX keys.
 				"""
 				#if bib_entry["keywords"] not in paired_input_arguments[paired_ip_arg]:
-				if bib_entry["keywords"] in paired_input_arguments[paired_ip_arg]:
+				#if bib_entry["keywords"] in paired_input_arguments[paired_ip_arg]:
+				if is_list_a_subset_of_another_multiset_method_with_comparisons_with_preprocessing(bib_entry["keywords"],paired_input_arguments[paired_ip_arg]):
 					"""
 						No, it is not in the list of selected BibTeX keys.
 						Remove it from the copy of the BibTeX database.
