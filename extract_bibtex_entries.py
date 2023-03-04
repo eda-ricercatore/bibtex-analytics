@@ -336,7 +336,8 @@ from datetime import timedelta
 	https://docs.python.org/3/library/csv.html
 """
 import csv
-
+# To enable testing the Python "multiset" approach.
+from collections import Counter
 
 
 ###############################################################
@@ -472,6 +473,8 @@ paired_input_arguments = {}
 incorrect_usage_of_paired_input_arguments = 1
 # Input filename is invalid.
 input_filename_is_invalid = 2
+# Output filename, or path of output file, is invalid.
+output_filename_or_path_is_invalid = 3
 
 
 # BibTeX database that would be parsed and processed.
@@ -599,7 +602,9 @@ def is_x_input_argument_selected_for_csv_file(dict_key_to_ip_arg=None,text_about
 def is_list_a_subset_of_another_multiset_method_with_comparisons_with_preprocessing(string_representation_of_bigger_list=None, smaller_list=None):
 	bigger_list = string_representation_of_bigger_list.split(", ")
 	return is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list, smaller_list)
-	
+	#return is_list_a_subset_of_another(bigger_list, smaller_list)
+	#return is_list_a_subset_of_another_enumerate(bigger_list, smaller_list)
+
 
 
 
@@ -620,10 +625,14 @@ def is_list_a_subset_of_another_multiset_method_with_comparisons_with_preprocess
 def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=None, smaller_list=None):
 	# Is the smaller list actually bigger than the bigger list?
 	if len(smaller_list) > len(bigger_list):
+		# Yes, return False.
+		return False
+		"""
 		# Yes, swap these two lists.
 		temp_list = bigger_list
 		bigger_list = smaller_list
 		smaller_list = temp_list
+		"""
 	# Is the bigger or smaller list referencing the 'None' object? 
 	if (bigger_list is None) or (smaller_list is None):
 		# Yes, return False.
@@ -676,6 +685,98 @@ def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=Non
 						item than the bigger list.
 				"""
 				return False
+		return True
+
+
+
+
+
+"""
+	Method to determine if a list is a subset of another, using the Python
+		"universal quantifier" operator, all() [DrakeJr2023a, from Built-in Functions]
+		[manjeet042023].
+	@param bigger_list - a bigger list of items that we want to determine
+		if it is the superset.
+	@param smaller_list - a smaller list of items that we want to determine
+		if it is the subset.
+	@return boolean True, if the smaller list is a subset of the bigger list;
+		else, return False.
+
+
+	References:
+	+ URL for [DrakeJr2023a, from Built-in Functions]
+		- https://docs.python.org/3/library/functions.html#all
+		- https://docs.python.org/3/library/functions.html#any
+"""
+def is_list_a_subset_of_another(bigger_list=None, smaller_list=None):
+	# Is the smaller list actually bigger than the bigger list?
+	if len(smaller_list) > len(bigger_list):
+		# Yes, return False.
+		return False
+		"""
+		# Yes, swap these two lists.
+		temp_list = bigger_list
+		bigger_list = smaller_list
+		smaller_list = temp_list
+		"""
+	# Is the bigger or smaller list referencing the 'None' object? 
+	if (bigger_list is None) or (smaller_list is None):
+		# Yes, return False.
+		return False
+	else:
+		"""
+			Else, are all the elements/items in the smaller list found
+				in the bigger?
+		"""
+		if all(x in bigger_list for x in smaller_list):
+			# Yes.
+			return True
+		else:
+			# No.
+			return False
+
+
+
+
+"""
+	Method to determine if a list is a subset of another, by checking
+		if each element in the smaller list is found in the bigger
+		list.
+	@param bigger_list - a bigger list of items that we want to determine
+		if it is the superset.
+	@param smaller_list - a smaller list of items that we want to determine
+		if it is the subset.
+	@return boolean True, if the smaller list is a subset of the bigger list;
+		else, return False.
+"""
+def is_list_a_subset_of_another_enumerate(bigger_list=None, smaller_list=None):
+	# Is the smaller list actually bigger than the bigger list?
+	if len(smaller_list) > len(bigger_list):
+		# Yes, return False.
+		return False
+		"""
+		# Yes, swap these two lists.
+		temp_list = bigger_list
+		bigger_list = smaller_list
+		smaller_list = temp_list
+		"""
+	# Is the bigger or smaller list referencing the 'None' object?
+	if (bigger_list is None) or (smaller_list is None):
+		# Yes, return False.
+		return False
+	else:
+		"""
+			For each elements/items in the smaller list, is it found
+				in the bigger list?
+		"""
+		for item in smaller_list:
+			if item not in bigger_list:
+				# No.
+				return False
+			else:
+				# Yes. Enumerate the next item in the smaller list.
+				continue
+		# Each item in the smaller list is found in the bigger list.
 		return True
 
 
@@ -1113,6 +1214,7 @@ if __name__ == "__main__":
 			print("	Path of the directory for target output is INVALID!!!")
 			print("	Target output file cannot be created!!!")
 			print("	Please kindly select path for output file in an existing directory!!!")
+			sys.exit(output_filename_or_path_is_invalid)
 	# --------------------------------------------------------
 	"""
 		Load the BibTeX database as an input file object for the
@@ -1139,8 +1241,9 @@ if __name__ == "__main__":
 			list, and assign that list to bib_database.entries by
 			replacing/overwriting the original set of BibTeX entries.
 	"""
-	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["bibtex_key_csv_filename"],"=")
 	print("paired_input_arguments is:",paired_input_arguments,"=")
+#	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["bibtex_key_csv_filename"],"=")
+	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["keyphrases_csv_filename"],"=")
 #	print(bib_database.entries)
 #	print("Pre-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
 	filtered_bibtex_entries = []
