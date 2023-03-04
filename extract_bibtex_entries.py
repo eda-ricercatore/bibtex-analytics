@@ -582,7 +582,141 @@ def is_x_input_argument_selected_for_csv_file(dict_key_to_ip_arg=None,text_about
 	else:
 		# Else, no, proceed/continue/pass.
 		print("This input argument with input file is not used:",dict_key_to_ip_arg,"=")
+
+
+"""
+	Method to determine if a list of keyphrases is a subset of another,
+		using the Python approach for multisets [Karefylakis2013] and
+		set difference [WikipediaContributors2023] [WikipediaContributors2023a] [WikipediaContributors2023b] [Kenny2017].
+	@param string_representation_of_bigger_list - a string representation
+		of bigger list of strings/keyphrases that we want to determine
+		if it is the superset.
+	@param smaller_list - a smaller list of strings/keyphrases that
+		we want to determine if it is the subset.
+	@return boolean True, if the smaller list is a subset of the bigger
+		list; else, return False.
+"""
+def is_list_a_subset_of_another_multiset_method_with_comparisons_(string_representation_of_bigger_list=None, smaller_list=None):
+	bigger_list = string_representation_of_bigger_list.split(", ")
+	return is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list, smaller_list)
 	
+
+
+
+
+
+
+"""
+	Method to determine if a list is a subset of another, using the Python
+		approach for multisets [Karefylakis2013] and set difference
+		[WikipediaContributors2023] [WikipediaContributors2023a] [WikipediaContributors2023b] [Kenny2017].
+	@param bigger_list - a bigger list of items that we want to determine
+		if it is the superset.
+	@param smaller_list - a smaller list of items that we want to determine
+		if it is the subset.
+	@return boolean True, if the smaller list is a subset of the bigger list;
+		else, return False.
+"""
+def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=None, smaller_list=None):
+	# Is the smaller list actually bigger than the bigger list?
+	if len(smaller_list) > len(bigger_list):
+		# Yes, swap these two lists.
+		temp_list = bigger_list
+		bigger_list = smaller_list
+		smaller_list = temp_list
+	# Is the bigger or smaller list referencing the 'None' object? 
+	if (bigger_list is None) or (smaller_list is None):
+		# Yes, return False.
+		return False
+	else:
+		"""
+			Else, is the smaller list a subset of the bigger list, by
+				using the set difference "-" operator to do the comparison?
+		"""
+		bigger_count = Counter(bigger_list)
+		smaller_count = Counter(smaller_list)
+		"""
+			Counter no longer has a has_key() method [DrakeJr2023a].
+
+			Use the "in" operator (or contains(seq, obj) function)
+				instead [Kenny2017] [Guerrero2022] [Nguyen2019] [Reddy2018].
+
+
+			[DrakeJr2023a, from Functional Programming Modules: operator — Standard operators as functions]
+			https://docs.python.org/3/library/operator.html#operator.contains
+
+
+			[DrakeJr2023a, from Functional Programming Modules: operator — Standard operators as functions: Mapping Operators to Functions]
+			https://docs.python.org/3/library/operator.html#mapping-operators-to-functions
+		"""
+		for key in smaller_count:
+			if (key in bigger_count) == False:
+				return False
+			if smaller_count[key] > bigger_count[key]:
+				return False
+		return True
+
+
+
+
+
+
+
+
+
+
+
+"""
+	Method to determine if a list is a subset of another, using the Python
+		approach for multisets [Karefylakis2013] and set difference
+		[WikipediaContributors2023] [WikipediaContributors2023a] [WikipediaContributors2023b] [Kenny2017].
+	@param bigger_list - a bigger list of items that we want to determine
+		if it is the superset.
+	@param smaller_list - a smaller list of items that we want to determine
+		if it is the subset.
+	@return boolean True, if the smaller list is a subset of the bigger list;
+		else, return False.
+"""
+def is_list_a_subset_of_another_multiset_method_with_comparisons(bigger_list=None, smaller_list=None):
+	# Is the smaller list actually bigger than the bigger list?
+	if len(smaller_list) > len(bigger_list):
+		# Yes, swap these two lists.
+		temp_list = bigger_list
+		bigger_list = smaller_list
+		smaller_list = temp_list
+	# Is the bigger or smaller list referencing the 'None' object? 
+	if (bigger_list is None) or (smaller_list is None):
+		# Yes, return False.
+		return False
+	else:
+		"""
+			Else, is the smaller list a subset of the bigger list, by
+				using the set difference "-" operator to do the comparison?
+		"""
+		bigger_count = Counter(bigger_list)
+		smaller_count = Counter(smaller_list)
+		"""
+			Counter no longer has a has_key() method [DrakeJr2023a].
+
+			Use the "in" operator (or contains(seq, obj) function)
+				instead [Kenny2017] [Guerrero2022] [Nguyen2019] [Reddy2018].
+
+
+			[DrakeJr2023a, from Functional Programming Modules: operator — Standard operators as functions]
+			https://docs.python.org/3/library/operator.html#operator.contains
+
+
+			[DrakeJr2023a, from Functional Programming Modules: operator — Standard operators as functions: Mapping Operators to Functions]
+			https://docs.python.org/3/library/operator.html#mapping-operators-to-functions
+		"""
+		for key in smaller_count:
+			if (key in bigger_count) == False:
+				return False
+			if smaller_count[key] > bigger_count[key]:
+				return False
+		return True
+
+
 
 
 
