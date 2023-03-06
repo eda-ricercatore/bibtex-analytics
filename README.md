@@ -159,12 +159,15 @@ The set of *BibTeX* benchmarks that I have used to test
 
 
 
-Alternatives for the *Python* package *bibtexparser* [Boulogne2022] [Boulogne2023b] [Boulogne2023a] and the script ***extract_bibtex_entries.py*** that are explored:
+Alternatives for the *Python* package *bibtexparser* [Boulogne2022] [Boulogne2023b] [Boulogne2023a] [Newman2022] and the script ***extract_bibtex_entries.py*** that are explored:
 + on March 4, 2023:
 	- [Biblib](https://github.com/aclements/biblib)
 		* Last build: December 20, 2013.
 		* Author: Austin Clements.
-	- Pybtex [Golovizin2022] [Golovizin2022a] [Golovizin2021a] [Golovizin2021]
+		* https://pypi.org/project/biblib/
+		* Does not seem to have output generator into BibTeX or other
+			formats, and text in LaTeX bibliographic styles.
+	- Pybtex [Golovizin2022] [Golovizin2022a] [Golovizin2021a] [Golovizin2021] [Newman2022]
 		* Supposed to replace *BibTeX*, which is not what I am looking for.
 		* ***pybtex-format*** feature/utility allows me to print the
 			contents of a *BibTeX* database into a text file that is
@@ -185,7 +188,9 @@ Alternatives for the *Python* package *bibtexparser* [Boulogne2022] [Boulogne202
 	- [Bib2ML (aka. Bib2HTML)](https://ctan.org/pkg/bib2ml?lang=en)
 		* Reference: Franck Dernoncourt, Answer to "Convert BibTex file to database entries using Python", Stack Exchange Inc., New York, NY, October 17, 2015. Available online from Stack Exchange Inc.: Stack Overflow: Questions at: https://stackoverflow.com/a/33182448/1531728 and https://stackoverflow.com/questions/9235853/convert-bibtex-file-to-database-entries-using-python/33182448#33182448; March 6, 2023 was the last accessed date.
 		* Solution not attempted. Did not want to explore using *Perl* script to address the problem.
-
+	- [BabyBib, incomplete and poor solution](https://github.com/matthew-brett/babybib) [Newman2022]
+	- [Pybliographer](https://pybliographer.org/) [Newman2022]
+		* GUI-based software application, rather than software application executed by command-line interface or a software library/package.
 
 
 
@@ -271,6 +276,8 @@ I can develop *Python* scripts to do the following:
 	- Andrey Golovizin, W. Trevor King, Matthias Troffaes, Jorrit Wronski, Hong, Jannik Schürg, Fabrice, David Chiang, Jerry James, Nathaniel Starkman, Tristan Stenner, Tomáš Hrnčiar, Jens Heinrich, Kunal Marwaha, and Julian Rüth, "Pybtex: a BibTeX\-compatible bibliography processor in Python", Atlassian Pty Ltd, Sydney, New South Wales, Australia, October 7 2022. Available online from *Bitbucket: Pybtex developers* at: https://bitbucket\.org/pybtex\-devs/pybtex and https://bitbucket\.org/pybtex\-devs/pybtex/src/master/; March 4, 2023 was the last accessed date.
 + [Kopka2004]
 	- Helmut Kopka and Patrick W. Daly, "Guide to LaTeX," Fourth edition, in Addison-Wesley Series on Tools and Techniques for Computer Typesetting, Addison-Wesley, Boston, MA, 2004.
++ [Newman2022]
+	- Rob 'tatlar' Newman and miile7, Answer to 'Is there a reliable python library for taking a {BibTex} entry and outputting it into specific formats?', Stack Exchange Inc., New York, NY, August 25, 2022. Available online from {\it Stack Exchange Inc.: Stack Overflow: Questions} at: https://stackoverflow.com/a/30769042/1531728 and https://stackoverflow.com/questions/30768745/is-there-a-reliable-python-library-for-taking-a-bibtex-entry-and-outputting-it-i/30769042#30769042; March 6, 2023 was the last accessed date.
 
 
 
