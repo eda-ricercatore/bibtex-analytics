@@ -12,19 +12,19 @@
 
 
 	Synopsis: command name and [argument(s)]
-	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] [-h]
-	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-h] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-k] [-m] [set of keyphrases stored as a CSV file] [-k] [set of BibTeX keys stored as a CSV file]
-	./extract_bibtex_entries.py [-h]
-	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file]
-	./extract_bibtex_entries.py [-m] [set of keyphrases stored as a CSV file]
-	./extract_bibtex_entries.py [-m] [set of keyphrases stored as a CSV file] [-k] [set of BibTeX keys stored as a CSV file]
-	./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] [-a] [names of authors as a string] [-z] [names of authors as a string] [-b] [booktitle as a string] [-j] [journal title as a string] [-s] [book series as a string] [-u] [name of university as a string]
+	./y_extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./y_extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file]
+	./y_extract_bibtex_entries.py [-h] [-m] [set of keyphrases stored as a CSV file]
+	./y_extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./y_extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] [-h]
+	./y_extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-h] [-m] [set of keyphrases stored as a CSV file]
+	./y_extract_bibtex_entries.py [-k] [-m] [set of keyphrases stored as a CSV file] [-k] [set of BibTeX keys stored as a CSV file]
+	./y_extract_bibtex_entries.py [-h]
+	./y_extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]
+	./y_extract_bibtex_entries.py [-k] [set of BibTeX keys stored as a CSV file]
+	./y_extract_bibtex_entries.py [-m] [set of keyphrases stored as a CSV file]
+	./y_extract_bibtex_entries.py [-m] [set of keyphrases stored as a CSV file] [-k] [set of BibTeX keys stored as a CSV file]
+	./y_extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] [-a] [names of authors as a string] [-z] [names of authors as a string] [-b] [booktitle as a string] [-j] [journal title as a string] [-s] [book series as a string] [-u] [name of university as a string]
 
 
 	Parameters:
@@ -199,22 +199,22 @@
 	For other options, they must come in pairs, and cannot be separated
 		by other options. 
 		They have either of the following formats:
-	+ ./extract_bibtex_entries.py [-h]
-	+ ./extract_bibtex_entries.py [option flag] [filename]
-	+ ./extract_bibtex_entries.py [-h] [option flag] [filename]
-	+ ./extract_bibtex_entries.py [option flag] [filename] [-h]
-	+ ./extract_bibtex_entries.py [-h] [option flag] [string]
-	+ ./extract_bibtex_entries.py [option flag] [string]
-	+ ./extract_bibtex_entries.py [option flag] [string] [-h]
-	+ ./extract_bibtex_entries.py [option flag] [filename] [option flag] [string]
-	+ ./extract_bibtex_entries.py [-h] [option flag] [filename] [option flag] [string]
-	+ ./extract_bibtex_entries.py [option flag] [filename] [option flag] [string] [-h]
-	+ ./extract_bibtex_entries.py [option flag] [filename] [-h] [option flag] [string]
-	+ ./extract_bibtex_entries.py [option flag] [string] [option flag] [filename]
-	+ ./extract_bibtex_entries.py [-h] [option flag] [string] [option flag] [filename]
-	+ ./extract_bibtex_entries.py [option flag] [string] [option flag] [filename] [-h]
-	+ ./extract_bibtex_entries.py [option flag] [string] [-h] [option flag] [filename]
-	+ ./extract_bibtex_entries.py 
+	+ ./y_extract_bibtex_entries.py [-h]
+	+ ./y_extract_bibtex_entries.py [option flag] [filename]
+	+ ./y_extract_bibtex_entries.py [-h] [option flag] [filename]
+	+ ./y_extract_bibtex_entries.py [option flag] [filename] [-h]
+	+ ./y_extract_bibtex_entries.py [-h] [option flag] [string]
+	+ ./y_extract_bibtex_entries.py [option flag] [string]
+	+ ./y_extract_bibtex_entries.py [option flag] [string] [-h]
+	+ ./y_extract_bibtex_entries.py [option flag] [filename] [option flag] [string]
+	+ ./y_extract_bibtex_entries.py [-h] [option flag] [filename] [option flag] [string]
+	+ ./y_extract_bibtex_entries.py [option flag] [filename] [option flag] [string] [-h]
+	+ ./y_extract_bibtex_entries.py [option flag] [filename] [-h] [option flag] [string]
+	+ ./y_extract_bibtex_entries.py [option flag] [string] [option flag] [filename]
+	+ ./y_extract_bibtex_entries.py [-h] [option flag] [string] [option flag] [filename]
+	+ ./y_extract_bibtex_entries.py [option flag] [string] [option flag] [filename] [-h]
+	+ ./y_extract_bibtex_entries.py [option flag] [string] [-h] [option flag] [filename]
+	+ ./y_extract_bibtex_entries.py 
 
 	Assume that manual input is error prone, set the name/path of the
 		output file in the introductory section (or preamble) that can
@@ -356,10 +356,15 @@ from collections import Counter
 #pip install csvvalidator
 
 # Import [Boulogne2022] [Boulogne2023a].
-import bibtexparser
+#import bibtexparser
 # Import [Boulogne2023a].
-from bibtexparser.bwriter import BibTexWriter
-from bibtexparser.bibdatabase import BibDatabase
+#from bibtexparser.bwriter import BibTexWriter
+#from bibtexparser.bibdatabase import BibDatabase
+
+
+# Import Pybtex [Golovizin2022] [Golovizin2022a] [Golovizin2021a] [Golovizin2021]
+from pybtex.database.input import bibtex
+
 
 """
 	Import [Miles2013].
@@ -1235,9 +1240,18 @@ if __name__ == "__main__":
 		Run this in the ./outputs/ subdirectory of the BibTeX
 			database repository.
 	"""
-	with open(input_bibtex_file) as bibtex_file:
+#	with open(input_bibtex_file) as bibtex_file:
 		# Load the BibTeX database to the parser.
-	    bib_database = bibtexparser.load(bibtex_file)
+#	    bib_database = bibtexparser.load(bibtex_file)
+	"""
+		Tried solution from:
+		+ [ex4] Eetu 'ex4' Salpaharju and Lennart, Answer to "How to use the biblib parser with a bibtex file stored in a pyhon variable?", Stack Exchange Inc., New York, NY, April 27, 2020. Available online from Stack Exchange Inc.: Stack Overflow: Questions at: https://stackoverflow.com/a/61459722/1531728 and https://stackoverflow.com/questions/61459634/how-to-use-the-biblib-parser-with-a-bibtex-file-stored-in-a-pyhon-variable/61459722#61459722; November 9, 2021 was the last accessed date.
+			- Solution has a run-time error:
+				* syntax error, from pybtex.scanner.TokenRequired.
+	"""
+	parser = bibtex.Parser()
+	bib_database = parser.parse_file(input_bibtex_file)
+	print(bib_database.entries)
 	"""
 		Print the BibTeX entries of the BibTeX database as a list of
 			dictionaries [Boulogne2023a].

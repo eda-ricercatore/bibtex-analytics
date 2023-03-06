@@ -159,9 +159,32 @@ The set of *BibTeX* benchmarks that I have used to test
 
 
 
-
-
-
+Alternatives for the *Python* package *bibtexparser* [Boulogne2022] [Boulogne2023b] [Boulogne2023a] and the script ***extract_bibtex_entries.py*** that are explored:
++ on March 4, 2023:
+	- [Biblib](https://github.com/aclements/biblib)
+		* Last build: December 20, 2013.
+		* Author: Austin Clements.
+	- Pybtex [Golovizin2022] [Golovizin2022a] [Golovizin2021a] [Golovizin2021]
+		* Supposed to replace *BibTeX*, which is not what I am looking for.
+		* ***pybtex-format*** feature/utility allows me to print the
+			contents of a *BibTeX* database into a text file that is
+			in a readable format.
+			- Fails to include information about the publisher and its
+				address in the output file for the BibTeX entry type
+				*misc* [Kopka2004, \S12.2.1 The entry types, pp. 231].
+			- It does not work for all default bibliographic styles [Kopka2004, \S12.1 The BibTeX program, pp. 228-229].
+				* It works for the following, but not *abbrv*:
+					+ plain
+					+ unsrt
+					+ alpha
+		* Requires installation: e.g., pip install pybtex
+		* To parse the BibTeX database for processing a set of BibTeX keys or keyphrases, I tried the solution from [ex4].
+			+ [ex4] Eetu 'ex4' Salpaharju and Lennart, Answer to "How to use the biblib parser with a bibtex file stored in a pyhon variable?", Stack Exchange Inc., New York, NY, April 27, 2020. Available online from Stack Exchange Inc.: Stack Overflow: Questions at: https://stackoverflow.com/a/61459722/1531728 and https://stackoverflow.com/questions/61459634/how-to-use-the-biblib-parser-with-a-bibtex-file-stored-in-a-pyhon-variable/61459722#61459722; November 9, 2021 was the last accessed date.
+				- Solution has a run-time error:
+					* syntax error, from pybtex.scanner.TokenRequired.
+	- [Bib2ML (aka. Bib2HTML)](https://ctan.org/pkg/bib2ml?lang=en)
+		* Reference: Franck Dernoncourt, Answer to "Convert BibTex file to database entries using Python", Stack Exchange Inc., New York, NY, October 17, 2015. Available online from Stack Exchange Inc.: Stack Overflow: Questions at: https://stackoverflow.com/a/33182448/1531728 and https://stackoverflow.com/questions/9235853/convert-bibtex-file-to-database-entries-using-python/33182448#33182448; March 6, 2023 was the last accessed date.
+		* Solution not attempted. Did not want to explore using *Perl* script to address the problem.
 
 
 
@@ -229,6 +252,30 @@ I can develop *Python* scripts to do the following:
 
 
 #	References
+
+
+
++ [Boulogne2022]
+	- Francois Boulogne, Michael Weiss, and sciunto, "bibtexparser 1.4.0," Python Software Foundation, Beaverton, OR, September 23, 2022. Available online from *PyPI -- The Python Package Index: pew 1.4.0* at: https://pypi.org/project/bibtexparser/; February 25, 2023 was the last accessed date.
++ [Boulogne2023a]
+	- Fran{\c{c}}ois Boulogne, Olivier Mangin, Lucas Verney, and other contributors, "Tutorial," Read the Docs, Inc., Portland, OR, January 3, 2023. Available online from *Read the Docs: Welcome to BibtexParser's documentation!: Tutorial* as Version 1.4.0 at: https://bibtexparser.readthedocs.io/en/master/tutorial.html; February 25, 2023 was the last accessed date.
++ [Boulogne2023b]
+	- Fran{\c{c}}ois Boulogne, Olivier Mangin, Lucas Verney, and other contributors, "bibtexparser: API," Read the Docs, Inc., Portland, OR, January 3, 2023. Available online from *Read the Docs: Welcome to BibtexParser's documentation!: bibtexparser: API* as Version 1.4.0 at: https://bibtexparser.readthedocs.io/en/master/bibtexparser.html; February 28, 2023 was the last accessed date.
++ [Golovizin2021a]
+	- Andrey Golovizin and erosennin, "Pybtex 0.24.0: a BibTeX-compatible bibliography processor in Python", Python Software Foundation, Beaverton, OR, January 17 2021. Available online from *PyPI – The Python Package Index: pybtex 0.24.0* at: https://pypi\.org/project/pybtex/; March 5, 2023 was the last accessed date.
++ [Golovizin2021]
+	- Andrey Golovizin, W. Trevor King, Matthias Troffaes, Jorrit Wronski, Hong, Jannik Schürg, Fabrice, David Chiang, Jerry James, Nathaniel Starkman, Tristan Stenner, Tomáš Hrnčiar, Jens Heinrich, Kunal Marwaha, and Julian Rüth, "Pybtex User's Guide", January 17 2021. Available online from *Pybtex!: docs: Pybtex User's Guide* as Version 0.24.0 at: https://docs.pybtex.org/; self-published; March 4, 2023 was the last accessed date.
++ [Golovizin2022]
+	- Andrey Golovizin, W. Trevor King, Matthias Troffaes, Jorrit Wronski, Hong, Jannik Schürg, Fabrice, David Chiang, Jerry James, Nathaniel Starkman, Tristan Stenner, Tomáš Hrnčiar, Jens Heinrich, Kunal Marwaha, and Julian Rüth, "Pybtex!", 2022. Available online at: https://pybtex\.org/; self\-published; March 4, 2023 was the last accessed date.
++ [Golovizin2022a]
+	- Andrey Golovizin, W. Trevor King, Matthias Troffaes, Jorrit Wronski, Hong, Jannik Schürg, Fabrice, David Chiang, Jerry James, Nathaniel Starkman, Tristan Stenner, Tomáš Hrnčiar, Jens Heinrich, Kunal Marwaha, and Julian Rüth, "Pybtex: a BibTeX\-compatible bibliography processor in Python", Atlassian Pty Ltd, Sydney, New South Wales, Australia, October 7 2022. Available online from *Bitbucket: Pybtex developers* at: https://bitbucket\.org/pybtex\-devs/pybtex and https://bitbucket\.org/pybtex\-devs/pybtex/src/master/; March 4, 2023 was the last accessed date.
++ [Kopka2004]
+	- Helmut Kopka and Patrick W. Daly, "Guide to LaTeX," Fourth edition, in Addison-Wesley Series on Tools and Techniques for Computer Typesetting, Addison-Wesley, Boston, MA, 2004.
+
+
+
+
+
 
 
 
