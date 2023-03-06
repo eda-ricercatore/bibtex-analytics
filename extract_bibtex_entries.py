@@ -1260,7 +1260,7 @@ if __name__ == "__main__":
 	"""
 	print("paired_input_arguments is:",paired_input_arguments,"=")
 #	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["bibtex_key_csv_filename"],"=")
-	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["keyphrases_csv_filename"],"=")
+#	print("paired_input_arguments[paired_ip_arg] is:",paired_input_arguments["keyphrases_csv_filename"],"=")
 #	print(bib_database.entries)
 #	print("Pre-processing - Number of BibTeX entries in bib_database.entries:",len(bib_database.entries),"=")
 	filtered_bibtex_entries = []
