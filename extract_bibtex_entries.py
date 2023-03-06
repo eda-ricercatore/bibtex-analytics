@@ -272,12 +272,23 @@
 
 
 
+
+	Alternatives explored:
+	+ on March 4, 2023:
+		- [Biblib](https://github.com/aclements/biblib)
+			* Last build: December 20, 2013.
+			* Author: Austin Clements.
+		- 
+
+
+
 	
 
 
 
 	Revision History:
 	February 25, 2023			Version 0.1, initial build.
+	March 2, 2023 				Version 1.0, initial version.
 """
 
 #	The MIT License (MIT)

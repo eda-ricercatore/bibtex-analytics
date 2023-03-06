@@ -96,6 +96,19 @@ meta:
 
 
 
+
+partition:
+	@echo "	Requires installation of pybtex: e.g., pip install pybtex."
+	pybtex-format --style alpha input/t-simple.bib output-files/t-simple-alpha.md
+	pybtex-format --style plain input/t-simple.bib output-files/t-simple-plain.md
+	pybtex-format --style unsrt input/t-simple.bib output-files/t-simple-unsrt.md
+	@echo "	The 'abbrv' style is not available for pybtex."
+	#pybtex-format --style abbrv input/t-simple.bib output-files/t-simple-abbrv.md
+
+
+
+
+
 series:
 	./tutti_series.py input/simple.bib
 	./tutti_series.py input/simple_clean.bib

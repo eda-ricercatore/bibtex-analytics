@@ -29,7 +29,7 @@ My *BibTeX* database is a large set of *BibTeX* entries.
 
 ---
 
-Old notes about the organization of this repository.
+## Old notes about the organization of this repository.
 
 
 It contains the following scripts:
@@ -51,6 +51,13 @@ It contains the following scripts:
 	- Run as: **./editions.py [input BibTeX file] [-h]**
 	- A *Python* script to display a set of editions from *BibTeX* entries in a
 		*BibTeX* database.
++ ***extract_bibtex_entries.py***
+	- Run as: **./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file]**
+		- For future version: **./extract_bibtex_entries.py [-h] [-k] [set of BibTeX keys stored as a CSV file] [-m] [set of keyphrases stored as a CSV file] [-a] [names of authors as a string] [-z] [names of authors as a string] [-b] [booktitle as a string] [-j] [journal title as a string] [-s] [book series as a string] [-u] [name of university as a string]**
+	- A *Python* script to extract a subset of BibTeX entries
+		from a BibTeX database, using a non-empty subset of the following:
+		* a set of BibTeX keys
+		* a set of keyphrases, stored as optional metadata for each BibTeX entry
 + incremental_test.py
 	- Run as: **./incremental_test.py [input BibTeX file]**
 	- Perform incremental software testing automatically for my script(s) that
@@ -147,6 +154,22 @@ The set of *BibTeX* benchmarks that I have used to test
 
 
 
+
+#	Additional Resources
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #	Future Work
 
 Complete the work on data analytics, including predictive analytics.
@@ -195,6 +218,28 @@ I can develop *Python* scripts to do the following:
 
 
 [See the report for an updated description of future work for the *BibTeX Analytics* project.](https://github.com/eda-ricercatore/bibtex-analytics/blob/master/notes/report/report.pdf)
+
+
+
+
+
+
+
+
+
+
+#	References
+
+
+
+
+
+
+
+
+
+
+
 
 
 
