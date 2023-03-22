@@ -128,4 +128,79 @@ vald:
 
 
 
+extract:
+	@echo "= Run the BibTeX extraction script without input arguments."
+	extract_bibtex_entries.py
+	@echo "= Run the program with unary input argument."
+	extract_bibtex_entries.py -h
+	@echo "= Run the BibTeX extraction script with 2-tuple/paired input arguments."
+	extract_bibtex_entries.py -h -k ./input-files/bibtex_keys.csv
+	extract_bibtex_entries.py -h -m ./input-files/keyphrases_as_metadata.csv
+	extract_bibtex_entries.py -h -k ./input-files/bibtex_keys.csv -m ./input-files/keyphrases_as_metadata.csv
+	@echo "= Process options without the help manual."
+	extract_bibtex_entries.py -k ./input-files/bibtex_keys.csv -m ./input-files/keyphrases_as_metadata.csv
+	extract_bibtex_entries.py -a "John L. Hennessy and David A. Patterson"
+	extract_bibtex_entries.py -a "Zhiyang Ong"
+	extract_bibtex_entries.py -z "Ong"
+	extract_bibtex_entries.py -h -z "Ong" -h -h -h
+	extract_bibtex_entries.py -h -z "Ong" -h -h
+	extract_bibtex_entries.py -b "Design Automation Conference"
+	extract_bibtex_entries.py -j "\{ACM\} Computing Surveys"
+	extract_bibtex_entries.py -s "The Kluwer International Series in Engineering and Computer Science"
+	extract_bibtex_entries.py -u "Massachusetts Institute of Technology"
+	extract_bibtex_entries.py -u "Massachusetts Institute of Technology" -u "Stanford University"
+
+
+subset:
+	@echo "= Run the BibTeX extraction script without input arguments."
+	extract_bibtex_entries.py
+#	make git
+	@echo "= Run the program with unary input argument."
+	extract_bibtex_entries.py -h
+#	make git
+	@echo "= Run the BibTeX extraction script with 2-tuple/paired input arguments."
+	extract_bibtex_entries.py -h -k ./input-files/bibtex_keys.csv
+#	make git
+	extract_bibtex_entries.py -h -m ./input-files/keyphrases_as_metadata.csv
+	make git
+#	extract_bibtex_entries.py -h -k ./input-files/bibtex_keys.csv -m ./input-files/keyphrases_as_metadata.csv
+#	@echo "= Process options without the help manual."
+#	extract_bibtex_entries.py -k ./input-files/bibtex_keys.csv -m ./input-files/keyphrases_as_metadata.csv
+
+
+
+
+
+
+keys:
+	extract_bibtex_entries.py -k ./input-files/bibtex_keys.csv
+	@echo "	Requires installation of pybtex: e.g., pip install pybtex."
+	pybtex-format --style alpha output-files/extracted_bibtext_entries.bib output-files/extracted_bibtext_entries-alpha.md
+
+
+
+
+phrases:
+	extract_bibtex_entries.py -m ./input-files/keyphrases_as_metadata.csv
+
+
+
+
+
+
+
+markdown:
+	convert_bibtex_to_markdown.py
+	open output-files/references_in_markdown.md
+
+
+
+
+workflow:
+	extract_bibtex_entries.py -k ./input-files/bibtex_keys.csv
+	cp ./output-files/extracted_bibtext_entries.bib ./input-files/bibtext_entries_for_cpp.bib
+	convert_bibtex_to_markdown.py
+	open ./output-files/references_in_markdown.md
+
+
 
