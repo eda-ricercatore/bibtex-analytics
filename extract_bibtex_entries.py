@@ -118,9 +118,10 @@
 		and argument(s).
 		This input argument does not have to end/stop the program
 			immediately.
-	Open an input file object for the BibTeX database.
+	Open a BibTeX database, and create an input file object for it.
 	Parse the BibTeX database, via a BibTeX parser and the file object.
-	Open an input file object for the CSV input file(s).
+	Open CSV input file(s), and create an input file object for each
+		CSV input file.
 	Parse the CSV file, via CSV import, pandas, and the file object.
 	Enumerate each BibTeX entry in the input BibTeX database.
 		If the [-k] input argument/option is selected,
@@ -498,9 +499,9 @@ input_bibtex_file = "../references.bib"
 def print_help_manual():
 	print("--------------------------------------------------------")
 	print("")
-	print("Synopsis of using: z_sys_arg_for_loop.py")
+	print("Synopsis of using: extract_bibtex_entries.py")
 	print("")
-	print("./z_sys_arg_for_loop.py [-h] [-k] [input CSV file] [-m] [input CSV file] [-a] [string] [-z] [string] [-b] [string] [-j] [string] [-s] [string] [-u] [string]")
+	print("./extract_bibtex_entries.py [-h] [-k] [input CSV file] [-m] [input CSV file] [-a] [string] [-z] [string] [-b] [string] [-j] [string] [-s] [string] [-u] [string]")
 	print("")
 	print("The only unary input argument is: [-h]")
 	print("")

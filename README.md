@@ -191,7 +191,9 @@ Alternatives for the *Python* package *bibtexparser* [Boulogne2022] [Boulogne202
 	- [BabyBib, incomplete and poor solution](https://github.com/matthew-brett/babybib) [Newman2022]
 	- [Pybliographer](https://pybliographer.org/) [Newman2022]
 		* GUI-based software application, rather than software application executed by command-line interface or a software library/package.
-
+	- [biblio-py](https://pypi.org/project/biblio-py/)
+		* https://fisica.cab.cnea.gov.ar/colisiones/staff/fiol/biblio-py_en.html
+		* https://github.com/fiolj/biblio-py
 
 
 
