@@ -127,7 +127,7 @@ vald:
 
 
 
-
+#	Sample Make target in target location. Does not work in repository.
 extract:
 	@echo "= Run the BibTeX extraction script without input arguments."
 	extract_bibtex_entries.py
@@ -151,6 +151,8 @@ extract:
 	extract_bibtex_entries.py -u "Massachusetts Institute of Technology" -u "Stanford University"
 
 
+
+#	Sample Make target in target location. Does not work in repository.
 subset:
 	@echo "= Run the BibTeX extraction script without input arguments."
 	extract_bibtex_entries.py
@@ -171,7 +173,7 @@ subset:
 
 
 
-
+#	Sample Make target in target location. Does not work in repository.
 keys:
 	extract_bibtex_entries.py -k ./input-files/bibtex_keys.csv
 	@echo "	Requires installation of pybtex: e.g., pip install pybtex."
@@ -179,7 +181,7 @@ keys:
 
 
 
-
+#	Sample Make target in target location. Does not work in repository.
 phrases:
 	extract_bibtex_entries.py -m ./input-files/keyphrases_as_metadata.csv
 
@@ -188,14 +190,14 @@ phrases:
 
 
 
-
+#	Sample Make target in target location. Does not work in repository.
 markdown:
 	convert_bibtex_to_markdown.py
 	open output-files/references_in_markdown.md
 
 
 
-
+#	Sample Make target in target location. Does not work in repository.
 workflow:
 	extract_bibtex_entries.py -k ./input-files/bibtex_keys.csv
 	cp ./output-files/extracted_bibtext_entries.bib ./input-files/bibtext_entries_for_cpp.bib
