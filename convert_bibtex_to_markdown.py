@@ -714,7 +714,7 @@ if __name__ == "__main__":
 				# Yes, if the doi field not empty?
 				if "" != bib_entry.get("doi"):
 					# Yes, append the doi to information about the publication.
-					current_publication = current_publication + ". DOI: " + bib_entry.get("doi") + "."
+					current_publication = current_publication + " DOI: " + bib_entry.get("doi") + "."
 			# Write the information of the current publication to file.
 			current_publication = current_publication + "\n"
 			op_file_1.write(current_publication)
