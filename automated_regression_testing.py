@@ -222,6 +222,7 @@ call(["./rm_bibtex_metadata.py","input/no_duplicate_bibtex_keys.bib","input/no_d
 
 
 
+#	The following tests a deprecated script.
 """
 print("##################################################")
 print("=	Testing: keywords_display.py")
