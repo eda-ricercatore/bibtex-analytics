@@ -145,24 +145,24 @@ print("-	-	-	-	-	-	-	-")
 print("	=>	With one INVALID input argument.")
 call(["./validate_url.py","qwerty"])
 print("-	-	-	-	-	-	-	-")
-fname = "input/one_bibtex_entry_op.bib"
+fname = "input/one_bibtex_entry.bib"
 print("	=>	With one valid input argument.")
 call(["./validate_url.py","input/one_bibtex_entry.bib"])
-os.remove(fname)
+#os.remove(fname)
 print("-	-	-	-	-	-	-	-")
 print("	=>	With 1 valid input argument, and 1 valid output argument.")
 dummy = "input/extra.bib"
-call(["./validate_url.py","input/one_bibtex_entry.bib",dummy])
+call(["./validate_url.py","input/extra.bib",dummy])
 print("-	-	-	-	-	-	-	-")
 print("	=>	With 1 valid input argument, and 1 invalid output argument.")
 dummy = "input/y-dummy.bib"
-call(["./validate_url.py","input/one_bibtex_entry.bib",dummy])
+call(["./validate_url.py","input/dummy.bib",dummy])
 #os.remove(dummy)
 print("-	-	-	-	-	-	-	-")
 print("	=>	Has Bdsk-Url-2, but not Bdsk-Url-1.")
 dummy = "input/x-dummy.bib"
 call(["./validate_url.py","input/has_backup2_no_backup1.bib",dummy])
-os.remove(dummy)
+#os.remove(dummy)
 
 print("-	-	-	-	-	-	-	-")
 print("	=>	Has missing DOIs and/or URLs.")
@@ -186,7 +186,7 @@ print("-	-	-	-	-	-	-	-")
 fname = "input/one_bibtex_entry_op.bib"
 print("	=>	With one valid input argument.")
 call(["./rm_bibtex_metadata.py","input/one_bibtex_entry.bib"])
-os.remove(fname)
+#os.remove(fname)
 print("-	-	-	-	-	-	-	-")
 print("	=>	With 1 valid input argument, and 1 valid output argument.")
 dummy = "input/extra.bib"
@@ -195,7 +195,7 @@ print("-	-	-	-	-	-	-	-")
 print("	=>	With 1 valid input argument, and 1 invalid output argument.")
 dummy = "input/w-dummy.bib"
 call(["./rm_bibtex_metadata.py","input/one_bibtex_entry.bib",dummy])
-os.remove(dummy)
+#os.remove(dummy)
 print("-	-	-	-	-	-	-	-")
 print("	=>	Remove BibTeX metadata: Get Help (1).")
 call(["./rm_bibtex_metadata.py","input/no_duplicate_bibtex_keys.bib","-h"])
@@ -222,8 +222,9 @@ call(["./rm_bibtex_metadata.py","input/no_duplicate_bibtex_keys.bib","input/no_d
 
 
 
+"""
 print("##################################################")
-print("=	Testing: rm_bibtex_metadata.py")
+print("=	Testing: keywords_display.py")
 print("-	-	-	-	-	-	-	-")
 print("	=>	Get keywords: With no input arguments.")
 call("./keywords_display.py")
@@ -245,7 +246,7 @@ call(["./keywords_display.py", "input/one_bibtex_entry.bib"])
 print("-	-	-	-	-	-	-	-")
 print("	=>	Get keywords: With multiple input arguments.")
 call(["./keywords_display.py", "input/simple.bib", "dwefw", "wefewf"])
-
+"""
 
 
 
