@@ -34,11 +34,13 @@
 
 	Revision History:
 	April 17, 2017			Version 0.1, initial build.
+	July 5, 2024			Version 0.2, automate obtaining date-timestamp
+								affix for the filename.
 """
 
 #	The MIT License (MIT)
 
-#	Copyright (c) <2014-2017> <Zhiyang Ong>
+#	Copyright (c) <2014-2024> <Zhiyang Ong>
 
 #	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -46,13 +48,14 @@
 
 #	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#	Email address: echo "cukj -wb- 23wU4X5M589 TROJANS cqkH wiuz2y 0f Mw Stanford" | awk '{ sub("23wU4X5M589","F.d_c_b. ") sub("Stanford","d0mA1n"); print $5, $2, $8; for (i=1; i<=1; i++) print "6\b"; print $9, $7, $6 }' | sed y/kqcbuHwM62z/gnotrzadqmC/ | tr 'q' ' ' | tr -d [:cntrl:] | tr -d 'ir' | tr y "\n"	Che cosa significa?
+#	Email address: echo "cukj -wb- 23wU4X5M589 TROJANS cqkH wiuz2y 0f Mw Stanford" | awk '{ sub("23wU4X5M589","F.d_c_b. ") sub("Stanford","d0mA1n"); print $5, $2, $8; print " "; for (i=1; i<=1; i++) print "6\b"; print $9, $7, $6 }' | sed y/kqcbuHwM62z/gnotrzadqmC/ | tr 'q' ' ' | tr -d "\n" | tr -d 'ir' | tr y "\n"
+#	Che cosa significa?
 
 #	==========================================================
 
 __author__ = 'Zhiyang Ong'
 __version__ = '0.2'
-__date__ = 'Apr 17, 2017'
+__date__ = 'July 5, 2024'
 
 ###############################################################
 
@@ -98,6 +101,11 @@ from timing_measurements.performance_measurement_no_ns import execution_time_mea
 #		in all the 'Keywords' fields in this BibTeX database.
 class keywords_show:
 	list_of_keywords = []
+	"""
+		Dictionary to enable the conversion of the month from
+			its number format to its text format.
+	"""
+	month_number_to_text = {1:"january", 2:"february", 3:"march", 4:"april", 5:"may", 6:"june", 7:"july", 8:"august", 9:"september", 10:"october", 11:"november", 12:"december"}
 	# ============================================================
 	#	Method to collect keywords from each BibTeX entry's
 	#		'Keywords' field, sort them, and display them in
@@ -181,20 +189,21 @@ class keywords_show:
 			return True
 		else:
 			return False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	# ============================================================
+	#	Method to determine the date-timestamp as an affix.
+	#	param file_extension - file extension for the filename
+	#								containing keyphrases.
+	#	@return filename affix with date-timestamp.
+	#	O(1) method.
+	@staticmethod
+	def get_date_timestamp_affix(file_extension=".md"):
+		# Get the current local time.
+		current_time = time.localtime()
+		"""
+			Use fields of the current local time to obtain the filename affix.
+		"""
+		date_timestamp_affix = "-" + keywords_show.month_number_to_text[current_time.tm_mon] + "-" + str(current_time.tm_mday) + "-" + str(current_time.tm_year) + "-" + str(current_time.tm_hour) + str(current_time.tm_min) + file_extension
+		return date_timestamp_affix
 
 
 
@@ -214,90 +223,11 @@ if __name__ == "__main__":
 	execution_time_measurement_no_ns.set_initial_timestamp()
 	#	= Start of Preprocessing.
 	# Input file filename
-	#ip_filename = 'references-june-24-2020-0150.bib'
-	#ip_filename = 'references-june-26-2020-0033.bib'
-	#ip_filename = 'references-june-26-2020-0145.bib'
-	#ip_filename = 'references-june-26-2020-0217.bib'
-	#ip_filename = 'references-july-20-2020-1917.bib'
-	#ip_filename = 'references-august-23-2020-2315.bib'
-	#ip_filename = 'references-august-21-2020-1021.bib'
-	#ip_filename = 'references-september-3-2020-0754.bib'
-	#ip_filename = 'references-september-10-2020-2021.bib'
-	#ip_filename = 'references-september-11-2020-1553.bib'
-	#ip_filename = 'references-october-1-2020-1520.bib'
-	#ip_filename = 'references-october-7-2020-1334.bib'
-	#ip_filename = 'references-november-2-1408.bib'
-	#ip_filename = 'references-november-20-2020-1707.bib'
-	#ip_filename = 'references-december-21-2020-2032.bib'
-	#ip_filename = 'references-february-9-2020-1115.bib'
-	#ip_filename = "references-april-9-2021-0810.bib"
-	#ip_filename = "references-may-5-2021-1448.bib"
-	#ip_filename = "references-may-15-2021-2154.bib"
-	#ip_filename = "references-may-21-2021-2004.bib"
-	#ip_filename = "references-may-29-2021-1126.bib"
-	#ip_filename = "references-may-29-2021-1253.bib"
-	#ip_filename = "references-may-30-2021-2306.bib"
-	#ip_filename = "references-june-11-2021-2016.bib"
-	#ip_filename = "references-july-6-2021-1839.bib"
-	#ip_filename = "references-august-15-2021-2321.bib"
-	#ip_filename = "references-august-21-2021-1735.bib"
-	#ip_filename = "references-september-2-2021-1531.bib"
-	#ip_filename = "references-september-3-2021-0320.bib"
-	#ip_filename = "references-september-17-2021-1142.bib"
-	#ip_filename = "references-september-27-2021-1307.bib"
-	#ip_filename = "references-october-4-2021-1249.bib"
-	#ip_filename = "references-october-26-2021-2151.bib"
-	#ip_filename = "references-november-2-2021-2059.bib"
-	#ip_filename = "references-november-4-2021-1252.bib"
-	#ip_filename = "references-november-4-2021-1456.bib"
-	#ip_filename = "references-november-17-2021-2334.bib"
-	#ip_filename = "references-november-29-2021-1242.bib"
-	#ip_filename = "references-december-2-2021-0046.bib"
-	#ip_filename = "references-december-8-2021-1056.bib"
-	#ip_filename = "references-december-10-2021-1300.bib"
-	#ip_filename = "references-december-13-2021-1521.bib"
-	#ip_filename = "references-december-20-2021-1558.bib"
-	#ip_filename = "references-december-21-2021-1933.bib"
-	#ip_filename = "references-january-4-2022-2304.bib"
-	#ip_filename = "references-january-13-2022-0945.bib"
-	#ip_filename = "references-january-13-2022-1532.bib"
-	#ip_filename = "references-january-15-2022-1916.bib"
-	#ip_filename = "references-january-18-2022-1759.bib"
-	#ip_filename = "references-january-22-2022-0955.bib"
-	#ip_filename = "references-january-27-2022-1530.bib"
-	#ip_filename = "references-february-2-2022-1547.bib"
-	#ip_filename = "references-february-12-2022-1719.bib"
-	#ip_filename = "references-february-18-2022-1357.bib"
-	#ip_filename = "references-february-22-2022-2032.bib"
-	#ip_filename = "references-february-23-2021-1304.bib"
-	#ip_filename = "references-march-9-2022-1457.bib"
-	#ip_filename = "references-march-10-2022-1728.bib"
-	#ip_filename = "references-march-22-2022-1123.bib"
-	#ip_filename = "references-march-30-2022-1451.bib"
-	#ip_filename = "references-april-3-2022-1736.bib"
-	#ip_filename = "references-april-4-2022-1018.bib"
-	#ip_filename = "references-april-10-2022-1636.bib"
-	#ip_filename = "references-april-12-2022-1515.bib"
-	#ip_filename = "references-april-13-2022-1608.bib"
-	#ip_filename = "references-april-13-2022-1700.bib"
-	#ip_filename = "references-april-14-2022-1116.bib"
-	#ip_filename = "references-april-14-2022-1256.bib"
-	#ip_filename = "references-april-14-2022-1551.bib"
-	#ip_filename = "references-april-15-2022-1832.bib"
-	#ip_filename = "references-april-17-2022-2351.bib"
-	#ip_filename = "references-april-19-2022-1345.bib"
-	#ip_filename = "references-april-19-2022-2013.bib"
-	#ip_filename = "references-april-27-2022-1244.bib"
-	#ip_filename = "references-may-6-2022-1332.bib"
-	#ip_filename = "references-may-7-2022-2343.bib"
-	#ip_filename = "references-may-9-2022-1222.bib"
-	#ip_filename = "references-may-9-2022-1339.bib"
-	#ip_filename = "references-may-9-2022-1707.bib"
-	#ip_filename = "references-may-10-2022-0225.bib"
-	#ip_filename = "references-may-14-2022-1718.bib"
-	#ip_filename = "references-may-14-2022-1743.bib"
-	ip_filename = "references-may-17-2022-1827.bib"
-	op_filename = 'keywords.md'
+	#ip_filename = "../references.bib"
+	ip_filename = "./input/t-simple.bib"
+	op_filename_without_affix = "./output-files/keywords"
+	#op_filename = 'keywords.md'
+	op_filename = op_filename_without_affix + keywords_show.get_date_timestamp_affix()
 	# Create a file object for reading.
 	print("=	Create a file object for reading.")
 	ip_file_obj = open(ip_filename, 'r')
