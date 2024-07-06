@@ -106,6 +106,7 @@ class keywords_show:
 			its number format to its text format.
 	"""
 	month_number_to_text = {1:"january", 2:"february", 3:"march", 4:"april", 5:"may", 6:"june", 7:"july", 8:"august", 9:"september", 10:"october", 11:"november", 12:"december"}
+	hours_or_minutes_in_double_digits = {0:"00", 1:"01", 2:"02", 3:"03", 4:"04", 5:"05", 6:"06", 7:"07", 8:"08", 9:"09"}
 	# ============================================================
 	#	Method to collect keywords from each BibTeX entry's
 	#		'Keywords' field, sort them, and display them in
@@ -190,19 +191,24 @@ class keywords_show:
 		else:
 			return False
 	# ============================================================
-	#	Method to determine the date-timestamp as an affix.
-	#	param file_extension - file extension for the filename
-	#								containing keyphrases.
-	#	@return filename affix with date-timestamp.
+	#	Method to determine the date-timestamp as a filename affix.
+	#	param file_extension - file extenstion for the filename affix.
+	#	@return filename affix with the date-timestamp.
 	#	O(1) method.
 	@staticmethod
 	def get_date_timestamp_affix(file_extension=".md"):
-		# Get the current local time.
+		# Get current local time for the date-timestamp.
 		current_time = time.localtime()
-		"""
-			Use fields of the current local time to obtain the filename affix.
-		"""
-		date_timestamp_affix = "-" + keywords_show.month_number_to_text[current_time.tm_mon] + "-" + str(current_time.tm_mday) + "-" + str(current_time.tm_year) + "-" + str(current_time.tm_hour) + str(current_time.tm_min) + file_extension
+		# Create the filename affix.
+		hour_text = str(current_time.tm_hour)
+		#print("hours_or_minutes_in_double_digits is:", keywords_show.hours_or_minutes_in_double_digits, "=")
+		#print("current_time.tm_hour is:", current_time.tm_hour, "=")
+		if (10 > current_time.tm_hour):
+			hour_text = keywords_show.hours_or_minutes_in_double_digits[current_time.tm_hour]
+		minute_text = str(current_time.tm_min)
+		if (10 > current_time.tm_min):
+			minute_text = keywords_show.hours_or_minutes_in_double_digits[current_time.tm_min]
+		date_timestamp_affix = "-" + keywords_show.month_number_to_text[current_time.tm_mon] + "-" + str(current_time.tm_mday) + "-" + str(current_time.tm_year) + "-" + hour_text + minute_text + file_extension
 		return date_timestamp_affix
 
 
