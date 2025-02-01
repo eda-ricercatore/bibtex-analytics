@@ -1,4 +1,7 @@
-#!/Users/zhiyang/anaconda3/bin/python
+#!/Library/Frameworks/Python.framework/Versions/Current/bin/python3
+###	#!/opt/anaconda3/bin/python
+
+###	#!/Users/zhiyang/anaconda3/bin/python
 
 #	#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 ###	/usr/bin/python
